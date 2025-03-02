@@ -1,0 +1,591 @@
+
+<!DOCTYPE html PUBLIC >
+
+<html lang="es">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Following part is mathjax, for latex-->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- This part is for jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- This part is to load main.js -->
+    <script type="text/javascript" src="../main.js"></script>
+
+    
+
+   <!-- Next part is for new coomands -->
+   <script>
+    window.MathJax = {
+      tex: {
+        macros: {
+          sen: "\\operatorname{sen}",
+          seg: ["\\overrightarrow{#1}", 1]
+        },
+        tags: "ams" /* this part is for numbered equations */
+      }
+    };
+  </script>
+
+  <!-- This part is for using single $ for latex input, instead of \(\) -->
+  <script>
+      MathJax = {
+      tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+      svg: {
+          fontCache: 'global'
+      }
+  };
+    </script>
+
+    
+    <!-- This part restart counter of cards to start at n+1 -->
+    <style>
+      /* body.number-title{
+        counter-reset: sectionCounter 1 subsectioncounter ;
+      } */
+      h1.page-title-ejercicios-propuestos{
+        counter-reset: semanaCounter 2 sectionCounter  subsectionCounter;
+      }
+    </style>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" , href="../style.css" />
+    <!-- Top Menu  -->
+    
+          
+    <header class="main-header">
+        
+      <div class="logo_superior_umar">
+      <a href="https://www.umar.mx" target="_blank"><img src="../Imagenes/umar_logo_hd.webp" alt="Logo_UMAR" width="110%" height="auto"></a>
+      </div>
+      <div class="contenedor_titulo">
+      <div class="title">Probabilidad Uno</div>
+      <div class="subtitle">Universidad del Mar, campus Huatulco</div>
+      <div class="subsubtitle">Licenciatura en Actuaría </div>
+      <!-- <div class="subsubtitle"><a href="https://www.umar.mx/web/ensenanza/licenciaturas/licenciatura_en_administracion_turistica" target="_blank">Licenciatura en Administración Turística</a> </div>    -->
+  
+      </div>
+
+
+      
+        </header>
+
+        <nav class="top-nav">
+          <ul>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Home.html"> Inicio  </a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Informacion_General.html">Información</a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Notas.html"> Notas  </a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Ejercicios.html"> Ejercicios</a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Enlaces_externos.html"> Links </a> </li>
+          </ul>
+          </nav>
+       
+        
+        <!-- 
+          <nav class="small-nav" align=right>
+            <button onclick="myFunction()">Claro/Obscuro 
+          </nav> 
+        -->
+
+      <!-- This part is for title in tab-->
+            
+      <title>Ejercicios propuestos segundo examen parcial</title>
+      </head>  
+
+
+
+  <body class="fondo-body" ><h1 class="page-title-ejercicios-propuestos"> Ejercicios propuestos segundo examen parcial </h1>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Prueba que las siguientes funciones definen una métrica en $\mathbb{R}$.
+        <ol>
+          <li>$d(x,y) \colon = |x-y|$</li><br>
+          <li>$\sigma(x,y) \colon= \sqrt{|x-y|}$</li>
+        </ol>
+      </p>          
+      </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+    <p> Prueba que \(d(x,y):=\left| \displaystyle{\frac{1}{x}-\frac{1}{y}} \right| \)
+        es una métrica en \((0,\infty)\).
+    </p>          
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p> Prueba que \(d(x,y):=\left| \displaystyle{\frac{1}{x}-\frac{1}{y}} \right| \)
+          es una métrica en el conjunto de los números naturales $\mathbb{N}$.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Prueba que la función $d\colon \mathbb{R}^2 \times \mathbb{R}^2 \to \mathbb{R}$  definida como:
+        $$d((x_{1},x_{2}), (y_{1},y_{2})) \colon = 
+        \begin{cases} 
+        |x_{1} - y_{1}|, \text{ si } x_{2}=y_{2}\\
+        \\
+        |x_{1}| + |x_{2} - y_{2}| + |y_{1}|, \text{ si } x_{2}\not = y_{2}
+        
+        \end{cases}$$
+        es una métrica en $\mathbb{R}^{2}$.
+      </p>
+
+    </div>
+
+
+  
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico. Prueba que para todos \(x,y,z\in A\)
+        \[
+        |d(x,z)-d(z,y)|\leq d(x,y).
+        \]
+      </p>          
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio" id="Ejer:MetricasGeneradasPorFunciones"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico. Prueba que para cualesquiera $x,y,z,w \in A$, se satisface:
+        $$|d(x,y) - d(z,w)| \leq d(x,z) + d(y,w)$$ 
+      </p>
+      <p>En particular, 
+        $$|d(x,z) - d(z,y)| \leq d(x,y)$$
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea \((A,d)\) un espacio métrico. Define una nueva
+        función \(\rho:A \times A \to \mathbb{R}\) dada por
+        \[
+        \rho(x,y) := \frac{d(x,y)}{1+d(x,y)}
+        \]
+        Prueba que \(\rho\) es una métrica en $A$.
+      </p>     
+      <p><b>Sugerencia:</b> Considera la función \(\varphi:[0,\infty)\to [0,1)\)
+        definida como \(\varphi(t) :=\displaystyle{\frac{t}{1+t}}\). Primera prueba que
+        \(\varphi\) es monótona creciente y que \(\varphi(s+t)\leq \varphi(s)+\varphi(t)\).
+      </p>     
+        
+    </div>
+
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Se denota por \(\{0,1\}^{\mathbb{N}}\) al conjunto de todas
+        las sucesiones de $0$'s y $1$'s. Es decir \(a\in \{0,1\}^{\mathbb{N}}\)
+        si y sólo si \(a=(a_n)_{n=1}^{\infty}\), con \(a_n\in \{0,1\}\), para
+        toda \(n\).
+      </p>
+      <p>En \(\{0,1\}^{\mathbb{N}}\) considera la función  $d\colon \{0,1\}^{\mathbb{N}} \times \{0,1\}^{\mathbb{N}} \to \mathbb{R}$ definida  como:
+        \[
+        d(a,b):=\sum_{n=1}^\infty \frac{1}{2^n}|a_n-b_n|
+        \]
+        Prueba que \(d\) es una métrica en \(\{0,1\}^{\mathbb{N}}\).
+      </p>  
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Se denota por \(C([a,b])\) al conjunto de funciones continuas definidas en 
+        el intervalo \([a,b]\) con valores en $\mathbb{R}$. En \(C([a,b])\) se definen
+        las funciones $d_{1}, d_{\infty}: C([a,b]) \times C([a,b]) \to \mathbb{R}$ como: 
+        <ol>
+        <li>$d_\infty(f,g) :=\displaystyle{\max\{ |f(t)-g(t)| \colon t\in [a,b] \}}$,</li><br>
+        <li>$d_1(f,g) :=\displaystyle{\int_a^b |f(t)-g(t)|dt}$.</li>
+        </ol>
+        Prueba que \(d_\infty\) y \(d_1\) son métricas en \(C([a,b])\).
+      </p>
+   
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio" id="Ejer:MetProdCarte"> Ejercicio</h1>
+      <p>
+        Supongamos que \((A,d_{A})\), \((B,d_{B})\) son dos espacios métricos.
+        Define
+        <ol>
+          <li>$d((a_1,b_1),(a_2,b_2)) := d_A(a_1,a_2)+d_B(b_1,b_2)$,</li><br>
+          <li>$\rho((a_1,b_1),(a_2,b_2)) := \max\{d_A(a_1,a_2), d_B(b_1,b_2) \}$</li> <br>
+          <li>$\sigma((a_1,b_1),(a_2,b_2)) := \sqrt{d_A(a_1,a_2)^2+d_B(b_1,b_2)^2}$</li>
+        </ol>
+        Prueba que \(d\), \(\rho\) y \(\sigma\) son métricas  en \(A\times B\).
+      </p>
+    </div>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $f\colon \mathbb{R} \to \mathbb{R}$ una función inyectiva. Prueba que la función $d \colon \mathbb{R} \times \mathbb{R} \to \mathbb{R}$
+        definida como: 
+        $$d(x,y) \colon= |f(x) - f(y)|$$
+        es una métrica en $\mathbb{R}$
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio" id="Ejer:MetricasGeneradasPorFunciones"> Ejercicio</h1>
+      <p>
+        Sea \(f:[0,\infty)\to [0,\infty)\) una función que satisface las siguientes propiedades:
+        <ul>
+          <li>\(f\) es monótona creciente.</li><br>
+          <li> \(f(0)=0\), </li><br>
+          <li> \(f(x)>0\) para \(x>0\),</li><br>
+          <li> \(f(x+y)\leq f(x)+f(y)\), para todos \(x,y\). </li>
+        </ul>
+      </p>
+      <p>
+        Sea \((A,d)\) un espacio métrico. Prueba que \(\rho(x,y):= f(d(x,y)) \)
+        es una métrica en \(A\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Sea \((A,d)\) un espacio métrico. Define, \(\rho,\sigma:A\times A\to \mathbb{R}\)
+        por
+        <ul>
+          <li>$\rho(x,y)=\min\{d(x,y),1\},$</li><br>
+          <li>$\sigma(x,y)=\sqrt{d(x,y)}$</li>
+        </ul>
+        Prueba que \(\rho\) y \(\sigma\) son métricas en $A$.
+      </p>
+      <p><b>Sugerencia:</b> Utiliza el <a  href="#Ejer:MetricasGeneradasPorFunciones">Ejercicio 2.6</a> .</p>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <ol>
+        <li>
+        Sea \(\rho:A\times A\to \mathbb{R}\) una función que satisface,
+        para todos \(x,y,z\in A\):
+        <p>
+        <ol>
+          <li> \(\rho(x,y) = 0\) si y sólo si \(x=y\), </li><br>
+          <li> \(\rho(x,y)=\rho(y,x)\), </li><br>
+          <li> \(\rho(x,y) \leq \rho(x,z)+\rho(z,y)\).</li>
+        </ol>
+      </p>
+        <p>
+          Prueba que \(\rho\) es una métrica en \(A\).
+        </p>
+      </li>
+
+        <li>Da un ejemplo de un conjunto \(A\) y  función
+          \(\rho:A\times A\to \mathbb{R} \) tal que,
+          para todos \(x,y\in A\) satisface:
+          <p>
+          <ol>
+            <li>
+             \(d(x,y)=0\) si y sólo
+             si \(x=y\)
+           </li><br>
+           <li>
+             \(d(x,y)\leq d(x,z)+d(z,y)\)
+           </li>
+          </ol>
+        </p>
+         <p>y sin embargo \(d\) no es una métrica en $A$.</p>
+        
+        <p><b>Sugerencia:</b> Piensa en un conjunto \(A\) con
+            sólo dos puntos.
+          </p>
+        </li>
+        <p>
+
+        </p>
+        <li>
+        Sea \(\sigma:A\times A\to \mathbb{R}\) una función que satisface,
+        para todos \(x,y,z\in A\):
+        <p>
+          <ol>
+            <li> \(\sigma(x,y) = 0\) si y sólo si \(x=y\), </li><br>
+            <li> \(\sigma(x,y) \leq \sigma(x,z)+\sigma(y,z)\).</li>
+          </ol>
+        </p>  
+        <p>Prueba que \(\sigma\) es una métrica en \(A\).</p>
+        </li>
+
+
+    </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico. Prueba que la unión finita de subconjuntos acotados en  $(A,d)$ sigue siendo
+        un conjunto acotado en $(A,d)$.
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico y $F \subseteq A$. Prueba que \(F\) es un conjunto acotado si y sólo si 
+        \(\operatorname{diam}(F)<\infty\).
+      </p>          
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico$x_{0} \in A$ y $r >0$ y $F \subseteq A$. Es claro que $\mathrm{diam}(B_{r}(x_{0})) \leq 2r$.
+        Prueba que en general la igualdad no siempre se satisface.  
+
+      </p>          
+    </div>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea \(C(\mathbb{R})\), el espacio de las funciones continuas en 
+        \(\mathbb{R}\) con valores en \(\mathbb{R}\) y  \(K\subseteq \mathbb{R}\) un subconjunto compacto. Prueba que la función 
+        $\rho_{K}\colon C(\mathbb{R}) \times C(\mathbb{R}) \to \mathbb{R}$ definida como:
+      </p>
+      <p>
+        \[
+        \rho_K(f,g):=\max_{x\in K}\{|f(x)-g(x)| \}
+        \]
+        es una pseudo métrica pero no una métrica en $C(\mathbb{R})$.
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sean $B,C$ conjuntos no vacios en un espacio métrico $(A,d)$. Prueba que
+        $$d(B,C) = \inf\{ d(x,C) \colon x \in B \} = \inf\{ d(B,y) \colon y \in C \}$$
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico,  $x \in A$ y $r >0$. Se define la <i>Bola abierta con centro en $x$ y radio $r$</i> como:
+        $$B_{r}(x) \colon \{ a \in A \colon d(x,a) < r \}$$
+        Cuando $r=1$, $B_{r}(x)$ es llamada la <i>bola unitaria</i>. 
+      </p>          
+      <p> Realiza un bosquejo de las bolas unitarias centradas en $(0,0)$ en $\mathbb{R}^{2}$ con respecto a  las métricas
+        <ol>
+          <li>$d((x_1,x_2),(y_1,y_2)) := |x_{1} - y_{1}| + |x_{2} - y_{2}|$,</li><br>
+          <li>$\rho((x_1,x_2),(y_1,y_2)) := \max\{|x_{1} - y_{1}|, |x_{2} - y_{2}| \}$</li> <br>
+          <li>$\sigma((x_1,x_2),(y_1,y_2)) := \sqrt{|x_{1} - y_{1}|+ |x_{2} - y_{2}|}$</li>
+        </ol>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Describe la bola abierta con centro en $x_{0}$  y radio $r>0$ en un espacio métrico con la métrica discreta.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea $(A,d)$ un espacio métrico,  $x_{0} \in A$ y $r >0$. Prueba que para todo $x \in B_{r}(x_{0})$, existe 
+        $s >0$ tal que $B_{s}(x) \subseteq  B_{r}(x_{0})$.
+      </p>          
+        
+    </div>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Recordemos que en un mismo espacio vectorial puede
+        admitir distintas normas. Este ejercicio presenta la relación entre tres
+        normas
+        distintas en \(\mathbb{R}^n\).
+      </p>
+      <p>
+        <p>
+          Para \(x=(x_1,\dots, x_n)\in \mathbb{R}^n\) se definen:
+          $$
+          \|x\|_1 := \sum_{i=1}^n|x_i|, \hspace{1.5cm}\|x\|_2 := \left(\sum_{i=1}^n x_i^2\right)^{1/2},\hspace{1.5cm} \|x\|_\infty := \displaystyle{\max \{|x_i| \colon 1\leq i \leq n\}}.
+          $$
+          
+      </p>
+
+      <p> Prueba que se satisfacen las siguientes desigualdades:
+        <ol>
+          <li>$\|x\|_\infty \leq \|x\|_2 \leq \|x\|_1,$</li><br>
+          <li>$\|x\|_1 \leq n \|x\|_\infty,$</li><br>
+          <li>$\|x\|_1\leq \sqrt{n}\|x\|_2$.</li>
+        </ol>
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Por \(\ell_\infty\) denotamos al conjunto de sucesiones de reales
+        que están acotadas. Es decir
+        \[
+        \ell_\infty=\left\{
+          (x_i)_{i=1}^\infty \in \mathbb{R}^{\mathbb{N}} \left|
+          \sup_{i\in \mathbb{N}} \{ |x_i| \} < \infty
+          \right.
+          \right\}
+        \]
+      </p>
+      <p>
+        Dado \(x\in \ell_\infty\) definimos
+        \[
+        \|x\|_\infty:= \sup_{i\in \mathbb{N}}\{ |x_i|\}
+        \]
+      </p>
+      <ol>
+        <li>
+          Prueba que $\ell_{\infty}$ es un espacio vectorial sobre $\mathbb{R}$.
+        </li><br>
+        <li>Prueba que \((\ell_\infty, \| \cdot\|_\infty)\) es un espacio vectorial
+        normado.
+        </li>
+      </ol>  
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Por \(\ell_1\) denotamos al conjunto de sucesiones de reales que
+        son absolutamente sumables. Es decir
+        \[
+        \ell_1=\left\{
+          (x_i)_{i=1}^\infty \in \mathbb{R}^{\mathbb{N}} \left|
+          \sum_{i=1}^\infty |x_i| < \infty
+          \right.
+          \right\}
+        \]
+      </p>
+      <p>
+        Dado \(x\in \ell_1\) definimos
+        \[
+        \|x\|_1:=\sum_{i=1}^\infty |x_i|
+        \]
+      </p>
+      <ol>
+        <li>
+          Prueba que $\ell_{1}$ es un espacio vectorial sobre $\mathbb{R}$.
+        </li><br>
+        <li>Prueba que \((\ell_1, \| \cdot\|_1)\) es un espacio vectorial
+        normado.
+        </li>
+      </ol>  
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Por \(\ell_2\) denotamos al conjunto de sucesiones de reales
+        cuadrado sumables. Es decir
+        \[
+        \ell_2=\left\{(x_i)_{i=1}^\infty \in \mathbb{R}^{\mathbb{N}}
+        \left|  \sum_{i=1}^\infty x_i^2< \infty \right. \right\}
+        \]
+      </p>
+      <p>
+        Dado \(x=(x_i)_{i=1}^\infty \in \ell_2 \) definimos
+        \[
+        \|x \|_2:=\left( \sum_{i=1}^\infty x_i^2\right)^{1/2}
+        \]
+        <ol>
+          <li>
+            Prueba que $\ell_{2}$ es un espacio vectorial sobre $\mathbb{R}$.
+          </li><br>
+          <li>Prueba que \((\ell_2, \| \cdot\|_2)\) es un espacio vectorial
+          normado.
+          </li>
+        </ol>  
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        <ol>
+          <li>Prueba que
+            \(\ell_2 \subseteq \ell_\infty\).
+          </li><br>
+          <li>Prueba que para todo \(x\in \ell_2\)
+          \[
+          \|x\|_\infty \leq \|x\|_2
+          \]
+          </li><br>
+          <li>Da un ejemplo que muestre que la contención
+          \(\ell_2 \subseteq \ell_\infty\) es propia.
+          </li>
+        </ol>
+      </p>          
+        
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        <ol>
+          <li>
+          Prueba que si \(x\in \ell_1\) entonces
+          \[
+          \|x\|_2 \leq \|x\|_1
+          \]
+          Concluye que \(\ell_1 \subseteq \ell_2 \).
+          </li><br>
+          <li>Muestra con un ejemplo que la contención
+            \(\ell_1 \subseteq \ell_2\) es propia. 
+            <p><b>Sugerencia:</b> Piensa en series \(p\).</p>  
+          </li>
+        </ol>
+
+      </p>     
+         
+        
+    </div>
+
+    
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p><p>
+        Sea \((V, \|\cdot \|)\) un espacio vectorial normado. Define
+        \(d:V\times V \to \mathbb{R}\)  por
+        \[
+        d(x,y)=\|x-y\|
+        \]
+        Prueba que \(d\) es una métrica en \(V\).
+      </p>
+      </p>          
+        
+    </div>
+
+    
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Sea \(V\) un espacio vectorial y \(d\) una métrica en \(V\) que satisface
+        <ol>
+          <li>  \(d(x,y)=d(x-y,0)\). </li>
+          <li> \(d(\alpha x,\alpha y  )= |\alpha| d(x,y)\). </li>
+        </ol>
+      </p>
+      <p>
+        Prueba que \(\|\cdot \| :V\to \mathbb{R}\) dada por
+        \(\|x\|=d(x,0)\) define una norma en \(V\) y que la
+        métrica asociada a esta norma es \(d\).
+      </p>
+      <p>
+        Además da un ejemplo de una métrica en \(\mathbb{R}\) que
+        no pueda ser asociada a una norma de ésta manera.
+      </p>    
+        
+    </div>
+
+    
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+        Sea \((V, \|\cdot \|)\) un espacio vectorial normado. Prueba
+        \[
+        |\|x\|-\|y\| | \leq \|x-y\|
+        \]
+      </p>        
+        
+    </div>
+
+<!--     
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>
+      </p>          
+        
+    </div> -->
+
+    
+
+
+
+</body>

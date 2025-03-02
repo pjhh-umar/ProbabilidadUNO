@@ -1,0 +1,965 @@
+
+<!DOCTYPE html PUBLIC >
+
+<html lang="es">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Following part is mathjax, for latex-->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- This part is for jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- This part is to load main.js -->
+    <script type="text/javascript" src="../main.js"></script>
+
+    
+
+   <!-- Next part is for new coomands -->
+   <script>
+    window.MathJax = {
+      tex: {
+        macros: {
+          sen: "\\operatorname{sen}",
+          seg: ["\\overrightarrow{#1}", 1]
+        },
+        tags: "ams" /* this part is for numbered equations */
+      }
+    };
+  </script>
+
+  <!-- This part is for using single $ for latex input, instead of \(\) -->
+  <script>
+      MathJax = {
+      tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+      svg: {
+          fontCache: 'global'
+      }
+  };
+    </script>
+
+    
+    <!-- This part restart counter of cards to start at n+1 -->
+    <style>
+      /* body.number-title{
+        counter-reset: sectionCounter 1 subsectioncounter ;
+      } */
+      h1.page-title-ejercicios-propuestos{
+        counter-reset: semanaCounter 3 sectionCounter  subsectionCounter;
+      }
+    </style>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" , href="../style.css" />
+    <!-- Top Menu  -->
+    
+          
+    <header class="main-header">
+        
+      <div class="logo_superior_umar">
+      <a href="https://www.umar.mx" target="_blank"><img src="../Imagenes/umar_logo_hd.webp" alt="Logo_UMAR" width="110%" height="auto"></a>
+      </div>
+      <div class="contenedor_titulo">
+      <div class="title">Probabilidad Uno</div>
+      <div class="subtitle">Universidad del Mar, campus Huatulco</div>
+      <div class="subsubtitle">Licenciatura en Actuaría </div>
+      <!-- <div class="subsubtitle"><a href="https://www.umar.mx/web/ensenanza/licenciaturas/licenciatura_en_administracion_turistica" target="_blank">Licenciatura en Administración Turística</a> </div>    -->
+  
+      </div>
+
+      
+        </header>
+
+        <nav class="top-nav">
+          <ul>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Home.html"> Inicio  </a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Informacion_General.html">Información</a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Notas.html"> Notas  </a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Ejercicios.html"> Ejercicios</a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Enlaces_externos.html"> Links </a> </li>
+          </ul>
+          </nav>
+       
+        
+        <!-- 
+          <nav class="small-nav" align=right>
+            <button onclick="myFunction()">Claro/Obscuro 
+          </nav> 
+        -->
+
+      <!-- This part is for title in tab-->
+            
+      <title>Ejercicios propuestos tercer examen parcial  </title>
+      </head>  
+
+
+
+  <body class="fondo-body" ><h1 class="page-title-ejercicios-propuestos"> Ejercicios propuestos tercer examen parcial </h1>   
+
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Sea $p \in [1,\infty)$. Prueba que la función $\|\cdot\|_p \colon \mathbb{R}^{n} \to \mathbb{R}$ 
+        dada por:
+        $$\|(x_1,x_2,\ldots,x_n)\|_p := \displaystyle{\left( \sum_{i=1}^{n} |x_{i}|^p \right)^{\frac{1}{p}} }$$
+        define una norma en $\mathbb{R}^{n}$.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Sean \(x=(x_1,\dots, x_n), y=(y_1,\dots, y_n)\in \mathbb{R}^n\). Prueba que
+        la igualdad
+        \[
+        \sum_{i=1}^n x_iy_i=\|x\|_2\|y\|_2
+        \]
+        se da si y sólo si existe un número real \(\alpha \geq 0\) tal que
+        \(x=\alpha y\) ó \(y=\alpha x\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>En el espacio de las funciones continuas, \(C([a,b])\), define
+        \[
+        \|f\|_1=\int_a^b |f(t)|dt
+        \]
+        Prueba que \(\|\cdot\|_1\) es una norma en \(C([a,b])\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Se \(V\) un espacio vectorial y \(\| \cdot\|_a, \| \cdot\|_b:V \to \mathbb{R}\),
+        dos normas en \(V\). Sea \(\alpha > 0\). Prueba que 
+        \[
+        \|v\|:= \alpha \|v\|_a+ \|v\|_b
+        \]
+        define una norma en \(V\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Sea \((V,\|\cdot\|_V), (W,\|\cdot\|_W)\) dos espacios vectoriales normados. 
+        Para las siguientes funciones, definidas en \(V\times W\) determina cuáles son 
+        normas en \(V\times W\). Si es norma da una prueba si no especifíca qué propiedad falla.
+      </p>
+      <ol>
+        <li>\(\|(v,w) \|= ( \|v\|_V^2+\|w\|_W^2)^{1/2} \).</li><br>
+        <li>\(\|(v,w) \|= \|v\|_V\|w\|_W \).</li><br>
+        <li>\(\|(v,w) \|= \max\{ \|v\|_V,\|w\|_W \}\).</li><br>
+        <li>\( \| (v,w)\|=(\|v\|^{1/2}+\|w\|^{1/2})^2\).</li>
+      </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+     <p>
+              Sea \(V\) un espacio vectorial y \(\|\cdot\|_a, \|\cdot\|_b\) dos normas en \(V\). Decimos
+              \(\|\cdot\|_a\) y \(\|\cdot\|_b\) que son equivalentes, denotado por
+              \(\| \cdot \|_a \sim \|\cdot\|_b\), si existen constantes positivas 
+              \(\alpha>0, \beta >0\) tal que, para todo \(v\in V\):
+              
+              <ul class="two-column">
+                <li>$ \|v\|_b \leq \alpha \|v\|_a$</li>
+                <li>$\|v\|_a \leq \beta \|v\|_b.$</li>
+              </ul>
+              Prueba que lo anterior define una relación de equivalente entre las normas en \(V\), es decir, 
+              $\sim$ satisface:
+            
+              <ol>
+                <li> \(\|\cdot \|_a \sim \|\cdot\|_a\).</li><br>
+                <li>Si \(\|\cdot \|_a \sim \|\cdot\|_b\), entonces  \(\|\cdot\|_b \sim \| \cdot\|_a\).</li><br>
+                <li>Si \(\|\cdot \|_a \sim \|\cdot\|_b\) y  \(\|\cdot \|_b \sim \|\cdot\|_c\) entonces \(\|\cdot \|_a \sim \|\cdot\|_c\).</li><br>
+              </ol>
+            </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio" id="Ejer:EquiNormas-p"> Ejercicio</h1> 
+      <p>Sea $p \in [1,\infty)$. Prueba que para todo \(x\in \mathbb{R}^n\):
+        <ol class="two-column">
+          <li>$\|x\|_\infty  \leq  \|x\|_p$,</li>
+          <li>$\|x\|_p  \leq  n^{1/p}\| x\|_\infty$.</li>
+        </ol>
+        Concluye que para $p \in [1,\infty)$ todas las normas-$p$ en \(\mathbb{R}^n\) son equivalentes.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <!-- <p>Este ejercicio generaliza el <a href="./S2.html#Ejer:MetProdCarte">Ejercicio 2.10</a>
+      </p> -->
+      <p>
+        Sean \((A,d_A), (B,d_B)\) dos espacios métricos y \(\| \cdot \|: \mathbb{R}^2 \to \mathbb{R}\) una 
+        norma en \(\mathbb{R}^2\). En el producto cartesiano \(A\times B\) define 
+        \[
+        d((x_1,y_1), (x_2,y_2)) := \| (d_X(x_1,x_2), d_Y(y_1,y_2)) \|
+        \]
+
+        Prueba que \(d\) define una métrica en \(A\times B\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>¿Es la función $\mu\colon \mathbb{R}^{n} \mapsto \mathbb{R}$ dada por 
+        $$\mu(x_{1}, \ldots, x_{n})\colon= \min\{|x_{1}|, \ldots, |x_{n}|\}$$
+        una norma en $\mathbb{R}^{n}$? Justifica tu respuesta.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Dados dos vectores $x:=(x_{1},\ldots,x_{n})$, y $y:=(y_{1},\ldots,y_{n})$ en 
+        $\mathbb{R}^{n}$ se define su <b>producto escalar</b> como:
+        $$\langle x, y \rangle := x_1 y_1 + \cdots + x_n y_n$$
+      </p>
+      <ol>
+        <li>
+          Prueba que la función $\| \cdot \|_{2} \colon \mathbb{R}^n \to \mathbb{R}$ dada por:
+          $$\| x\|_{2}:= \sqrt{\langle x, x \rangle}$$ 
+          define una norma en $\mathbb{R}^{n}$. Esta norma es conocida como 
+          la <b>norma Euclideana</b> en $\mathbb{R}^{n}$.
+        </li><br>
+        <li>
+          Prueba que la norma Euclideana en $\mathbb{R}^{n}$ satisface la ley del paralelogramo:
+          $$\|x + y \|_2^2 + \|x - y\|_2^2 = 2 \|x\|_2^2 + 2 \|y\|_2^2$$
+        </li>
+      </p>
+
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Prueba que no toda métrica definida en un espacio vectorial esta determinada por una norma.
+      </p>
+
+      <p><b>Sugerencia:</b> Considera la métrica discreta en un espacio vectorial $V \neq \{0\}$.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Este ejercicio muestra que, de existir, los límites de
+        sucesiones son únicos.
+      </p>
+      <p>
+        Sea \((A,d)\) un espacio métrico, \((x_n)_{n\in \mathbb{N}}\)
+        una sucesión en \(A\) y supongamos que existen dos puntos
+        \(x,y\in A\) tales que \((x_n)_{n\in \mathbb{N}}\)
+        converge tanto a \(x\) como a \(y\). Prueba que \(x=y\).
+      </p>
+      <p>
+        Sugerencia: aplica la desigualdad del triángulo iniciando con
+        \(d(x,y)\).
+      </p>
+      
+        </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y \((x_n)_{n\in \mathbb{N}}\)
+        una sucesión en \(A\) tal que \(\displaystyle{\lim_{n\to \infty} x_n}\) existe
+        y es igual a \(x\).
+      </p>
+      <ol>
+        <li> Sea \(y\in A\). Prueba que
+          \(\displaystyle{\lim_{n\to \infty} d(x_n,y) = d(x,y)}\).
+        </li>
+        <li>
+          <p>Supongamos que \((y_n)_{n\in \mathbb{N}}\) es un
+          sucesión en \(A\) con \(\displaystyle{\lim_{n\to \infty} y_n=y}\).
+          Prueba que \( \displaystyle{ \lim_{n\to \infty} d(x_n,y_n)=d(x,y)}\).
+          </p>
+          <p>
+            <b>Sugerencia:</b> usa el inciso anterior y la desigualdad del triángulo.
+          </p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y sea \((x_n)_{n\in \mathbb{N}}\)
+        una sucesión en \(A\). Supongamos que existe \(y\in A\) y \(r>0\)
+        que satisface \(d(x_n,y) < r\), para toda \(n\in \mathbb{N}\).
+      </p>
+      <p>¿Si \(\displaystyle{\lim_{n\to \infty}x_n = x}\) se sigue que \(d(x,y)< r\)?
+        Demuestra o da un contraejemplo.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Sean \((A,d)\) un espacio métrico y \((x_n)_{n\in \mathbb{N}}, (y_n)_{n\in \mathbb{N}}\)
+        sucesiones  en \(A\) convergentes tales que el conjunto $\{ n \in \mathbb{N} \colon x_{n} \neq y_n\}$
+        es finito. Prueba que $\displaystyle{\lim_{n \to \infty} x_{n} = \lim_{n \to \infty} y_{n}}$
+        
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((V,\|\cdot\|)\) un espacio vectorial normado,
+        \((v_n)_{n\in \mathbb{N}}\), \((w_n)_{n\in \mathbb{N}}\)
+        dos sucesiones en \(V\) y \((\alpha)_{n\in \mathbb{N}} \) una
+        sucesión de escalares.
+      </p>
+      <p>
+        Supón que \( \displaystyle{\lim_{n\to \infty}v_n=v}\), \(\displaystyle{\lim_{n\to \infty} w_n=w}\)
+        y \(\displaystyle{\lim_{n\to \infty}\alpha_n = \alpha}\).
+        Prueba que:
+        \[
+        \lim_{n\to \infty} (\alpha_n v_n+ w_n )= \alpha v +w
+        \]
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Este ejercicio muestra que, para los
+        espacios \(\mathbb{R}^n\), con las normas-\(p\),
+        la convergencia de sucesiones se reduce a convergencia
+        de sucesiones de números reales.
+      </p>
+      <p>
+        Fija \(p\in [1,\infty)\) y considera  el espacio vectorial
+        normado \((\mathbb{R}^n, \| \cdot \|_p)\).
+      </p>
+      <p>
+        como en este ejercicio se manejan sucesiones de vectores ($n$-adas de números reales) introducimos
+        la siguiente notación: dado \(x\in \mathbb{R}^{n}\) por
+        \(x(1), x(2), \dots, x(n)\)  denotamos a sus coordenadas, es decir
+        \[
+        x= (x(1), x(2), \dots, x(n)).
+        \]
+        Con ésta notación, dada una sucesión de vectores
+        \((x_k)_{k\in \mathbb{N}}\) sus coordenadas están denotadas por
+        \[
+        x_k=(x_k(1), x_k(2), \dots, x_k(n)), \quad k \in \mathbb{N}.
+        \]
+      </p>
+      <p>
+        Sean \(x,y\in \mathbb{R}^n\).
+      </p>
+        <ol>
+        <li>
+        Prueba que, para toda
+        \(i=1,\dots, n\):
+        \[
+        |x(i)-y(i)| \leq \| x-y\|_p.
+        \]
+        </li>
+        <li>
+        Además prueba que
+        \[
+        \quad \|x-y\|_p \leq \displaystyle{n^{1/p}\max\{|x(i)-y(i)| \,\colon\, i=1,\dots, n \}}
+        \]
+        </li>
+
+        <li>
+          <p>Sea \((x_n)_{n\in \mathbb{N}}\) una sucesión en \(\mathbb{R}^n\)
+            y  \(x\in \mathbb{R}^n\). Prueba que \( \displaystyle{\lim_{n\to \infty} x_n=x}\)
+            si y sólo si, para toda \(i=1,\dots, n\), se cumple
+            \(\displaystyle{\lim_{n\to \infty}x_n(i)=x(i)}\).
+          </p>
+        </li>
+      </ol>
+      <p>
+        Es decir, una sucesión de vectores converge en
+        \(\mathbb{R}^n\), con respecto a la norma-\(p\), si y sólo si
+        todas sus condenadas convergen, vistas como sucesiones en \(\mathbb{R}\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Recuerda que por \(\mathbb{R}^{\mathbb{N}}\) denotamos al
+        conjunto de sucesiones de números reales. Dado
+        \(x\in \mathbb{R}^{\mathbb{N}}\) denotamos sus entradas como
+        \[
+        x=(x(1), x(2), \dots, x(n), \dots)
+        \]
+      </p>
+      <p>
+        Dada una sucesión
+        \(x \in \mathbb{R}^{\mathbb{N}}\)
+        denotamos por  \(x_{k}\) al truncamiento de \(x\)
+        hasta el índice \(k\), es decir, \(x_{k}=(x(1),\dots, x(k), 0,0,\dots)\).
+      </p>
+      <ol>
+        <li> Si \(x\in \ell_2\) prueba que \((x_{k})_{k\in \mathbb{N}}\)
+          converge a \(x\) en \(\ell_2\).
+        </li><br>
+        <li> Si \(x\in \ell_1\) prueba que \((x_{k})_{k\in \mathbb{N}}\)
+          converge a \(x\) en \(\ell_1\).
+        </li><br>
+        <li> Da un ejemplo donde se muestre que los incisos anteriores
+          no se valen cuando \(x\in \ell_\infty\).
+        </li>
+      </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio" id="MetEquivalentes"> Ejercicio</h1> 
+      <p>
+        Dos métricas, \(d_1\) y \(d_2\), sobre un
+        conjunto \(A\), se llaman <b>equivalentes</b> si generan las mismas
+        sucesiones convergentes, es decir:
+        \(\displaystyle{\lim_{n\to \infty} d_1(x_n,x)=0}\) si y sólo si
+        \(\displaystyle{ \lim_{n\to \infty} d_2(x_n,x)=0}\).
+      </p>
+      <ol>
+        <li>Prueba que esto define una relación de equivalencia sobre
+        el conjunto de métricas definidas en \(A\).
+        </li><br>
+        <li>Se \(V\) un espacio vectorial y
+          \(\|\cdot\|_1, \| \cdot \|_2\) dos normas sobre \(V\). Supón
+          que existen constantes \(c,d>0\) tales que:
+          \[
+          \|  v\|_1 \leq c \|v\|_2, \quad \|v\|_2 \leq d \|v\|_1,
+          \quad \textrm{para todo \(v\in V\).}
+          \]
+          Sean \(d_1\) y \(d_2\) las métricas asociadas a \(\|\cdot\|_1\)
+          y \(\| \cdot\|_2\) respectivamente. Prueba que
+          \(d_1\) y \(d_2\) son equivalentes.
+        </li>
+
+      </ol>
+      <p>
+        Por ejemplo, el ejercicio 
+        <a href="#Ejer:EquiNormas-p">Ejercicio 3.7</a>
+        
+        muestra que las normas \(\|\cdot\|_1, \|\cdot\|_2\),
+        \(\|\cdot\|_\infty\) y en general todas las normas \(\|\cdot\|_p\)  en \(\mathbb{R}^n\)
+        generan métricas equivalentes.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Supongamos que \((A,d_A)\), \((B,d_B)\) son dos espacios métrios.
+        En el <a href="./EP2.html#Ejer:MetProdCarte"> Ejercicio 2.10</a>
+        se definieron las métricas:
+        <ul>
+          <li>$d((x_1,y_1),(x_2,y_2)) = d_A(x_1,x_2) + d_B(y_1,y_2),$</li><br> 
+
+          <li>$\rho((x_1,y_1),(x_2,y_2)) =  \max\{d_A(x_1,x_2), d_B(y_1,y_2)  \}$</li><br>
+
+          <li>$\sigma((x_1,y_1),(x_2,y_2)) = \sqrt{d_A(x_1,x_2)^2+d_B(y_1,y_2)^2}.$</li><br>
+        </ul>
+        Prueba que \(d\), \(\rho\) y \(\sigma\) son métricas equivalentes en $A \times B$.
+      </p>
+
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Considera una sucesión \((x_n)_{n\in \mathbb{N}}\). De esta
+        sucesión se van a ir sacando subsuceciones recursivamente.
+      </p>
+      <p>
+        Por \((x_n^{(1)})_{n\in \mathbb{N}}\) vamos a denotar una
+        subsucesión de \((x_n)_{n\in \mathbb{N}}\). Es decir,
+        \(x_n^{(1)}=x_{\varphi_1(n)}\), donde
+        \(\varphi_1:\mathbb{N}\to \mathbb{N}\) es estrictamente creciente.
+      </p>
+      <p>
+        Por \((x_n^{(2)})_{n\in \mathbb{N}}\) vamos a denotar una
+        subsucesión de \((x_n^{(1)})_{n\in \mathbb{N}}\). Es decir,
+        \(x_n^{(2)}=x_{\varphi_2(n)}^{(1)}\), donde
+        \(\varphi_2:\mathbb{N}\to \mathbb{N}\) es estrictamente creciente.
+      </p>
+      <p>
+        Si \((x_n^{(m)})_{n\in\mathbb{N} } \) se ha construido,
+        por \((x_n^{(m+1)})_{n\in \mathbb{N}}\) vamos a denotar una
+        subsucesión de \((x_n^{(m)})_{n\in \mathbb{N}}\). Es decir,
+        \(x_n^{(m+1)}=x_{\varphi_{m+1}(n)}^{(m)}\), donde
+        \(\varphi_{m+1}:\mathbb{N}\to \mathbb{N}\) es estrictamente creciente.
+      </p>
+      <p>
+        Para una visualización podemos escribir las suceciones
+        en una lista
+      </p>
+      <p>
+        \begin{eqnarray*}
+        & x_1^{(1)}, x_2^{(1)}, x_3^{(1)}, \dots \\
+        & x_1^{(2)}, x_2^{(2)}, x_3^{(2)}, \dots \\
+        & x_1^{(3)}, x_2^{(3)}, x_3^{(3)}, \dots \\
+        & \vdots \\
+        & x_1^{(m)}, x_2^{(m)}, x_3^{(m)}, \dots \\
+        & \vdots
+        \end{eqnarray*}
+      </p>
+      <p>
+        Define la sucesión \((y_n)_{n \in \mathbb{N}}\) por
+        \(y_n:=x_n^{(n)}\). Se puede pensar como la sucesión diagonal.
+      </p>
+      <p>
+        Prueba que, para cada \(m\in \mathbb{N}\), \((y_n)_{n \geq m}\)
+        es una subsucesión de \((x_n^{(m)})_{n\in \mathbb{N}}\).
+      </p>
+      <p>
+        Este método se conoce como el <b>método de la diagonal de Cantor</b>.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y sea \((x_n)_{n=1}^\infty\subset A\)
+        una subsucesión.
+      </p>
+      <p>
+        Prueba que si \((x_n)_{n=1}^\infty\) NO converge al
+        punto \(x_0\) entonces existe un número positivo \(\varepsilon_0 >0\)
+        y una subsucesión \((x_{n_k})_{k=1}^\infty\) de \((x_n)_{n=1}^\infty\)
+        tal que
+        \[
+        d(x_{n_k}, x_0) \geq \varepsilon_0
+        \]
+        para toda \(k\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y
+        \((x_n)_{n\in \mathbb{N}}\) una sucesión en \(A\) y \(x\in A\)
+        tal que \((x_n)_{n\in \mathbb{N}}\) converge a \(x\). Prueba que toda
+        subsucesión de \((x_n)_{n\in \mathbb{N}}\) también converge a \(x\).
+      </p>
+
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico, \((x_n)_{n\in \mathbb{N}}\)
+        una sucesión en \(A\) y \(x\in A\). Prueba que si para toda subsucesión
+        de \((x_n)_{n\in \mathbb{N}}\) le podemos extraer otra subsucesión
+        convergente a \(x\), entonces la sucesión
+        original \((x_n)_{n\in \mathbb{N}}\) converge a \(x\).
+      </p>
+    </div>
+
+
+    <div class="definicion-box"><h1 class="number-title-definicion"> Definición </h1>
+      <h3> Límite inferior y superior de una sucesión acotada</h3>
+      <p>
+        Dada una sucesión acotada de números reales, \((x_n)_{n\in \mathbb{N}}\), 
+        definimos, respectivamente, su <b>límite inferior</b> y <b>límite superior</b> como 
+        $$\displaystyle{\liminf_{n\to \infty} x_n := \sup_{n\geq 1} \{\inf_{k\geq n}\{ x_k\} \}}$$
+        $$\displaystyle{\limsup_{n\to \infty} x_n := \inf_{n\geq 1} \{\sup_{k\geq n}\{ x_k\} \}}$$
+      </p>
+      <p>
+        <b>Observación:</b> De la definición se sigue directamente que \(\displaystyle{\liminf_{n\to \infty}x_n \leq \limsup_{n\to \infty}x_n}\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+       <p>
+                Sea \((x_n)_{n=1}^\infty\) una sucesión acotada de números reales. Prueba que \((x_n)_{n=1}^\infty\)
+                es convergente si y sólo si 
+                \[\liminf_{n\to \infty} x_n = \limsup_{n\to \infty} x_n.\]
+                
+              </p>
+              <p>
+                En cuyo caso se tiene que 
+                $$\displaystyle{\liminf_{n\to \infty}x_n=\limsup_{n\to \infty}x_n=\lim_{n\to \infty}x_n}.$$
+              </p>
+
+    </div>
+
+    <div class="definicion-box"><h1 class="number-title-definicion"> Definición </h1>
+      <p>
+        Sea \((A,d)\) un espacio métrico. Una sucesión \((x_n)_{n\in \mathbb{N}}\) en
+        \(A\), se dice que es una  <b>sucesión de Cauchy</b>
+        o <b>Cauchy respecto a \(d\)</b> si  las distancias
+        entre sus elementos tiene a cero, es decir si
+        \[
+        \lim_{n,m\to \infty}d(x_n,x_m)=0
+        \]
+      </p>
+      <p>
+        En términos de \(\varepsilon\)'s lo anterior quiere
+        decir que, para toda \(\varepsilon >0\) existe
+        \(N\in \mathbb{N}\) tal que, para \(n,m \geq N\) se cumple
+        \[
+        d(x_n,x_m) < \varepsilon.
+        \]
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+       <p>
+          Sea \((A,d)\) un espacio métrico y
+          \((x_n)_{n\in \mathbb{N}}\) una sucesión convergente en \(A\).
+          Prueba que \((x_n)_{n\in \mathbb{N}}\) es de Cauchy respecto a \(d\).
+        </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Sea \((A,d)\) un espacio métrico y
+        \((x_n)_{n\in \mathbb{N}}\) una sucesión en $A$ de Cauchy con respecto a la métrica $d$.
+        Prueba que \((x_n)_{n\in \mathbb{N}}\) es una sucesión acotada.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Este ejercicio muestra que las sucesiones de Cauchy
+        guardan información sobre el espacio métrico que no se
+        preserva bajo métricas equivalentes.
+      </p>
+      <p>
+        En \(\mathbb{N}=\{1,2,\dots\}\) considera dos métricas:
+        \(d_1\) es la métrica usual, \(d_1(n,m)=|n-m|\), mientras que
+        \(d_2\) está dada por \(d_2(n,m)=\displaystyle{\left| \frac{1}{n}-\frac{1}{m}\right| }\).
+      </p>
+      <ol>
+        <li>Prueba que \(d_1\) y \(d_2\) son equivalentes.</li><br>
+        <li>Prueba que la sucesión \((n)_{n=1}^\infty\)
+          es Cauchy con respecto a \(d_2\) pero no Cauchy con respecto a
+          \(d_1\).
+        </li><br>
+      </ol>
+
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y \((x_n)_{n\in \mathbb{N}}\)
+        una sucesión de Cauchy en \(A\).
+      </p>
+      <p>
+        Supón que \((x_n)_{n\in \mathbb{N}}\) admite una subsucesión
+        convergente en \(A\). Prueba que la sucesión original,
+        \((x_n)_{n\in \mathbb{N}}\), también es convergente.
+      </p>
+    </div>
+
+    <div class="definicion-box"><h1 class="number-title-definicion"> Definición </h1>
+      <h3> Espacio métrico completo y espacio de Banach </h3>
+      
+      <p>Un espacio métrico $(A,d)$ es <b>completo</b> si toda sucesión en $A$ que es de Cauchy en $A$
+        converge en $A$, i.e. si $(x_{n})_{n=1}^{\infty}$ es una sucesión de Cauchy en $A$, entonces existe $a \in A$
+        tal que $\displaystyle{\lim_{n \to \infty} x_{n} = a}$. Un espacio normado que es completo con la métrica inducida
+        por su norma se llama <b>espacio de Banach</b>
+      </p>
+
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Prueba que el espacio métrico $\mathbb{R}$ con la métrica usual $d(x,y) \colon= |x-y|$ es completo.
+        
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Demostrar que todo número real es el límite de una sucesión en $\mathbb{Q}$ 
+      </p>
+      <p>
+        <b>Sugerencia:</b> Utiliza la densidad de los racionales en los reales.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>Demostrar que todo espacio métrico discreto (un espacio métrico con la métrica discreta) es completo.
+        
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+    <p>
+      Sea \((A,d)\) un espacio métrico. Prueba que todo
+      subconjunto finito de \(A\) es cerrado.
+    </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico, \(F\subseteq A\) un
+        conjunto cerrado en \((A,d)\) y \(U \subseteq  A\) un conjunto abierto \((A,d)\).
+        Prueba que \(F\setminus U\) es un conjunto  cerrado  y que
+        \(U \setminus F \) es un conjunto abierto en \((A,d)\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        En el <a href="#MetEquivalentes"> Ejercicio 3.19</a>
+        se definió que dos
+        métricas son equivalentes si tienen las mismas
+        sucesiones convergentes.
+      </p>
+      <p>
+        Prueba que dos métricas son equivalentes si y sólo si generan los
+        mismos conjuntos abiertos.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((X,d)\) un espacio métrico.
+        <ol>
+          <li>
+            Sea \(\{F_i\}_{i\in I}\) una colección arbitraria de conjuntos
+            cerrados. Prueba que la intersección \( \displaystyle{\bigcap_{i\in I}}F_i\), es
+            cerrada.
+          </li>
+          <li>
+            Sea \(F_1,\dots, F_n\) una colección finita de conjuntos
+            cerrados. Prueba que la union \(\displaystyle{\bigcup_{i=1}^n F_i }\)
+            es cerrada.
+          </li><br>
+          <li>
+            Da un ejemplo de un espacio métrico y una colección numerable
+            de conjuntos cerrados, \(\{F_i\}_{i\in \mathbb{N}}\), tal que
+            su union \(\displaystyle{\bigcup_{i\in \mathbb{N}}} F_i\) no es cerrada.
+          </li>
+        </ol>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Considera el espacio métrico \((\mathbb{R},|\cdot|)\).
+        <ol>
+          <li>
+            Prueba que  \(\mathbb{Q}\) no es ni abierto ni cerrado en
+            \(\mathbb{R}\).
+          </li><br>
+          <li>
+            ¿Existe un conjunto abierto en \(\mathbb{R}\), no vacío, contenido
+            en \(\mathbb{Q}\)?
+          </li><br>
+          <li>
+            Da un ejemplo de un subconjunto de \(\mathbb{R}\), cerrado
+            y que consiste sólo de números irracionales.
+          </li>
+        </ol>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \(f:\mathbb{R}\to \mathbb{R}\) una función continua.
+      </p>
+      <p>
+      Fija \(a\in \mathbb{R}\). Prueba que el conjunto
+      \(\{t\in \mathbb{R}: f(t)>a\}\) es abierto y que
+      \(\{ t\in \mathbb{R}: f(t)=a\}\) es cerrado.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        <ol>
+          <li> Prueba que todo intervalo abierto de \(\mathbb{R}\)
+           es la unión numerable de intervalos cerrados.
+          </li><br>
+          <li> Prueba que todo intervalo cerrado de \(\mathbb{R}\)
+            es la intersección numerable de intervalos abiertos.
+          </li>
+        </ol>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((X,d_X)\), \((Y,d_Y)\) dos espacios métricos y \(A \subseteq X\),
+        \(B\subseteq Y\). Considera el espacio métrico \(X\times Y, d\)
+        con la métrica
+        \[
+        \sigma((x_1,y_1),(x_2,y_2))= \sqrt{d_X(x_1,x_2)^2+d_Y(y_1,y_2)^2}
+        \]
+        Ver <a href="./EP2.html#Ejer:MetProdCarte">Ejercicio 2.10</a>.
+      </p>
+        <ol>
+          <li> Si \(A\) es abierto en \(X\) y \(B\) es abierto
+            en \(Y\) prueba que \(A\times B\) es abierto en \(X\times Y\).
+          </li><br>
+          <li> Si \(A\) es cerrado en \(X\) y \(B\) es cerrado
+            en \(Y\) prueba que \(A\times B\) es cerrado en \(X\times Y\).
+          </li>
+        </ol>
+        <p>
+          Nota: gracias al <a href="./S4.html#Ejer:MetEquivProdCarte">Ejercicio</a>
+          y <a href="#Ejer:TopologiaEspacioProducto">Ejercicio</a>,
+          éste ejercicio sigue siendo válidos si se reemplaza
+          \(\sigma\) por cualquier otra de las métricas del
+          <a href="#Ejer:MetProdCarte">Ejercicio</a>.
+         </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Para  \(k\in \mathbb{N}\) denota \(e^{(k)}\) la sucesión de
+        números reales que es todo cero excepto en el lugar \(k\), donde
+        tiene un 1. Prueba que el conjunto
+        \(\{e^{(k)}\}_{k\in \mathbb{N}}\) es cerrado en
+        \((\ell_p, \|\cdot\|_p)\), para todo \(p\in [1,\infty]\).
+        </p>
+        <!-- <p>
+          Sugerencia: usa el <a href="#Teo:CaracCerrados">Teorema 5.11 </a>
+          inciso 3.
+        </p> -->
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Prueba que \(x\in \overline{A} \) si y sólo si
+        existe una sucesión de elementos de \(A\),
+        \((a_n)_{n\in \mathbb{N}} \subset A\), tal que
+        \(\lim_na_n=x\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Prueba las siguientes indentidades.
+      </p>
+      <ol>
+        <li> \(\mathrm{Int}([a,b) )= (a,b) \), \( \overline{[a,b)}=[a,b] \). </li> <br>
+        <li> \(\mathrm{Int}(\mathbb{Q})=\emptyset\), \(\overline{\mathbb{Q}}=\mathbb{R}\) .</li> <br>
+        <li> \(\mathrm{Int}(\Delta)=\emptyset\), \(\overline{\Delta}=\Delta\),
+          donde \(\Delta\) es el conjunto de cantor.</li>
+      </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y \(B,C \subseteq A\).
+      </p>
+      <ol>
+        <li>
+          Prueba \(\overline{A\cup B}=\overline{A}\cup \overline{B}\).
+        </li><br>
+        <li>
+          Prueba \(\overline{A \cap B }\subseteq \overline{A} \cap \overline{B} \)
+          y da un ejemplo que muestre que la contención puede ser propia.
+        </li><br>
+        <li>
+          Prueba \(\mathrm{Int}(A\cap B)= \mathrm{Int}(A)\cap \mathrm{Int}(B)\).
+        </li><br>
+        <li>
+          Prueba \(\mathrm{Int}(A)\cup \mathrm{Int}(B) \subseteq \mathrm{Int}(A\cup B) \) y
+          da un ejemplo que muestre que la contención puede ser propia.
+        </li>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y \(E\subseteq A\). Si \(x\in A\) es un punto límite de \(E\) prueba que para todo 
+       abierto \(U\) tal que \(x\in E\) contiene una cantidad
+        infinita de elementos de \(E\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico, \(E\subseteq A\) y \(x\in A\). Prueba que 
+        \(x\) es un punto límite de \(E\) si y  sólo si
+        existe una sucesión \((a_n)_{n\in \mathbb{N}} \subset E\)
+        tal que \(\lim_{n\to \infty}a_n=x\) y \(a_n\neq x\), para toda \(n\).
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <ol>
+        <li>
+          Prueba que \(A'\) es un conjunto cerrado.
+        </li><br>
+        <li>
+          Prueba que \(\overline{A}=A\cup A'\).
+        </li><br>
+        <li>
+          Prueba que \(A\) es cerrado si y sólo si \(A'\subseteq A\).
+        </li>
+  
+      </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p> Sea \((A,d)\) un espacio métrico y \(E \subseteq A\). Prueba las siguientes identidades.
+        <ol>
+          <li> \(\partial(E)=\partial(E^c)\).</li><br>
+          <li> \(\overline{E}=\mathrm{Int}(E)\cup \partial(E)\).</li><br>
+          <li> \(X= \mathrm{Int}(E)\cup \partial(E)\cup \mathrm{Int}(E^c)\).</li>
+        </ol>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Prueba que la bola cerrada es un subconjunto cerrado pero da
+         un ejemplo que muestra que la cerradura de la bola abierta no
+         es la bola cerrada, es decir:
+         \[
+         \overline{B_r(x_0)} \ne \{x\in X: d(x,x_0) \leq r\}
+         \]
+      </p>
+      <p>
+        Sugerencia: metrica discreta.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((V,\|\cdot\|)\) un espacio vectorial normado,
+        \(v_0\in V\), \(r>0\). Prueba
+        \[
+        \overline{B_r(v_0)}=\{ v\in V: \| v-v_0\| \leq r\}.
+        \]
+      </p>
+      <p>
+        Es decir, para espacios vectoriales normados
+        la cerradura de la bola abierta sí es la bola cerrada.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1> 
+      <p>
+        Sea \((A,d)\) un espacio métrico y \(E\subseteq A\).
+        Prueba que \(\operatorname{diam}(E)=\operatorname{diam}(\overline{E})\).
+      </p>
+      
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <p>Sea \((A,d)\) un espacio métrico y \(E\subseteq A\). Prueba que 
+        \(x\in \overline{E}\) si y sólo si \(d(x,E)=0\).
+      </p>
+    </div>
+
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio</h1>
+      <!-- <p>
+        Sea \((X,d_X)\) un espacio métrico. Decimos que un subconjunto
+        \( D \subseteq X\) se llama denso  en \(X\) si \(\overline{D}=X\). Por
+        ejemplo \(\mathbb{Q}\) es denso en \(\mathbb{R}\).
+      </p> -->
+      <p>Sea \((A,d)\) un espacio métrico y \(D\subseteq A\). 
+        Prueba que las siguientes condiciones son equivalentes.
+      </p>
+      <ol>
+        <li>
+          \(D\) es denso en \(X\).
+        </li>
+        <li>
+          Para todo \(x\in X\) existe una sucesión de elementos
+          de \(D\), \((d_n)_{n=1}^\infty \subseteq D\), tal que
+          \(\lim_{n\to \infty} d_n=x\).
+        </li>
+        <li>
+          Para todo \(x\in X\) y para toda \(r>0\),
+          \(B_r(x)\cap D \ne \emptyset \).
+        </li>
+        <li>
+          Para todo subconjunto abierto no vacío \(U \subseteq X\),
+          \(U\cap D \ne \emptyset\).
+        </li>
+        <li>
+          \(D^c\) tiene interior vacío.
+        </li>
+      </ol>
+    </div>
+
+
+
+
+</body>

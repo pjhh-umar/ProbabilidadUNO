@@ -1,0 +1,341 @@
+
+<!DOCTYPE html PUBLIC >
+
+<html lang="es">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Following part is mathjax, for latex-->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- This part is for jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- This part is to load main.js -->
+    <script type="text/javascript" src="../main.js"></script>
+
+    
+
+   <!-- Next part is for new coomands -->
+   <script>
+    window.MathJax = {
+      tex: {
+        macros: {
+          sen: "\\operatorname{sen}",
+          seg: ["\\overrightarrow{#1}", 1]
+        },
+        tags: "ams" /* this part is for numbered equations */
+      }
+    };
+  </script>
+
+  <!-- This part is for using single $ for latex input, instead of \(\) -->
+  <script>
+      MathJax = {
+      tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+      svg: {
+          fontCache: 'global'
+      }
+  };
+    </script>
+
+    
+    <!-- This part restart counter of cards to start at n+1 -->
+    <style>
+      /* body.number-title{
+        counter-reset: sectionCounter 1 subsectioncounter ;
+      } */
+      h1.page-title-ejercicios-propuestos{
+        counter-reset: semanaCounter 1 sectionCounter  subsectionCounter;
+      }
+    </style>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" , href="../style.css" />
+    <!-- Top Menu  -->
+    
+          
+    <header class="main-header">
+        
+      <div class="logo_superior_umar">
+      <a href="https://www.umar.mx" target="_blank"><img src="../Imagenes/umar_logo_hd.webp" alt="Logo_UMAR" width="110%" height="auto"></a>
+      </div>
+      <div class="contenedor_titulo">
+      <div class="title">Probabilidad Uno</div>
+      <div class="subtitle">Universidad del Mar, campus Huatulco</div>
+      <div class="subsubtitle">Licenciatura en Actuaría </div>
+      <!-- <div class="subsubtitle"><a href="https://www.umar.mx/web/ensenanza/licenciaturas/licenciatura_en_administracion_turistica" target="_blank">Licenciatura en Administración Turística</a> </div>    -->
+  
+      </div>
+
+
+      
+        </header>
+
+        <nav class="top-nav">
+          <ul>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Home.html"> Inicio  </a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Informacion_General.html">Información</a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Notas.html"> Notas  </a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Ejercicios.html"> Ejercicios</a> </li>
+            <li> <a href="https://pjhh-ciencias.github.io/ProbabilidadUNO/Enlaces_externos.html"> Links </a> </li>
+          </ul>
+          </nav>
+       
+        
+        <!-- 
+          <nav class="small-nav" align=right>
+            <button onclick="myFunction()">Claro/Obscuro 
+          </nav> 
+        -->
+
+      <!-- This part is for title in tab-->
+            
+      <title> Ejercicios propuestos primer examen parcial </title>
+      </head>  
+
+
+
+  <body class="fondo-body" ><h1 class="page-title-ejercicios-propuestos"> Ejercicios propuestos primer examen parcial </h1>   
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>En el conjunto $\mathbb{R}$ de los números reales define la relación $x \preceq y$ si y sólo si 
+        $x^3\leq y^3.$ Prueba que  la relación $\preceq$ es un orden parcial sobre $\mathbb{R}$.
+        </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>En el conjunto $\mathbb{Z}$ de los números enteros define la relación $x\preceq y$ si y sólo 
+         $x^2\leq y^2.$ Determina si la relación $\preceq$ es un orden parcial sobre $\mathbb{Z}$.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>En el conjunto $\mathbb{Z}$ de los números enteros, define la relación $x\preceq y$ si y sólo si $x=5y$.  
+        Determina si la relación $\preceq$ es un orden parcial sobre $\mathbb{Z}$. 
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>En el conjunto $\mathbb{Z}$ de los números enteros define la relación $x\preceq y,$ 
+        si y sólo si, existe un número entero no negativo $n$ tal que $y-x=2n$. 
+        Determina si la relación $\preceq$ es un orden parcial sobre $\mathbb{Z}$.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>En el conjunto $\mathbb{N}$ de los números naturales define la relación $n\preceq m$
+        si y sólo si existe $k\in\mathbb{N}$ tal que $m^2-n^2=k.$ Pruebea que $\preceq$ es
+        relación de orden sobre $\mathbb{N}$.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea $U$ un conjunto no vacio y sea $\mathcal{F}$ la colección de todos los subconjuntos 
+        finitos de $U$. Considera la relación $\preceq$ sobre $\mathcal{F}$ definida para $A,B \in \mathcal{F}$
+        como: $A\preceq B$ si y sólo si $|A|\leq|B|$. Determina si $(\mathcal{F},\preceq)$ es un conjunto
+        parcialmente ordenado. Justifica tu respuesta.
+      </p>
+      
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Considera el conjunto de los números naturales $\mathbb{N}$ con el orden usual $\leq$.
+        Define la relación $\preceq$ sobre $\mathbb{N}$ como: $n \preceq m $ si y sólo si $m \leq n$.
+        Prueba que $\preceq$ es un orden parcial sobre $\mathbb{N}$.
+      </p>
+      
+      <p>Este es un ejemplo de un resultado más general. Dado un orden parcial $\preceq_{1}$ en 
+        un conjunto $A$, la relación $\preceq_{2}$, definida como:  $x\preceq_{2} y$  si y sólo
+        si $y\preceq_{1} x$, también es un orden parcial en $A$ y es conocido como  <b>orden dual</b>.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+    <p>Sean $A$ y $B$ dos conjuntos no vacios y sea  $f\colon A \to B$ una función inyectiva
+      es una inyección donde $(B,\preceq_{B})$ es un conjunto parcialmente ordenada.
+      Definamos la relación $\preceq_{A}$ sobre $A$ como: $a_{1} \preceq_{A} a_{2}$ si y sólo si
+      $f(a_{1}) \preceq_{B} f(a_{2})$. Prueba que $(A,\preceq_{A})$ es un conjunto parcialmente ordenado.
+    </p>
+    </div>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>En el conjunto $\mathbb{Z}$ de los números enteros considera la relación definida como: $x\preceq y$ si y sólo si $x=y^n$ para algún $n \in \mathbb{N}.$
+        <ol>
+          <li>Prueba que $\preceq$ es una relación de orden parcial sobre $\mathbb{Z}$.</li><br>
+          <li>Determina si $(\mathbb{Z},\preceq)$ es un conjunto totalmente ordenado.</li>
+        </ol>
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>
+        <ol>
+          <li>En  el conjunto $\mathbb{N}$ de los números naturales. Prueba que la relación $a\preceq b$ si y sólo si $a|b$ es un orden parcial
+            sobre $\mathbb{N}$. 
+          </li><br>
+          <li>Determina si $(\mathbb{N}, \preceq)$ es un conjunto totalmente ordenado.</li>
+        </ol>
+        </p>
+    </div>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea $(A,\preceq)$ un conjunto parcialmente ordenado. Prueba que el máximo (mínimo) de $A$, si existe, 
+        es único.
+      </p>
+      </div>
+
+      <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+        <p>
+          Da un ejemplo distinto de los proporcionados en clase de un conjunto parcialmente ordenado
+          que tenga un único elemento maximal y pero que este no sea un elemento máximo.
+        </p>
+        <p>
+          <b>Sugerencia:</b>  Considera en $A=(0,1]\cup [2,3)$ el orden $$\left \{ \begin{matrix} x\preceq_A y\Leftrightarrow x\leq y&amp; \mbox{ si }&amp;x,y\in (0,1] \\x\preceq_A y\Leftrightarrow x\leq y &amp; \mbox{ si }&amp;x,y\in [2,3),\end{matrix}\right.$$ 
+          en donde $\leq$ representa el orden usual. Entonces, $1$ es el único elemento maximal de $A,$ pero no es máximo
+        </p>
+      </div>
+    <!-- <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>
+        <ol>
+          <li>Da un ejemplo distinto de los proporcionados en clase de un conjunto parcialmente ordenado
+            que tenga un único elemento maximal y pero que este no sea un elemento máximo.
+          </li>
+          <li>Da un ejemplo distinto de los proporcionados en clase de un conjunto parcialmente ordenado
+            que tenga un único elemento minimal y pero que este no sea un elemento mínimo.
+          </li>
+        </ol>
+      </p>
+    </div> -->
+    
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea el conjunto $A=\{3,4,5,6,7,8,9,10\}$ con la relación de orden parcial $x\preceq y$ si y sólo si 
+        $x$ divide a $y$.
+        <ol>
+        <li>Determina la existencia de elemento máximo y elemento mínimo en $A$.</li><br>
+        <li>Determina la existencia de elementos máximal y elementos mínimal en $A$.</li><br>
+        <li>Determina las cotas superiores e inferiores de $B=\{6,9\}.$</li>
+        </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+    <p>Considera el  $S=\{3,4,5,6,7,8,9,10\}$ con la relación de orden parcial $x\preceq y$
+      si y sólo si $x|y$. Encuentra los elementos maximales y minimales.
+    </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea $U=\{a,b,c\}$ Considera el conjunto $\mathcal{P}(U)$ con la relación de orden parcial
+        $\preceq$ en $\mathcal{P}(U)$ definida como: $A\preceq B$ si y sólo si $A\subseteq B$.
+        <ol>
+          <li>
+            Hallar los elementos maximales de $\mathcal{P}(U)-\{U\}.$
+          </li><br>
+          <li>
+            Hallar los elementos minimales de $\mathcal{P}(U)-\{\emptyset\}.$
+          </li>
+        </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Considera el conjunto $A=\{1,2,3,4\}$ con la relación de orden parcial $\le$ usual.
+        Dibujar el correspondiente <a href="https://es.wikipedia.org/wiki/Diagrama_de_Hasse" target="_blank"> diagrama de Hasse</a>.</p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea $A=\{2,4,6,8,10,12\}$. 
+        <ol>
+          <li>Prueba que la relación $a\preceq b$ si y sólo si $a|b$ es un orden parcial sobre $A$. </li><br>
+          <li>Dibuja el diagrama de Hasse correspondiente.
+             del conjunto parcialmente ordenado $(A,\preceq)$.</li>
+        </ol>
+        </p>
+    </div>
+
+  
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>
+        Sea $B$ un conjunto numerable y $A$ es un subconjunto con $n$ elementos, prueba por inducción sobre $n$
+        que $X\setminus A$ es infinito. Si $A$ es numerable ¿el resultado sigue siendo cierto?
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>
+        Prueba que si $A$ es un conjunto finito, y $\{ x\}$ es un conjunto unitario arbitrario, entonces $A\cup \{x\}$ es 
+        también un conjunto finito.
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Para cada par de conjuntos siguientes, encuentra explicitamente una biyección entre ellos. Concluye 
+        los conjuntos son equivalentes.</p>
+      <ol>
+        <li>$\mathbb{N}$ y el conjunto de los números enteros positivos pares</li><br>
+        <li>$\mathbb{N}$ y el conjunto de los números enteros positivos impares</li><br>
+        <li>El conjunto de los números enteros positivos pares y el conjunto de los números enteros positivos impares</li><br>
+        <li>El intervalo $(0,1)$ y el intervalo $(1,5)$</li><br>
+        <li>El intervalo $(1,2)$ y el intervalo $(5,10)$</li><br>
+        <li>El intervalo $(0,1)$ y el intervalo $(a,b)$ donde $a,b \in \mathbb{R}$ con $a < b$</li>
+      </ol>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      Sea $I\subseteq \mathbb{R}$ un intervalo acotado. Prueba que $I \cap \mathbb{Z}$ es finito. 
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Prueba que el conjunto de todos los pares ordenados $(a,b)$ donde $a,b \in \mathbb{Z}$ es numerable. </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea $n \in \mathbb{N}$. Prueba que  si  $A$ es un subconjunto propio de $[n]:=\{1,\ldots,n\}$,  
+      entonces $A$ no es quivalente a $[n]$.
+      
+      </p>
+      <p>Concluye que un conjunto finito no puede ser equivalente a un subconjunto propio de este.</p>
+      <p><b>Sugerencia:</b> Proceda por contradicción. Suponga que existe $n_{0}$, especificamente 
+        elige a $n_{0}$ como el menor número natural tal que para $[n_{0}]$ existe $A\subsetneq [n_{0}]$
+        que es equivalente a $[n_{0}]$. Luego considera los casos $n_{0}\in A$ y $n_{0} \not \in A$ y 
+        contradice en ambos casos la minimalidad de $n_{0}$ </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      Sea $A$ un conjunto finito no vacio y $f\colon A \to A$ una función. Prueba que $f$ es 
+      inyectiva si y sólo si $f$ es sobreyectiva.
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sea $A$ un conjunto finito no vacio. Prueba que todo subconjunto de $A$ es finito.</p>
+      <p><b>Sugerencia:</b>
+      <ul>
+        <li>Prueba primero que dado $a \in A$ el conjunto $A - \{a\}$ es finito.</li><br>
+        <li>Luego, utiliza inducción para probar el caso general. En el paso inductivo utiliza lo 
+          lo que probaste antes.  </li>
+      </ul> </p>
+
+    </div>
+
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Prueba que $A \subseteq \mathbb{N}$ es acotado si y sólo si es finito. </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Sean $A,B$ conjuntos finitos no vacios. Prueba que $A \times B$ es finito y 
+        $$|A\times B| = |A| \cdot |B|$$
+      </p>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+      <p>Prueba que todo conjunto no vacio $A$ de números naturales tiene elemento máximo. </p>
+    </div>
+
+    <!-- <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+    </div>
+
+    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
+    </div> -->
+
+</body>
