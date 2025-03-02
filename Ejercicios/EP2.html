@@ -23,34 +23,44 @@
         tex: {
           macros: {
             sen: "\\operatorname{sen}",
-            seg: ["\\overrightarrow{#1}", 1]
+            seg: ["\\overrightarrow{#1}", 1],
+            id: "\\operatorname{id}",
           },
-          tags: "ams" /* this part is for numbered equations */
+          tags: "ams", /* this part is for numbered equations */
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
         }
       };
     </script>
 
-    <!-- This part is for using single $ for latex input, instead of \(\) -->
-    <script>
-        MathJax = {
-        tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-            },
-        svg: {
-            fontCache: 'global'
-        }
-    };
-    </script>
     
     <!-- This part restart counter of cards to start at n+1 -->
     <style>
-    .lista{
-        counter-reset: listaCounter 0 sublistaCounter 1 subsublistaCounter 1 subsubsublistaCounter 1;
-      }
-    /* .sublista{
-        counter-reset: sublistaCounter 1  SubsublistaCounter;
+      /* body.number-title
+      {
+      counter-reset: temaCounter 1 subsectioncounter ;
       } */
+      body.fondo-body{
+        counter-reset: temaCounter 1 sectionCounter;
+      }
+
+      /* h1.page-number-title
+      {
+      counter-reset: sectionCounter 0;
+      }  */
+
+      h1.tema-number-title
+          {
+          counter-reset: sectionCounter 0;
+          } 
+
+      h1.number-title
+      {
+      counter-reset: subsectionCounter;
+      /* counter-reset: subsectionCounter; */
+      }
+
     </style>
+
 
   
     <!-- Top Menu  -->
