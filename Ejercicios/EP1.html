@@ -104,248 +104,262 @@
 
       <!-- This part is for title in tab-->
             
-      <title> Ejercicios propuestos primer examen parcial </title>
-      </head>  
+<title>Ejercicios propuestos primer examen parcial</title>
+</head>  
+
+<body class="fondo-body" ><h1 class="page-title-practica"> Ejercicios propuestos primer examen parcial</h1>   
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Describe el espacio muestral de cada experimento:</p>
+  <ol>
+    <li>Si el resultado de un experimento consiste en determinar el sexo de un recién nacido, entonces  
+    $S = \{g, b\}$  
+    donde $g$ significa que el niño es una niña y $b$ que es un niño.</li>
+
+    <li>Si el resultado de un experimento es el orden de llegada en una carrera con 7 caballos que tienen las posiciones 1, 2, 3, 4, 5, 6 y 7, entonces  
+    $S = \{\text{todas las 7! permutaciones de } (1, 2, 3, 4, 5, 6, 7)\}$  
+    Por ejemplo, el resultado $(2, 3, 1, 6, 5, 4, 7)$ significa que el caballo 2 llega primero, el caballo 3 segundo, el caballo 1 tercero, y así sucesivamente.</li>
+
+    <li>Si el experimento consiste en lanzar dos monedas, el espacio muestral consiste en los siguientes cuatro puntos:  
+    $S = \{(H,H), (H,T), (T,H), (T,T)\}$  
+    El resultado será $(H,H)$ si ambas monedas muestran cara, $(H,T)$ si la primera muestra cara y la segunda cruz, $(T,H)$ si la primera muestra cruz y la segunda cara, y $(T,T)$ si ambas muestran cruz.</li>
+
+    <li>Si el experimento consiste en lanzar dos dados, el espacio muestral consiste en los 36 puntos  
+    $S = \{(i,j): i,j = 1, 2, 3, 4, 5, 6\}$  
+    donde el resultado $(i,j)$ ocurre si $i$ aparece en el dado de la izquierda y $j$ en el otro dado.</li>
+
+    <li>Si el experimento consiste en medir (en horas) la vida útil de un transistor, el espacio muestral consiste en todos los números reales no negativos; es decir,  
+    $S = \{x : 0 \leq x < \infty\}$</li>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Demuestre que $\mathcal{F}$ es una álgebra de subconjuntos de $\Omega$ si, y sólo si, cumple las siguientes condiciones:</p>
+  <ol>
+    <li>$\Omega \in \mathcal{F}$</li>
+    <li>Si $A, B \in \mathcal{F}$, entonces $A - B \in \mathcal{F}$</li>
+  </ol>
+  </p>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto cualquiera no vacio y $\mathcal{F}4 una fanilia de subconjuntos de $\Omega$.
+    Demuestre que si $\mathcal{F}$  es una $\sigma$-álgebra, entonces es un $\mathcal{F}$ álgebra</p>
+</div>
+
+
+<div class="nota-box"><h1 class="number-title-practica">  Ejercicio </h1>
+<p>Sea $\Omega$ un conjunto cualquiera no vacio y $A$ y $B$ subconjuntos de $\Omega$. Prueba que cada una de las siguientes
+  colecciones es una $\sigma$-álgebra de subconjuntos de $\Omega$.</p>
+  <ol>
+    <li>$\mathcal{F}_{1} = \{ \emptyset, \Omega\}$</li>
+    <li>$\mathcal{F}_{2} = \{ \emptyset, A, A^{c},  \Omega\}$ </li>
+    <li>$\mathcal{F}_{3} = \mathcal{P}(\Omega)$</li>
+    <li>$\mathcal{F}_{4} = \{\emptyset, A, B, A^c, B^c, B - A, (B - A)^c, \Omega\}$, donde $A \subseteq B$.</li>
+  </ol>
+</div>
+
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto no numerable. Demuestre que la colección  
+  $$\mathcal{F} = \{A \subseteq \Omega : A \text{ o } A^c \text{ es finito o numerable}\}$$
+  es una $\sigma$-álgebra de subconjuntos de $\Omega$.</p>
+</div>
 
 
 
-  <body class="fondo-body" ><h1 class="page-title-ejercicios-propuestos"> Ejercicios propuestos primer examen parcial </h1>   
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>En el conjunto $\mathbb{R}$ de los números reales define la relación $x \preceq y$ si y sólo si 
-        $x^3\leq y^3.$ Prueba que  la relación $\preceq$ es un orden parcial sobre $\mathbb{R}$.
-        </p>
-    </div>
+<div class="nota-box"><h1 class="number-title-practica">  Ejercicio </h1>
+  <p>Si $\mathcal{A}$ es un álgebra sobre $\Omega$ de subconjuntos de $\Omega$, prueba que:</p>
+  <ol>
+    <li>$\emptyset \in \mathcal{A}.$</li>
+    <li>Si $A, B \in \mathcal{A}$, entonces $A \cap B \in \mathcal{A}.$</li>
+    <li>Para cualquier número natural $n \in \mathbb{N}$, si $A_1, \ldots, A_n \in \mathcal{A}$, entonces $\displaystyle{\bigcup_{i=1}^{n} A_i} \in \mathcal{A}.$</li>
+  </ol>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>En el conjunto $\mathbb{Z}$ de los números enteros define la relación $x\preceq y$ si y sólo 
-         $x^2\leq y^2.$ Determina si la relación $\preceq$ es un orden parcial sobre $\mathbb{Z}$.</p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Demuestre que $\mathcal{F}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$ si, y sólo si, satisface las siguientes propiedades:</p>
+  <ol>
+    <li>$\emptyset \in \mathcal{F}.$</li>
+    <li>$A \in \mathcal{F} \Rightarrow A^c \in \mathcal{F}.$</li>
+    <li>Si $A_1, A_2, \ldots \in \mathcal{F}$, entonces $\displaystyle{\bigcap_{n=1}^{\infty} A_n \in \mathcal{F}}.$</li>
+  </ol>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>En el conjunto $\mathbb{Z}$ de los números enteros, define la relación $x\preceq y$ si y sólo si $x=5y$.  
-        Determina si la relación $\preceq$ es un orden parcial sobre $\mathbb{Z}$. 
-      </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Demuestre que $\mathcal{F}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$ si, y sólo si, satisface las siguientes propiedades:</p>
+  <ol>
+    <li>$\Omega \in \mathcal{F}.$</li>
+    <li>$A, B \in \mathcal{F} \Rightarrow A - B \in \mathcal{F}.$</li>
+    <li>Si $A_1, A_2, \ldots \in \mathcal{F}$, entonces $\displaystyle{\bigcap_{n=1}^{\infty} A_n \in \mathcal{F}}.$</li>
+  </ol>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>En el conjunto $\mathbb{Z}$ de los números enteros define la relación $x\preceq y,$ 
-        si y sólo si, existe un número entero no negativo $n$ tal que $y-x=2n$. 
-        Determina si la relación $\preceq$ es un orden parcial sobre $\mathbb{Z}$.</p>
-    </div>
+<!-- <div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sean $A_1, \ldots, A_n$ eventos de un espacio muestral $\Omega$. Demuestre que el conjunto de elementos de $\Omega$ que pertenecen a exactamente $k$ de estos eventos es un evento, $1 \leq k \leq n.$</p>
+</div> -->
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>En el conjunto $\mathbb{N}$ de los números naturales define la relación $n\preceq m$
-        si y sólo si existe $k\in\mathbb{N}$ tal que $m^2-n^2=k.$ Pruebea que $\preceq$ es
-        relación de orden sobre $\mathbb{N}$.</p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto cualquiera no vacio y $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$. 
+    <ol>
+      <li>Demuestre que la colección $\mathcal{F}^c := \{ F^c : F \in \mathcal{F} \}$
+        es una $\sigma$-álgebra de subconjuntos de $\Omega$.
+        </li>
+      <li>Prueba que $\mathcal{F}^c$ y $\mathcal{F}$ coinciden.</li>
+    </ol>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea $U$ un conjunto no vacio y sea $\mathcal{F}$ la colección de todos los subconjuntos 
-        finitos de $U$. Considera la relación $\preceq$ sobre $\mathcal{F}$ definida para $A,B \in \mathcal{F}$
-        como: $A\preceq B$ si y sólo si $|A|\leq|B|$. Determina si $(\mathcal{F},\preceq)$ es un conjunto
-        parcialmente ordenado. Justifica tu respuesta.
-      </p>
-      
-    </div>
+  </p>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Considera el conjunto de los números naturales $\mathbb{N}$ con el orden usual $\leq$.
-        Define la relación $\preceq$ sobre $\mathbb{N}$ como: $n \preceq m $ si y sólo si $m \leq n$.
-        Prueba que $\preceq$ es un orden parcial sobre $\mathbb{N}$.
-      </p>
-      
-      <p>Este es un ejemplo de un resultado más general. Dado un orden parcial $\preceq_{1}$ en 
-        un conjunto $A$, la relación $\preceq_{2}$, definida como:  $x\preceq_{2} y$  si y sólo
-        si $y\preceq_{1} x$, también es un orden parcial en $A$ y es conocido como  <b>orden dual</b>.</p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega = \{a, b, c, d\}$, y sean $A = \{a, b\}$ y $B = \{b, c\}$. Defina la colección $\mathcal{C} = \{A, B\}$.</p>
+  <ol>
+    <li>Prueba que $\mathcal{C}$ no es una $\sigma$-álgebra de subconjuntos de $\Omega$..</li>
+    <li>Encuentre $\sigma(\mathcal{C})$.</li>  
+  </ol> 
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-    <p>Sean $A$ y $B$ dos conjuntos no vacios y sea  $f\colon A \to B$ una función inyectiva
-      es una inyección donde $(B,\preceq_{B})$ es un conjunto parcialmente ordenada.
-      Definamos la relación $\preceq_{A}$ sobre $A$ como: $a_{1} \preceq_{A} a_{2}$ si y sólo si
-      $f(a_{1}) \preceq_{B} f(a_{2})$. Prueba que $(A,\preceq_{A})$ es un conjunto parcialmente ordenado.
-    </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$ y sea $A$ un elemento de $\mathcal{F}$. 
+    Demuestre que la colección $\{A \cap F : F \in \mathcal{F}\}$ es una $\sigma$-álgebra de subconjuntos de $A$.</p>
 
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>En el conjunto $\mathbb{Z}$ de los números enteros considera la relación definida como: $x\preceq y$ si y sólo si $x=y^n$ para algún $n \in \mathbb{N}.$
-        <ol>
-          <li>Prueba que $\preceq$ es una relación de orden parcial sobre $\mathbb{Z}$.</li><br>
-          <li>Determina si $(\mathbb{Z},\preceq)$ es un conjunto totalmente ordenado.</li>
-        </ol>
-      </p>
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>
-        <ol>
-          <li>En  el conjunto $\mathbb{N}$ de los números naturales. Prueba que la relación $a\preceq b$ si y sólo si $a|b$ es un orden parcial
-            sobre $\mathbb{N}$. 
-          </li><br>
-          <li>Determina si $(\mathbb{N}, \preceq)$ es un conjunto totalmente ordenado.</li>
-        </ol>
-        </p>
-    </div>
+  <p><b>Notación:</b> Se denota a esta colección por $\mathcal{F}_A$ ó $\mathcal{A} \cap \mathcal{F}$.</p>
+</div>
 
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea $(A,\preceq)$ un conjunto parcialmente ordenado. Prueba que el máximo (mínimo) de $A$, si existe, 
-        es único.
-      </p>
-      </div>
+<!-- 
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sean $\Omega_1$ y $\Omega_2$ dos conjuntos arbitrarios, y sea $X : \Omega_1 \to \Omega_2$ una función en donde $(\Omega_2, \mathcal{F}_2)$ es un espacio medible. Demuestre que la siguiente colección es una $\sigma$-álgebra de subconjuntos de $\Omega_1$:</p>
+  <p>$X^{-1}\mathcal{F}_2 = \{X^{-1}F : F \in \mathcal{F}_2\}.$</p>
+</div> -->
 
-      <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-        <p>
-          Da un ejemplo distinto de los proporcionados en clase de un conjunto parcialmente ordenado
-          que tenga un único elemento maximal y pero que este no sea un elemento máximo.
-        </p>
-        <p>
-          <b>Sugerencia:</b>  Considera en $A=(0,1]\cup [2,3)$ el orden $$\left \{ \begin{matrix} x\preceq_A y\Leftrightarrow x\leq y&amp; \mbox{ si }&amp;x,y\in (0,1] \\x\preceq_A y\Leftrightarrow x\leq y &amp; \mbox{ si }&amp;x,y\in [2,3),\end{matrix}\right.$$ 
-          en donde $\leq$ representa el orden usual. Entonces, $1$ es el único elemento maximal de $A,$ pero no es máximo
-        </p>
-      </div>
-    <!-- <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>
-        <ol>
-          <li>Da un ejemplo distinto de los proporcionados en clase de un conjunto parcialmente ordenado
-            que tenga un único elemento maximal y pero que este no sea un elemento máximo.
-          </li>
-          <li>Da un ejemplo distinto de los proporcionados en clase de un conjunto parcialmente ordenado
-            que tenga un único elemento minimal y pero que este no sea un elemento mínimo.
-          </li>
-        </ol>
-      </p>
-    </div> -->
-    
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea el conjunto $A=\{3,4,5,6,7,8,9,10\}$ con la relación de orden parcial $x\preceq y$ si y sólo si 
-        $x$ divide a $y$.
-        <ol>
-        <li>Determina la existencia de elemento máximo y elemento mínimo en $A$.</li><br>
-        <li>Determina la existencia de elementos máximal y elementos mínimal en $A$.</li><br>
-        <li>Determina las cotas superiores e inferiores de $B=\{6,9\}.$</li>
-        </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto no vacio. ¿Es la diferencia de dos $\sigma$-álgebras una $\sigma$-álgebra de subconjuntos de $\Omega$.? Demuestre o proporcione un contraejemplo.</p>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-    <p>Considera el  $S=\{3,4,5,6,7,8,9,10\}$ con la relación de orden parcial $x\preceq y$
-      si y sólo si $x|y$. Encuentra los elementos maximales y minimales.
-    </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto no vacio. Sean $\mathcal{F}_1$ y $\mathcal{F}_2$ dos $\sigma$-álgebras de subconjuntos de $\Omega$. 
+    Demuestre que $\mathcal{F}_1 \cup \mathcal{F}_2$ no necesariamente es una $\sigma$-álgebra de subconjuntos de $\Omega$.. 
+    <!-- Para ello considere el espacio $\Omega = \{1, 2, 3\}$ y las $\sigma$-álgebras $\mathcal{F}_1 = \{\emptyset, \{1\}, \{2,3\}, \Omega\}$ y $\mathcal{F}_2 = \{\emptyset, \{1,2\}, \{3\}, \Omega\}.$</p> -->
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea $U=\{a,b,c\}$ Considera el conjunto $\mathcal{P}(U)$ con la relación de orden parcial
-        $\preceq$ en $\mathcal{P}(U)$ definida como: $A\preceq B$ si y sólo si $A\subseteq B$.
-        <ol>
-          <li>
-            Hallar los elementos maximales de $\mathcal{P}(U)-\{U\}.$
-          </li><br>
-          <li>
-            Hallar los elementos minimales de $\mathcal{P}(U)-\{\emptyset\}.$
-          </li>
-        </ol>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto no vacio. Sean $\mathcal{F}_1$ y $\mathcal{F}_2$ dos $\sigma$-álgebras de subconjuntos de $\Omega$ 
+    tales que $\mathcal{F}_1 \subseteq \mathcal{F}_2$. Demuestre que $\mathcal{F}_1 \cup \mathcal{F}_2$ es una $\sigma$-álgebra.</p>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Considera el conjunto $A=\{1,2,3,4\}$ con la relación de orden parcial $\le$ usual.
-        Dibujar el correspondiente <a href="https://es.wikipedia.org/wiki/Diagrama_de_Hasse" target="_blank"> diagrama de Hasse</a>.</p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto no vacio y $T$ un conjunto arbitrario distinto del vacío. 
+    Suponga que para cada $t \in T$ se tiene una $\sigma$-álgebra $\mathcal{F}_t$ de subconjuntos de $\Omega$. 
+    Demuestre detalladamente que $\displaystyle{\bigcap_{t \in T} \mathcal{F}_t}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$.</p>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea $A=\{2,4,6,8,10,12\}$. 
-        <ol>
-          <li>Prueba que la relación $a\preceq b$ si y sólo si $a|b$ es un orden parcial sobre $A$. </li><br>
-          <li>Dibuja el diagrama de Hasse correspondiente.
-             del conjunto parcialmente ordenado $(A,\preceq)$.</li>
-        </ol>
-        </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sean $A, B \subseteq \Omega$ arbitrarios. Demuestre que la cardinalidad de $\sigma\{A, B\}$ es a lo sumo $16$.</p>
+</div> 
 
-  
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>
-        Sea $B$ un conjunto numerable y $A$ es un subconjunto con $n$ elementos, prueba por inducción sobre $n$
-        que $X\setminus A$ es infinito. Si $A$ es numerable ¿el resultado sigue siendo cierto?
-      </p>
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>
-        Prueba que si $A$ es un conjunto finito, y $\{ x\}$ es un conjunto unitario arbitrario, entonces $A\cup \{x\}$ es 
-        también un conjunto finito.
-      </p>
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Para cada par de conjuntos siguientes, encuentra explicitamente una biyección entre ellos. Concluye 
-        los conjuntos son equivalentes.</p>
-      <ol>
-        <li>$\mathbb{N}$ y el conjunto de los números enteros positivos pares</li><br>
-        <li>$\mathbb{N}$ y el conjunto de los números enteros positivos impares</li><br>
-        <li>El conjunto de los números enteros positivos pares y el conjunto de los números enteros positivos impares</li><br>
-        <li>El intervalo $(0,1)$ y el intervalo $(1,5)$</li><br>
-        <li>El intervalo $(1,2)$ y el intervalo $(5,10)$</li><br>
-        <li>El intervalo $(0,1)$ y el intervalo $(a,b)$ donde $a,b \in \mathbb{R}$ con $a < b$</li>
-      </ol>
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      Sea $I\subseteq \mathbb{R}$ un intervalo acotado. Prueba que $I \cap \mathbb{Z}$ es finito. 
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Prueba que el conjunto de todos los pares ordenados $(a,b)$ donde $a,b \in \mathbb{Z}$ es numerable. </p>
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea $n \in \mathbb{N}$. Prueba que  si  $A$ es un subconjunto propio de $[n]:=\{1,\ldots,n\}$,  
-      entonces $A$ no es quivalente a $[n]$.
-      
-      </p>
-      <p>Concluye que un conjunto finito no puede ser equivalente a un subconjunto propio de este.</p>
-      <p><b>Sugerencia:</b> Proceda por contradicción. Suponga que existe $n_{0}$, especificamente 
-        elige a $n_{0}$ como el menor número natural tal que para $[n_{0}]$ existe $A\subsetneq [n_{0}]$
-        que es equivalente a $[n_{0}]$. Luego considera los casos $n_{0}\in A$ y $n_{0} \not \in A$ y 
-        contradice en ambos casos la minimalidad de $n_{0}$ </p>
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      Sea $A$ un conjunto finito no vacio y $f\colon A \to A$ una función. Prueba que $f$ es 
-      inyectiva si y sólo si $f$ es sobreyectiva.
-    </div>
-
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sea $A$ un conjunto finito no vacio. Prueba que todo subconjunto de $A$ es finito.</p>
-      <p><b>Sugerencia:</b>
-      <ul>
-        <li>Prueba primero que dado $a \in A$ el conjunto $A - \{a\}$ es finito.</li><br>
-        <li>Luego, utiliza inducción para probar el caso general. En el paso inductivo utiliza lo 
-          lo que probaste antes.  </li>
-      </ul> </p>
-
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sean $A, B \subseteq \Omega$ arbitrarios. Encuentre explícitamente todos los elementos de $\sigma\{A, B\}$. Por el ejercicio anterior, el total de elementos en $\sigma\{A, B\}$ es, en el caso más general, $16$.</p>
+</div>
 
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Prueba que $A \subseteq \mathbb{N}$ es acotado si y sólo si es finito. </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\{A_1, \ldots, A_n\}$ una partición finita de $\Omega$.
+    Demuestre que la cardinalidad de $\sigma(\{A_1, \ldots, A_n\})$ es $\displaystyle{2^n}$.</p>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Sean $A,B$ conjuntos finitos no vacios. Prueba que $A \times B$ es finito y 
-        $$|A\times B| = |A| \cdot |B|$$
-      </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Demuestre que toda $\sigma$-álgebra de un espacio muestral finito contiene un número par de elementos.</p>
+</div>
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-      <p>Prueba que todo conjunto no vacio $A$ de números naturales tiene elemento máximo. </p>
-    </div>
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\{A, B, C\}$ una partición de $\Omega$. Encuentre explícitamente los ocho elementos de $\sigma(\{A, B, C\})$.</p>
+</div>
 
-    <!-- <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-    </div>
+<!-- <div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\mathcal{C}$ una colección de subconjuntos de $\Omega$. Diga falso o verdadero justificando en cada caso:</p>
+  <ol>
+    <li>$\mathcal{C} \subseteq \sigma(\mathcal{C}) \subseteq 2^{\Omega}$</li>
+  </ol>
+</div> -->
 
-    <div class="nota-box"><h1 class="number-title-ejercicio"> Ejercicio </h1>
-    </div> -->
+<!-- <div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Demuestre que $2^{\Omega}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$ y que no existe una $\sigma$-álgebra de subconjuntos de $\Omega$ que sea más grande.</p>
+</div> -->
+
+<!-- <div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un conjunto, $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$ y sea $A$ un evento cualquiera. De cada una de las dos expresiones siguientes determine la que es notacionalmente correcta. Explique su respuesta.</p>
+  <ol>
+    <li>$\Omega \in \mathcal{F}$ ó $\Omega \subseteq \mathcal{F}$</li>
+    <li>$A \in \Omega$ ó $A \subseteq \Omega$</li>
+    <li>$\emptyset \in \mathcal{F}$ ó $\emptyset \subseteq \mathcal{F}$</li>
+    <li>$A \in \mathcal{F}$ ó $A \subseteq \mathcal{F}$</li>
+  </ol>
+</div> -->
+
+
+
+
+
+<!-- <div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p><strong>Álgebra $\not\Rightarrow$ $\sigma$-álgebra.</strong> Sea $\Omega = (0,1]$ y defina la colección $\mathcal{F}$ de subconjuntos de la forma</p>
+  <p>$$
+  \bigcup_{i=1}^{n} (a_i, b_i],
+  $$</p>
+  <p>en donde $(a_i, b_i] \subseteq (0,1]$ con $(a_i, b_i] \cap (a_j, b_j] = \emptyset$ para $i \neq j$ y $n \in \mathbb{N}$. Demuestre que $\mathcal{F}$ es una álgebra pero no una $\sigma$-álgebra.</p>
+</div> -->
+
+
+
+
+<!-- Donde aparecerá la fecha de la última modificación -->
+<footer>
+  <center>
+   <p id="ultima-actualizacion"></p>
+  </center>
+</footer>
+<script>
+// Obtenemos la fecha y hora de la última modificación del documento
+const fechaModificacion = new Date(document.lastModified);
+
+// Opciones para formatear la fecha (por ejemplo, DD/MM/AAAA)
+const opcionesFecha = { day: '2-digit', month: '2-digit', year: 'numeric' };
+const fechaFormateada = fechaModificacion.toLocaleDateString('es-ES', opcionesFecha);
+
+// Obtenemos la hora (HH:MM:SS)
+const horaFormateada = fechaModificacion.toLocaleTimeString('es-ES', {
+    hour: '2-digit', minute: '2-digit'
+});
+
+// Insertamos la fecha y la hora en el elemento con el ID "ultima-modificacion"
+document.getElementById("ultima-actualizacion").textContent = `Última actualización: ${fechaFormateada}`;
+</script>
+
+
 
 </body>
