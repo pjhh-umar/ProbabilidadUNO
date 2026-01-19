@@ -154,7 +154,7 @@
     <li>
       $\displaystyle{\lim_{n\to\infty} A_n = A
       \;\Longleftrightarrow\;
-      \lim_{n\to\infty} \mathbf{1}_{A_n} = \mathbb{1}_A.}$
+      \lim_{n\to\infty} \mathbf{1}_{A_n} = \mathbf{1}_A.}$
     </li><br>
   </ol>
   <p>
@@ -183,6 +183,92 @@
     </li><br>
     <li>
       $\displaystyle{\lim_{n \to \infty} \lim_{m \to \infty} (A_n \triangle B_m) = A \triangle B.}$
+    </li><br>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>
+    Medida de probabilidad discreta. Sea $\{x_n : n \in \mathbb{N}\}$ una sucesión de números reales y sea
+    $\{a_n : n \in \mathbb{N}\}$ otra sucesión de números reales no negativos tal que
+    $\displaystyle{\sum_{n=1}^{\infty} a_n = 1}$.
+    Demuestre que la función $\mathbb{P} : \mathcal{B}(\mathbb{R}) \to [0,1]$ definida de la siguiente forma es una medida de probabilidad:
+  </p>
+  <p>
+    $\displaystyle{\mathbb{P}(A) = \sum_{n=1}^{\infty} a_n \, \mathbf{1}_{\{n : x_n \in A\}}(n).}$
+  </p>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>
+    Sean $\mathbb{P}$ y $\mathbb{Q}$ dos medidas de probabilidad definidas sobre una misma 
+    $\sigma$-álgebra. Demuestre que $\alpha \mathbb{P} + (1-\alpha)\mathbb{Q}$ es una
+    medida de probabilidad para cada $\alpha \in [0,1]$.
+  </p>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>
+    Sea $\mathbb{\mathbb{P}}$ una medida de probabilidad. Determine si las siguientes funciones también son medidas de probabilidad:
+  </p>
+  <ol class="two-column">
+    <li>$1 - \mathbb{P}.$</li><br>
+    <li>$\displaystyle{\frac{1 + \mathbb{P}}{2}.}$</li><br>
+    <li>$\mathbb{\mathbb{P}}^2.$</li><br>
+    <li>$|\mathbb{P}|.$</li><br>
+    <li>$4\mathbb{P}(1 - \mathbb{P}).$</li><br>
+    <li>$\sqrt{\mathbb{P}}.$</li><br>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>
+    Determine si las siguientes funciones son medidas de probabilidad.
+  </p>
+  <ol class="two-column">
+    <li>
+      $\mathbb{P}(\Omega) = 1$ y $\mathbb{P}(A) = 0$ para cualquier otro evento $A$.
+    </li><br>
+    <li>
+      $\mathbb{P}(\emptyset) = 0$ y $\mathbb{P}(A) = 1$ para cualquier otro evento $A$.
+    </li><br>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>
+    Considere el espacio medible $(\mathbb{N}, 2^{\mathbb{N}})$.
+    Demuestre en cada caso que $\mathbb{P}$ es una medida de probabilidad.
+    Para cada $A \in 2^{\mathbb{N}}$ defina:
+  </p>
+  <ol class="two-column">
+    <li>
+      $\displaystyle{\mathbb{P}(A) = \sum_{n \in A} \frac{2}{3^n}.}$
+    </li><br>
+    <li>
+      $\displaystyle{\mathbb{P}(A) = \sum_{n \in A} \frac{1}{2^n}.}$
+    </li><br>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>
+    Sea $\Omega = \{1, \ldots, n\}$ y considere el espacio medible $(\Omega, 2^{\Omega})$.
+    Investigue en cada caso si $\mathbb{P}$ es una medida de probabilidad.
+    Para cada $A \in 2^{\Omega}$ defina:
+  </p>
+  <ol class="two-column">
+    <li>
+      $\displaystyle{\mathbb{P}(A) = \sum_{k \in A} \frac{2k}{n(n+1)}.}$
+    </li><br>
+    <li>
+      $\displaystyle{\mathbb{P}(A) = \prod_{k \in A} \left(1 - \frac{1}{k}\right).}$
     </li><br>
   </ol>
 </div>
