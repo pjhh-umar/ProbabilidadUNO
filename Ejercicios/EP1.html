@@ -108,25 +108,798 @@
 
 <body class="fondo-body" ><h1 class="page-title-practica"> Ejercicios propuestos primer examen parcial</h1>   
 
-<div class="nota-box">
-  <h1 class="number-title-practica">Ejercicio</h1>
-  <p>Describe el espacio muestral correspondiente a cada uno de los siguientes experimentos aleatorios:</p>
-  <ol>
-    <li>El experimento aleatorio consiste en observar el sexo de un recién nacido.</li><br>
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Para cada uno de los siguientes experimentos aleatorios, describa explícitamente un espacio muestral adecuado:
+    </p>
+    <ol>
+        <li>
+            Observar el sexo de un recién nacido.
+        </li>
+        <li>
+            Lanzar dos monedas y observar el resultado de cada una (Águila o Sol).
+        </li>
+        <li>
+            Lanzar dos dados y registrar el número que aparece en la cara superior de cada uno.
+        </li>
+        <li>
+            Lanzar dos dados y registrar únicamente la suma de los números obtenidos.
+        </li>
+        <li>
+            Extraer sucesivamente tres bolas, sin reemplazo, de una urna que contiene dos bolas rojas y tres azules, y registrar sus colores en el orden de extracción.
+        </li>
+        <li>
+            Extraer tres bolas, sin reemplazo, de una urna que contiene dos bolas rojas y tres azules, y registrar únicamente el número de bolas azules obtenidas.
+        </li>
+        <li>
+            Registrar el orden de llegada en una carrera con 7 caballos numerados del 1 al 7.
+        </li>
+        <li>
+            Registrar la fecha de cumpleaños de $n$ personas escogidas al azar.
+        </li>
+        <!-- <li>
+            Observar la forma en la que $m$ personas que abordan un elevador en la planta baja de un edificio descienden en los pisos $1, 2, \dots, n$.
+        </li>
+        <li>
+            Lanzar un dado repetidamente hasta obtener un "6".
+        </li> -->
+        <li>
+            Lanzar una moneda repetidamente hasta obtener "Águila" por primera vez y registrar el número total de lanzamientos realizados.
+        </li>
+        <!-- <li>
+            Revisar sucesivamente solicitudes de indemnización y registrar, en orden, si cada una fue aprobada ($A$) o rechazada ($R$). La revisión se detiene al aprobar la primera solicitud o al completar tres revisiones, lo que ocurra primero.
+        </li> 
+        <li>
+            Observar los pagos mensuales de una póliza y registrar el número de meses transcurridos hasta el segundo pago atrasado, contando desde el primer mes de observación (suponiendo que el segundo pago atrasado ocurre en un número finito de meses).
+        </li>
+        -->
+        <li>
+            Observar una cartera mes tras mes y registrar $0$ si no hubo reclamaciones y $1$ si hubo al menos una. La observación se detiene en cuanto aparecen dos meses consecutivos con reclamaciones y se conserva la secuencia completa de registros.
+        </li>
+        <li>
+            Observar cuatro pólizas identificadas con las letras $A$, $B$, $C$ y $D$, y registrar para cada una un $1$ si presentó al menos una reclamación durante el año, o un $0$ si no presentó ninguna.
+        </li>
+        <li>
+            Observar cuatro pólizas durante un año y registrar únicamente el número total de pólizas que presentaron al menos una reclamación.
+        </li>
+        <!-- <li>
+            Registrar el número de reclamaciones recibidas por una aseguradora en cada uno de los siete días de una semana, en orden de lunes a domingo (asumiendo un número diario finito, pero sin cota superior fija).
+        </li> -->
+        <li>
+            Registrar únicamente el número total de reclamaciones recibidas por una aseguradora durante una semana.
+        </li>
+        <!-- <li>
+            Observar las reclamaciones de una aseguradora durante un mes y registrar el par $(n,r)$, donde $n$ es el número total de reclamaciones recibidas y $r$ es el número de ellas que fueron rechazadas.
+        </li> 
+        <li>
+            Registrar el número de personas que requieren hospitalización en el próximo accidente automovilístico atendido por los servicios de emergencia en una localidad dada.
+        </li>
+        -->
+        <li>
+            Observar la posición de una partícula en un instante dado, la cual se mueve sin restricciones en un espacio tridimensional.
+        </li>
+        <!-- <li>
+            Registrar la duración de una llamada telefónica escogida al azar.
+        </li>
+        <li>
+            Medir, en horas, la vida útil de un transistor desde que comienza a funcionar hasta que falla (suponiendo que falla en un tiempo finito).
+        </li> -->
+        <li>
+            Observar el número de años que le restan de vida a una persona escogida al azar dentro del conjunto de asegurados de una compañía aseguradora.
+        </li>
+        <!-- <li>
+            Registrar los instantes de recepción de tres reclamaciones durante una jornada de ocho horas, medidos desde el inicio de la jornada y escritos en orden cronológico (las reclamaciones pueden recibirse exactamente al cierre, pero no hay recepciones simultáneas).
+        </li>
+        <li>
+            Observar la llegada de dos asegurados, identificados como $A$ y $B$, a una oficina durante un intervalo de una hora, registrando únicamente quién llega primero o si ambos llegan al mismo tiempo.
+        </li>
+        <li>
+            Registrar los montos pagados por una aseguradora por dos reclamaciones identificadas como primera y segunda. Los montos se modelan como números reales no negativos y su suma no puede exceder de $50\,000$ pesos.
+        </li>
+        <li>
+            Registrar la puntuación de una solicitud de crédito y la decisión de aprobarla o rechazarla, donde la puntuación puede ser cualquier número real entre $0$ y $100$ incluidos, y se aprueba si es al menos $70$.
+        </li> -->
+    </ol>
+</div>
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Suponga que un experimento aleatorio consiste en seleccionar una póliza al azar de la cartera de una aseguradora. Defina los eventos:
+    </p>
+    <ul>
+        <li>$V \colon$ "La póliza incluye cobertura de vida."</li>
+        <li>$A \colon$ "La póliza incluye cobertura de autos."</li>
+        <li>$M \colon$ "El titular de la póliza es mayor de 50 años."</li>
+    </ul>
+    <p>
+      Exprese en palabras el tipo de pólizas o titulares, según las características anteriores, determinadas por los siguientes eventos:
+    </p>
+    <ol>
+        <li>$V \cap A$</li>
+        <li>$V^c \cap A^c$</li>
+        <li>$V \cup A$</li>
+        <li>$V - A$</li>
+        <li>$V \cap A \cap M$</li>
+        <li>$(V \cap M) - A$</li>
+        <li>$(V - A) \cap M^c$</li>
+        <li>$M^c - A^c$</li>
+    </ol>
+</div>
 
-    <li>El experimento aleatorio consiste en registrar el orden de llegada en una carrera con 7 caballos numerados del 1 al 7.</li><br>
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Un experimento aleatorio consiste en elegir un siniestro al azar de los reportados en el último mes. Se definen los eventos:
+    </p>
+    <ul>
+        <li>$F \colon$ "El siniestro ocurrió en fin de semana."</li>
+        <li>$N \colon$ "El siniestro ocurrió durante la noche."</li>
+        <li>$G \colon$ "El siniestro involucra daños graves."</li>
+    </ul>
+    <p>
+        Realice el proceso inverso al ejercicio anterior. Utilizando operaciones de conjuntos (unión, intersección, complemento, diferencia), exprese matemáticamente los siguientes eventos:
+    </p>
+    <ol>
+        <li>El siniestro ocurrió en fin de semana y durante la noche.</li>
+        <li>El siniestro ocurrió de día (no en la noche) y no involucra daños graves.</li>
+        <li>El siniestro ocurrió en fin de semana o involucra daños graves.</li>
+        <li>El siniestro involucra daños graves, pero no ocurrió en fin de semana.</li>
+        <li>El siniestro ocurrió durante la noche y en fin de semana, pero no involucra daños graves.</li>
+        <li>El siniestro no ocurrió en fin de semana ni durante la noche.</li>
+    </ol>
+</div>
 
-    <li>El experimento aleatorio consiste en lanzar dos monedas y observar el resultado de cada una (cara o cruz).</li><br>
+<!-- <div class="definicion-box">
+    <h1 class="number-title-definicion">Definición</h1>
+    <p>
+        Sea $\Omega$ un conjunto no vacío. Denotamos por $\mathcal{P}(\Omega)$
+        al conjunto potencia de $\Omega$ y, para cada $A\subseteq\Omega$,
+        escribimos $A^c=\Omega\setminus A$ para su complemento respecto de $\Omega$.
+    </p>
+    <p>
+        Una familia no vacía $\mathcal{C}\subseteq\mathcal{P}(\Omega)$
+        se llama <strong>$\pi$-sistema</strong> sobre $\Omega$ si es cerrada
+        bajo la intersección de dos de sus elementos; es decir,
+    </p>
+    \[
+        A,B\in\mathcal{C}
+        \quad\Longrightarrow\quad
+        A\cap B\in\mathcal{C}.
+    \]
+</div> -->
 
-    <li>El experimento aleatorio consiste en lanzar dos dados y registrar el número que aparece en la cara superior de cada uno.</li><br>
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\mathcal{C}$ un $\pi$-sistema sobre $\Omega$.
+    </p>
+    <ol>
+        <li>
+            Demuestra por inducción matemática que, para todo $n\in\mathbb{N}$ y cualesquiera
+            $A_1,\ldots,A_n\in\mathcal{C}$,
+            $\displaystyle\bigcap_{i=1}^{n}A_i\in\mathcal{C}$.
+        </li>
+        <li>
+            ¿Es necesario que $\Omega\in\mathcal{C}$?
+            ¿Es necesario que $\emptyset\in\mathcal{C}$?
+            Justifica cada respuesta mediante una demostración o un contraejemplo.
+        </li>
+        <li>
+            ¿Es necesario que $\mathcal{C}$ sea cerrada bajo uniones finitas?
+            Justifica tu respuesta.
+        </li>
+    </ol>
+</div>
 
-    <li>El experimento aleatorio consiste en medir, en horas, la vida útil de un transistor.</li><br>
-  </ol>
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\mathcal{D}$ un $\lambda$-sistema sobre $\Omega$.
+        Demuestra las siguientes propiedades:
+    </p>
+    <ol>
+        <li>$\emptyset\in\mathcal{D}$,</li>
+        <li>Si $A\in\mathcal{D}$, entonces $A^c\in\mathcal{D}$.
+        </li>
+        <li>
+            Si $A,B\in\mathcal{D}$ y $A\cap B=\emptyset$,
+            entonces $A\cup B\in\mathcal{D}$.
+        </li>
+        <!-- <li>
+            Si $(A_n)_{n\geq 1}$ es una sucesión de elementos de $\mathcal{D}$
+            disjuntos dos a dos, entonces
+            $\displaystyle\bigcup_{n=1}^{\infty}A_n\in\mathcal{D}$.
+        </li>
+        <li>
+            Si $(A_n)_{n\geq 1}$ es una sucesión decreciente de elementos
+            de $\mathcal{D}$, entonces
+            $\displaystyle\bigcap_{n=1}^{\infty}A_n\in\mathcal{D}$.
+        </li>
+        <li>
+            Recíprocamente, demuestra que una familia que contiene a $\Omega$,
+            es cerrada bajo complementos y es cerrada bajo uniones numerables
+            de conjuntos disjuntos dos a dos es un $\lambda$-sistema.
+        </li> -->
+    </ol>
 </div>
 
 
 
-<div class="nota-box">
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\Omega=\{1,2,3,4\}$. Determina cuáles de las siguientes familias
+        son $\pi$-sistemas, cuáles son $\lambda$-sistemas y cuáles son
+        $\sigma$-álgebras. Una misma familia puede cumplir más de una de estas
+        condiciones. Justifica cada respuesta.
+    </p>
+    <ol>
+        <li>
+            $\mathcal{C}_1=\{\emptyset,\{1\},\Omega\}$.
+        </li>
+        <li>
+            $\mathcal{C}_2=
+            \{\emptyset,\Omega,\{1,2\},\{3,4\},\{1,3\},\{2,4\}\}$.
+        </li>
+        <li>
+            $\mathcal{C}_3=\{\emptyset,\Omega,\{1,2\},\{3,4\}\}$.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\mathcal{F}$ una $\sigma$-álgebra sobre $\Omega$.
+        Demuestra las siguientes propiedades:
+    </p>
+    <ol>
+        <li>
+            Si $A_n\in\mathcal{F}$ para todo $n\in\mathbb{N}$,
+            entonces $\displaystyle\bigcap_{n=1}^{\infty}A_n\in\mathcal{F}$.
+        </li>
+        <li>
+            Si $A,B\in\mathcal{F}$, entonces $A\setminus B\in\mathcal{F}$
+            y $A\triangle B\in\mathcal{F}$.
+        </li>
+       
+    </ol>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-definicion">Definición</h1>
+    <p>
+        Sea $\Omega$ un conjunto no vacío y $(A_n)_{n\geq 1}$ una sucesión
+        de elementos de $\mathcal{P}(\Omega)$.
+    </p>
+    <ol>
+        <li>
+            La sucesión $(A_n)_{n\geq 1}$ se dice <strong>creciente</strong>
+            si $A_n\subseteq A_{n+1}$ para todo $n\geq 1$; es decir,
+            \[
+                A_1\subseteq A_2\subseteq A_3\subseteq\cdots.
+            \]
+        </li>
+        <li>
+            La sucesión $(A_n)_{n\geq 1}$ se dice <strong>decreciente</strong>
+            si $A_{n+1}\subseteq A_n$ para todo $n\geq 1$; es decir,
+            \[
+                A_1\supseteq A_2\supseteq A_3\supseteq\cdots.
+            \]
+        </li>
+    </ol>
+    <p>
+        Una sucesión de conjuntos se dice <strong>monótona</strong>
+        si es creciente o decreciente.
+    </p>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\Omega$ un conjunto no vacío y $(A_n)_{n\geq 1}$ una sucesión
+        de elementos de $\mathcal{P}(\Omega)$.
+    </p>
+    <ol>
+        <li>
+            Si $(A_n)_{n\geq 1}$ es creciente, demuestre que
+            \[
+                \displaystyle
+                \liminf_{n\to\infty}A_n
+                =\limsup_{n\to\infty}A_n
+                =\bigcup_{n=1}^{\infty}A_n.
+            \]
+        </li>
+        <li>
+            Si $(A_n)_{n\geq 1}$ es decreciente, demuestre que
+            \[
+                \displaystyle
+                \liminf_{n\to\infty}A_n
+                =\limsup_{n\to\infty}A_n
+                =\bigcap_{n=1}^{\infty}A_n.
+            \]
+        </li>
+        <li>
+            Concluya que toda sucesión monótona de conjuntos es convergente;
+            es decir, su límite inferior coincide con su límite superior.
+        </li>
+    </ol>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-definicion">Definición</h1>
+    <p>
+        Sea $\Omega$ un conjunto no vacío y $(A_n)_{n\geq 1}$ una sucesión
+        de elementos de $\mathcal{P}(\Omega)$.
+    </p>
+    <ol>
+        <li>
+            La sucesión $(A_n)_{n\geq 1}$ se dice <strong>creciente</strong>
+            si $A_n\subseteq A_{n+1}$ para todo $n\geq 1$; es decir,
+            \[
+                A_1\subseteq A_2\subseteq A_3\subseteq\cdots.
+            \]
+        </li>
+        <li>
+            La sucesión $(A_n)_{n\geq 1}$ se dice <strong>decreciente</strong>
+            si $A_{n+1}\subseteq A_n$ para todo $n\geq 1$; es decir,
+            \[
+                A_1\supseteq A_2\supseteq A_3\supseteq\cdots.
+            \]
+        </li>
+    </ol>
+    <p>
+        Una sucesión de conjuntos se dice <strong>monótona</strong>
+        si es creciente o decreciente.
+    </p>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\Omega$ un conjunto no vacío y $(A_n)_{n\geq 1}$ una sucesión
+        de elementos de $\mathcal{P}(\Omega)$.
+    </p>
+    <ol>
+        <li>
+            Si $(A_n)_{n\geq 1}$ es creciente, demuestre que
+            \[
+                \displaystyle
+                \liminf_{n\to\infty}A_n
+                =\limsup_{n\to\infty}A_n
+                =\bigcup_{n=1}^{\infty}A_n.
+            \]
+        </li>
+        <li>
+            Si $(A_n)_{n\geq 1}$ es decreciente, demuestre que
+            \[
+                \displaystyle
+                \liminf_{n\to\infty}A_n
+                =\limsup_{n\to\infty}A_n
+                =\bigcap_{n=1}^{\infty}A_n.
+            \]
+        </li>
+        <li>
+            Concluya que toda sucesión monótona de conjuntos es convergente;
+            es decir, su límite inferior coincide con su límite superior.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>Sea $\mathcal{F}$ una $\sigma$-álgebra sobre $\Omega$. Si $(A_n)_{n\geq 1}$ es una sucesión de elementos de $\mathcal{F}$, prueba que </p>
+    <p>
+      <ol>
+        <li>$\displaystyle{\liminf_{n\to\infty}A_n, \limsup_{n\to\infty}A_n} \in \mathcal{F}$.</li>
+        <li>$\displaystyle{\liminf_{n \to \infty} A_n \subseteq \limsup_{n \to \infty} A_n}$.</li>
+        <li>$\displaystyle{\left( \limsup_{n \to \infty} A_n \right)^c = \liminf_{n \to \infty} (A_n^c)}$.
+        </li>
+      </ol>
+    </p>
+</div>
+
+<!-- <div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\mathcal{D}$ un $\lambda$-sistema sobre $\Omega$.
+        Demuestra que las siguientes afirmaciones son equivalentes:
+    </p>
+    <ol>
+        <li>
+            $\mathcal{D}$ es una $\sigma$-álgebra.
+        </li>
+        <li>
+            $\mathcal{D}$ es un $\pi$-sistema.
+        </li>
+        <li>
+            Para cualesquiera $A,B\in\mathcal{D}$,
+            se tiene $A\cup B\in\mathcal{D}$.
+        </li>
+        <li>
+            Para cualesquiera $A,B\in\mathcal{D}$,
+            se tiene $A\setminus B\in\mathcal{D}$.
+        </li>
+    </ol>
+</div> 
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $I$ un conjunto de índices no vacío.
+    </p>
+    <ol>
+        <li>
+            Si $\mathcal{D}_i$ es un $\lambda$-sistema sobre $\Omega$
+            para cada $i\in I$, demuestra que
+            $\displaystyle\bigcap_{i\in I}\mathcal{D}_i$
+            también es un $\lambda$-sistema sobre $\Omega$.
+        </li>
+        <li>
+            Demuestra el resultado análogo para una familia
+            de $\sigma$-álgebras sobre $\Omega$.
+        </li>
+        <li>
+            Si cada $\mathcal{C}_i$ es un $\pi$-sistema sobre $\Omega$
+            y la familia $\displaystyle\bigcap_{i\in I}\mathcal{C}_i$
+            es no vacía, demuestra que esta intersección es un $\pi$-sistema.
+        </li>
+        <li>
+            ¿Puede omitirse la hipótesis de que la intersección de las familias
+            del inciso anterior sea no vacía? Justifica tu respuesta.
+        </li>
+        <li>
+            Construye dos $\sigma$-álgebras sobre $\{1,2,3\}$ cuya unión
+            no sea un $\lambda$-sistema.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sobre $\Omega=\mathbb{R}$, considera la familia
+        \[
+            \mathcal{C}=\{\emptyset,\mathbb{R}\}
+            \cup\{(a,b]:a,b\in\mathbb{R},\ a\lt b\}.
+        \]
+    </p>
+    <ol>
+        <li>
+            Demuestra que $\mathcal{C}$ es un $\pi$-sistema.
+        </li>
+        <li>
+            Demuestra que $\mathcal{C}$ no es un $\lambda$-sistema.
+        </li>
+        <li>
+            Construye una sucesión $(I_n)_{n\geq 1}$ de elementos de
+            $\mathcal{C}$ tal que
+            $\displaystyle\bigcap_{n=1}^{\infty}I_n\notin\mathcal{C}$.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sobre $\Omega=\mathbb{N}=\{1,2,\ldots\}$, define, para cada
+        $n\in\mathbb{N}$,
+        \[
+            \mathcal{F}_n=
+            \left\{
+                A\subseteq\mathbb{N}:
+                A\subseteq\{1,\ldots,n\}
+                \ \text{o}\
+                \{n+1,n+2,\ldots\}\subseteq A
+            \right\}.
+        \]
+    </p>
+    <ol>
+        <li>
+            Demuestra que cada $\mathcal{F}_n$ es una $\sigma$-álgebra.
+        </li>
+        <li>
+            Demuestra que $\mathcal{F}_n\subseteq\mathcal{F}_{n+1}$
+            para todo $n\in\mathbb{N}$.
+        </li>
+        <li>
+            Describe los elementos de
+            $\displaystyle\mathcal{F}=\bigcup_{n=1}^{\infty}\mathcal{F}_n$
+            y demuestra que $\mathcal{F}$ es un álgebra y un $\pi$-sistema.
+        </li>
+        <li>
+            Construye una sucesión creciente de elementos de $\mathcal{F}$
+            cuya unión no pertenezca a $\mathcal{F}$.
+            Concluye que $\mathcal{F}$ no es un $\lambda$-sistema
+            ni una $\sigma$-álgebra.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sean $E$ y $\Omega$ conjuntos no vacíos y $f:E\to\Omega$ una función.
+        Para una familia $\mathcal{C}\subseteq\mathcal{P}(\Omega)$, define
+        \[
+            f^{-1}(\mathcal{C})
+            :=\{f^{-1}(A):A\in\mathcal{C}\}.
+        \]
+    </p>
+    <ol>
+        <li>
+            Si $\mathcal{C}$ es un $\pi$-sistema sobre $\Omega$,
+            demuestra que $f^{-1}(\mathcal{C})$ es un $\pi$-sistema sobre $E$.
+        </li>
+        <li>
+            Demuestra el resultado análogo cuando $\mathcal{C}$
+            es una $\sigma$-álgebra.
+        </li>
+        <li>
+            Si $f$ es sobreyectiva y $\mathcal{C}$ es un $\lambda$-sistema
+            sobre $\Omega$, demuestra que $f^{-1}(\mathcal{C})$
+            es un $\lambda$-sistema sobre $E$.
+        </li>
+        <li>
+            Construye un contraejemplo que muestre que la conclusión
+            del inciso anterior puede fallar si $f$ no es sobreyectiva.
+            Sugerencia: considera una función de inclusión entre
+            conjuntos finitos.
+        </li>
+    </ol>
+</div> 
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $B\subseteq\Omega$ un conjunto no vacío. Para una familia
+        $\mathcal{C}\subseteq\mathcal{P}(\Omega)$, define su traza sobre $B$ por
+        \[
+            \mathcal{C}|_B:=\{A\cap B:A\in\mathcal{C}\}.
+        \]
+    </p>
+    <ol>
+        <li>
+            Si $\mathcal{C}$ es un $\pi$-sistema sobre $\Omega$,
+            demuestra que $\mathcal{C}|_B$ es un $\pi$-sistema sobre $B$.
+        </li>
+        <li>
+            Si $\mathcal{F}$ es una $\sigma$-álgebra sobre $\Omega$,
+            demuestra que $\mathcal{F}|_B$ es una $\sigma$-álgebra sobre $B$.
+        </li>
+        <li>
+            Si $\mathcal{D}$ es un $\lambda$-sistema sobre $\Omega$
+            y $B\in\mathcal{D}$, demuestra que
+            \[
+                \mathcal{D}_B:=\{A\in\mathcal{D}:A\subseteq B\}
+            \]
+            es un $\lambda$-sistema sobre $B$.
+        </li>
+        <li>
+            Si $\mathcal{F}$ es una $\sigma$-álgebra y $B\in\mathcal{F}$,
+            demuestra que
+            \[
+                \mathcal{F}|_B
+                =\{A\in\mathcal{F}:A\subseteq B\}.
+            \]
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <ol>
+        <li>
+            Sea $\Omega$ un conjunto finito o infinito numerable y
+            $\mathcal{D}$ un $\lambda$-sistema sobre $\Omega$.
+            Si $\{\omega\}\in\mathcal{D}$ para todo $\omega\in\Omega$,
+            demuestra que $\mathcal{D}=\mathcal{P}(\Omega)$.
+        </li>
+        <li>
+            Sobre $\mathbb{R}$, considera la familia
+            \[
+                \mathcal{C}=
+                \left\{
+                    A\subseteq\mathbb{R}:
+                    A\ \text{es a lo sumo numerable}
+                    \ \text{o}\
+                    A^c\ \text{es a lo sumo numerable}
+                \right\}.
+            \]
+            Demuestra que $\mathcal{C}$ es una $\sigma$-álgebra.
+        </li>
+        <li>
+            Demuestra que la familia del inciso anterior contiene todos
+            los conjuntos unitarios, pero no coincide con
+            $\mathcal{P}(\mathbb{R})$.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\mathcal{C}\subseteq\mathcal{P}(\Omega)$ una familia no vacía.
+        Denota por $\pi(\mathcal{C})$, $\lambda(\mathcal{C})$ y
+        $\sigma(\mathcal{C})$ al menor $\pi$-sistema, al menor
+        $\lambda$-sistema y a la menor $\sigma$-álgebra sobre $\Omega$,
+        respectivamente, que contienen a $\mathcal{C}$.
+        En cada caso, “menor” se refiere a la inclusión de familias.
+    </p>
+    <ol>
+        <li>
+            Demuestra que las tres familias generadas existen.
+        </li>
+        <li>
+            Demuestra que
+            \[
+                \pi(\mathcal{C})=
+                \left\{
+                    \displaystyle\bigcap_{i=1}^{n}A_i:
+                    n\in\mathbb{N},\ A_1,\ldots,A_n\in\mathcal{C}
+                \right\}.
+            \]
+        </li>
+        <li>
+            Demuestra las inclusiones
+            \[
+                \mathcal{C}\subseteq\pi(\mathcal{C})
+                \subseteq\sigma(\mathcal{C})
+            \]
+            y
+            \[
+                \mathcal{C}\subseteq\lambda(\mathcal{C})
+                \subseteq\sigma(\mathcal{C}).
+            \]
+        </li>
+        <li>
+            Demuestra que
+            \[
+                \sigma(\pi(\mathcal{C}))
+                =\sigma(\lambda(\mathcal{C}))
+                =\sigma(\mathcal{C}).
+            \]
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\Omega=\{1,2,3,4,5,6\}$ y considera
+        \[
+            A=\{1,2,3\},\qquad
+            B=\{1,4,5\},\qquad
+            \mathcal{C}=\{A,B\}.
+        \]
+        Utiliza la notación de familias generadas del ejercicio anterior.
+    </p>
+    <ol>
+        <li>
+            Encuentra explícitamente $\pi(\mathcal{C})$.
+        </li>
+        <li>
+            Encuentra explícitamente $\lambda(\mathcal{C})$.
+        </li>
+        <li>
+            Describe los elementos de $\sigma(\mathcal{C})$
+            y determina cuántos elementos contiene.
+        </li>
+        <li>
+            Determina si $\pi(\mathcal{C})\subseteq\lambda(\mathcal{C})$
+            y si $\lambda(\mathcal{C})\subseteq\pi(\mathcal{C})$.
+            Justifica cada respuesta.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        El número de reclamaciones que recibe una aseguradora durante un día
+        se modela mediante el espacio muestral
+        $\Omega=\mathbb{N}_0=\{0,1,2,\ldots\}$.
+        Para cada $n\in\mathbb{N}_0$, define el evento
+        $A_n=\{0,1,\ldots,n\}$, que representa recibir a lo sumo $n$
+        reclamaciones, y considera
+        \[
+            \mathcal{C}=\{\emptyset,\Omega\}
+            \cup\{A_n:n\in\mathbb{N}_0\}.
+        \]
+    </p>
+    <ol>
+        <li>
+            Demuestra que $\mathcal{C}$ es un $\pi$-sistema,
+            pero no es un $\lambda$-sistema.
+        </li>
+        <li>
+            Demuestra que $\sigma(\mathcal{C})=\mathcal{P}(\mathbb{N}_0)$.
+        </li>
+        <li>
+            Si $\mathcal{D}$ es un $\lambda$-sistema sobre $\mathbb{N}_0$
+            que contiene a $\mathcal{C}$, demuestra que
+            $\mathcal{D}=\mathcal{P}(\mathbb{N}_0)$.
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        <strong>Reto: teorema $\pi$-$\lambda$.</strong>
+        Sea $\mathcal{C}$ un $\pi$-sistema sobre $\Omega$ y
+        $\mathcal{D}=\lambda(\mathcal{C})$.
+        Para cada $A\in\mathcal{D}$, define
+        \[
+            \mathcal{D}_A=
+            \{B\subseteq\Omega:A\cap B\in\mathcal{D}\}.
+        \]
+    </p>
+    <ol>
+        <li>
+            Demuestra que $\mathcal{D}_A$ es un $\lambda$-sistema
+            para cada $A\in\mathcal{D}$.
+        </li>
+        <li>
+            Si $A\in\mathcal{C}$, demuestra que
+            $\mathcal{C}\subseteq\mathcal{D}_A$ y concluye que
+            $\mathcal{D}\subseteq\mathcal{D}_A$.
+        </li>
+        <li>
+            Fija ahora $B\in\mathcal{D}$. Utiliza el inciso anterior
+            para demostrar que $\mathcal{C}\subseteq\mathcal{D}_B$.
+            Concluye que $\mathcal{D}$ es un $\pi$-sistema.
+        </li>
+        <li>
+            Demuestra que $\lambda(\mathcal{C})=\sigma(\mathcal{C})$.
+            Deduce que, si un $\lambda$-sistema $\mathcal{L}$
+            contiene a $\mathcal{C}$, entonces también contiene a
+            $\sigma(\mathcal{C})$.
+        </li>
+    </ol>
+</div>
+-->
+
+
+
+
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+   <p>Sea $\Omega = \{1, 2, 3, 4\}$. Determine explícitamente los elementos de la 
+            $\sigma$-álgebra generada por la familia $\mathcal{A} = \{\{1\}, \{2\}\}$.
+   </p>
+</div>
+
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+   <p> Suponga que $\mathcal{P} = \{B_1, B_2, \ldots, B_k\}$ es una partición finita de $\Omega$. 
+            Describa matemática y verbalmente cuáles son exactamente los elementos que componen a $\sigma(\mathcal{P})$.
+   </p>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        Sea $\Omega$ un espacio muestral no vacío.
+    </p>
+    <ol>
+        <li>
+            Demuestre que si $\{\mathcal{F}_i\}_{i \in I}$ es una familia arbitraria (finita, numerable o no numerable) 
+            de $\sigma$-álgebras sobre $\Omega$, entonces su intersección $\displaystyle{\bigcap_{i \in I} \mathcal{F}_i}$ 
+            también es una $\sigma$-álgebra sobre $\Omega$.
+        </li>
+        <li>
+            Demuestre, mediante un contraejemplo, que la unión de dos $\sigma$-álgebras sobre el mismo espacio $\Omega$ 
+            no necesariamente es una $\sigma$-álgebra. <em>(Sugerencia: Considere un espacio muestral pequeño, 
+            por ejemplo $\Omega = \{1, 2, 3\}$).</em>
+        </li>
+    </ol>
+</div>
+
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Demuestre que $\mathcal{F}$ es una álgebra de subconjuntos de $\Omega$ si, y sólo si, cumple las siguientes condiciones:</p>
   <ol>
@@ -136,14 +909,14 @@
   </p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto cualquiera no vacio y $\mathcal{F}$ una fanilia de subconjuntos de $\Omega$.
     Demuestre que si $\mathcal{F}$  es una $\sigma$-álgebra, entonces es un $\mathcal{F}$ álgebra</p>
 </div>
 
 
-<div class="nota-box"><h1 class="number-title-practica">  Ejercicio </h1>
+<div class="ejercicio-box"><h1 class="number-title-practica">  Ejercicio </h1>
 <p>Sea $\Omega$ un conjunto cualquiera no vacio y $A$ y $B$ subconjuntos de $\Omega$. Prueba que cada una de las siguientes
   colecciones es una $\sigma$-álgebra de subconjuntos de $\Omega$.</p>
   <ol>
@@ -155,7 +928,7 @@
 </div>
 
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto no numerable. Demuestre que la colección  
   $$\mathcal{F} = \{A \subseteq \Omega : A \text{ o } A^c \text{ es finito o numerable}\}$$
@@ -165,7 +938,7 @@
 
 
 
-<div class="nota-box"><h1 class="number-title-practica">  Ejercicio </h1>
+<div class="ejercicio-box"><h1 class="number-title-practica">  Ejercicio </h1>
   <p>Si $\mathcal{A}$ es un álgebra sobre $\Omega$ de subconjuntos de $\Omega$, prueba que:</p>
   <ol>
     <li>$\emptyset \in \mathcal{A}.$</li>
@@ -174,7 +947,7 @@
   </ol>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Demuestre que $\mathcal{F}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$ si, y sólo si, satisface las siguientes propiedades:</p>
   <ol>
@@ -184,7 +957,7 @@
   </ol>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Demuestre que $\mathcal{F}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$ si, y sólo si, satisface las siguientes propiedades:</p>
   <ol>
@@ -194,12 +967,12 @@
   </ol>
 </div>
 
-<!-- <div class="nota-box">
+<!-- <div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sean $A_1, \ldots, A_n$ eventos de un espacio muestral $\Omega$. Demuestre que el conjunto de elementos de $\Omega$ que pertenecen a exactamente $k$ de estos eventos es un evento, $1 \leq k \leq n.$</p>
 </div> -->
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto cualquiera no vacio y $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$. 
     <ol>
@@ -212,7 +985,7 @@
   </p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega = \{a, b, c, d\}$, y sean $A = \{a, b\}$ y $B = \{b, c\}$. Defina la colección $\mathcal{C} = \{A, B\}$.</p>
   <ol>
@@ -221,7 +994,7 @@
   </ol> 
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$ y sea $A$ un elemento de $\mathcal{F}$. 
     Demuestre que la colección $\{A \cap F : F \in \mathcal{F}\}$ es una $\sigma$-álgebra de subconjuntos de $A$.</p>
@@ -231,65 +1004,65 @@
 
 
 <!-- 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sean $\Omega_1$ y $\Omega_2$ dos conjuntos arbitrarios, y sea $X : \Omega_1 \to \Omega_2$ una función en donde $(\Omega_2, \mathcal{F}_2)$ es un espacio medible. Demuestre que la siguiente colección es una $\sigma$-álgebra de subconjuntos de $\Omega_1$:</p>
   <p>$X^{-1}\mathcal{F}_2 = \{X^{-1}F : F \in \mathcal{F}_2\}.$</p>
 </div> -->
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto no vacio. ¿Es la diferencia de dos $\sigma$-álgebras una $\sigma$-álgebra de subconjuntos de $\Omega$.? Demuestre o proporcione un contraejemplo.</p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto no vacio. Sean $\mathcal{F}_1$ y $\mathcal{F}_2$ dos $\sigma$-álgebras de subconjuntos de $\Omega$. 
     Demuestre que $\mathcal{F}_1 \cup \mathcal{F}_2$ no necesariamente es una $\sigma$-álgebra de subconjuntos de $\Omega$.. 
     <!-- Para ello considere el espacio $\Omega = \{1, 2, 3\}$ y las $\sigma$-álgebras $\mathcal{F}_1 = \{\emptyset, \{1\}, \{2,3\}, \Omega\}$ y $\mathcal{F}_2 = \{\emptyset, \{1,2\}, \{3\}, \Omega\}.$</p> -->
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto no vacio. Sean $\mathcal{F}_1$ y $\mathcal{F}_2$ dos $\sigma$-álgebras de subconjuntos de $\Omega$ 
     tales que $\mathcal{F}_1 \subseteq \mathcal{F}_2$. Demuestre que $\mathcal{F}_1 \cup \mathcal{F}_2$ es una $\sigma$-álgebra.</p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto no vacio y $T$ un conjunto arbitrario distinto del vacío. 
     Suponga que para cada $t \in T$ se tiene una $\sigma$-álgebra $\mathcal{F}_t$ de subconjuntos de $\Omega$. 
     Demuestre detalladamente que $\displaystyle{\bigcap_{t \in T} \mathcal{F}_t}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$.</p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sean $A, B \subseteq \Omega$ arbitrarios. Demuestre que la cardinalidad de $\sigma\{A, B\}$ es a lo sumo $16$.</p>
 </div> 
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sean $A, B \subseteq \Omega$ arbitrarios. Encuentre explícitamente todos los elementos de $\sigma\{A, B\}$. Por el ejercicio anterior, el total de elementos en $\sigma\{A, B\}$ es, en el caso más general, $16$.</p>
 </div>
 
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\{A_1, \ldots, A_n\}$ una partición finita de $\Omega$.
     Demuestre que la cardinalidad de $\sigma(\{A_1, \ldots, A_n\})$ es $\displaystyle{2^n}$.</p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Demuestre que toda $\sigma$-álgebra de un espacio muestral finito contiene un número par de elementos.</p>
 </div>
 
-<div class="nota-box">
+<div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\{A, B, C\}$ una partición de $\Omega$. Encuentre explícitamente los ocho elementos de $\sigma(\{A, B, C\})$.</p>
 </div>
 
-<!-- <div class="nota-box">
+<!-- <div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\mathcal{C}$ una colección de subconjuntos de $\Omega$. Diga falso o verdadero justificando en cada caso:</p>
   <ol>
@@ -297,12 +1070,12 @@
   </ol>
 </div> -->
 
-<!-- <div class="nota-box">
+<!-- <div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Demuestre que $2^{\Omega}$ es una $\sigma$-álgebra de subconjuntos de $\Omega$ y que no existe una $\sigma$-álgebra de subconjuntos de $\Omega$ que sea más grande.</p>
 </div> -->
 
-<!-- <div class="nota-box">
+<!-- <div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p>Sea $\Omega$ un conjunto, $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$ y sea $A$ un evento cualquiera. De cada una de las dos expresiones siguientes determine la que es notacionalmente correcta. Explique su respuesta.</p>
   <ol>
@@ -317,7 +1090,7 @@
 
 
 
-<!-- <div class="nota-box">
+<!-- <div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
   <p><strong>Álgebra $\not\Rightarrow$ $\sigma$-álgebra.</strong> Sea $\Omega = (0,1]$ y defina la colección $\mathcal{F}$ de subconjuntos de la forma</p>
   <p>$$
@@ -327,7 +1100,51 @@
 </div> -->
 
 
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        <strong>$\sigma$-álgebra generada por una partición en un contexto de seguros.</strong> 
+        Considere una cartera pequeña con cinco pólizas, de modo que el espacio muestral es $\Omega = \{\omega_1, \omega_2, \omega_3, \omega_4, \omega_5\}$. Las pólizas se clasifican por ramo de la siguiente manera:
+    </p>
+    <ul>
+        <li>Ramo de Vida: $V = \{\omega_1, \omega_2\}$</li>
+        <li>Ramo de Autos: $A = \{\omega_3, \omega_4\}$</li>
+        <li>Ramo de Gastos Médicos: $G = \{\omega_5\}$</li>
+    </ul>
+    <ol>
+        <li>
+            Verifique que la colección $\mathcal{P} = \{V, A, G\}$ forma una partición de $\Omega$.
+        </li>
+        <li>
+            Determine explícitamente todos los elementos de la $\sigma$-álgebra generada por la partición, es decir, encuentre $\sigma(\mathcal{P})$.
+        </li>
+        <li>
+            Si se define un nuevo evento $E = \{\omega_2, \omega_3\}$ (por ejemplo, pólizas con siniestros reportados este mes), ¿pertenece $E$ a $\sigma(\mathcal{P})$? Justifique su respuesta basándose en la estructura de la $\sigma$-álgebra.
+        </li>
+    </ol>
+</div>
 
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        <strong>La imagen inversa preserva $\sigma$-álgebras.</strong> 
+        Sean $\Omega_1$ y $\Omega_2$ dos espacios muestrales arbitrarios, y sea $g: \Omega_1 \to \Omega_2$ una función. Suponga que $\mathcal{F}_2$ es una $\sigma$-álgebra de subconjuntos de $\Omega_2$.
+    </p>
+    <p>
+        Demuestre detalladamente que la colección de preimágenes, definida como:
+        $$g^{-1}(\mathcal{F}_2) = \{ g^{-1}(B) : B \in \mathcal{F}_2 \}$$
+        es una $\sigma$-álgebra de subconjuntos de $\Omega_1$.
+    </p>
+    <p>
+        <em>Nota: Recuerde que la preimagen se define como $g^{-1}(B) = \{\omega \in \Omega_1 : g(\omega) \in B\}$ y preserva las operaciones de conjuntos (uniones, intersecciones y complementos).</em>
+    </p>
+</div>
+
+<div class="ejercicio-box">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p>
+        <strong>Álgebra vs $\sigma$-álgebra.</strong> 
+        Considere el espacio muestral $\Omega = \mathbb{R}$. Sea $\mathcal{A}$ la familia compuesta por el conjunto vacío y todas las un
 
 <!-- Donde aparecerá la fecha de la última modificación -->
 <footer>
