@@ -319,6 +319,92 @@
   </p>
 </div>
 
+<h1 class="page-title"> Espacios Métricos, Topológicos y la $\sigma$-álgebra de Borel </h1>
+
+<div class="nota-box">
+    <h1 class="number-title"> Introducción</h1>
+    <p>
+        Para formalizar la teoría de la probabilidad sobre los números reales $\mathbb{R}$, es indispensable construir una $\sigma$-álgebra que contenga todos los subconjuntos de interés práctico, como los intervalos. La forma más robusta de garantizar esto es partiendo de la noción de cercanía y continuidad inherente a los números reales. Para ello, repasaremos brevemente los conceptos de métrica y topología, los cuales nos permitirán definir la $\sigma$-álgebra de Borel de manera general.
+    </p>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-practica"> Definición (Métrica y Espacio Métrico)</h1>
+    <p>
+        Sea $X$ un conjunto no vacío. Una función $d: X \times X \to \mathbb{R}$ se denomina <strong>métrica</strong> (o función de distancia) sobre $X$ si satisface las siguientes propiedades para cualesquiera $x, y, z \in X$:
+    </p>
+    <ol>
+        <li><strong>No negatividad:</strong> $d(x, y) \geq 0$, y además $d(x, y) = 0$ si y sólo si $x = y$.</li>
+        <li><strong>Simetría:</strong> $d(x, y) = d(y, x)$.</li>
+        <li><strong>Desigualdad del triángulo:</strong> $d(x, z) \leq d(x, y) + d(y, z)$.</li>
+    </ol>
+    <p>
+        Al par $(X, d)$ se le conoce como un <strong>espacio métrico</strong>. 
+        En nuestro contexto principal, el conjunto de los números reales $\mathbb{R}$ es un espacio métrico con la métrica euclidiana inducida por el valor absoluto: $d(x, y) = |x - y|$.
+    </p>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-practica"> Definición (Bola Abierta)</h1>
+    <p>
+        Sea $(X, d)$ un espacio métrico. Dado un punto $x \in X$ y un número real $r > 0$, la <strong>bola abierta</strong> con centro en $x$ y radio $r$, denotada por $B_r(x)$, se define como el conjunto de todos los puntos en $X$ cuya distancia a $x$ es estrictamente menor que $r$:
+    </p>
+    <p>
+        $$B_r(x) = \{y \in X : d(x, y) < r\}$$
+    </p>
+    <p>
+        En $\mathbb{R}$ con la métrica usual, una bola abierta es simplemente un intervalo abierto centrado en $x$: $B_r(x) = (x - r, x + r)$.
+    </p>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-practica"> Definición (Conjunto Abierto en un Espacio Métrico)</h1>
+    <p>
+        Sea $(X, d)$ un espacio métrico. Un subconjunto $U \subseteq X$ se dice que es <strong>abierto</strong> si, para cada punto $x \in U$, existe un radio $r > 0$ tal que la bola abierta $B_r(x)$ está completamente contenida en $U$. Es decir:
+    </p>
+    <p>
+        $$\forall x \in U, \exists r > 0 \text{ tal que } B_r(x) \subseteq U$$
+    </p>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-practica"> Definición (Espacio Topológico)</h1>
+    <p>
+        Sea $X$ un conjunto arbitrario no vacío. Una colección $\tau$ de subconjuntos de $X$ se llama <strong>topología</strong> sobre $X$ si cumple los siguientes axiomas:
+    </p>
+    <ol>
+        <li>El conjunto vacío y el conjunto total pertenecen a la topología: $\emptyset, X \in \tau$.</li>
+        <li>La unión arbitraria de elementos de $\tau$ pertenece a $\tau$.</li>
+        <li>La intersección finita de elementos de $\tau$ pertenece a $\tau$.</li>
+    </ol>
+    <p>
+        Al par $(X, \tau)$ se le denomina <strong>espacio topológico</strong>, y a los elementos que pertenecen a la colección $\tau$ se les llama <strong>conjuntos abiertos</strong>.
+    </p>
+</div>
+
+<div class="nota-box">
+    <h1 class="number-title"> Observación</h1>
+    <p>
+        Todo espacio métrico $(X, d)$ induce naturalmente un espacio topológico $(X, \tau)$, donde $\tau$ es la colección de todos los conjuntos abiertos definidos a partir de las bolas abiertas de la métrica $d$. 
+    </p>
+    <p>
+        Por lo tanto, $\mathbb{R}$ dotado con la métrica del valor absoluto es, por definición, un <strong>espacio topológico</strong>. En este espacio, los conjuntos abiertos se pueden visualizar como uniones arbitrarias de intervalos abiertos.
+    </p>
+</div>
+
+<div class="definicion-box">
+    <h1 class="number-title-practica"> Definición ($\sigma$-álgebra de Borel)</h1>
+    <p>
+        Sea $(X, \tau)$ un espacio topológico. La <strong>$\sigma$-álgebra de Borel</strong> sobre $X$, denotada por $\mathcal{B}(X)$, es la mínima $\sigma$-álgebra generada por la colección de todos los conjuntos abiertos $\tau$.
+    </p>
+    <p>
+        Formalmente:
+        $$\mathcal{B}(X) = \sigma(\tau)$$
+    </p>
+    <p>
+        A los elementos de $\mathcal{B}(X)$ se les conoce como <strong>conjuntos de Borel</strong> o <strong>borelianos</strong>. En el caso de los reales, $\mathcal{B}(\mathbb{R})$ incluye a todos los intervalos abiertos, cerrados, semiabiertos, así como puntos individuales y conjuntos numerables, proporcionando una estructura lo suficientemente rica para medir la probabilidad de prácticamente cualquier evento que surja en la teoría actuarial.
+    </p>
+</div>
 
   <h1 class="page-title"> $\sigma-\text{Álgebra de Borel}$</h1>
 
