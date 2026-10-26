@@ -161,39 +161,6 @@
     <p>A el evento $\emptyset$ se le llama <b>evento imposible</b>  y el evento $\Omega$ <b>evento seguro</b>.</p>
   </div>
 
-  <div class="definicion-box"><h1 class="number-title-practica"> Observación</h1>
-    <p>
-      El objetivo es calcular la probabilidad de que ocurran los distintos eventos en un experimento aleatorio.
-    </p>
-  </div>
-
-  <div class="definicion-box"><h1 class="number-title-practica"> Definición</h1>
-    <p>
-      Sea $\{A_n \}$ una sucesión de eventos de $\Omega$. Se definen los siguientes <b>conjuntos límite</b>
-      \begin{align*}
-      \displaystyle{\limsup A_n}&:=\displaystyle{ \bigcap_{n=1}^\infty \bigcup_{m=n}^\infty A_m}\\
-      &=\{w\in \Omega \colon w \in A_n \text{ para un número infinito de valores de } n \}\\
-      &=\{A_n \text{ i.o.} \}.\\
-      & \\
-      \displaystyle{\liminf A_n } &:=\displaystyle{ \bigcup_{n=1}^\infty \bigcap_{m=n}^\infty A_m}\\
-      &=\{w\in \Omega \colon w \in A_n \text{ para  todos excepto un número finito de valores de } n \}\\
-      &=\{A_n \text{ ult.} \}.
-      \end{align*}
-    </p>
-  </div>
-
-  <div class="definicion-box"><h1 class="number-title-practica"> Definición</h1>
-    <p>
-      Sea $\{ A_n\}$ una sucesión de eventos. Se satisfacen:
-    </p>
-    <p>
-      <ol>
-        <li> $\liminf A_n \subseteq \limsup A_n$,</li><br>
-        <li> $\left( \liminf A_n  \right)^{c}=  \limsup \left(A_n\right)^{c}$,</li><br>
-        <li> $\left( \limsup A_n  \right)^{c}=  \liminf \left(A_n\right)^{c}$. </li>
-    </p>
-  </div>
-
     <h1 class="page-title"> $\lambda$ - sistemas </h1>
 
     <div class="definicion-box"><h1 class="number-title-practica"> Definición</h1>
@@ -367,6 +334,52 @@
     </p>
 </div>
 
+<div class="teorema-box">
+    <h1 class="number-title-practica"> Proposición</h1>
+    <p>
+        En el espacio métrico $(\mathbb{R}, d)$ con la distancia euclidiana $d(x, y) = |x - y|$, toda bola abierta es un conjunto abierto.
+    </p>
+
+    <details style="background-color: transparent; padding: 10px; border-radius: 5px;">
+        <summary style="cursor: pointer; font-weight: bold; color: #0056b3;">Ver Demostración</summary>
+        <div style="margin-top: 10px;">
+            <p>
+                Sea $B_r(x)$ una bola abierta en $\mathbb{R}$ con centro en $x$ y radio $r > 0$. Para demostrar que $B_r(x)$ es un conjunto abierto, debemos mostrar que para cualquier punto $y \in B_r(x)$, existe un radio $\epsilon > 0$ tal que la bola $B_\epsilon(y)$ está completamente contenida en $B_r(x)$.
+            </p>
+            <p>
+                Como $y \in B_r(x)$, por definición sabemos que la distancia entre $x$ y $y$ es estrictamente menor que $r$, es decir, $d(x, y) < r$.
+            </p>
+            <p>
+                Definamos un nuevo radio $\epsilon = r - d(x, y)$. Notemos que $\epsilon > 0$ precisamente porque $d(x, y) < r$. 
+            </p>
+            <p>
+                Ahora, tomemos un punto arbitrario $z \in B_\epsilon(y)$. Por definición de bola abierta, esto significa que $d(y, z) < \epsilon$. Utilizando la propiedad de la <strong>desigualdad del triángulo</strong> de los espacios métricos, evaluamos la distancia de $x$ a $z$:
+            </p>
+            <p>
+                $$d(x, z) \leq d(x, y) + d(y, z)$$
+            </p>
+            <p>
+                Dado que $d(y, z) < \epsilon$, tenemos:
+            </p>
+            <p>
+                $$d(x, z) < d(x, y) + \epsilon$$
+            </p>
+            <p>
+                Sustituyendo el valor que asignamos a $\epsilon$:
+            </p>
+            <p>
+                $$d(x, z) < d(x, y) + (r - d(x, y)) = r$$
+            </p>
+            <p>
+                Como $d(x, z) < r$, se sigue que $z \in B_r(x)$. Como esto es válido para cualquier $z \in B_\epsilon(y)$, concluimos que $B_\epsilon(y) \subseteq B_r(x)$. 
+            </p>
+            <p>
+                Dado que pudimos encontrar este radio $\epsilon > 0$ para cualquier $y \in B_r(x)$, la bola abierta $B_r(x)$ cumple con la definición de conjunto abierto.
+            </p>
+        </div>
+    </details>
+</div>
+
 <div class="definicion-box">
     <h1 class="number-title-practica"> Definición (Espacio Topológico)</h1>
     <p>
@@ -405,6 +418,846 @@
         A los elementos de $\mathcal{B}(X)$ se les conoce como <strong>conjuntos de Borel</strong> o <strong>borelianos</strong>. En el caso de los reales, $\mathcal{B}(\mathbb{R})$ incluye a todos los intervalos abiertos, cerrados, semiabiertos, así como puntos individuales y conjuntos numerables, proporcionando una estructura lo suficientemente rica para medir la probabilidad de prácticamente cualquier evento que surja en la teoría actuarial.
     </p>
 </div>
+
+<h1 class="page-title">$\sigma$-Álgebra de Borel</h1>
+
+<!-- 1. MOTIVACIÓN -->
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Introducción</h1>
+  <p>Cuando el resultado de un experimento se representa mediante un número real, muchas preguntas se expresan mediante desigualdades: que una cantidad no supere cierto valor, que esté entre dos límites o que quede fuera de un intervalo.</p>
+  <p>Por ejemplo, si $x\in\mathbb{R}$ representa el balance anual de una cartera, podemos considerar los eventos</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      A_b &amp;= \{x\in\mathbb{R}:x\leq b\}=(-\infty,b],\\
+      C_{a,b} &amp;= \{x\in\mathbb{R}:a&lt;x\leq b\}=(a,b],\\
+      D_{a,b} &amp;= \{x\in\mathbb{R}:x\leq a\text{ o }x&gt;b\}.
+    \end{aligned}
+  \]
+</div>
+  <p>Si elegimos una familia de eventos medibles, esperamos que también podamos expresar la negación de un evento, la ocurrencia de alguno de varios eventos y la ocurrencia simultánea de una sucesión de eventos. Por ello, la familia elegida debe ser una $\sigma$-álgebra.</p>
+  <p><b>La pregunta que guiará esta sección es:</b> ¿cuál es la menor $\sigma$-álgebra sobre $\mathbb{R}$ que contiene los intervalos que usamos para formular estas preguntas?</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Construir un evento a partir de preguntas de umbral.</b></p>
+  <p>Sean $a&lt;b$. Si podemos distinguir los eventos «$x\leq a$» y «$x\leq b$», también queremos distinguir el evento «$a&lt;x\leq b$». La relación entre ellos es</p>
+  <div style="overflow-x: auto;">
+  \[
+    (a,b]=(-\infty,b]\setminus(-\infty,a].
+  \]
+</div>
+  <figure class="imagen-box">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="100%" style="max-width: 430px; height: auto; display: block; margin: auto;" role="img" aria-labelledby="borel-fig-titulo borel-fig-desc">
+      <title id="borel-fig-titulo">Un intervalo construido mediante dos umbrales</title>
+      <desc id="borel-fig-desc">La primera recta señala los valores menores o iguales que b. La segunda señala los menores o iguales que a. Al quitar la segunda región de la primera, queda el intervalo abierto en a y cerrado en b.</desc>
+      <g fill="none" stroke="#b8c6d3" stroke-width="1.5">
+        <path d="M28 50H335 M28 120H335 M28 190H335"/>
+        <path d="M130 38V205 M265 38V205" stroke-dasharray="3 5"/>
+      </g>
+      <g fill="#243247" font-family="Georgia,serif" font-size="16">
+        <text x="28" y="24">1. x ≤ b</text>
+        <text x="28" y="94">2. x ≤ a</text>
+        <text x="28" y="164">3. a &lt; x ≤ b</text>
+        <text x="125" y="224">a</text><text x="260" y="224">b</text>
+      </g>
+      <g stroke="#315b87" stroke-width="5" fill="#315b87">
+        <path d="M30 50H265 M30 120H130"/>
+        <circle cx="265" cy="50" r="4"/><circle cx="130" cy="120" r="4"/>
+      </g>
+      <g stroke="#b7791f" stroke-width="5">
+        <path d="M130 190H265"/>
+        <circle cx="130" cy="190" r="5" fill="#f4f7f9" stroke-width="2.5"/>
+        <circle cx="265" cy="190" r="4" fill="#b7791f"/>
+      </g>
+      <g fill="#315b87"><path d="M27 50L38 43V57Z M27 120L38 113V127Z"/></g>
+    </svg>
+    <figcaption>El punto vacío excluye el extremo $a$; el punto lleno incluye el extremo $b$.</figcaption>
+  </figure>
+  <p>Esta identidad muestra que una familia pequeña de preguntas puede generar otras mediante operaciones de conjuntos. Más adelante demostraremos que los eventos de la forma $(-\infty,b]$ generan todos los conjuntos borelianos.</p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p>Elegir una $\sigma$-álgebra establece qué eventos son medibles en el modelo. La asignación de un número a cada evento se realizará cuando definamos una medida de probabilidad.</p>
+</div>
+
+<!-- 2. ABIERTOS, CERRADOS Y DEFINICIÓN -->
+
+<h1 class="page-title">De los intervalos a los conjuntos borelianos</h1>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>Conjuntos abiertos y cerrados de $\mathbb{R}$.</b></p>
+  <p>Un conjunto $U\subseteq\mathbb{R}$ es <b>abierto</b> si para cada $x\in U$ existe $\varepsilon&gt;0$ tal que</p>
+  <div style="overflow-x: auto;">
+  \[
+    (x-\varepsilon,x+\varepsilon)\subseteq U.
+  \]
+</div>
+  <p>Un conjunto $F\subseteq\mathbb{R}$ es <b>cerrado</b> si su complemento $\mathbb{R}\setminus F$ es abierto.</p>
+  <p>Los intervalos $(a,b)$ son abiertos y los intervalos $[a,b]$ son cerrados. Los conjuntos $\emptyset$ y $\mathbb{R}$ son, a la vez, abiertos y cerrados.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>La familia de los abiertos requiere ampliarse.</b></p>
+  <p>El intervalo $(0,1)$ es abierto, pero su complemento</p>
+  <div style="overflow-x: auto;">
+  \[
+    (-\infty,0]\cup[1,\infty)
+  \]
+</div>
+  <p>no es abierto: ningún intervalo abierto alrededor de $0$ está contenido en él. Por tanto, la familia de todos los abiertos de $\mathbb{R}$ no es una $\sigma$-álgebra.</p>
+  <p>Además, aunque cada intervalo $(-1/n,1/n)$ es abierto,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \bigcap_{n=1}^{\infty}\left(-\frac{1}{n},\frac{1}{n}\right)=\{0\},
+  \]
+</div>
+  <p>y $\{0\}$ no es abierto. La definición que sigue incorpora los conjuntos que deben ser medibles al exigir las propiedades de una $\sigma$-álgebra.</p>
+</div>
+
+<div class="definicion-box" id="borel-definicion">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>$\sigma$-álgebra de Borel de $\mathbb{R}$.</b></p>
+  <p>Sea $\mathscr{T}$ la familia de todos los conjuntos abiertos de $\mathbb{R}$. La <b>$\sigma$-álgebra de Borel de $\mathbb{R}$</b>, denotada por $\mathscr{B}(\mathbb{R})$, es la $\sigma$-álgebra generada por $\mathscr{T}$:</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathscr{B}(\mathbb{R})=\sigma(\mathscr{T}).
+  \]
+</div>
+  <p>Es decir, es la <b>menor $\sigma$-álgebra sobre $\mathbb{R}$ que contiene todos los abiertos</b>. Cada elemento de $\mathscr{B}(\mathbb{R})$ se llama <b>conjunto de Borel</b> o <b>conjunto boreliano</b>.</p>
+</div>
+
+<div class="notacion-box">
+  <h2 class="title-notacion">Notación</h2>
+  <ul>
+    <li>$x\in\mathbb{R}$ indica que $x$ es un número real.</li>
+    <li>$A\in\mathscr{B}(\mathbb{R})$ indica que $A$ es un conjunto boreliano; en particular, $A\subseteq\mathbb{R}$.</li>
+    <li>Si $\mathscr{C}$ es una familia de conjuntos, la expresión $\mathscr{C}\subseteq\mathscr{B}(\mathbb{R})$ significa que cada elemento de $\mathscr{C}$ es boreliano.</li>
+  </ul>
+  <p>Los complementos que se utilicen en $\mathbb{R}$ se toman respecto de $\mathbb{R}$.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Propiedad de minimalidad.</b></p>
+  <p>Si $\mathscr{F}$ es una $\sigma$-álgebra sobre $\mathbb{R}$ que contiene todos los abiertos, entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathscr{B}(\mathbb{R})\subseteq\mathscr{F}.
+  \]
+</div>
+  <p>En particular, para demostrar que una $\sigma$-álgebra es la de Borel, podemos probar ambas inclusiones utilizando sus generadores.</p>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Por la definición de $\sigma$-álgebra generada,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \mathscr{B}(\mathbb{R})
+      =\bigcap_{\substack{\mathscr{G}\text{ es una }\sigma\text{-álgebra sobre }\mathbb{R}\\
+                          \mathscr{T}\subseteq\mathscr{G}}}\mathscr{G}.
+    \]
+</div>
+    <p>La familia sobre la que se toma esta intersección es no vacía, pues contiene a $\mathscr{P}(\mathbb{R})$. Si $\mathscr{F}$ contiene todos los abiertos, es uno de sus elementos, por lo que la intersección está contenida en $\mathscr{F}$.</p>
+  </div>
+</div>
+
+<!-- 3. PRIMERAS PROPIEDADES -->
+
+<h1 class="page-title">Primeros ejemplos y propiedades</h1>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Conjuntos que pertenecen a $\mathscr{B}(\mathbb{R})$.</b></p>
+  <ol>
+    <li>Todo abierto y todo cerrado de $\mathbb{R}$ es boreliano.</li>
+    <li>Todo intervalo, acotado o no acotado, es boreliano.</li>
+    <li>Todo conjunto con un solo elemento es boreliano.</li>
+    <li>Todo conjunto finito o numerable es boreliano; también lo es su complemento.</li>
+  </ol>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Los abiertos pertenecen a $\mathscr{B}(\mathbb{R})$ por definición. Los cerrados pertenecen a ella porque son complementos de abiertos.</p>
+    <p>Los intervalos abiertos y cerrados, incluidos los semiejes correspondientes, son entonces borelianos. Si $a&lt;b$, los intervalos semiabiertos se obtienen mediante</p>
+    <div style="overflow-x: auto;">
+  \[
+      (a,b]=[a,b]\cap(a,\infty),\qquad
+      [a,b)=[a,b]\cap(-\infty,b).
+    \]
+</div>
+    <p>Estas son intersecciones finitas de borelianos. Los casos degenerados corresponden al vacío o a un conjunto con un solo elemento. Para cada $x\in\mathbb{R}$, también podemos escribir</p>
+    <div style="overflow-x: auto;">
+  \[
+      \{x\}=\bigcap_{n=1}^{\infty}
+      \left(x-\frac{1}{n},x+\frac{1}{n}\right).
+    \]
+</div>
+    <p>Finalmente, si $A=\{x_1,x_2,\ldots\}$ es numerable, entonces $A=\bigcup_{n\geq1}\{x_n\}$ es boreliano. Los conjuntos finitos se tratan mediante uniones finitas; sus complementos son borelianos por el cierre bajo complementos.</p>
+  </div>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Los racionales y los irracionales son borelianos.</b></p>
+  <p>Como $\mathbb{Q}$ es numerable, podemos enumerar sus elementos como $q_1,q_2,\ldots$. Así,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathbb{Q}=\bigcup_{n=1}^{\infty}\{q_n\}
+    \in\mathscr{B}(\mathbb{R}).
+  \]
+</div>
+  <p>Tomando complementos obtenemos</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathbb{R}\setminus\mathbb{Q}\in\mathscr{B}(\mathbb{R}).
+  \]
+</div>
+  <p>Un conjunto boreliano puede tener una forma distinta de un intervalo y puede ser no numerable, como ocurre con el conjunto de los irracionales.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Justificar la medibilidad mediante una construcción.</b></p>
+  <p>Consideremos el conjunto</p>
+  <div style="overflow-x: auto;">
+  \[
+    A=\bigl([0,1]\setminus\mathbb{Q}\bigr)
+      \cup\{2,3,4,\ldots\}.
+  \]
+</div>
+  <p>El intervalo $[0,1]$ y el conjunto $\mathbb{Q}$ son borelianos, de modo que su diferencia es boreliana. El conjunto $\{2,3,4,\ldots\}$ es numerable y, por tanto, boreliano. La unión de estas dos piezas también es boreliana.</p>
+  <p>Para demostrar que un conjunto es boreliano, resulta útil <b>expresarlo mediante operaciones permitidas sobre conjuntos cuya medibilidad ya conocemos</b>.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Operaciones y límites de sucesiones de borelianos.</b></p>
+  <p>Sean $A,B\in\mathscr{B}(\mathbb{R})$ y $(A_n)_{n\geq1}$ una sucesión de conjuntos borelianos. Son borelianos:</p>
+  <div style="overflow-x: auto;">
+  \[
+    A^c,\quad A\setminus B,\quad A\triangle B,\quad
+    \bigcup_{n=1}^{\infty}A_n,\quad
+    \bigcap_{n=1}^{\infty}A_n.
+  \]
+</div>
+  <p>También pertenecen a $\mathscr{B}(\mathbb{R})$ los conjuntos</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \liminf_{n\to\infty}A_n
+      &amp;=\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty}A_k,\\
+      \limsup_{n\to\infty}A_n
+      &amp;=\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}A_k.
+    \end{aligned}
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>El cierre bajo complementos y uniones numerables forma parte de la definición de $\sigma$-álgebra. Las intersecciones numerables se obtienen mediante las leyes de De Morgan.</p>
+    <p>Además,</p>
+    <div style="overflow-x: auto;">
+  \[
+      A\setminus B=A\cap B^c,\qquad
+      A\triangle B=(A\setminus B)\cup(B\setminus A).
+    \]
+</div>
+    <p>Las expresiones que definen los límites inferior y superior utilizan únicamente uniones e intersecciones numerables de borelianos, por lo que también son borelianas.</p>
+  </div>
+</div>
+
+<!-- 4. GENERADORES -->
+
+<h1 class="page-title">Distintas familias que generan la misma $\sigma$-álgebra</h1>
+
+<div class="teorema-box" id="borel-base-racional">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Todo abierto es una unión numerable de intervalos con extremos racionales.</b></p>
+  <p>Si $U\subseteq\mathbb{R}$ es abierto, entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    U=\bigcup_{\substack{p,q\in\mathbb{Q},\ p&lt;q\\(p,q)\subseteq U}}(p,q).
+  \]
+</div>
+  <p>Esta unión es a lo sumo numerable. Cuando $U=\emptyset$, se interpreta como la unión vacía.</p>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Cada intervalo de la unión está contenido en $U$, así que la unión está contenida en $U$.</p>
+    <p>Para la inclusión contraria, tomemos $x\in U$. Como $U$ es abierto, existe $\varepsilon&gt;0$ tal que el intervalo $(x-\varepsilon,x+\varepsilon)$ está contenido en $U$. Por la densidad de $\mathbb{Q}$, existen racionales $p,q$ con</p>
+    <div style="overflow-x: auto;">
+  \[
+      x-\varepsilon&lt;p&lt;x&lt;q&lt;x+\varepsilon.
+    \]
+</div>
+    <p>Entonces $x\in(p,q)\subseteq U$, por lo que $x$ pertenece a la unión indicada.</p>
+    <p>Finalmente, los pares $(p,q)$ utilizados forman un subconjunto de $\mathbb{Q}\times\mathbb{Q}$, que es numerable. Por ello intervienen, a lo sumo, una cantidad numerable de intervalos.</p>
+  </div>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Los intervalos abiertos generan la $\sigma$-álgebra de Borel.</b></p>
+  <p>Sean</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \mathscr{I}&amp;=\{(a,b):a,b\in\mathbb{R},\ a&lt;b\},\\
+      \mathscr{I}_{\mathbb{Q}}&amp;=\{(p,q):p,q\in\mathbb{Q},\ p&lt;q\}.
+    \end{aligned}
+  \]
+</div>
+  <p>Entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    \sigma(\mathscr{I}_{\mathbb{Q}})
+    =\sigma(\mathscr{I})
+    =\mathscr{B}(\mathbb{R}).
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Como cada intervalo abierto es boreliano y cada intervalo con extremos racionales es un intervalo abierto,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \sigma(\mathscr{I}_{\mathbb{Q}})
+      \subseteq\sigma(\mathscr{I})
+      \subseteq\mathscr{B}(\mathbb{R}).
+    \]
+</div>
+    <p>Por el teorema anterior, todo abierto es una unión numerable de elementos de $\mathscr{I}_{\mathbb{Q}}$, por lo que pertenece a $\sigma(\mathscr{I}_{\mathbb{Q}})$. La propiedad de minimalidad de la $\sigma$-álgebra de Borel da la inclusión contraria.</p>
+  </div>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p><b>Generación numerable.</b> La familia $\mathscr{I}_{\mathbb{Q}}$ es numerable; por ello se dice que $\mathscr{B}(\mathbb{R})$ es una <b>$\sigma$-álgebra numerablemente generada</b>.</p>
+  <p>Esto se refiere al tamaño de una familia generadora. La propia $\sigma$-álgebra de Borel es no numerable: contiene un conjunto distinto $\{x\}$ para cada $x\in\mathbb{R}$.</p>
+</div>
+
+<div class="teorema-box" id="borel-semiejes">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Los semiejes cerrados por la derecha generan la $\sigma$-álgebra de Borel.</b></p>
+  <p>Si</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathscr{H}=\{(-\infty,b]:b\in\mathbb{R}\},
+  \]
+</div>
+  <p>entonces $\sigma(\mathscr{H})=\mathscr{B}(\mathbb{R})$.</p>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Cada conjunto $(-\infty,b]$ es cerrado y, por tanto, boreliano. Así,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \sigma(\mathscr{H})\subseteq\mathscr{B}(\mathbb{R}).
+    \]
+</div>
+    <p>Para la otra inclusión, observemos que</p>
+    <div style="overflow-x: auto;">
+  \[
+      (-\infty,b)=\bigcup_{n=1}^{\infty}
+      \left(-\infty,b-\frac{1}{n}\right].
+    \]
+</div>
+    <p>Por consiguiente, todo semieje abierto por la derecha pertenece a $\sigma(\mathscr{H})$. Si $a&lt;b$,</p>
+    <div style="overflow-x: auto;">
+  \[
+      (a,b)=(-\infty,b)\setminus(-\infty,a]
+      \in\sigma(\mathscr{H}).
+    \]
+</div>
+    <p>Así, $\sigma(\mathscr{H})$ contiene todos los intervalos abiertos y, como estos generan la $\sigma$-álgebra de Borel, contiene a $\mathscr{B}(\mathbb{R})$.</p>
+  </div>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Basta considerar umbrales racionales.</b></p>
+  <p>La familia numerable</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathscr{H}_{\mathbb{Q}}=\{(-\infty,q]:q\in\mathbb{Q}\}
+  \]
+</div>
+  <p>también genera la $\sigma$-álgebra de Borel:</p>
+  <div style="overflow-x: auto;">
+  \[
+    \sigma(\mathscr{H}_{\mathbb{Q}})=\mathscr{B}(\mathbb{R}).
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Los elementos de $\mathscr{H}_{\mathbb{Q}}$ son borelianos. Para recuperar un umbral real $b$, utilizamos la identidad</p>
+    <div style="overflow-x: auto;">
+  \[
+      (-\infty,b]
+      =\bigcap_{\substack{q\in\mathbb{Q}\\q&gt;b}}(-\infty,q].
+    \]
+</div>
+    <p>Si $x\leq b$, pertenece a cada conjunto de la intersección. Si $x&gt;b$, la densidad de $\mathbb{Q}$ permite elegir $q$ con $b&lt;q&lt;x$; entonces $x\notin(-\infty,q]$.</p>
+    <p>La intersección es numerable, pues se indexa por un subconjunto de $\mathbb{Q}$. En consecuencia, $\sigma(\mathscr{H}_{\mathbb{Q}})$ contiene todos los semiejes de $\mathscr{H}$ y, por el teorema anterior, coincide con $\mathscr{B}(\mathbb{R})$.</p>
+  </div>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p><b>Conexión con los $\pi$-sistemas.</b> La familia $\mathscr{H}_{\mathbb{Q}}$ es un $\pi$-sistema, ya que</p>
+  <div style="overflow-x: auto;">
+  \[
+    (-\infty,p]\cap(-\infty,q]
+    =(-\infty,\min\{p,q\}],
+  \]
+</div>
+  <p>y el mínimo de dos racionales es racional. Por tanto, disponemos de un $\pi$-sistema numerable que genera $\mathscr{B}(\mathbb{R})$.</p>
+</div>
+
+<div class="teorema-box" id="borel-generadores-equivalentes">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Otras familias generadoras.</b></p>
+  <p>Cada una de las siguientes familias genera $\mathscr{B}(\mathbb{R})$. En los intervalos acotados se supone que $a,b\in\mathbb{R}$ y $a&lt;b$.</p>
+  <div style="overflow-x: auto;">
+    <table>
+      <thead><tr><th scope="col">Familia</th><th scope="col">Elementos</th></tr></thead>
+      <tbody>
+        <tr><td>$\mathscr{C}_1$</td><td>$(-\infty,b]$</td></tr>
+        <tr><td>$\mathscr{C}_2$</td><td>$(a,b]$</td></tr>
+        <tr><td>$\mathscr{C}_3$</td><td>$[a,b)$</td></tr>
+        <tr><td>$\mathscr{C}_4$</td><td>$(a,b)$</td></tr>
+        <tr><td>$\mathscr{C}_5$</td><td>$[a,b]$</td></tr>
+        <tr><td>$\mathscr{C}_6$</td><td>$(a,\infty)$</td></tr>
+        <tr><td>$\mathscr{C}_7$</td><td>$[a,\infty)$</td></tr>
+        <tr><td>$\mathscr{C}_8$</td><td>$(-\infty,b)$</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>En todos los casos, los extremos indicados recorren $\mathbb{R}$. Así,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \sigma(\mathscr{C}_i)=\mathscr{B}(\mathbb{R}),
+    \qquad i=1,\ldots,8.
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Todos los conjuntos de la tabla son borelianos, así que la $\sigma$-álgebra generada por cada familia está contenida en $\mathscr{B}(\mathbb{R})$. Para la inclusión contraria, recuperaremos una familia que ya sabemos que genera Borel.</p>
+    <ol>
+      <li><p>Los casos $\mathscr{C}_1$ y $\mathscr{C}_4$ ya fueron demostrados.</p></li>
+      <li><p>A partir de $\mathscr{C}_2$ recuperamos los semiejes cerrados mediante</p>
+        <div style="overflow-x: auto;">
+  \[
+          (-\infty,b]=\bigcup_{n=1}^{\infty}(b-n,b].
+        \]
+</div>
+      </li>
+      <li><p>A partir de $\mathscr{C}_3$ recuperamos cada intervalo abierto. Para $d=b-a&gt;0$,</p>
+        <div style="overflow-x: auto;">
+  \[
+          (a,b)=\bigcup_{n=1}^{\infty}
+          \left[a+\frac{d}{n+1},b\right).
+        \]
+</div>
+      </li>
+      <li><p>A partir de $\mathscr{C}_5$ recuperamos los intervalos abiertos mediante</p>
+        <div style="overflow-x: auto;">
+  \[
+          (a,b)=\bigcup_{n=1}^{\infty}
+          \left[a+\frac{d}{n+2},b-\frac{d}{n+2}\right],
+          \qquad d=b-a.
+        \]
+</div>
+        <p>Todos los intervalos de esta unión tienen extremos distintos y están contenidos en $(a,b)$; cada punto de $(a,b)$ pertenece a alguno de ellos.</p>
+      </li>
+      <li><p>Tomar complementos transforma los elementos de $\mathscr{C}_6$ en elementos de $\mathscr{C}_1$, y los de $\mathscr{C}_7$ en elementos de $\mathscr{C}_8$.</p></li>
+      <li><p>Finalmente, a partir de $\mathscr{C}_8$ obtenemos</p>
+        <div style="overflow-x: auto;">
+  \[
+          (-\infty,b]=\bigcap_{n=1}^{\infty}
+          \left(-\infty,b+\frac{1}{n}\right),
+        \]
+</div>
+        <p>por lo que también recuperamos $\mathscr{C}_1$. Esto completa todos los casos.</p>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<!-- 5. OTRAS CLASES Y ESPACIOS MUESTRALES RESTRINGIDOS -->
+
+<h1 class="page-title">Conjuntos $F_\sigma$ y $G_\delta$</h1>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica">Definición</h1>
+  <p>Un conjunto es de tipo <b>$F_\sigma$</b> si es una unión numerable de conjuntos cerrados. Es de tipo <b>$G_\delta$</b> si es una intersección numerable de conjuntos abiertos.</p>
+  <p>Esto es, para cerrados $F_n$ y abiertos $U_n$, se consideran las formas</p>
+  <div style="overflow-x: auto;">
+  \[
+    A=\bigcup_{n=1}^{\infty}F_n,
+    \qquad
+    B=\bigcap_{n=1}^{\infty}U_n.
+  \]
+</div>
+  <p>Todos los conjuntos $F_\sigma$ y todos los conjuntos $G_\delta$ son borelianos. Además, por las leyes de De Morgan, el complemento de un $F_\sigma$ es un $G_\delta$, y recíprocamente.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p>La escritura $\mathbb{Q}=\bigcup_{n\geq1}\{q_n\}$ muestra que $\mathbb{Q}$ es de tipo $F_\sigma$, pues cada conjunto $\{q_n\}$ es cerrado. Por tanto,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathbb{R}\setminus\mathbb{Q}
+    =\bigcap_{n=1}^{\infty}\bigl(\mathbb{R}\setminus\{q_n\}\bigr)
+  \]
+</div>
+  <p>es de tipo $G_\delta$.</p>
+</div>
+
+<h1 class="page-title">Borelianos en un espacio muestral restringido</h1>
+
+<div class="definicion-box" id="borel-relativa">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>$\sigma$-álgebra de Borel relativa.</b></p>
+  <p>Si $E\subseteq\mathbb{R}$, la <b>$\sigma$-álgebra de Borel relativa a $E$</b> es</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathscr{B}(E)
+    =\{E\cap B:B\in\mathscr{B}(\mathbb{R})\}.
+  \]
+</div>
+  <p>Esta familia también se conoce como la <b>traza</b> de $\mathscr{B}(\mathbb{R})$ sobre $E$. Sus elementos son subconjuntos de $E$ y los complementos se toman respecto de $E$.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p>La familia $\mathscr{B}(E)$ es una $\sigma$-álgebra sobre $E$. Si, además, $E$ es boreliano en $\mathbb{R}$, entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathscr{B}(E)
+    =\{A\in\mathscr{B}(\mathbb{R}):A\subseteq E\}.
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Se tiene $E=E\cap\mathbb{R}\in\mathscr{B}(E)$. Si $A=E\cap B$ con $B$ boreliano, su complemento relativo es</p>
+    <div style="overflow-x: auto;">
+  \[
+      E\setminus A=E\cap B^c\in\mathscr{B}(E).
+    \]
+</div>
+    <p>Para una sucesión $A_n=E\cap B_n$ con cada $B_n$ boreliano,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \bigcup_{n=1}^{\infty}A_n
+      =E\cap\left(\bigcup_{n=1}^{\infty}B_n\right)
+      \in\mathscr{B}(E).
+    \]
+</div>
+    <p>Esto verifica los axiomas de $\sigma$-álgebra sobre $E$.</p>
+    <p>Si $E$ es boreliano, cada conjunto $E\cap B$ es boreliano en $\mathbb{R}$ y está contenido en $E$. Recíprocamente, si $A$ es boreliano y $A\subseteq E$, entonces $A=E\cap A\in\mathscr{B}(E)$.</p>
+  </div>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Vida útil de un componente.</b></p>
+  <p>Si el resultado del experimento es una duración no negativa, podemos elegir $E=[0,\infty)$ como espacio muestral y $\mathscr{B}(E)$ como familia de eventos medibles.</p>
+  <p>Para $t\geq0$, el evento «la duración no supera $t$» es</p>
+  <div style="overflow-x: auto;">
+  \[
+    E\cap(-\infty,t]=[0,t].
+  \]
+</div>
+  <p>Su complemento dentro del espacio muestral es $(t,\infty)$. Para $0\leq a&lt;b$, el evento «la duración es mayor que $a$ y no supera $b$» es $(a,b]$. Todos estos conjuntos pertenecen a $\mathscr{B}(E)$.</p>
+  <p>Si $t&lt;0$, el evento $E\cap(-\infty,t]$ es vacío. Esta distinción mantiene los eventos dentro del espacio muestral elegido.</p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p><b>Abierto relativo y abierto de $\mathbb{R}$.</b> Un conjunto $V\subseteq E$ es abierto relativo a $E$ si $V=E\cap U$ para algún abierto $U$ de $\mathbb{R}$.</p>
+  <p>Por ejemplo, $[0,1)$ es abierto relativo a $E=[0,\infty)$, ya que</p>
+  <div style="overflow-x: auto;">
+  \[
+    [0,1)=E\cap(-1,1).
+  \]
+</div>
+  <p>En cambio, $[0,1)$ no es abierto en $\mathbb{R}$. La $\sigma$-álgebra de Borel relativa coincide con la generada por los abiertos relativos; se propone comprobar esta afirmación en los ejercicios.</p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p><b>Alcance de la construcción.</b></p>
+  <ol>
+    <li>Las uniones y las intersecciones numerables de borelianos siempre son borelianas.</li>
+    <li>Una unión no numerable puede ser boreliana; por ejemplo, $\mathbb{R}$ es la unión de todos sus conjuntos de un solo elemento. Los axiomas de $\sigma$-álgebra no garantizan el cierre bajo todas las uniones no numerables.</li>
+    <li>Existen subconjuntos de $\mathbb{R}$ que no son borelianos. En particular, $\mathscr{B}(\mathbb{R})\neq\mathscr{P}(\mathbb{R})$. La demostración de esta existencia requiere herramientas adicionales y queda fuera del desarrollo de esta sección.</li>
+  </ol>
+</div>
+
+<!-- 6. AMPLIACIÓN: PUEDE RETOMARSE AL ESTUDIAR VARIABLES ALEATORIAS -->
+
+<h1 class="page-title">Ampliación: el vínculo con las funciones medibles</h1>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Motivación</h1>
+  <p>En muchos experimentos, el resultado original pertenece a un conjunto $\Omega$ y después registramos una cantidad real $X(\omega)$. Por ejemplo, el resultado puede describir todos los siniestros de un año y $X(\omega)$ puede ser su costo total.</p>
+  <p>Para estudiar el evento «el costo total no supera $b$», necesitamos que el conjunto de resultados que cumplen esa condición pertenezca a la familia de eventos medibles:</p>
+  <div style="overflow-x: auto;">
+  \[
+    \{\omega\in\Omega:X(\omega)\leq b\}\in\mathscr{F}.
+  \]
+</div>
+  <p>El siguiente resultado explica por qué los conjuntos de Borel y los eventos de umbral aparecen en la definición de variable aleatoria. Esta ampliación puede retomarse al estudiar ese concepto.</p>
+</div>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>Función real medible.</b></p>
+  <p>Sea $(\Omega,\mathscr{F})$ un espacio medible, es decir, $\mathscr{F}$ es una $\sigma$-álgebra sobre $\Omega$. Una función $X:\Omega\to\mathbb{R}$ es <b>medible respecto de $\mathscr{F}$ y $\mathscr{B}(\mathbb{R})$</b> si para todo $B\in\mathscr{B}(\mathbb{R})$ se cumple que</p>
+  <div style="overflow-x: auto;">
+  \[
+    X^{-1}(B)
+    =\{\omega\in\Omega:X(\omega)\in B\}
+    \in\mathscr{F}.
+  \]
+</div>
+  <p>El símbolo $X^{-1}(B)$ representa la <b>imagen inversa de un conjunto</b>; esta notación no exige que $X$ tenga una función inversa.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Criterio de medibilidad mediante umbrales racionales.</b></p>
+  <p>Una función $X:\Omega\to\mathbb{R}$ es medible si y solo si</p>
+  <div style="overflow-x: auto;">
+  \[
+    \{\omega\in\Omega:X(\omega)\leq q\}\in\mathscr{F}
+    \quad\text{para todo }q\in\mathbb{Q}.
+  \]
+</div>
+  <p>En particular, también es equivalente comprobar la misma condición para todo umbral real.</p>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Si $X$ es medible, la condición se cumple porque cada conjunto $(-\infty,q]$ es boreliano.</p>
+    <p>Para la otra implicación, definamos</p>
+    <div style="overflow-x: auto;">
+  \[
+      \mathscr{D}
+      =\{B\subseteq\mathbb{R}:X^{-1}(B)\in\mathscr{F}\}.
+    \]
+</div>
+    <p>Esta familia es una $\sigma$-álgebra sobre $\mathbb{R}$, ya que las imágenes inversas satisfacen</p>
+    <div style="overflow-x: auto;">
+  \[
+      \begin{aligned}
+        X^{-1}(\mathbb{R})&amp;=\Omega,\\
+        X^{-1}(B^c)&amp;=\Omega\setminus X^{-1}(B),\\
+        X^{-1}\!\left(\bigcup_{n=1}^{\infty}B_n\right)
+        &amp;=\bigcup_{n=1}^{\infty}X^{-1}(B_n).
+      \end{aligned}
+    \]
+</div>
+    <p>La hipótesis implica que $\mathscr{H}_{\mathbb{Q}}\subseteq\mathscr{D}$. Como esta familia genera Borel,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \mathscr{B}(\mathbb{R})
+      =\sigma(\mathscr{H}_{\mathbb{Q}})
+      \subseteq\mathscr{D}.
+    \]
+</div>
+    <p>Por tanto, la imagen inversa de cada boreliano pertenece a $\mathscr{F}$ y $X$ es medible. La formulación con todos los umbrales reales se obtiene porque incluye los racionales y, cuando $X$ es medible, cada semieje con extremo real tiene imagen inversa medible.</p>
+  </div>
+</div>
+
+<!-- 7. EJERCICIOS DE COMPRENSIÓN -->
+
+<h1 class="page-title">Ejercicios de comprensión</h1>
+
+<div class="nota-box">
+  <p>Justifica cada respuesta indicando las operaciones de conjuntos y las propiedades de las $\sigma$-álgebras que utilices. Los dos últimos ejercicios son de profundización; el último corresponde a la ampliación sobre funciones medibles.</p>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>El resultado de un experimento es un balance $x\in\mathbb{R}$. Describe mediante conjuntos los siguientes eventos y demuestra que son borelianos:</p>
+  <ol>
+    <li>El balance es negativo.</li>
+    <li>El balance está entre $1000$ y $5000$, incluyendo ambos extremos.</li>
+    <li>El balance es mayor que $1000$, pero no supera $5000$.</li>
+    <li>El balance queda fuera de $[1000,5000]$.</li>
+    <li>La distancia del balance al valor $3000$ es menor que $500$.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Traduce las condiciones a desigualdades. Para el último inciso utiliza la equivalencia $|x-c|&lt;r$ si y solo si $c-r&lt;x&lt;c+r$, con $r&gt;0$.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $a\in\mathbb{R}$. Verifica las identidades</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      (-\infty,a)
+      &amp;=\bigcup_{\substack{q\in\mathbb{Q}\\q&lt;a}}(-\infty,q],\\
+      (-\infty,a]
+      &amp;=\bigcap_{\substack{q\in\mathbb{Q}\\q&gt;a}}(-\infty,q].
+    \end{aligned}
+  \]
+</div>
+  <p>Explica dónde se utiliza la densidad de $\mathbb{Q}$ y por qué las operaciones son numerables. Utiliza estas identidades para construir $\{a\}$ y $(a,b)$, con $a&lt;b$, a partir de semiejes con extremos racionales.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Prueba ambas inclusiones de cada identidad. Después utiliza diferencias de conjuntos para separar un punto o un intervalo.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Considera la familia $\mathscr{K}=\{(-\infty,n]:n\in\mathbb{Z}\}$. Demuestra que</p>
+  <div style="overflow-x: auto;">
+  \[
+    \sigma(\mathscr{K})\neq\mathscr{B}(\mathbb{R}).
+  \]
+</div>
+  <p>Para ello, observa que los puntos $1/4$ y $3/4$ pertenecen exactamente a los mismos elementos de $\mathscr{K}$. Explica por qué las operaciones que generan una $\sigma$-álgebra conservan esta imposibilidad de distinguirlos.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Prueba que la familia de los conjuntos $A\subseteq\mathbb{R}$ en los que $1/4$ y $3/4$ pertenecen ambos a $A$ o ambos a $A^c$ es una $\sigma$-álgebra que contiene a $\mathscr{K}$. Compara después con el boreliano $(-\infty,1/2]$.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Para $n\geq1$, define $A_{2n-1}=[0,1]$ y $A_{2n}=[1,2]$.</p>
+  <ol>
+    <li>Determina el límite inferior y el límite superior de $(A_n)$.</li>
+    <li>Explica por qué ambos conjuntos son borelianos.</li>
+    <li>¿Converge la sucesión de conjuntos? Justifica.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Analiza qué puntos pertenecen a todos los eventos a partir de algún índice y qué puntos pertenecen a una cantidad infinita de ellos.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $E=[0,\infty)$.</p>
+  <ol>
+    <li>Demuestra que $[0,1)$ es abierto relativo a $E$ y encuentra su complemento en $E$.</li>
+    <li>Demuestra que $\mathscr{B}(E)$ coincide con la $\sigma$-álgebra sobre $E$ generada por sus abiertos relativos.</li>
+    <li>Explica por qué el conjunto vacío, $E$ y $\mathbb{Q}\cap E$ pertenecen a $\mathscr{B}(E)$.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Para el segundo inciso, llama $\mathscr{S}$ a la $\sigma$-álgebra generada por los abiertos relativos. Una inclusión sigue de que cada abierto relativo es $E\cap U$ con $U$ abierto de $\mathbb{R}$. Para la otra, estudia la familia de los $B\subseteq\mathbb{R}$ tales que $E\cap B\in\mathscr{S}$.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Demuestra que todo abierto de $\mathbb{R}$ es de tipo $F_\sigma$ y todo cerrado es de tipo $G_\delta$.</p>
+  <p>¿Significa esto que todo conjunto boreliano debe ser abierto o cerrado? Presenta un ejemplo que justifique tu respuesta.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Expresa un abierto como una unión numerable de intervalos abiertos y cada intervalo abierto como una unión numerable de intervalos cerrados. Recuerda que una unión numerable de familias numerables sigue siendo numerable. Para los cerrados, toma complementos.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p><b>Profundización: generar a partir de puntos.</b></p>
+  <p>Sea $\mathscr{S}=\{\{x\}:x\in\mathbb{R}\}$. Demuestra que</p>
+  <div style="overflow-x: auto;">
+  \[
+    \sigma(\mathscr{S})
+    =\{A\subseteq\mathbb{R}:A\text{ es a lo sumo numerable}
+    \text{ o }A^c\text{ es a lo sumo numerable}\}.
+  \]
+</div>
+  <p>Deduce que esta $\sigma$-álgebra está contenida estrictamente en $\mathscr{B}(\mathbb{R})$. Explica por qué contener todos los conjuntos con un solo elemento no obliga a contener todos los intervalos.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Demuestra que la familia del lado derecho es una $\sigma$-álgebra que contiene los conjuntos de un solo elemento. Para una unión numerable, distingue si todos sus términos son numerables o si alguno tiene complemento numerable. Para la inclusión contraria, utiliza uniones numerables de puntos y complementos. Finalmente, examina el intervalo $(0,1)$.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p><b>Ampliación: una función medible.</b></p>
+  <p>Sea $X:\mathbb{R}\to\mathbb{R}$ dada por $X(x)=x^2$. Considera en el dominio la $\sigma$-álgebra $\mathscr{B}(\mathbb{R})$.</p>
+  <ol>
+    <li>Determina $X^{-1}((-\infty,b])$ para $b&lt;0$, $b=0$ y $b&gt;0$.</li>
+    <li>Utiliza el criterio de umbrales para demostrar que $X$ es medible.</li>
+    <li>Determina la imagen inversa del intervalo $(1,4]$ y verifica directamente que es boreliana.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Resuelve las desigualdades $x^2\leq b$ y $1&lt;x^2\leq4$. La imagen inversa puede tener dos componentes, aunque el conjunto de llegada sea un intervalo.</p>
+  </div>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Para reflexionar</h1>
+  <ol>
+    <li>¿Qué significa que la $\sigma$-álgebra de Borel sea la menor que contiene todos los abiertos?</li>
+    <li>¿Por qué necesitamos justificar que las uniones de intervalos utilizadas en las demostraciones son numerables?</li>
+    <li>¿Qué permite utilizar umbrales racionales para recuperar un umbral real?</li>
+    <li>¿Qué cambia al pasar de $\mathbb{R}$ al espacio muestral $[0,\infty)$?</li>
+    <li>¿Qué información faltaría añadir a un espacio medible para obtener un espacio de probabilidad?</li>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <p><b>Lecturas complementarias.</b></p>
+  <ul>
+    <li>Scott Sheffield, MIT 18.175, <a href="https://math.mit.edu/~sheffield/2016175/Lecture1.pdf" target="_blank" rel="noopener">Lecture 1: Probability spaces and $\sigma$-algebras</a>, sección sobre la $\sigma$-álgebra de Borel.</li>
+    <li>MIT OpenCourseWare, 18.125, <a href="https://ocw.mit.edu/courses/18-125-measure-and-integration-fall-2003/resources/18125_lec8/" target="_blank" rel="noopener">Lecture 8</a>, para una lectura posterior sobre la existencia de conjuntos que no son borelianos.</li>
+  </ul>
+</div>
+
+
+  <div class="definicion-box"><h1 class="number-title-practica"> Observación</h1>
+    <p>
+      El objetivo es calcular la probabilidad de que ocurran los distintos eventos en un experimento aleatorio.
+    </p>
+  </div>
+
+  <h1 class="page-title"> Sucesiones de Eventos</h1>
+
+  <div class="definicion-box"><h1 class="number-title-practica"> Definición</h1>
+    <p>
+      Sea $\{A_n \}$ una sucesión de eventos de $\Omega$. Se definen los siguientes <b>conjuntos límite</b>
+      \begin{align*}
+      \displaystyle{\limsup A_n}&:=\displaystyle{ \bigcap_{n=1}^\infty \bigcup_{m=n}^\infty A_m}\\
+      &=\{w\in \Omega \colon w \in A_n \text{ para un número infinito de valores de } n \}\\
+      &=\{A_n \text{ i.o.} \}.\\
+      & \\
+      \displaystyle{\liminf A_n } &:=\displaystyle{ \bigcup_{n=1}^\infty \bigcap_{m=n}^\infty A_m}\\
+      &=\{w\in \Omega \colon w \in A_n \text{ para  todos excepto un número finito de valores de } n \}\\
+      &=\{A_n \text{ ult.} \}.
+      \end{align*}
+    </p>
+  </div>
+
+
+
+  <div class="ejercicio-box"><h1 class="number-title-practica"> Ejercicio</h1>
+    <p>
+      Sea $\{ A_n\}$ una sucesión de eventos. Se satisfacen:
+    </p>
+    <p>
+      <ol>
+        <li> $\liminf A_n \subseteq \limsup A_n$,</li><br>
+        <li> $\left( \liminf A_n  \right)^{c}=  \limsup \left(A_n\right)^{c}$,</li><br>
+        <li> $\left( \limsup A_n  \right)^{c}=  \liminf \left(A_n\right)^{c}$. </li>
+    </p>
+  </div>
+
+
+
 
   <h1 class="page-title"> $\sigma-\text{Álgebra de Borel}$</h1>
 
