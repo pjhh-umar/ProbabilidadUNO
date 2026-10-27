@@ -307,7 +307,23 @@
     </ol>
     <p>
         Al par $(X, d)$ se le conoce como un <strong>espacio métrico</strong>. 
-        En nuestro contexto principal, el conjunto de los números reales $\mathbb{R}$ es un espacio métrico con la métrica euclidiana inducida por el valor absoluto: $d(x, y) = |x - y|$.
+        <!-- En nuestro contexto principal, el conjunto de los números reales $\mathbb{R}$ es un espacio métrico con la métrica euclidiana inducida por el valor absoluto: $d(x, y) = |x - y|$. -->
+    </p>
+</div>
+
+<div class="observacion-box">
+    <h2 class="title-observacion">Observación</h2>
+    <p>
+        El conjunto de los números reales $\mathbb{R}$, junto con la función
+    </p>
+    \[
+        d(x,y)=|x-y|,\qquad x,y\in\mathbb{R},
+    \]
+    <p>
+        es un espacio métrico. Esta función se conoce como la
+        <strong>métrica usual</strong> o <strong>métrica euclidiana</strong>
+        de $\mathbb{R}$. En lo sucesivo, salvo que se indique otra cosa,
+        consideraremos a $\mathbb{R}$ con esta métrica.
     </p>
 </div>
 
@@ -326,8 +342,7 @@
 
 <div class="definicion-box">
     <h1 class="number-title-practica"> Definición (Conjunto Abierto en un Espacio Métrico)</h1>
-    <p>
-        Sea $(X, d)$ un espacio métrico. Un subconjunto $U \subseteq X$ se dice que es <strong>abierto</strong> si, para cada punto $x \in U$, existe un radio $r > 0$ tal que la bola abierta $B_r(x)$ está completamente contenida en $U$. Es decir:
+    <p>Sea $(X, d)$ un espacio métrico. Un subconjunto $U \subseteq X$ se dice que es <strong>abierto</strong> si, para cada punto $x \in U$, existe un radio $r > 0$ tal que la bola abierta $B_r(x)$ está completamente contenida en $U$. Es decir:
     </p>
     <p>
         $$\forall x \in U, \exists r > 0 \text{ tal que } B_r(x) \subseteq U$$
@@ -386,24 +401,21 @@
         Sea $X$ un conjunto arbitrario no vacío. Una colección $\tau$ de subconjuntos de $X$ se llama <strong>topología</strong> sobre $X$ si cumple los siguientes axiomas:
     </p>
     <ol>
-        <li>El conjunto vacío y el conjunto total pertenecen a la topología: $\emptyset, X \in \tau$.</li>
-        <li>La unión arbitraria de elementos de $\tau$ pertenece a $\tau$.</li>
-        <li>La intersección finita de elementos de $\tau$ pertenece a $\tau$.</li>
+        <li>$\emptyset, X \in \tau$.</li>
+        <li> Si $U_1, U_2, \ldots, U_n \in \tau$, entonces $\displaystyle{\bigcap_{i=1}^n} U_i \in \tau$. i.e. la intersección finita de elementos de $\tau$ pertenece a $\tau$.</li>
+        <li> Si $\{U_\alpha\}_{\alpha \in I}$ es una familia arbitraria de elementos de $\tau$, entonces $\displaystyle{\bigcup_{\alpha \in I} U_\alpha} \in \tau$. i.e. la unión arbitraria de elementos de $\tau$ pertenece a $\tau$.</li>
     </ol>
     <p>
         Al par $(X, \tau)$ se le denomina <strong>espacio topológico</strong>, y a los elementos que pertenecen a la colección $\tau$ se les llama <strong>conjuntos abiertos</strong>.
     </p>
 </div>
 
-<div class="nota-box">
-    <h1 class="number-title"> Observación</h1>
-    <p>
-        Todo espacio métrico $(X, d)$ induce naturalmente un espacio topológico $(X, \tau)$, donde $\tau$ es la colección de todos los conjuntos abiertos definidos a partir de las bolas abiertas de la métrica $d$. 
-    </p>
-    <p>
-        Por lo tanto, $\mathbb{R}$ dotado con la métrica del valor absoluto es, por definición, un <strong>espacio topológico</strong>. En este espacio, los conjuntos abiertos se pueden visualizar como uniones arbitrarias de intervalos abiertos.
-    </p>
+<div class="definicion-box">
+    <h1 class="number-title-practica"> Definición (Conjunto cerrado)</h1>
+    <p> Sea  $(X, \tau)$ un espacio topológico. Un conjunto $F \subseteq X$ es <strong>cerrado</strong> si su complemento $X \setminus F$ es abierto.</p>
 </div>
+
+
 
 <div class="definicion-box">
     <h1 class="number-title-practica"> Definición ($\sigma$-álgebra de Borel)</h1>
@@ -419,7 +431,16 @@
     </p>
 </div>
 
-<h1 class="page-title">$\sigma$-Álgebra de Borel</h1>
+<div class="observacion-box">
+    <h1 class="number-title"> Observación</h1>
+    <p>
+        Todo espacio métrico $(X, d)$ induce naturalmente un espacio topológico $(X, \tau)$, donde $\tau$ es la colección de todos los conjuntos abiertos definidos a partir de las bolas abiertas de la métrica $d$. 
+    </p>
+    <p>
+        Por lo tanto, $\mathbb{R}$ dotado con la métrica del valor absoluto es, por definición, un <strong>espacio topológico</strong>. En este espacio, los conjuntos abiertos se pueden visualizar como uniones arbitrarias de intervalos abiertos.
+    </p>
+</div>
+<h1 class="page-title">$\sigma$-Álgebra de Borel en $\mathbb{R}$</h1>
 
 <!-- 1. MOTIVACIÓN -->
 
@@ -484,8 +505,6 @@
   <p>Elegir una $\sigma$-álgebra establece qué eventos son medibles en el modelo. La asignación de un número a cada evento se realizará cuando definamos una medida de probabilidad.</p>
 </div>
 
-<!-- 2. ABIERTOS, CERRADOS Y DEFINICIÓN -->
-
 <h1 class="page-title">De los intervalos a los conjuntos borelianos</h1>
 
 <div class="definicion-box">
@@ -500,6 +519,10 @@
   <p>Un conjunto $F\subseteq\mathbb{R}$ es <b>cerrado</b> si su complemento $\mathbb{R}\setminus F$ es abierto.</p>
   <p>Los intervalos $(a,b)$ son abiertos y los intervalos $[a,b]$ son cerrados. Los conjuntos $\emptyset$ y $\mathbb{R}$ son, a la vez, abiertos y cerrados.</p>
 </div>
+
+
+
+<!-- 2. ABIERTOS, CERRADOS Y DEFINICIÓN -->
 
 <div class="ejemplo-box">
   <h1 class="number-title-practica">Ejemplo</h1>
@@ -1255,6 +1278,836 @@
         <li> $\left( \limsup A_n  \right)^{c}=  \liminf \left(A_n\right)^{c}$. </li>
     </p>
   </div>
+
+  
+<h1 class="page-title">Sucesiones de eventos</h1>
+
+<!-- 1. MOTIVACIÓN Y DEFINICIÓN -->
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Introducción</h1>
+  <p>Al estudiar un fenómeno durante varios periodos, cada periodo puede tener asociado un evento. Por ejemplo, que una cartera presente alguna reclamación durante el año $n$.</p>
+  <p>Esto conduce a preguntas distintas: que haya una reclamación al menos una vez, que la haya todos los años, que ocurra en una cantidad infinita de años o que ocurra todos los años a partir de cierto momento.</p>
+  <p>Para describir estas situaciones necesitamos estudiar <b>sucesiones de eventos</b>, sus uniones e intersecciones y los conjuntos que representan su comportamiento a largo plazo.</p>
+</div>
+
+<div class="definicion-box" id="se-definicion">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>Sucesión de conjuntos o de eventos.</b></p>
+  <p>Sea $\Omega$ un conjunto no vacío. Una <b>sucesión de subconjuntos de $\Omega$</b> es una función que a cada $n\in\mathbb{N}=\{1,2,\ldots\}$ le asigna un conjunto $A_n\subseteq\Omega$. Se denota por</p>
+  <div style="overflow-x: auto;">
+  \[
+    (A_n)_{n\geq1}=(A_1,A_2,A_3,\ldots).
+  \]
+</div>
+  <p>Cuando estos conjuntos representan eventos de un experimento, hablamos de una <b>sucesión de eventos</b>. Todos ellos se consideran dentro del mismo espacio muestral $\Omega$.</p>
+</div>
+
+<div class="notacion-box">
+  <h2 class="title-notacion">Notación</h2>
+  <ul>
+    <li>$n$ es el índice que identifica el término de la sucesión.</li>
+    <li>$A_n$ es el evento correspondiente al índice $n$.</li>
+    <li>$\omega\in\Omega$ es un resultado del experimento.</li>
+    <li>La expresión $\omega\in A_n$ significa que, para ese resultado, ocurre el evento $A_n$.</li>
+  </ul>
+  <p>Los eventos de una sucesión pueden repetirse. Por ejemplo, la sucesión constante $A_n=A$ para todo $n$ es una sucesión de eventos.</p>
+</div>
+
+<div class="ejemplo-box" id="se-historias">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Un registro de reclamaciones a lo largo del tiempo.</b></p>
+  <p>Consideremos un modelo idealizado que registra, año tras año, si una cartera presenta alguna reclamación. Un resultado completo es una sucesión</p>
+  <div style="overflow-x: auto;">
+  \[
+    \omega=(\omega_1,\omega_2,\ldots),\qquad
+    \omega_n\in\{0,1\},
+  \]
+</div>
+  <p>donde $\omega_n=1$ indica que hubo alguna reclamación en el año $n$ y $\omega_n=0$ indica que no la hubo. Tomamos como $\Omega$ el conjunto de todas estas sucesiones y definimos</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n=\{\omega\in\Omega:\omega_n=1\}.
+  \]
+</div>
+  <p>El resultado $\omega$ contiene la historia completa; el evento $A_n$ examina la posición $n$ de esa historia.</p>
+  <p>Por ejemplo, la historia $(1,0,1,0,1,0,\ldots)$ presenta reclamaciones en todos los años impares, mientras que $(0,0,1,1,1,\ldots)$ las presenta todos los años a partir del tercero. Los límites de eventos permitirán expresar esta diferencia mediante conjuntos.</p>
+</div>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>Unión e intersección de una sucesión de eventos.</b></p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \bigcup_{n=1}^{\infty}A_n
+      &amp;=\{\omega\in\Omega:\exists n\geq1,\ \omega\in A_n\},\\
+      \bigcap_{n=1}^{\infty}A_n
+      &amp;=\{\omega\in\Omega:\forall n\geq1,\ \omega\in A_n\}.
+    \end{aligned}
+  \]
+</div>
+  <p>La unión representa que <b>ocurre al menos uno</b> de los eventos. La intersección representa que <b>ocurren todos</b>.</p>
+  <p>Si los eventos están asociados a periodos, esto corresponde a «ocurre al menos una vez» y «ocurre en todos los periodos», respectivamente.</p>
+</div>
+
+<!-- 2. SUCESIONES MONÓTONAS -->
+
+<h1 class="page-title">Sucesiones crecientes y decrecientes</h1>
+
+<div class="definicion-box" id="se-monotonas">
+  <h1 class="number-title-practica">Definición</h1>
+  <p>Una sucesión $(A_n)_{n\geq1}$ es <b>creciente</b> si</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n\subseteq A_{n+1}\quad\text{para todo }n\geq1.
+  \]
+</div>
+  <p>Es <b>decreciente</b> si</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_{n+1}\subseteq A_n\quad\text{para todo }n\geq1.
+  \]
+</div>
+  <p>Se dice que la sucesión es <b>monótona</b> cuando es creciente o decreciente. Las inclusiones pueden ser igualdades; una sucesión constante es creciente y decreciente a la vez.</p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p>En una sucesión creciente, cuando un resultado entra en algún $A_n$, permanece en todos los términos posteriores. En una sucesión decreciente, cuando un resultado deja de pertenecer a algún $A_n$, tampoco pertenece a los términos posteriores.</p>
+  <p>Estas afirmaciones se refieren a la pertenencia de cada resultado a los conjuntos, mediante las inclusiones indicadas.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Conjuntos que crecen y conjuntos que se desplazan hacia la derecha.</b></p>
+  <p>En $\Omega=\mathbb{N}_0=\{0,1,2,\ldots\}$, consideremos</p>
+  <div style="overflow-x: auto;">
+  \[
+    C_n=\{0,1,\ldots,n\},\qquad
+    D_n=\{n,n+1,n+2,\ldots\}.
+  \]
+</div>
+  <p>La sucesión $(C_n)$ es creciente: cada término incorpora un número nuevo. Además,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \bigcup_{n=1}^{\infty}C_n=\mathbb{N}_0.
+  \]
+</div>
+  <p>La sucesión $(D_n)$ es decreciente: en cada paso se elimina su menor elemento. Para cualquier $k\in\mathbb{N}_0$, al tomar $n&gt;k$ se tiene $k\notin D_n$, por lo que</p>
+  <div style="overflow-x: auto;">
+  \[
+    \bigcap_{n=1}^{\infty}D_n=\emptyset.
+  \]
+</div>
+  <p>Cada $D_n$ es infinito y no vacío, aunque su intersección sea vacía.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>El papel de los extremos de los intervalos.</b></p>
+  <p>En $\Omega=[0,1]$, las sucesiones</p>
+  <div style="overflow-x: auto;">
+  \[
+    B_n=\left[0,\frac{1}{n}\right],\qquad
+    E_n=\left(0,\frac{1}{n}\right]
+  \]
+</div>
+  <p>son decrecientes. Sin embargo,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \bigcap_{n=1}^{\infty}B_n=\{0\},\qquad
+    \bigcap_{n=1}^{\infty}E_n=\emptyset.
+  \]
+</div>
+  <p>Todo punto $x&gt;0$ queda fuera de ambos intervalos cuando $n$ es suficientemente grande. El punto $0$ pertenece a todos los $B_n$ y a ninguno de los $E_n$.</p>
+</div>
+
+<!-- 3. CONJUNTOS AUXILIARES Y LÍMITES -->
+
+<h1 class="page-title">Cómo describir lo que ocurre a largo plazo</h1>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>Eventos construidos a partir de un índice.</b></p>
+  <p>Para cada $m\geq1$, definimos</p>
+  <div style="overflow-x: auto;">
+  \[
+    V_m=\bigcap_{n=m}^{\infty}A_n,\qquad
+    U_m=\bigcup_{n=m}^{\infty}A_n.
+  \]
+</div>
+  <ul>
+    <li>$\omega\in V_m$ significa que ocurren todos los eventos desde el índice $m$ en adelante.</li>
+    <li>$\omega\in U_m$ significa que ocurre algún evento cuyo índice es al menos $m$.</li>
+  </ul>
+  <p>Cuando aumenta $m$, en la intersección se exigen menos condiciones y en la unión se consideran menos oportunidades. Por ello,</p>
+  <div style="overflow-x: auto;">
+  \[
+    V_m\subseteq V_{m+1},\qquad
+    U_{m+1}\subseteq U_m.
+  \]
+</div>
+</div>
+
+<div class="definicion-box" id="se-limites">
+  <h1 class="number-title-practica">Definición</h1>
+  <p><b>Límite inferior y límite superior de una sucesión de eventos.</b></p>
+  <p>Para una sucesión $(A_n)_{n\geq1}$ de subconjuntos de $\Omega$, se definen</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \liminf_{n\to\infty}A_n
+      &amp;=\bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}A_n
+       =\bigcup_{m=1}^{\infty}V_m,\\
+      \limsup_{n\to\infty}A_n
+      &amp;=\bigcap_{m=1}^{\infty}\bigcup_{n=m}^{\infty}A_n
+       =\bigcap_{m=1}^{\infty}U_m.
+    \end{aligned}
+  \]
+</div>
+  <p>Ambos límites son conjuntos de resultados de $\Omega$. Están definidos para toda sucesión de conjuntos, aunque sean distintos entre sí.</p>
+</div>
+
+<div class="teorema-box" id="se-interpretacion">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Interpretación mediante pertenencia y cuantificadores.</b></p>
+  <ol>
+    <li><p>Un resultado $\omega$ pertenece al límite inferior si y solo si pertenece a todos los $A_n$ a partir de cierto índice:</p>
+      <div style="overflow-x: auto;">
+  \[
+        \omega\in\liminf_{n\to\infty}A_n
+        \iff\exists m\geq1\ \forall n\geq m:\ \omega\in A_n.
+      \]
+</div>
+      <p>Es decir, $A_n$ ocurre <b>para todos los índices salvo, posiblemente, una cantidad finita</b>.</p>
+    </li>
+    <li><p>Un resultado $\omega$ pertenece al límite superior si y solo si pertenece a $A_n$ para una cantidad infinita de índices:</p>
+      <div style="overflow-x: auto;">
+  \[
+        \omega\in\limsup_{n\to\infty}A_n
+        \iff\forall m\geq1\ \exists n\geq m:\ \omega\in A_n.
+      \]
+</div>
+      <p>Es decir, $A_n$ ocurre <b>infinitas veces</b>.</p>
+    </li>
+  </ol>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Pertenecer a la unión $\bigcup_m V_m$ significa pertenecer a algún $V_m$. A su vez, pertenecer a $V_m$ exige pertenecer a todos los $A_n$ con $n\geq m$. Esto prueba la primera equivalencia.</p>
+    <p>Pertenecer a la intersección $\bigcap_m U_m$ significa pertenecer a cada $U_m$. Para cada $m$, esto exige que exista $n\geq m$ con $\omega\in A_n$.</p>
+    <p>Un conjunto de índices naturales es infinito si y solo si contiene índices arbitrariamente grandes. En efecto, si hubiera solamente una cantidad finita de índices de pertenencia, podríamos elegir $m$ mayor que todos ellos. Recíprocamente, si después de algún $m$ no hubiera pertenencias, todos los índices posibles estarían entre $1$ y $m-1$.</p>
+  </div>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p><b>Infinitas veces y a partir de cierto momento.</b></p>
+  <p>En la historia $(1,0,1,0,1,0,\ldots)$, los eventos $A_n$ ocurren infinitas veces y también dejan de ocurrir infinitas veces. En la historia $(0,0,1,1,1,\ldots)$, todos los eventos ocurren a partir del tercer índice.</p>
+  <p>Por ello, pertenecer al límite inferior implica pertenecer al límite superior; la primera condición exige más que la segunda.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Relación entre unión, intersección y conjuntos límite.</b></p>
+  <div style="overflow-x: auto;">
+  \[
+    \bigcap_{n=1}^{\infty}A_n
+    \subseteq\liminf_{n\to\infty}A_n
+    \subseteq\limsup_{n\to\infty}A_n
+    \subseteq\bigcup_{n=1}^{\infty}A_n.
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Si $\omega$ pertenece a todos los $A_n$, pertenece a todos a partir del índice $1$, por lo que pertenece al límite inferior.</p>
+    <p>Si pertenece a todos a partir de algún índice, pertenece a una cantidad infinita de ellos y, por tanto, al límite superior.</p>
+    <p>Si pertenece a una cantidad infinita de los $A_n$, pertenece al menos a uno, lo que significa que pertenece a su unión.</p>
+  </div>
+</div>
+
+<div class="ejemplo-box" id="se-patrones">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Comparación de cinco historias.</b></p>
+  <p>Retomemos el modelo de reclamaciones. Consideremos las historias que tienen unos: en ningún año; solamente en los años $1$ y $3$; en todos los años impares; en todos los años desde el tercero; y en todos los años.</p>
+  <figure class="imagen-box">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 222" width="100%" style="max-width: 520px; height: auto; display: block; margin: auto;" role="img" aria-labelledby="se-patrones-titulo se-patrones-descripcion">
+<title id="se-patrones-titulo">Cinco patrones de ocurrencia de eventos</title>
+<desc id="se-patrones-descripcion">Un uno indica que ocurre el evento del año de la columna. Las filas representan: ningún año; solamente los años uno y tres; todos los impares; todos desde el tercero; y todos los años.</desc>
+<g font-family="Georgia,serif" font-size="15" fill="#243247">
+<text x="8" y="20">Año</text>
+<text x="130" y="20" text-anchor="middle">1</text>
+<text x="160" y="20" text-anchor="middle">2</text>
+<text x="190" y="20" text-anchor="middle">3</text>
+<text x="220" y="20" text-anchor="middle">4</text>
+<text x="250" y="20" text-anchor="middle">5</text>
+<text x="280" y="20" text-anchor="middle">6</text>
+<text x="322" y="20">…</text></g>
+<text x="8" y="54" font-family="Georgia,serif" font-size="15" fill="#243247">Ninguno</text>
+<rect x="119" y="36" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="130" y="54" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="149" y="36" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="160" y="54" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="179" y="36" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="190" y="54" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="209" y="36" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="220" y="54" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="239" y="36" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="250" y="54" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="269" y="36" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="280" y="54" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<text x="322" y="54" font-size="18" fill="#243247">…</text>
+<text x="8" y="89" font-family="Georgia,serif" font-size="15" fill="#243247">Solo 1 y 3</text>
+<rect x="119" y="71" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="130" y="89" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="149" y="71" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="160" y="89" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="179" y="71" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="190" y="89" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="209" y="71" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="220" y="89" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="239" y="71" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="250" y="89" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="269" y="71" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="280" y="89" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<text x="322" y="89" font-size="18" fill="#243247">…</text>
+<text x="8" y="124" font-family="Georgia,serif" font-size="15" fill="#243247">Impares</text>
+<rect x="119" y="106" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="130" y="124" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="149" y="106" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="160" y="124" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="179" y="106" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="190" y="124" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="209" y="106" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="220" y="124" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="239" y="106" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="250" y="124" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="269" y="106" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="280" y="124" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<text x="322" y="124" font-size="18" fill="#243247">…</text>
+<text x="8" y="159" font-family="Georgia,serif" font-size="15" fill="#243247">Desde 3</text>
+<rect x="119" y="141" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="130" y="159" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="149" y="141" width="22" height="26" rx="4" fill="#e4ebf1"/>
+<text x="160" y="159" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4e6174">0</text>
+<rect x="179" y="141" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="190" y="159" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="209" y="141" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="220" y="159" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="239" y="141" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="250" y="159" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="269" y="141" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="280" y="159" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<text x="322" y="159" font-size="18" fill="#243247">…</text>
+<text x="8" y="194" font-family="Georgia,serif" font-size="15" fill="#243247">Siempre</text>
+<rect x="119" y="176" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="130" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="149" y="176" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="160" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="179" y="176" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="190" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="209" y="176" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="220" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="239" y="176" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="250" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<rect x="269" y="176" width="22" height="26" rx="4" fill="#315b87"/>
+<text x="280" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffff">1</text>
+<text x="322" y="194" font-size="18" fill="#243247">…</text>
+</svg>
+    <figcaption>Se muestran los primeros seis años. Cada fila continúa de acuerdo con el patrón descrito.</figcaption>
+  </figure>
+  <ol>
+    <li><b>Ningún año:</b> no pertenece a la unión de los eventos.</li>
+    <li><b>Solo los años $1$ y $3$:</b> pertenece a la unión, pero no al límite superior.</li>
+    <li><b>Todos los años impares:</b> pertenece al límite superior, pero no al límite inferior.</li>
+    <li><b>Todos desde el tercero:</b> pertenece al límite inferior, pero no a la intersección de todos los eventos.</li>
+    <li><b>Todos los años:</b> pertenece a la intersección de todos los eventos.</li>
+  </ol>
+  <p>Estas historias muestran que cada una de las inclusiones del teorema anterior puede ser estricta, incluso dentro de un mismo modelo.</p>
+</div>
+
+<!-- 4. PROPIEDADES -->
+
+<h1 class="page-title">Propiedades de los conjuntos límite</h1>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Complementos de los conjuntos límite.</b></p>
+  <p>Tomando todos los complementos respecto de $\Omega$, se cumple</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \left(\liminf_{n\to\infty}A_n\right)^c
+      &amp;=\limsup_{n\to\infty}A_n^c,\\
+      \left(\limsup_{n\to\infty}A_n\right)^c
+      &amp;=\liminf_{n\to\infty}A_n^c.
+    \end{aligned}
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Aplicando dos veces las leyes de De Morgan obtenemos</p>
+    <div style="overflow-x: auto;">
+  \[
+      \begin{aligned}
+        \left(\bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}A_n\right)^c
+        &amp;=\bigcap_{m=1}^{\infty}\bigcup_{n=m}^{\infty}A_n^c\\
+        &amp;=\limsup_{n\to\infty}A_n^c.
+      \end{aligned}
+    \]
+</div>
+    <p>Para la segunda identidad,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \begin{aligned}
+        \left(\bigcap_{m=1}^{\infty}\bigcup_{n=m}^{\infty}A_n\right)^c
+        &amp;=\bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}A_n^c\\
+        &amp;=\liminf_{n\to\infty}A_n^c.
+      \end{aligned}
+    \]
+</div>
+  </div>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Solamente una cantidad finita de reclamaciones.</b></p>
+  <p>En el modelo de registros anuales, que haya reclamaciones en solamente una cantidad finita de años significa que, desde algún año, ya no las haya. Este evento es</p>
+  <div style="overflow-x: auto;">
+  \[
+    \left(\limsup_{n\to\infty}A_n\right)^c
+    =\bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}A_n^c.
+  \]
+</div>
+  <p>La expresión incluye la posibilidad de que no haya reclamaciones en ningún año, pues cero también es una cantidad finita.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Modificar una cantidad finita de términos conserva los conjuntos límite.</b></p>
+  <p>Si existe $n_0$ tal que $A_n=B_n$ para todo $n\geq n_0$, entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    \liminf_{n\to\infty}A_n=\liminf_{n\to\infty}B_n,
+    \qquad
+    \limsup_{n\to\infty}A_n=\limsup_{n\to\infty}B_n.
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Para cada $\omega$, las pertenencias a $A_n$ y $B_n$ coinciden desde $n_0$. Cambiar las pertenencias en los primeros $n_0-1$ índices conserva tanto la propiedad de pertenecer a una cantidad infinita de términos como la de pertenecer a todos a partir de algún índice. Las interpretaciones de los límites inferior y superior dan ambas igualdades.</p>
+  </div>
+</div>
+
+<!-- 5. CONVERGENCIA -->
+
+<h1 class="page-title">Convergencia de una sucesión de eventos</h1>
+
+<div class="definicion-box" id="se-convergencia">
+  <h1 class="number-title-practica">Definición</h1>
+  <p>Se dice que $(A_n)_{n\geq1}$ <b>converge al conjunto $A$</b> si</p>
+  <div style="overflow-x: auto;">
+  \[
+    \liminf_{n\to\infty}A_n
+    =\limsup_{n\to\infty}A_n=A.
+  \]
+</div>
+  <p>En este caso escribimos</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n\longrightarrow A
+    \qquad\text{o}\qquad
+    \lim_{n\to\infty}A_n=A.
+  \]
+</div>
+  <p>Si los límites inferior y superior son distintos, la sucesión no converge en este sentido.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Convergencia y estabilización de la pertenencia de cada resultado.</b></p>
+  <p>Se tiene $A_n\to A$ si y solo si para cada $\omega\in\Omega$ existe un índice $N(\omega)$ tal que, para todo $n\geq N(\omega)$,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \omega\in A_n\iff\omega\in A.
+  \]
+</div>
+  <p>Esto significa que cada resultado termina permaneciendo dentro de todos los eventos posteriores, si pertenece a $A$, o fuera de todos ellos, si no pertenece a $A$.</p>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Supongamos $A_n\to A$. Si $\omega\in A$, pertenece al límite inferior y, por tanto, a todos los $A_n$ a partir de algún índice. Si $\omega\notin A$, no pertenece al límite superior; así, pertenece a solamente una cantidad finita de los $A_n$ y queda fuera de todos los posteriores.</p>
+    <p>Recíprocamente, supongamos que se cumple la condición indicada. Cada $\omega\in A$ pertenece a todos los $A_n$ desde algún índice, de modo que $A\subseteq\liminf_n A_n$. Cada $\omega\notin A$ queda fuera de todos los $A_n$ desde algún índice y, por ello, no pertenece a $\limsup_n A_n$.</p>
+    <p>Junto con la inclusión general entre los conjuntos límite, obtenemos</p>
+    <div style="overflow-x: auto;">
+  \[
+      A\subseteq\liminf_n A_n
+      \subseteq\limsup_n A_n\subseteq A.
+    \]
+</div>
+    <p>Las cuatro expresiones representan el mismo conjunto.</p>
+  </div>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p>El índice $N(\omega)$ puede depender del resultado $\omega$. Por ejemplo, en $\Omega=\mathbb{N}$, los conjuntos $A_n=\{1,\ldots,n\}$ convergen a $\mathbb{N}$. Cada número termina perteneciendo a todos los conjuntos posteriores, aunque ningún $A_n$ sea igual a $\mathbb{N}$.</p>
+</div>
+
+<div class="teorema-box" id="se-limite-monotono">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Toda sucesión monótona de eventos converge.</b></p>
+  <ol>
+    <li><p>Si $(A_n)$ es creciente, entonces</p>
+      <div style="overflow-x: auto;">
+  \[
+        \lim_{n\to\infty}A_n=\bigcup_{n=1}^{\infty}A_n.
+      \]
+</div>
+    </li>
+    <li><p>Si $(A_n)$ es decreciente, entonces</p>
+      <div style="overflow-x: auto;">
+  \[
+        \lim_{n\to\infty}A_n=\bigcap_{n=1}^{\infty}A_n.
+      \]
+</div>
+    </li>
+  </ol>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p><b>Caso creciente.</b> Si $\omega\in\bigcup_n A_n$, existe $n_0$ tal que $\omega\in A_{n_0}$. Por las inclusiones crecientes, $\omega\in A_n$ para todo $n\geq n_0$. Así,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \bigcup_n A_n\subseteq\liminf_n A_n
+      \subseteq\limsup_n A_n\subseteq\bigcup_n A_n.
+    \]
+</div>
+    <p>Esto prueba la primera igualdad.</p>
+    <p><b>Caso decreciente.</b> Si $\omega$ no pertenece a $\bigcap_n A_n$, existe $n_0$ con $\omega\notin A_{n_0}$. Las inclusiones decrecientes implican que queda fuera de todos los $A_n$ con $n\geq n_0$, por lo que no pertenece al límite superior. Por tanto,</p>
+    <div style="overflow-x: auto;">
+  \[
+      \bigcap_n A_n\subseteq\liminf_n A_n
+      \subseteq\limsup_n A_n\subseteq\bigcap_n A_n.
+    \]
+</div>
+    <p>Las inclusiones dan la segunda igualdad.</p>
+  </div>
+</div>
+
+<div class="notacion-box">
+  <h2 class="title-notacion">Notación</h2>
+  <p>Escribimos <b>$A_n\uparrow A$</b> cuando la sucesión es creciente y su unión es $A$. Escribimos <b>$A_n\downarrow A$</b> cuando es decreciente y su intersección es $A$.</p>
+  <p>El teorema anterior asegura que en ambos casos $A_n\to A$.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Una sucesión creciente cuyo límite no incluye un extremo.</b></p>
+  <p>En $\Omega=[0,1]$, sea</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n=\left[0,1-\frac{1}{n}\right].
+  \]
+</div>
+  <p>La sucesión es creciente. Cada $x\in[0,1)$ pertenece a $A_n$ cuando $n$ es suficientemente grande, mientras que $1$ no pertenece a ningún término. Por ello,</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n\uparrow[0,1).
+  \]
+</div>
+  <p>Para determinar el límite como conjunto hay que comprobar la pertenencia de sus puntos, incluidos los extremos de los intervalos.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Una sucesión convergente que no es monótona.</b></p>
+  <p>En $\Omega=\mathbb{N}$, sea $A_n=\{n\}$. Cada resultado $k\in\mathbb{N}$ pertenece únicamente al término $A_k$. Por tanto, ningún resultado pertenece a una cantidad infinita de los $A_n$, y</p>
+  <div style="overflow-x: auto;">
+  \[
+    \liminf_{n\to\infty}A_n
+    =\limsup_{n\to\infty}A_n=\emptyset.
+  \]
+</div>
+  <p>Así, $A_n\to\emptyset$, aunque cada $A_n$ sea no vacío y la sucesión no sea creciente ni decreciente.</p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica">Ejemplo</h1>
+  <p><b>Una sucesión que no converge.</b></p>
+  <p>En $\Omega=\{a,b,c\}$, definamos</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_{2n-1}=\{a,b\},\qquad
+    A_{2n}=\{b,c\},\qquad n\geq1.
+  \]
+</div>
+  <p>El resultado $b$ pertenece a todos los términos. Los resultados $a$ y $c$ pertenecen cada uno a una cantidad infinita de términos, pero también quedan fuera de una cantidad infinita de ellos. En consecuencia,</p>
+  <div style="overflow-x: auto;">
+  \[
+    \liminf_{n\to\infty}A_n=\{b\},\qquad
+    \limsup_{n\to\infty}A_n=\{a,b,c\}.
+  \]
+</div>
+  <p>Como estos conjuntos son distintos, la sucesión no converge.</p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Operaciones con sucesiones convergentes.</b></p>
+  <p>Si $A_n\to A$ y $B_n\to B$, entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      A_n^c&amp;\longrightarrow A^c,\\
+      A_n\cup B_n&amp;\longrightarrow A\cup B,\\
+      A_n\cap B_n&amp;\longrightarrow A\cap B,\\
+      A_n\setminus B_n&amp;\longrightarrow A\setminus B,\\
+      A_n\triangle B_n&amp;\longrightarrow A\triangle B.
+    \end{aligned}
+  \]
+</div>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Fijemos $\omega\in\Omega$. Por el criterio de convergencia, desde cierto índice la pertenencia de $\omega$ a $A_n$ coincide con su pertenencia a $A$. Desde otro índice ocurre lo mismo con $B_n$ y $B$.</p>
+    <p>Tomando el mayor de estos dos índices, ambas pertenencias coinciden simultáneamente con las de los conjuntos límite. Por ello, cualquier operación de la lista produce también la misma pertenencia que la operación correspondiente sobre $A$ y $B$. Aplicamos de nuevo el criterio de convergencia.</p>
+  </div>
+</div>
+
+<!-- 6. CONEXIONES QUE PUEDEN RETOMARSE POSTERIORMENTE -->
+
+<h1 class="page-title">Ampliación: funciones indicadoras</h1>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica">Definición</h1>
+  <p>Para un conjunto $A\subseteq\Omega$, su <b>función indicadora</b> es</p>
+  <div style="overflow-x: auto;">
+  \[
+    \mathbf{1}_A(\omega)=
+    \begin{cases}
+      1,&amp;\omega\in A,\\
+      0,&amp;\omega\notin A.
+    \end{cases}
+  \]
+</div>
+  <p>Esta función representa con un uno o un cero si el resultado pertenece al conjunto.</p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion">Observación</h2>
+  <p>El criterio de convergencia puede expresarse mediante indicadoras:</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n\longrightarrow A
+    \iff
+    \mathbf{1}_{A_n}(\omega)\longrightarrow\mathbf{1}_A(\omega)
+    \quad\text{para cada }\omega\in\Omega.
+  \]
+</div>
+  <p>En efecto, una sucesión de ceros y unos converge a cero o a uno exactamente cuando termina siendo constante con ese valor. Esta equivalencia relaciona los límites de conjuntos con la convergencia punto a punto de funciones.</p>
+</div>
+
+<h1 class="page-title" id="se-ampliacion-medibilidad">Para retomar después de las $\sigma$-álgebras</h1>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica">Teorema</h1>
+  <p><b>Medibilidad de los conjuntos límite.</b></p>
+  <p>Sea $\mathscr{F}$ una $\sigma$-álgebra sobre $\Omega$ y supongamos que $A_n\in\mathscr{F}$ para todo $n\geq1$. Entonces</p>
+  <div style="overflow-x: auto;">
+  \[
+    \liminf_{n\to\infty}A_n\in\mathscr{F},\qquad
+    \limsup_{n\to\infty}A_n\in\mathscr{F}.
+  \]
+</div>
+  <p>En particular, si $A_n\to A$, entonces $A\in\mathscr{F}$.</p>
+  <button class="respButton" type="button">Demostración</button>
+  <div class="resp-box">
+    <p>Una $\sigma$-álgebra es cerrada bajo uniones numerables y, mediante las leyes de De Morgan, también bajo intersecciones numerables. Para cada $m$, tanto $\bigcap_{n\geq m}A_n$ como $\bigcup_{n\geq m}A_n$ pertenecen a $\mathscr{F}$.</p>
+    <p>Al tomar la unión de los primeros y la intersección de los segundos obtenemos, respectivamente, el límite inferior y el límite superior. Ambos pertenecen a $\mathscr{F}$.</p>
+  </div>
+</div>
+
+<div class="nota-box">
+  <p>Esta propiedad explica una utilidad del cierre bajo operaciones numerables: los eventos que describen el comportamiento a largo plazo siguen siendo medibles. Al introducir una medida de probabilidad podremos estudiar sus probabilidades y demostrar la continuidad de la probabilidad para sucesiones monótonas.</p>
+</div>
+
+<!-- 7. EJERCICIOS -->
+
+<h1 class="page-title">Ejercicios de comprensión</h1>
+
+<div class="nota-box">
+  <p>Justifica cada respuesta mediante inclusiones, pertenencia de resultados y las definiciones de los conjuntos límite. En los ejercicios sobre subconjuntos de $\mathbb{R}$, los complementos se toman respecto de $\mathbb{R}$.</p>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Para cada sucesión de subconjuntos de $\mathbb{R}$, determina si es creciente, decreciente o ninguna de las dos. Calcula su límite inferior y su límite superior, e indica si converge.</p>
+  <ol>
+    <li>$A_n=[-n,n]$.</li>
+    <li>$B_n=(-1/n,1/n)$.</li>
+    <li>$C_n=[n,\infty)$.</li>
+    <li>$D_n=\{(-1)^n\}$.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Para las sucesiones monótonas, estudia la unión o la intersección correspondiente. En el último inciso, analiza por separado los índices pares e impares.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>En $\Omega=\mathbb{R}$, considera</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n=\left(\frac{1}{n},1\right),\qquad
+    B_n=\left[0,1+\frac{1}{n}\right).
+  \]
+</div>
+  <ol>
+    <li>Determina la monotonía y el límite de cada sucesión.</li>
+    <li>Justifica por separado la pertenencia de los puntos $0$ y $1$ a cada límite.</li>
+    <li>Explica por qué no basta sustituir los extremos de los intervalos por sus límites numéricos conservando automáticamente los mismos corchetes o paréntesis.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>El primer término de $(A_n)$ es vacío. Para $(B_n)$, comprueba que $1$ pertenece a todos los términos y que cualquier punto mayor que $1$ termina quedando fuera.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sean $A,B\subseteq\Omega$ y define $C_{2n-1}=A$ y $C_{2n}=B$ para $n\geq1$.</p>
+  <ol>
+    <li>Demuestra que el límite inferior de $(C_n)$ es $A\cap B$.</li>
+    <li>Demuestra que el límite superior de $(C_n)$ es $A\cup B$.</li>
+    <li>Deduce que $(C_n)$ converge si y solo si $A=B$.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Cada sucesión de términos desde algún índice en adelante contiene infinitos términos iguales a $A$ e infinitos iguales a $B$.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>En el modelo de registros de reclamaciones, clasifica las siguientes historias según pertenezcan al límite inferior, al límite superior, a ambos o a ninguno de los dos:</p>
+  <ol>
+    <li>Hay reclamaciones exactamente en los años $1,4,9,16,\ldots$.</li>
+    <li>Hay reclamaciones en todos los años, excepto en $1,4,9,16,\ldots$.</li>
+    <li>Hay reclamaciones todos los años desde el año $10$.</li>
+    <li>Hay reclamaciones solamente en los primeros $10$ años.</li>
+  </ol>
+  <p>Justifica qué implica en cada caso la cantidad de años con reclamaciones y la cantidad de años sin ellas.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Hay infinitos cuadrados perfectos e infinitos naturales que no son cuadrados perfectos. Para pertenecer al límite inferior debe haber solamente una cantidad finita de años sin reclamaciones.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Expresa mediante uniones, intersecciones y complementos los siguientes eventos:</p>
+  <ol>
+    <li>Ocurren solamente una cantidad finita de los $A_n$.</li>
+    <li>El evento $A_n$ no ocurre para una cantidad infinita de índices.</li>
+    <li>Todos los $A_n$ ocurren desde algún índice.</li>
+    <li>Desde cualquier índice se puede encontrar un evento posterior que no ocurre.</li>
+  </ol>
+  <p>Identifica cuáles de las descripciones representan el mismo evento.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Aplica las interpretaciones de los conjuntos límite a la sucesión $(A_n)$ y a la sucesión de complementos $(A_n^c)$. Cuida el orden de «existe un índice» y «para todo índice».</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Supón que los conjuntos $A_n$ son disjuntos dos a dos.</p>
+  <ol>
+    <li>Demuestra que $A_n\to\emptyset$.</li>
+    <li>Construye un ejemplo en el que todos los $A_n$ sean no vacíos.</li>
+    <li>¿Es necesario que exista un índice a partir del cual todos los $A_n$ sean vacíos? Justifica.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Un resultado puede pertenecer, a lo sumo, a uno de los conjuntos de una familia disjunta dos a dos.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Para sucesiones arbitrarias $(A_n)$ y $(B_n)$ de subconjuntos de $\Omega$, demuestra las identidades</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \limsup_n(A_n\cup B_n)
+      &amp;=(\limsup_n A_n)\cup(\limsup_n B_n),\\
+      \liminf_n(A_n\cap B_n)
+      &amp;=(\liminf_n A_n)\cap(\liminf_n B_n).
+    \end{aligned}
+  \]
+</div>
+  <p>Determina si también son válidas para cualquier par de sucesiones las igualdades</p>
+  <div style="overflow-x: auto;">
+  \[
+    \begin{aligned}
+      \limsup_n(A_n\cap B_n)
+      &amp;=(\limsup_n A_n)\cap(\limsup_n B_n),\\
+      \liminf_n(A_n\cup B_n)
+      &amp;=(\liminf_n A_n)\cup(\liminf_n B_n).
+    \end{aligned}
+  \]
+</div>
+  <p>Presenta un contraejemplo para cada igualdad que no sea válida en general.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Si un resultado pertenece a una cantidad infinita de uniones $A_n\cup B_n$, al menos una de las dos sucesiones debe contenerlo infinitas veces. Para buscar contraejemplos, considera sucesiones alternantes con $B_n=A_n^c$.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $(A_{n_k})_{k\geq1}$ una subsucesión de $(A_n)$, donde $n_1&lt;n_2&lt;\cdots$.</p>
+  <ol>
+    <li>Demuestra que si $A_n\to A$, entonces $A_{n_k}\to A$.</li>
+    <li>Presenta un ejemplo de una sucesión que no converge, pero que tiene una subsucesión convergente.</li>
+    <li>Si las subsucesiones $(A_{2n})$ y $(A_{2n-1})$ convergen al mismo conjunto $A$, ¿converge $(A_n)$ a $A$? Justifica.</li>
+  </ol>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Utiliza la estabilización de la pertenencia de cada resultado. En el tercer inciso, combina los índices a partir de los cuales se estabilizan las pertenencias en las posiciones pares e impares.</p>
+  </div>
+</div>
+
+<div class="ejercicio-box">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p><b>Profundización: un espacio muestral finito.</b></p>
+  <p>Supón que $\Omega$ es finito y que $A_n\to A$. Demuestra que existe un índice $N$ tal que</p>
+  <div style="overflow-x: auto;">
+  \[
+    A_n=A\quad\text{para todo }n\geq N.
+  \]
+</div>
+  <p>Explica por qué esta conclusión puede fallar cuando $\Omega$ es infinito.</p>
+  <button class="respButton" type="button">Pista</button>
+  <div class="resp-box">
+    <p>Para cada $\omega\in\Omega$ existe un índice $N(\omega)$ a partir del cual se estabiliza su pertenencia. Como hay solamente una cantidad finita de resultados, puedes tomar el máximo de esos índices. Para el caso infinito, considera conjuntos iniciales de $\mathbb{N}$.</p>
+  </div>
+</div>
+
+<div class="nota-box">
+  <h1 class="number-title-practica">Para reflexionar</h1>
+  <ol>
+    <li>¿En qué se diferencia «ocurre al menos una vez» de «ocurre infinitas veces»?</li>
+    <li>¿En qué se diferencia «ocurre siempre» de «ocurre siempre a partir de cierto índice»?</li>
+    <li>¿Qué relación existe entre los límites inferior y superior?</li>
+    <li>¿Puede una sucesión de conjuntos no vacíos converger al vacío?</li>
+    <li>¿Toda sucesión convergente es monótona?</li>
+    <li>¿Qué diferencia hay entre que cada resultado estabilice su pertenencia y que todos los conjuntos terminen siendo iguales?</li>
+  </ol>
+</div>
+
+<div class="nota-box">
+  <p><b>Lectura complementaria.</b> Manjunath Krishnapur, Indian Institute of Science, <a href="https://math.iisc.ac.in/~gadgil/MA261/notes/chapter-6.html" target="_blank" rel="noopener">Probability and Statistics, capítulo 6</a>, definiciones y ejemplos de límites de sucesiones de conjuntos.</p>
+</div>
 
 
 
