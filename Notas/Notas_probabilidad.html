@@ -2162,6 +2162,867 @@
     <h1 class="page-subtitle"> Espacio de probabilidad </h1>  
 
 
+<article id="medida-probabilidad">
+<h1 class="page-subtitle">Medida de probabilidad</h1>
+
+
+<div class="nota-box">
+<h1 class="number-title-practica">Introducción</h1>
+<p>Ya sabemos describir un experimento mediante un espacio muestral $\Omega$ y elegir una $\sigma$-álgebra $\mathscr{F}$ de eventos medibles. Ahora nos preguntamos: <b>¿cómo asignar un número a cada evento de manera coherente?</b></p>
+<p>En estas notas construiremos esa idea, distinguiremos las hipótesis de distintos modelos y deduciremos las primeras propiedades de la probabilidad.</p>
+
+
+</div>
+
+<h1 id="pm-motivacion" class="page-title">Una cartera y sus eventos</h1>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Un mismo espacio muestral admite distintos modelos.</b></p>
+<p>Se elige una póliza y se registra si, durante un año, presentó cero, una, dos o tres o más reclamaciones. Un espacio muestral adecuado es</p>
+
+<div style="overflow-x: auto;">
+\[
+\Omega=\{\omega_0,\omega_1,\omega_2,\omega_{3+}\}.
+\]
+</div>
+
+<p>Tomemos $\mathscr{F}=\mathscr{P}(\Omega)$ y supongamos que un modelo asigna los siguientes pesos:</p>
+<div style="overflow-x: auto;"><table>
+<thead><tr><th scope="col">Número</th><th scope="col">Probabilidad</th></tr></thead>
+<tbody>
+<tr><td>$0$</td><td>$0.70$</td></tr>
+<tr><td>$1$</td><td>$0.20$</td></tr>
+<tr><td>$2$</td><td>$0.08$</td></tr>
+<tr><td>$3$ o más</td><td>$0.02$</td></tr>
+</tbody></table></div>
+<p>El evento $A=\{\omega_1,\omega_2,\omega_{3+}\}$ significa que la póliza presentó al menos una reclamación. Como sus resultados son mutuamente excluyentes, deseamos asignarle</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=0.20+0.08+0.02=0.30.
+\]
+</div>
+
+<p>Contar tres resultados favorables entre cuatro daría $3/4$, pero esa cuenta corresponde a <b>otro modelo</b>: uno en que los cuatro resultados tienen el mismo peso. El espacio muestral describe posibilidades; la asignación de pesos incorpora el modelo probabilístico.</p>
+
+</div>
+
+<div class="observacion-box">
+<h2 class="title-observacion">Observación</h2><p><b>La información disponible también importa.</b></p>
+<p>Si solo distinguimos dos grupos $B$ y $B^c$, la familia $\mathscr{F}=\{\emptyset,B,B^c,\Omega\}$ puede ser suficiente. Una probabilidad definida sobre esta familia asigna valores a esos cuatro eventos.</p>
+<p>Si un conjunto $C$ no pertenece a $\mathscr{F}$, <b>$\mathbb{P}(C)$ no está definido en ese modelo</b>. La falta de definición no significa que su probabilidad sea cero. Para estudiar $C$ se necesita ampliar la familia de eventos y especificar una probabilidad compatible sobre ella.</p>
+</div>
+
+<h1 id="pm-interpretaciones" class="page-title">Formas de asignar probabilidades</h1>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Modelo clásico: contar bajo equiprobabilidad.</b></p>
+<p>Sea $\Omega$ finito y no vacío. Si se supone que todos sus resultados elementales son equiprobables, se define, para $A\subseteq\Omega$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=\frac{|A|}{|\Omega|}.
+\]
+</div>
+
+<p>Por ejemplo, para un dado equilibrado, $\mathbb{P}(\{2,4,6\})=3/6=1/2$. <b>La equiprobabilidad es una hipótesis del modelo</b>; no se deduce de que el conjunto $\Omega$ sea finito.</p>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Modelo geométrico: comparar longitudes, áreas o volúmenes.</b></p>
+<p>Si se supone uniformidad respecto de una medida geométrica $\mu$ sobre una región $\Omega$, con $0&lt;\mu(\Omega)&lt;\infty$, asignamos a cada evento medible $A\subseteq\Omega$</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=\frac{\mu(A)}{\mu(\Omega)}.
+\]
+</div>
+
+<p>En una recta usamos longitud; en el plano, área; en el espacio, volumen. La uniformidad significa que regiones medibles de la misma medida geométrica reciben la misma probabilidad.</p>
+<p>Por ejemplo, si el instante de llegada a una oficina se modela uniformemente entre las 9:00 y las 10:00, la probabilidad de llegar en los primeros 15 minutos es $15/60=1/4$. Esa fórmula exige la hipótesis de uniformidad.</p>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Un encuentro y una región del plano.</b></p>
+<p>Dos personas llegan entre las 12:00 y las 13:00 y cada una espera diez minutos. Sean $x,y\in[0,60]$ sus tiempos de llegada, medidos en minutos desde las 12:00. Suponemos que <b>el par $(x,y)$ es uniforme en el cuadrado $[0,60]^2$</b>.</p>
+<p>Se encuentran cuando $|x-y|\leq10$. La región favorable es la franja del dibujo:</p>
+<figure class="imagen-box">
+<svg style="max-width: 360px; height: auto; display: block; margin: auto;" viewBox="0 0 360 325" width="100%" role="img" aria-labelledby="pm-geometria-titulo pm-geometria-desc">
+<title id="pm-geometria-titulo">Tiempos de llegada y encuentro</title><desc id="pm-geometria-desc">Un cuadrado de lado sesenta. La franja entre y igual a x menos diez y y igual a x más diez representa el encuentro.</desc>
+<rect x="60" y="30" width="240" height="240" fill="#fff" stroke="#315b87" stroke-width="2" />
+<polygon points="60,270 100,270 300,70 300,30 260,30 60,230" fill="#b7d9e9" />
+<path d="M60 230L260 30 M100 270L300 70" fill="none" stroke="#315b87" stroke-width="2" />
+<path d="M60 270L300 30" fill="none" stroke="#6a7d91" stroke-dasharray="5 5" />
+<path d="M48 270H315 M60 282V15" fill="none" stroke="#243247" stroke-width="1.5" />
+<g fill="#243247" font-family="Georgia,serif" font-size="16"><text x="43" y="290">0</text><text x="290" y="294">60</text><text x="30" y="37">60</text><text x="321" y="275">x</text><text x="55" y="12">y</text></g>
+<rect x="127" y="138" width="108" height="29" rx="5" fill="white" /><text x="181" y="158" text-anchor="middle" fill="#173e60" font-size="16">|x − y| ≤ 10</text>
+</svg>
+<figcaption>El área favorable se obtiene quitando dos triángulos de catetos 50.</figcaption>
+</figure>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(\text{encuentro})
+=\frac{60^2-2\cdot\frac{50^2}{2}}{60^2}
+=\frac{1100}{3600}=\frac{11}{36}.
+\]
+</div>
+
+<p>El resultado depende del modelo uniforme para el par de tiempos. La expresión «llegar al azar», por sí sola, no especifica ese modelo.</p>
+</div>
+
+<div class="definicion-box">
+<h1 class="number-title-practica">Definición</h1><p><b>Frecuencia relativa: observar y estimar.</b></p>
+<p>Si realizamos $n$ observaciones y $n_A$ de ellas pertenecen al evento $A$, su frecuencia relativa es</p>
+
+<div style="overflow-x: auto;">
+\[
+f_n(A)=\frac{n_A}{n}.
+\]
+</div>
+
+<p>Es un número que se calcula a partir de datos y que puede utilizarse para estimar $\mathbb{P}(A)$. Bajo hipótesis apropiadas, como repeticiones independientes con la misma probabilidad del evento, la ley de los grandes números justificará que $f_n(A)$ se aproxime a $\mathbb{P}(A)$ al aumentar $n$.</p>
+<p>Con un número finito de observaciones no se garantiza una igualdad exacta, una mejora en cada observación ni la existencia de cualquier límite propuesto. La frecuencia relativa aporta una interpretación y un procedimiento de estimación; los axiomas establecen la estructura matemática.</p>
+</div>
+
+<div class="observacion-box">
+<h2 class="title-observacion">Observación</h2><p><b>Juicios expertos y coherencia.</b></p>
+<p>Cuando hay pocos datos, una asignación puede apoyarse en información disponible, hipótesis y experiencia experta. Por ejemplo, al evaluar un riesgo nuevo para una aseguradora. La información utilizada puede cambiar la asignación, pero los números obtenidos deben satisfacer las mismas reglas de coherencia.</p>
+<p>Estas perspectivas responden a preguntas distintas: cómo construir un modelo, cómo estimarlo y qué reglas debe cumplir. Su formalización común es la medida de probabilidad.</p>
+</div>
+
+<h1 id="pm-axiomas" class="page-title">Medida y espacio de probabilidad</h1>
+
+<div class="nota-box">
+<h1 class="number-title-practica">¿Qué reglas esperamos?</h1>
+<ol>
+<li>Un evento recibe una cantidad no negativa.</li>
+<li>La totalidad de posibilidades recibe peso uno: alguna de ellas ocurre.</li>
+<li>Cuando los eventos son mutuamente excluyentes, sus pesos se suman. Queremos que esto funcione también con una sucesión numerable de eventos.</li>
+</ol>
+<p>La tercera regla se formula sobre una $\sigma$-álgebra porque la unión numerable de eventos medibles debe seguir siendo un evento al que podamos asignar probabilidad.</p>
+</div>
+
+<div class="definicion-box" id="pm-definicion-medida">
+<h1 class="number-title-practica">Definición</h1><p><b>Medida de probabilidad.</b></p>
+<p>Sean $\Omega\neq\emptyset$ y $\mathscr{F}$ una $\sigma$-álgebra sobre $\Omega$. Una función</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}:\mathscr{F}\longrightarrow\mathbb{R}
+\]
+</div>
+
+<p>es una <b>medida de probabilidad</b> si satisface:</p>
+<ol>
+<li><b>No negatividad:</b> $\mathbb{P}(A)\geq0$ para todo $A\in\mathscr{F}$.</li>
+<li><b>Normalización:</b> $\mathbb{P}(\Omega)=1$.</li>
+<li><b>Aditividad numerable o $\sigma$-aditividad:</b> para toda sucesión $(A_n)_{n\geq1}$ de elementos de $\mathscr{F}$, disjuntos dos a dos,
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}\!\left(\bigcup_{n=1}^{\infty}A_n\right)
+=\sum_{n=1}^{\infty}\mathbb{P}(A_n).
+\]
+</div>
+
+</li>
+</ol>
+<p>«Disjuntos dos a dos» significa que $A_i\cap A_j=\emptyset$ siempre que $i\neq j$. Los tres requisitos se conocen como <b>axiomas de Kolmogorov</b>.</p>
+</div>
+
+<div class="definicion-box">
+<h1 class="number-title-practica">Definición</h1><p><b>Espacio de probabilidad.</b></p>
+<p>La terna $(\Omega,\mathscr{F},\mathbb{P})$ se llama <b>espacio de probabilidad</b>:</p>
+<div style="overflow-x: auto;"><table><thead><tr><th>Objeto</th><th>Pregunta que responde</th></tr></thead><tbody>
+<tr><td>$\Omega$</td><td>¿Cuáles son los resultados posibles?</td></tr>
+<tr><td>$\mathscr{F}$</td><td>¿Qué eventos son medibles en este modelo?</td></tr>
+<tr><td>$\mathbb{P}$</td><td>¿Qué probabilidad se asigna a cada uno?</td></tr>
+</tbody></table></div>
+
+</div><div class="notacion-box">
+<h2 class="title-notacion">Notación</h2>
+<ul>
+  <li>$\omega\in\Omega$ representa un resultado del experimento.</li>
+  <li>$A\in\mathscr{F}$ representa un evento medible; en particular, $A\subseteq\Omega$.</li>
+  <li>$\mathbb{P}(A)$ es un número que expresa la probabilidad del evento $A$.</li>
+  <li>Si $\{\omega\}\in\mathscr{F}$, la probabilidad de un resultado individual se escribe $\mathbb{P}(\{\omega\})$.</li>
+</ul>
+<p>El evento $A$ ocurre cuando el resultado observado $\omega$ pertenece a $A$.</p>
+</div>
+
+<div class="definicion-box">
+<h1 class="number-title-practica">Definición</h1><p><b>Medida y normalización.</b></p>
+<p>En general, una <b>medida no negativa</b> es una función $\mu:\mathscr{F}\to[0,\infty]$ con $\mu(\emptyset)=0$ y aditividad numerable sobre eventos disjuntos. Una medida puede representar longitud, área o masa y su valor total no tiene que ser uno.</p>
+<p>Si $0&lt;\mu(\Omega)&lt;\infty$, la normalización</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=\frac{\mu(A)}{\mu(\Omega)}
+\]
+</div>
+
+<p>produce una medida de probabilidad. Por ejemplo, contar elementos y normalizar produce el modelo clásico; medir longitudes o áreas y normalizar produce modelos geométricos uniformes.</p>
+</div>
+
+<h1 id="pm-modelos" class="page-title">Construcción de modelos</h1>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Asignación de masas en un espacio finito o numerable.</b></p>
+<p>Sea $\Omega$ finito o numerable y supongamos que a cada $\omega\in\Omega$ le asignamos $p_\omega\geq0$ de modo que $\sum_{\omega\in\Omega}p_\omega=1$. Sobre $\mathscr{F}=\mathscr{P}(\Omega)$, la función</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=\sum_{\omega\in A}p_\omega
+\]
+</div>
+
+<p>es una medida de probabilidad. Si $\Omega$ es finito y todas las masas son iguales, se recupera la fórmula clásica.</p>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Las sumas son no negativas y la suma de todas las masas es uno. Para eventos $A_n$ disjuntos, cada resultado de su unión aparece en exactamente uno de ellos. Al agrupar sumandos no negativos obtenemos</p>
+
+<div style="overflow-x: auto;">
+\[
+\sum_{\omega\in\bigcup_n A_n}p_\omega
+=\sum_{n=1}^{\infty}\sum_{\omega\in A_n}p_\omega
+=\sum_{n=1}^{\infty}\mathbb{P}(A_n).
+\]
+</div>
+
+<p>Por tanto, se cumplen los tres axiomas.</p>
+</div>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Un modelo con infinitos resultados.</b></p>
+<p>Si se registra un número de reclamaciones, podemos tomar $\Omega=\mathbb{N}_0=\{0,1,2,\ldots\}$. Para un parámetro $q\in(0,1)$ asignemos</p>
+
+<div style="overflow-x: auto;">
+\[
+p_k=(1-q)q^k,\qquad k\geq0.
+\]
+</div>
+
+<p>La serie geométrica da $\sum_{k=0}^{\infty}(1-q)q^k=1$, así que obtenemos una probabilidad sobre todos los subconjuntos de $\mathbb{N}_0$. Para el evento «al menos $m$ reclamaciones»,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(\{m,m+1,\ldots\})=\sum_{k=m}^{\infty}(1-q)q^k=q^m.
+\]
+</div>
+
+<p>Es una elección de modelo que puede estudiarse y contrastarse con datos. Los axiomas no obligan a que un número de reclamaciones tenga estas masas.</p>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Un modelo continuo y un modelo concentrado.</b></p>
+<p>En $\Omega=[0,1]$, con la $\sigma$-álgebra de Borel relativa a $[0,1]$, la longitud restringida al intervalo define la probabilidad uniforme. En particular,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}((a,b])=b-a,\qquad 0\leq a\leq b\leq1.
+\]
+</div>
+
+<p>También podemos fijar $x_0\in[0,1]$ y definir, para cada evento boreliano $A$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\delta_{x_0}(A)=
+\begin{cases}
+1,&amp;x_0\in A,\\
+0,&amp;x_0\notin A.
+\end{cases}
+\]
+</div>
+
+<p>Esta probabilidad, llamada <b>medida de Dirac</b>, concentra todo el peso en $x_0$. En una familia de eventos disjuntos, a lo sumo uno puede contener a $x_0$, lo cual verifica la aditividad numerable. El mismo espacio medible puede admitir medidas de probabilidad muy distintas.</p>
+</div>
+
+<h1 id="pm-propiedades" class="page-title">Propiedades y demostraciones</h1>
+<div class="info-box">
+<p>En esta sección trabajamos en un espacio de probabilidad fijo $(\Omega,\mathscr{F},\mathbb{P})$. Todos los eventos mencionados pertenecen a $\mathscr{F}$. Las propiedades se deducen en el orden presentado.</p>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>El evento vacío y la aditividad finita.</b></p>
+<p>Se cumplen $\mathbb{P}(\emptyset)=0$ y, para eventos $A_1,\ldots,A_m$ disjuntos dos a dos,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}\!\left(\bigcup_{i=1}^m A_i\right)=\sum_{i=1}^m\mathbb{P}(A_i).
+\]
+</div>
+
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Apliquemos la aditividad numerable a $\Omega,\emptyset,\emptyset,\ldots$:</p>
+
+<div style="overflow-x: auto;">
+\[
+1=\mathbb{P}(\Omega)=1+\sum_{n=2}^{\infty}\mathbb{P}(\emptyset).
+\]
+</div>
+
+<p>Todos los sumandos son no negativos, por lo que necesariamente $\mathbb{P}(\emptyset)=0$. Para la segunda afirmación, extendemos la familia finita definiendo $A_n=\emptyset$ para $n&gt;m$ y aplicamos nuevamente la aditividad numerable.</p>
+</div>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Complementos, monotonía y cotas básicas.</b></p>
+<ol>
+<li>$\mathbb{P}(A^c)=1-\mathbb{P}(A)$.</li>
+<li>Si $A\subseteq B$, entonces $\mathbb{P}(A)\leq\mathbb{P}(B)$.</li>
+<li>Para todo evento $A$, $0\leq\mathbb{P}(A)\leq1$.</li>
+</ol>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Como $\Omega=A\cup A^c$ es una unión disjunta, $1=\mathbb{P}(A)+\mathbb{P}(A^c)$, lo que prueba la primera identidad.</p>
+<p>Si $A\subseteq B$, la descomposición disjunta $B=A\cup(B\setminus A)$ da</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B\setminus A)\geq\mathbb{P}(A).
+\]
+</div>
+
+<p>Finalmente, de $\emptyset\subseteq A\subseteq\Omega$ obtenemos $0\leq\mathbb{P}(A)\leq1$. Por tanto, aunque en la definición usamos codominio $\mathbb{R}$, los axiomas obligan a que todos los valores estén en $[0,1]$.</p>
+</div>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Diferencias, unión y diferencia simétrica.</b></p>
+<p>Para cualesquiera eventos $A$ y $B$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\begin{aligned}
+\mathbb{P}(A\setminus B)
+&amp;=\mathbb{P}(A)-\mathbb{P}(A\cap B),\\
+\mathbb{P}(A\cup B)
+&amp;=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B),\\
+\mathbb{P}(A\triangle B)
+&amp;=\mathbb{P}(A)+\mathbb{P}(B)-2\mathbb{P}(A\cap B).
+\end{aligned}
+\]
+</div>
+
+<p>En particular, cuando $A\subseteq B$, $\mathbb{P}(B\setminus A)=\mathbb{P}(B)-\mathbb{P}(A)$.</p>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>La unión $A=(A\setminus B)\cup(A\cap B)$ es disjunta y da la primera igualdad. Además, $A\cup B=A\cup(B\setminus A)$ es una unión disjunta; al sustituir</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(B\setminus A)=\mathbb{P}(B)-\mathbb{P}(A\cap B)
+\]
+</div>
+
+<p>obtenemos la segunda igualdad.</p>
+<p>Para la tercera usamos $A\triangle B=(A\setminus B)\cup(B\setminus A)$, cuyos términos son disjuntos, y aplicamos la primera identidad a cada diferencia.</p>
+</div>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Dos tipos de reclamaciones.</b></p>
+<p>En otro modelo, para un mismo asegurado durante un año, sean $A$ el evento de presentar una reclamación de autos y $B$ el de presentar una de gastos médicos. Supongamos</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=0.20,\qquad
+\mathbb{P}(B)=0.15,\qquad
+\mathbb{P}(A\cap B)=0.03.
+\]
+</div>
+
+
+<ol>
+<li><b>Al menos uno de los dos tipos:</b>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A\cup B)=0.20+0.15-0.03=0.32.
+\]
+</div>
+
+</li>
+<li><b>Autos, sin gastos médicos:</b>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A\setminus B)=0.20-0.03=0.17.
+\]
+</div>
+
+</li>
+<li><b>Ninguno de los dos tipos:</b>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}((A\cup B)^c)=1-0.32=0.68.
+\]
+</div>
+
+</li>
+<li><b>Exactamente uno de los dos tipos:</b>
+
+<div style="overflow-x: auto;">
+\[
+\begin{aligned}
+\mathbb{P}(A\triangle B)
+&amp;=0.20+0.15-2\cdot0.03\\
+&amp;=0.29.
+\end{aligned}
+\]
+</div>
+
+</li>
+</ol>
+<p>El término de intersección corrige el peso que se cuenta dos veces al sumar $\mathbb{P}(A)$ y $\mathbb{P}(B)$.</p>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Inclusión-exclusión.</b></p>
+<p>Para tres eventos,</p>
+
+<div style="overflow-x: auto;">
+\[
+\begin{aligned}
+\mathbb{P}(A\cup B\cup C)
+={}&amp;\mathbb{P}(A)+\mathbb{P}(B)+\mathbb{P}(C)\\
+&amp;-\mathbb{P}(A\cap B)-\mathbb{P}(A\cap C)-\mathbb{P}(B\cap C)\\
+&amp;+\mathbb{P}(A\cap B\cap C).
+\end{aligned}
+\]
+</div>
+
+<p>En general, si $A_1,\ldots,A_m\in\mathscr{F}$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}\!\left(\bigcup_{i=1}^m A_i\right)
+=\sum_{r=1}^m(-1)^{r+1}
+\sum_{1\leq i_1&lt;\cdots&lt;i_r\leq m}
+\mathbb{P}(A_{i_1}\cap\cdots\cap A_{i_r}).
+\]
+</div>
+
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Para tres eventos, aplicamos la fórmula de la unión de dos eventos a $(A\cup B)\cup C$ y luego a $(A\cap C)\cup(B\cap C)$, que es igual a $(A\cup B)\cap C$.</p>
+<p>Para justificar la fórmula general, dividimos $\Omega$ en los conjuntos medibles determinados por todas las combinaciones de pertenencia o no pertenencia a $A_1,\ldots,A_m$. Son una partición finita después de omitir los vacíos. Un bloque contenido en exactamente $s\geq1$ de los eventos aparece en el lado derecho con coeficiente</p>
+
+<div style="overflow-x: auto;">
+\[
+\sum_{r=1}^{s}(-1)^{r+1}\binom{s}{r}=1,
+\]
+</div>
+
+<p>por el binomio $(1-1)^s=0$. Un bloque contenido en ninguno tiene coeficiente cero. Al sumar las probabilidades de los bloques, mediante aditividad finita, ambos lados coinciden.</p>
+</div>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Subaditividad numerable o desigualdad de Boole.</b></p>
+<p>Para cualquier sucesión de eventos $(A_n)_{n\geq1}$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}\!\left(\bigcup_{n=1}^{\infty}A_n\right)
+\leq\sum_{n=1}^{\infty}\mathbb{P}(A_n).
+\]
+</div>
+
+<p>Los eventos pueden superponerse. La suma del lado derecho puede ser infinita; en ese caso la desigualdad sigue siendo válida.</p>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Definamos $B_1=A_1$ y, para $n\geq2$,</p>
+
+<div style="overflow-x: auto;">
+\[
+B_n=A_n\setminus\bigcup_{k=1}^{n-1}A_k.
+\]
+</div>
+
+<p>Los $B_n$ son medibles y disjuntos dos a dos; además, $\bigcup_nB_n=\bigcup_nA_n$ y $B_n\subseteq A_n$. Por aditividad numerable y monotonía,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}\!\left(\bigcup_nA_n\right)
+=\sum_n\mathbb{P}(B_n)\leq\sum_n\mathbb{P}(A_n).
+\]
+</div>
+
+<p>La versión finita se obtiene completando la sucesión con eventos vacíos.</p>
+</div>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Cotas para la intersección y la unión.</b></p>
+<p>Para cualesquiera eventos $A$ y $B$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\max\{0,\mathbb{P}(A)+\mathbb{P}(B)-1\}
+\leq\mathbb{P}(A\cap B)
+\leq\min\{\mathbb{P}(A),\mathbb{P}(B)\},
+\]
+</div>
+
+
+<div style="overflow-x: auto;">
+\[
+\max\{\mathbb{P}(A),\mathbb{P}(B)\}
+\leq\mathbb{P}(A\cup B)
+\leq\min\{1,\mathbb{P}(A)+\mathbb{P}(B)\}.
+\]
+</div>
+
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Las inclusiones $A\cap B\subseteq A,B$ y $A,B\subseteq A\cup B$ dan las cotas correspondientes por monotonía. Por inclusión-exclusión y $\mathbb{P}(A\cup B)\leq1$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A\cap B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cup B)
+\geq\mathbb{P}(A)+\mathbb{P}(B)-1.
+\]
+</div>
+
+<p>Completamos usando no negatividad, la cota uno y la desigualdad de Boole para dos eventos.</p>
+</div>
+<p>Estas cotas permiten detectar asignaciones incompatibles. Por ejemplo, si $\mathbb{P}(A)=0.20$ y $\mathbb{P}(B)=0.15$, necesariamente $0\leq\mathbb{P}(A\cap B)\leq0.15$.</p>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Descomposición según una partición.</b></p>
+<p>Sea $(B_i)_{i\in I}$ una partición finita o numerable de $\Omega$, formada por eventos medibles. Para cualquier $A\in\mathscr{F}$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=\sum_{i\in I}\mathbb{P}(A\cap B_i).
+\]
+</div>
+
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Los eventos $A\cap B_i$ son disjuntos dos a dos y su unión es $A\cap\Omega=A$. Aplicamos aditividad finita o numerable, según corresponda.</p>
+</div>
+<p>Si los bloques representan ramos de una cartera, podemos calcular la probabilidad de un evento sumando sus contribuciones en cada ramo. Esta identidad no requiere dividir entre las probabilidades de los bloques.</p>
+</div>
+
+<h1 id="pm-cero" class="page-title">Probabilidad cero y certeza</h1>
+
+<div class="definicion-box">
+<h1 class="number-title-practica">Definición</h1><p><b>Eventos nulos y eventos casi seguros.</b></p>
+<p>Un evento $N\in\mathscr{F}$ es <b>nulo</b> si $\mathbb{P}(N)=0$. Un evento $A\in\mathscr{F}$ ocurre <b>casi seguramente</b> si $\mathbb{P}(A)=1$.</p>
+<p>Por la propiedad de complementos, $\mathbb{P}(A)=1$ equivale a $\mathbb{P}(A^c)=0$. El evento imposible es $\emptyset$ y el evento seguro es $\Omega$; un evento nulo puede ser no vacío y uno casi seguro puede ser distinto de $\Omega$.</p>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Un punto tiene longitud cero.</b></p>
+<p>En el modelo uniforme de $[0,1]$,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(\{1/2\})=0,\qquad
+\mathbb{P}([0,1]\setminus\{1/2\})=1.
+\]
+</div>
+
+<p>Sin embargo, $\{1/2\}\neq\emptyset$ y $[0,1]\setminus\{1/2\}\neq[0,1]$. Así, «tener probabilidad cero» no permite concluir que un conjunto de resultados posibles sea vacío.</p>
+<p>En este modelo, cada punto tiene probabilidad cero. No hay contradicción con que $\mathbb{P}([0,1])=1$: la representación $[0,1]=\bigcup_{x\in[0,1]}\{x\}$ es una unión <b>no numerable</b>, a la que no podemos aplicar el axioma de aditividad numerable.</p>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Uniones de eventos nulos e intersecciones casi seguras.</b></p>
+<p>Si $\mathbb{P}(N_n)=0$ para todo $n$, entonces $\mathbb{P}(\bigcup_nN_n)=0$. Si $\mathbb{P}(A_n)=1$ para todo $n$, entonces $\mathbb{P}(\bigcap_nA_n)=1$.</p>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Por Boole y no negatividad,</p>
+
+<div style="overflow-x: auto;">
+\[
+0\leq\mathbb{P}\!\left(\bigcup_nN_n\right)\leq\sum_n0=0.
+\]
+</div>
+
+<p>Para la segunda afirmación aplicamos la primera a los eventos nulos $A_n^c$ y usamos las leyes de De Morgan y la propiedad de complementos.</p>
+</div>
+</div>
+
+<div class="observacion-box">
+<h2 class="title-observacion">Observación</h2><p><b>No existe una probabilidad uniforme en todos los naturales.</b></p>
+<p>Supongamos que una probabilidad sobre $\mathscr{P}(\mathbb{N})$ asigna el mismo valor $p$ a cada singleton. Por aditividad finita, $mp=\mathbb{P}(\{1,\ldots,m\})\leq1$ para todo $m$, de modo que $p=0$. Pero entonces la aditividad numerable exigiría</p>
+
+<div style="overflow-x: auto;">
+\[
+1=\mathbb{P}(\mathbb{N})=\sum_{k=1}^{\infty}\mathbb{P}(\{k\})=0,
+\]
+</div>
+
+<p>lo cual es imposible. La equiprobabilidad entre todos los puntos de un espacio numerable infinito es incompatible con una medida de probabilidad.</p>
+</div>
+
+<h1 id="pm-continuidad" class="page-title">Continuidad de la probabilidad</h1>
+
+<div class="info-box">
+<p>Ya estudiamos límites de sucesiones de conjuntos. La aditividad numerable permite relacionar ciertos límites de eventos con límites de sus probabilidades.</p>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Continuidad desde abajo.</b></p>
+<p>Si $A_n\in\mathscr{F}$ y $A_n\subseteq A_{n+1}$ para todo $n$, entonces $A=\bigcup_{n=1}^{\infty}A_n\in\mathscr{F}$ y</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A_n)\uparrow\mathbb{P}(A),\qquad
+\mathbb{P}\!\left(\bigcup_{n=1}^{\infty}A_n\right)
+=\lim_{n\to\infty}\mathbb{P}(A_n).
+\]
+</div>
+
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Pongamos $A_0=\emptyset$ y $B_n=A_n\setminus A_{n-1}$. Como $(A_n)$ es creciente, los $B_n$ son eventos disjuntos dos a dos, $\bigcup_{n\geq1}B_n=A$ y $\bigcup_{n=1}^{m}B_n=A_m$. Por aditividad numerable y finita,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A)=\sum_{n=1}^{\infty}\mathbb{P}(B_n)
+=\lim_{m\to\infty}\sum_{n=1}^{m}\mathbb{P}(B_n)
+=\lim_{m\to\infty}\mathbb{P}(A_m).
+\]
+</div>
+
+<p>La monotonía asegura que la sucesión de probabilidades es creciente.</p>
+</div>
+</div>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Continuidad desde arriba.</b></p>
+<p>Si $A_n\in\mathscr{F}$ y $A_{n+1}\subseteq A_n$ para todo $n$, entonces $A=\bigcap_{n=1}^{\infty}A_n\in\mathscr{F}$ y</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(A_n)\downarrow\mathbb{P}(A),\qquad
+\mathbb{P}\!\left(\bigcap_{n=1}^{\infty}A_n\right)
+=\lim_{n\to\infty}\mathbb{P}(A_n).
+\]
+</div>
+
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>La sucesión $(A_n^c)$ es creciente y $\bigcup_nA_n^c=A^c$. Por continuidad desde abajo,</p>
+
+<div style="overflow-x: auto;">
+\[
+1-\mathbb{P}(A)=\mathbb{P}(A^c)
+=\lim_{n\to\infty}\mathbb{P}(A_n^c)
+=\lim_{n\to\infty}(1-\mathbb{P}(A_n)).
+\]
+</div>
+
+<p>Restando de uno obtenemos la igualdad deseada. Las probabilidades decrecen por monotonía.</p>
+</div>
+<p>En una medida general, la hipótesis $\mu(A_1)&lt;\infty$ garantiza la continuidad desde arriba. En una probabilidad esta condición se cumple automáticamente.</p>
+</div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Aproximar un evento con eventos más sencillos.</b></p>
+<p>En el modelo sobre $\mathbb{N}_0$ con masas $p_k=(1-q)q^k$, consideremos</p>
+
+<div style="overflow-x: auto;">
+\[
+A_n=\{0,1,\ldots,n\},\qquad B_n=\{n,n+1,\ldots\}.
+\]
+</div>
+
+<p>Los eventos $A_n$ crecen hasta $\Omega$ y $\mathbb{P}(A_n)=1-q^{n+1}\to1$. Los eventos $B_n$ decrecen hasta $\emptyset$ y $\mathbb{P}(B_n)=q^n\to0$.</p>
+<p>Las probabilidades de rangos finitos y colas se relacionan así con los eventos límite mediante las propiedades que acabamos de demostrar.</p>
+</div>
+
+<h1 id="pm-ampliacion" class="page-title">Ampliación: límites de eventos</h1>
+
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Límites inferior y superior de eventos.</b></p>
+<p>Para una sucesión $(A_n)$ de eventos, sean</p>
+
+<div style="overflow-x: auto;">
+\[
+L=\liminf_n A_n=\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty}A_k,\qquad
+U=\limsup_n A_n=\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}A_k.
+\]
+</div>
+
+<p>Ambos son medibles y se cumple</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(L)\leq\liminf_n\mathbb{P}(A_n)
+\leq\limsup_n\mathbb{P}(A_n)\leq\mathbb{P}(U).
+\]
+</div>
+
+<p>En particular, si $L=U=A$, entonces $\lim_n\mathbb{P}(A_n)=\mathbb{P}(A)$. Esta conclusión requiere convergencia de los conjuntos; no se presupone para una sucesión arbitraria.</p>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Definamos $B_n=\bigcap_{k=n}^{\infty}A_k$ y $C_n=\bigcup_{k=n}^{\infty}A_k$. Entonces $B_n\uparrow L$, $C_n\downarrow U$ y, por monotonía,</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(B_n)\leq\inf_{k\geq n}\mathbb{P}(A_k),\qquad
+\sup_{k\geq n}\mathbb{P}(A_k)\leq\mathbb{P}(C_n).
+\]
+</div>
+
+<p>Al tomar límites y aplicar continuidad desde abajo y desde arriba, obtenemos las desigualdades. Cuando $L=U=A$, todos los términos quedan encerrados entre $\mathbb{P}(A)$ y el mismo valor.</p>
+</div></div>
+<div class="teorema-box">
+<h1 class="number-title-practica">Teorema</h1><p><b>Primer lema de Borel-Cantelli.</b></p>
+<p>Si $(A_n)$ es una sucesión de eventos y $\sum_{n=1}^{\infty}\mathbb{P}(A_n)&lt;\infty$, entonces</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}\!\left(\limsup_{n\to\infty}A_n\right)=0.
+\]
+</div>
+
+<p>Con probabilidad uno, solo ocurre un número finito de los eventos de la sucesión. Este resultado no requiere independencia.</p>
+<button type="button" class="respButton">Demostración</button><div class="resp-box">
+<p>Para cada $m$, $\limsup_n A_n\subseteq\bigcup_{n=m}^{\infty}A_n$. Por monotonía y Boole,</p>
+
+<div style="overflow-x: auto;">
+\[
+0\leq\mathbb{P}(\limsup_n A_n)\leq\sum_{n=m}^{\infty}\mathbb{P}(A_n).
+\]
+</div>
+
+<p>Como la serie converge, sus colas tienden a cero al aumentar $m$. La probabilidad del límite superior debe ser cero.</p>
+</div></div>
+<div class="observacion-box">
+<h2 class="title-observacion">Observación</h2><p><b>Tomar límites de frecuencias exige cuidado.</b></p>
+<p>Para una cantidad fija de observaciones, las frecuencias relativas sí son aditivas sobre eventos disjuntos. Sin embargo, de ello no se deduce la aditividad numerable de sus límites: no podemos intercambiar automáticamente un límite y una suma infinita.</p>
+<p>Consideremos la sucesión de observaciones $1,2,3,\ldots$ y definamos sobre $\mathbb{N}$</p>
+
+<div style="overflow-x: auto;">
+\[
+Q_n(A)=\frac{|A\cap\{1,\ldots,n\}|}{n}.
+\]
+</div>
+
+<p>Cada $Q_n$ es una medida de probabilidad. Para cada $k$ fijo, $Q_n(\{k\})\to0$, mientras que $Q_n(\mathbb{N})=1$ para todo $n$. Por tanto,</p>
+
+<div style="overflow-x: auto;">
+\[
+\lim_{n\to\infty}\sum_{k=1}^{\infty}Q_n(\{k\})=1,\qquad
+\sum_{k=1}^{\infty}\lim_{n\to\infty}Q_n(\{k\})=0.
+\]
+</div>
+
+<p>Los límites escritos existen, pero no pueden ser los valores de una misma probabilidad sobre $\mathscr{P}(\mathbb{N})$. La sucesión usada no representa repeticiones independientes e idénticamente distribuidas de una ley fija en $\mathbb{N}$. El ejemplo muestra por qué una demostración de $\sigma$-aditividad necesita justificar el paso al límite.</p>
+</div>
+
+<h1 id="pm-ejercicios" class="page-title">Ejercicios de comprensión</h1>
+<div class="info-box">
+<p>Justifica cada respuesta utilizando las definiciones y propiedades anteriores. En los ejercicios geométricos se trabaja con eventos borelianos. Las pistas se pueden abrir después de intentar resolver cada problema.</p>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>Sea $\Omega=\{a,b,c\}$ y $\mathscr{F}=\mathscr{P}(\Omega)$. Se propone asignar masas $p_a=0.50$, $p_b=0.35$ y $p_c=0.25$.</p>
+<ol>
+<li>¿Por qué estas masas no definen una medida de probabilidad mediante la suma de masas individuales?</li>
+<li>Conservando $p_a$ y $p_b$, encuentra el valor de $p_c$ que corrige el modelo.</li>
+<li>Con el modelo corregido, calcula $\mathbb{P}(\{a,b\})$ y $\mathbb{P}(\{b,c\})$.</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Primero comprueba el peso de $\Omega$ y después usa la aditividad de los resultados individuales.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>Supón que $\mathbb{P}(A)=0.40$, $\mathbb{P}(B)=0.35$ y $\mathbb{P}(A\cap B)=0.10$.</p>
+<ol>
+<li>Calcula las probabilidades de $A\cup B$, $A\setminus B$, $A\triangle B$ y $(A\cup B)^c$.</li>
+<li>Expresa en palabras qué describe cada evento.</li>
+<li>¿Sería compatible conservar las dos primeras probabilidades y asignar $\mathbb{P}(A\cap B)=0.50$? Justifica.</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Para el último inciso, compara la intersección con cada uno de los eventos que la contienen.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>Sea $\Omega=\{\omega_1,\omega_2,\omega_3,\omega_4\}$, $B=\{\omega_1,\omega_2\}$ y $\mathscr{F}=\{\emptyset,B,B^c,\Omega\}$. Se desea construir una probabilidad con $\mathbb{P}(B)=0.30$.</p>
+<ol>
+<li>Determina la probabilidad de cada elemento de $\mathscr{F}$.</li>
+<li>¿Está definida $\mathbb{P}(\{\omega_1\})$ en este espacio de probabilidad?</li>
+<li>Construye dos probabilidades sobre $\mathscr{P}(\Omega)$ que coincidan con la asignación anterior en $\mathscr{F}$, pero den probabilidades distintas a $\{\omega_1\}$.</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Las masas de $\omega_1$ y $\omega_2$ deben sumar $0.30$, y las de $\omega_3$ y $\omega_4$ deben sumar $0.70$.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>En $\Omega=\mathbb{N}_0$ se proponen masas $p_k=c/2^{k+1}$ para $k\geq0$.</p>
+<ol>
+<li>Encuentra $c$ para que las masas definan una probabilidad sobre $\mathscr{P}(\mathbb{N}_0)$.</li>
+<li>Calcula la probabilidad del conjunto de los enteros no negativos pares.</li>
+<li>Calcula la probabilidad de $\{3,4,5,\ldots\}$.</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Usa la suma de una serie geométrica. Para los pares, escribe los índices como $k=2j$.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>En el problema del encuentro, supón que cada persona espera $t$ minutos, con $0\leq t\leq60$, manteniendo el modelo uniforme para el par de llegadas.</p>
+<ol>
+<li>Describe la región favorable en el cuadrado $[0,60]^2$.</li>
+<li>Obtén la probabilidad de encuentro en función de $t$.</li>
+<li>Comprueba los casos $t=0$, $t=10$ y $t=60$. Interpreta los resultados.</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Los triángulos que quedan fuera de la franja tienen catetos $60-t$. En el caso $t=0$, la región favorable es una diagonal de área cero.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>En el espacio uniforme sobre $[0,1]$, considera $A_n=(0,1/n]$ y $B_n=[0,1/n]$.</p>
+<ol>
+<li>Determina $\bigcap_{n=1}^{\infty}A_n$ y $\bigcap_{n=1}^{\infty}B_n$.</li>
+<li>Calcula $\mathbb{P}(A_n)$ y $\mathbb{P}(B_n)$ y verifica la continuidad desde arriba.</li>
+<li>Explica por qué las intersecciones pueden ser diferentes aun cuando sus probabilidades coincidan.</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Analiza por separado el punto $0$ y un punto estrictamente positivo.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>En el espacio uniforme sobre $[0,1]$, demuestra que</p>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(\mathbb{Q}\cap[0,1])=0,\qquad
+\mathbb{P}([0,1]\setminus\mathbb{Q})=1.
+\]
+</div>
+
+<p>Explica por qué el primer evento, aunque es infinito y no vacío, puede tener probabilidad cero.</p>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Los racionales forman un conjunto numerable; cada singleton tiene probabilidad cero y es boreliano.</p></div>
+</div>
+
+<div class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>Una aseguradora estudia cinco eventos $A_1,\ldots,A_5$ de riesgo para una póliza. Se sabe que $\mathbb{P}(A_i)=0.03$ para cada $i$.</p>
+<ol>
+<li>Obtén una cota superior para la probabilidad de que ocurra al menos uno de los cinco eventos.</li>
+<li>Obtén una cota inferior para la probabilidad de que no ocurra ninguno.</li>
+<li>¿Permiten los datos determinar exactamente esas probabilidades? ¿Qué cambiaría si los eventos fueran disjuntos dos a dos?</li>
+</ol>
+<button type="button" class="respButton">Pista</button><div class="resp-box"><p>Aplica Boole y complementos. La igualdad de las probabilidades individuales no describe cómo se superponen los eventos.</p></div>
+</div>
+
+<div class="nota-box">
+<h1 class="number-title-practica">Preguntas para cerrar la sesión</h1>
+<ol>
+<li>¿Qué información aporta $\mathbb{P}$ que no está contenida en $\Omega$ y $\mathscr{F}$?</li>
+<li>¿Qué hipótesis permite usar casos favorables entre casos posibles?</li>
+<li>¿Por qué se especifica una $\sigma$-álgebra como dominio?</li>
+<li>¿Qué condición permite sumar exactamente probabilidades en una unión?</li>
+<li>¿Qué afirma la aditividad numerable que no afirma solo la aditividad finita?</li>
+<li>¿Puede un evento no vacío tener probabilidad cero? ¿Puede un evento distinto de $\Omega$ tener probabilidad uno?</li>
+</ol>
+</div>
+
+
+
+
     <h1 class="page-subtitle">Medida de probabilidad</h1>  
     
     
