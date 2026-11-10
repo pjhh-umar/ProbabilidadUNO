@@ -3023,6 +3023,372 @@ z
   </div>
 
 
+   <h2>Probabilidad clásica y técnicas de conteo</h2>
+  <div class="nota-box">
+    <h2>Indicaciones de trabajo</h2>
+    <p>En cada ejercicio, identifica primero un espacio muestral finito y justifica por qué sus resultados elementales son equiprobables. Después cuenta los resultados totales y los favorables al evento:</p>
+    <div style="overflow-x:auto;">\[
+      \mathbb P(A)=\frac{|A|}{|\Omega|}.
+    \]</div>
+    <p>En tu solución, especifica si el orden importa, si se permiten repeticiones y qué objetos son distinguibles. Nombra la técnica de conteo elegida y explica cómo evita omisiones o conteos repetidos. Presenta un cociente exacto antes de realizar aproximaciones.</p>
+    <p>Los botones de pista y solución permiten consultar ayuda por separado. Los primeros cuatro bloques tienen dificultad progresiva; el último propone retos que pueden trabajarse después de estudiar inclusión y exclusión.</p>
+    <p>Usaremos la notación</p>
+    <div style="overflow-x:auto;">\[
+      V(n,r)=\frac{n!}{(n-r)!},
+      \qquad
+      \binom nr=\frac{n!}{r!\,(n-r)!},
+      \qquad 0\leq r\leq n.
+    \]</div>
+    <p>$V(n,r)$ cuenta selecciones ordenadas de $r$ objetos distintos sin repetición; $\binom nr$ cuenta subconjuntos de tamaño $r$. Adoptamos $0!=1$.</p>
+  </div>
+
+  <h2>I. Construcción del espacio muestral</h2>
+  <p>Resultados ordenados, posiciones, reemplazo y consistencia del conteo.</p>
+  <div class="ejercicio-box" id="conteo-ejercicio-01">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Dos dados: resultados ordenados y sumas.</strong></p>
+    <p>Se lanzan dos dados distinguibles y equilibrados. Los $36$ pares ordenados de caras son equiprobables. Calcula la probabilidad de que:</p>
+<ol><li>La suma sea $8$.</li><li>Aparezca al menos un $6$.</li><li>La diferencia absoluta entre las caras sea $2$.</li></ol>
+<p>Explica además por qué los resultados no ordenados $\{1,1\}$ y $\{1,2\}$ no tienen la misma probabilidad.</p>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Representa los resultados mediante pares $(i,j)$. Para el segundo evento, cuenta primero los pares que no contienen ningún $6$.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Tomamos $\Omega=\{1,\ldots,6\}^2$, con $|\Omega|=36$.</p>
+<ol>
+<li><p>Los pares favorables son $(2,6),(3,5),(4,4),(5,3),(6,2)$. Por tanto, la probabilidad es $5/36$.</p></li>
+<li><p>Hay $5^2$ resultados sin ningún $6$. Así,</p><div style="overflow-x:auto;">\[\mathbb P(\text{al menos un }6)=1-\frac{25}{36}=\frac{11}{36}.\]</div></li>
+<li><p>Hay cuatro pares con $j=i+2$ y cuatro con $i=j+2$. La probabilidad es $8/36=2/9$.</p></li>
+</ol>
+<p>El resultado no ordenado $\{1,1\}$ procede únicamente de $(1,1)$ y tiene probabilidad $1/36$. El resultado $\{1,2\}$ procede de $(1,2)$ y $(2,1)$ y tiene probabilidad $2/36$. Agrupar resultados puede destruir la equiprobabilidad.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-02">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cinco lanzamientos de una moneda.</strong></p>
+    <p>Se lanza cinco veces una moneda equilibrada, de manera independiente. Calcula la probabilidad de obtener:</p>
+<ol><li>Exactamente tres caras.</li><li>Al menos una cara.</li><li>Exactamente tres caras, con cara tanto en el primer lanzamiento como en el último.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Las $2^5$ secuencias son equiprobables. Para obtener exactamente tres caras, elige sus posiciones. En el último apartado, dos posiciones ya están fijadas.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Hay $2^5=32$ secuencias equiprobables.</p>
+<ol>
+<li><p>Las tres posiciones de cara pueden elegirse de $\binom53$ formas:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom53}{2^5}=\frac{5}{16}.\]</div></li>
+<li><p>Solo la secuencia de cinco cruces queda excluida:</p><div style="overflow-x:auto;">\[\mathbb P(B)=1-\frac1{32}=\frac{31}{32}.\]</div></li>
+<li><p>Entre los tres lanzamientos interiores se elige la posición de la tercera cara:</p><div style="overflow-x:auto;">\[\mathbb P(C)=\frac{\binom31}{32}=\frac3{32}.\]</div></li>
+</ol>
+<p>No necesitamos ordenar nuevamente las posiciones elegidas: cada elección determina una secuencia única.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-03">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Claves digitales y números de cuatro cifras.</strong></p>
+    <ol>
+<li>Se elige uniformemente una clave de cuatro dígitos de $\{0,1,\ldots,9\}$. Se permite que empiece con $0$. Calcula la probabilidad de que no repita dígitos.</li>
+<li>Se elige uniformemente un número entero de cuatro cifras, entre $1000$ y $9999$. Calcula la probabilidad de que no repita dígitos.</li>
+<li>Un estudiante propone usar $V(10,4)/9000$ en el segundo apartado. Identifica el error y compara los resultados correctos de los dos modelos.</li>
+</ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>En una clave se admite el cero inicial. Para un número de cuatro cifras, la primera posición tiene nueve opciones; una vez elegida, el cero sí puede aparecer en las posiciones restantes.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><ol>
+<li><p>Hay $10^4$ claves y $10\cdot9\cdot8\cdot7$ claves sin repeticiones:</p><div style="overflow-x:auto;">\[\frac{V(10,4)}{10^4}=\frac{5040}{10000}=\frac{63}{125}.\]</div></li>
+<li><p>Hay $9000$ números de cuatro cifras. Para contar los que no repiten dígitos, la primera cifra tiene nueve opciones, la segunda nueve, la tercera ocho y la cuarta siete:</p><div style="overflow-x:auto;">\[\frac{9\cdot9\cdot8\cdot7}{9000}=\frac{4536}{9000}=\frac{63}{125}.\]</div></li>
+<li><p>$V(10,4)$ cuenta también cadenas que empiezan con $0$, que no son números de cuatro cifras. En cada cociente, numerador y denominador deben referirse al mismo espacio muestral. En estos dos modelos las probabilidades correctas coinciden, aunque sus conteos sean distintos.</p></li>
+</ol></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-04">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Una urna, dos maneras de contar.</strong></p>
+    <p>Una urna contiene seis bolas rojas y cuatro azules, todas distinguibles. Se elige uniformemente un subconjunto de tres bolas, sin reemplazo.</p>
+<ol><li>Calcula la probabilidad de obtener exactamente dos rojas.</li><li>Calcula la probabilidad de que aparezcan ambos colores.</li><li>Repite el primer cálculo usando un experimento de tres extracciones sucesivas sin reemplazo, en el que todos los órdenes de bolas distintas son equiprobables.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Para la selección sin orden, usa combinaciones. Para extracciones ordenadas, elige las posiciones de las bolas rojas y ordena las bolas individuales correspondientes.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><ol>
+<li><p>El espacio de subconjuntos tiene tamaño $\binom{10}{3}=120$. Los favorables son $\binom62\binom41=60$:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom62\binom41}{\binom{10}{3}}=\frac12.\]</div></li>
+<li><p>El complemento consiste en obtener tres bolas del mismo color:</p><div style="overflow-x:auto;">\[\mathbb P(B)=1-\frac{\binom63+\binom43}{\binom{10}{3}}=1-\frac{24}{120}=\frac45.\]</div></li>
+<li><p>En el modelo ordenado hay $V(10,3)=720$ resultados. Elegimos las dos posiciones rojas, las bolas rojas en orden y la bola azul:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom32\,V(6,2)\cdot4}{V(10,3)}=\frac{360}{720}=\frac12.\]</div></li>
+</ol>
+<p>Cada subconjunto de tres bolas genera exactamente $3!$ órdenes. Por eso ambos enfoques asignan la misma probabilidad al evento; la consistencia entre numerador y denominador es lo esencial.</p></div>
+  </div>
+  <h2>II. Selecciones y asignación de funciones</h2>
+  <p>Combinaciones, selecciones por categorías y cargos distintos.</p>
+  <div class="ejercicio-box" id="conteo-ejercicio-05">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Auditoría de una cartera de seguros.</strong></p>
+    <p>Una cartera contiene $20$ pólizas identificadas: ocho de automóviles, siete de vida y cinco de gastos médicos. Se selecciona uniformemente un subconjunto de cinco pólizas para una auditoría.</p>
+<ol><li>Calcula la probabilidad de seleccionar exactamente dos de automóviles, dos de vida y una de gastos médicos.</li><li>Calcula la probabilidad de incluir al menos una póliza de gastos médicos.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>La muestra es un subconjunto sin orden. En el primer evento, elige por separado las pólizas de cada ramo; en el segundo, cuenta las muestras que no contienen gastos médicos.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El total de muestras es $\binom{20}{5}=15504$.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom82\binom72\binom51}{\binom{20}{5}}=\frac{2940}{15504}.\]</div>
+<p>No multiplicamos por $5!$, porque el evento describe una muestra sin orden.</p></li>
+<li><p>Fuera del ramo de gastos médicos hay $15$ pólizas:</p><div style="overflow-x:auto;">\[\mathbb P(B)=1-\frac{\binom{15}{5}}{\binom{20}{5}}=1-\frac{3003}{15504}=\frac{12501}{15504}.\]</div></li>
+</ol></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-06">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Integración de un comité.</strong></p>
+    <p>Un grupo está formado por seis mujeres y cuatro hombres. Entre ellos están María y José. Se elige uniformemente un comité de cuatro personas, sin cargos distintos.</p>
+<ol><li>Calcula la probabilidad de que el comité tenga dos mujeres y dos hombres.</li><li>Calcula la probabilidad de que María y José pertenezcan ambos al comité.</li><li>Calcula la probabilidad de que al menos uno de los dos pertenezca al comité.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Hay $\binom{10}{4}$ comités. Si dos personas ya están incluidas, faltan dos integrantes. Para el último evento, excluye los comités que no contienen a ninguna de las dos personas señaladas.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El total es $\binom{10}{4}=210$ comités equiprobables.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\frac{\binom62\binom42}{\binom{10}{4}}=\frac{90}{210}=\frac37.\]</div></li>
+<li><p>Fijadas María y José, elegimos a las otras dos personas entre las ocho restantes:</p><div style="overflow-x:auto;">\[\frac{\binom82}{\binom{10}{4}}=\frac{28}{210}=\frac2{15}.\]</div></li>
+<li><p>Hay $\binom84$ comités que excluyen a ambos:</p><div style="overflow-x:auto;">\[1-\frac{\binom84}{\binom{10}{4}}=1-\frac{70}{210}=\frac23.\]</div></li>
+</ol></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-07">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Asignación de tres cargos.</strong></p>
+    <p>De diez estudiantes distintos, entre quienes están Ana, Bruno y Carla, se asignan los cargos de presidencia, secretaría y tesorería. Ninguna persona puede ocupar dos cargos. Todas las asignaciones inyectivas a los tres cargos son equiprobables.</p>
+<ol><li>Calcula la probabilidad de que Ana ocupe algún cargo.</li><li>Calcula la probabilidad de que Ana y Bruno ocupen ambos un cargo.</li><li>Calcula la probabilidad de que exactamente dos personas del grupo formado por Ana, Bruno y Carla ocupen cargos.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Los cargos son distintos. Puedes elegir primero a sus ocupantes y luego asignarlos a los tres cargos. Si incluyes a Ana y Bruno, identifica cuántas opciones quedan para la tercera persona.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Hay $V(10,3)=10\cdot9\cdot8=720$ asignaciones.</p>
+<ol>
+<li><p>Ana puede ocupar cualquiera de los tres cargos y los otros dos se asignan en orden entre nueve estudiantes:</p><div style="overflow-x:auto;">\[\frac{3\,V(9,2)}{V(10,3)}=\frac{216}{720}=\frac3{10}.\]</div></li>
+<li><p>Elegimos a la tercera persona entre ocho y asignamos los tres cargos:</p><div style="overflow-x:auto;">\[\frac{8\cdot3!}{720}=\frac1{15}.\]</div></li>
+<li><p>Elegimos dos de las tres personas señaladas, una de las siete restantes y luego asignamos cargos:</p><div style="overflow-x:auto;">\[\frac{\binom32\binom71\,3!}{720}=\frac{126}{720}=\frac7{40}.\]</div></li>
+</ol>
+<p>El factor $3!$ es necesario porque intercambiar cargos produce una asignación distinta.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-08">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Un sorteo de seis números.</strong></p>
+    <p>En un sorteo hipotético se elige uniformemente un subconjunto de seis números de $\{1,\ldots,49\}$. Antes del sorteo, una persona fija un boleto con seis números distintos.</p>
+<ol><li>Calcula la probabilidad de acertar los seis números.</li><li>Calcula la probabilidad de acertar exactamente tres.</li><li>Calcula la probabilidad de acertar al menos uno.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Los seis números del boleto están fijados. Una selección con exactamente $r$ aciertos contiene $r$ números del boleto y $6-r$ de los $43$ restantes.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Hay $\binom{49}{6}=13983816$ resultados equiprobables.</p>
+<ol>
+<li><p>Solo un subconjunto coincide con el boleto:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac1{\binom{49}{6}}.\]</div></li>
+<li><p>Elegimos tres de los seis números acertados y tres de los $43$ no incluidos en el boleto:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom63\binom{43}{3}}{\binom{49}{6}}=\frac{246820}{13983816}.\]</div></li>
+<li><p>El complemento consiste en que los seis números provengan de fuera del boleto:</p><div style="overflow-x:auto;">\[\mathbb P(C)=1-\frac{\binom{43}{6}}{\binom{49}{6}}.\]</div></li>
+</ol>
+<p>En general, para $r=0,\ldots,6$, la probabilidad de exactamente $r$ aciertos es $\binom6r\binom{43}{6-r}/\binom{49}{6}$.</p></div>
+  </div>
+  <h2>III. Permutaciones y agrupaciones</h2>
+  <p>Bloques, huecos, repeticiones, orden circular y particiones en pares.</p>
+  <div class="ejercicio-box" id="conteo-ejercicio-09">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Anagramas de ACTUARIA.</strong></p>
+    <p>Se elige uniformemente una de las cadenas distintas que pueden formarse reordenando las letras de la palabra <strong>ACTUARIA</strong>. La letra A aparece tres veces; las otras cinco letras son distintas.</p>
+<ol><li>Calcula la probabilidad de que las tres letras A queden juntas.</li><li>Calcula la probabilidad de que no haya dos letras A consecutivas.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Para el primer evento, trata AAA como un bloque. Para el segundo, ordena primero las cinco letras distintas y coloca las A en huecos diferentes.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El número de cadenas distintas es $8!/3!=6720$. El denominador $3!$ corrige las permutaciones de las tres A indistinguibles.</p>
+<ol>
+<li><p>El bloque AAA y las otras cinco letras forman seis objetos distintos:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{6!}{8!/3!}=\frac3{28}.\]</div></li>
+<li><p>Las cinco letras distintas se ordenan de $5!$ formas y dejan seis huecos, incluidos los extremos. Elegimos tres huecos para colocar una A en cada uno:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{5!\binom63}{8!/3!}=\frac5{14}.\]</div></li>
+</ol>
+<p>No se ordenan las A entre los huecos: son indistinguibles y cada elección determina una cadena.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-10">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Una fila y dos tipos de restricción.</strong></p>
+    <p>Siete estudiantes distintos se forman en una fila y todas las $7!$ ordenaciones son equiprobables. Entre ellos están Ana, Bruno y Carla.</p>
+<ol><li>Calcula la probabilidad de que Ana y Bruno queden juntos, en cualquier orden.</li><li>Calcula la probabilidad de que Ana quede antes que Bruno y Bruno antes que Carla, sin exigir que estén juntos.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>La primera condición se resuelve con un bloque de dos personas. En la segunda, elige las tres posiciones reservadas para Ana, Bruno y Carla; su orden dentro de ellas ya está impuesto.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><ol>
+<li><p>El bloque y las otras cinco personas se ordenan de $6!$ formas. Dentro del bloque hay dos órdenes:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{2\cdot6!}{7!}=\frac27.\]</div></li>
+<li><p>Elegimos tres posiciones de las siete. Ana ocupa la primera de ellas, Bruno la segunda y Carla la tercera; las cuatro personas restantes se ordenan libremente:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom73\,4!}{7!}=\frac16.\]</div></li>
+</ol>
+<p>Exigir un orden relativo permite separaciones arbitrarias. Exigir un bloque impone posiciones consecutivas.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-11">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Parejas en una mesa circular.</strong></p>
+    <p>Ocho personas distintas, que forman cuatro parejas previamente identificadas, se sientan alrededor de una mesa circular. Las disposiciones que difieren solo por una rotación se consideran iguales; las imágenes especulares se consideran distintas. Cada disposición circular tiene la misma probabilidad.</p>
+<ol><li>Calcula la probabilidad de que las dos personas de una pareja específica queden juntas.</li><li>Calcula la probabilidad de que las cuatro parejas queden juntas, cada una en su propio bloque de dos asientos consecutivos.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Para $m$ objetos distintos en un círculo hay $(m-1)!$ disposiciones. Cada pareja puede ordenarse internamente de dos maneras.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Hay $(8-1)!=7!$ disposiciones circulares equiprobables.</p>
+<ol>
+<li><p>La pareja señalada forma un bloque. Con las otras seis personas hay siete objetos en círculo:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{2\cdot6!}{7!}=\frac27.\]</div></li>
+<li><p>Hay cuatro bloques distintos, que se ordenan circularmente de $3!$ maneras. Las orientaciones internas dan $2^4$ posibilidades:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{3!\cdot2^4}{7!}=\frac2{105}.\]</div></li>
+</ol>
+<p>La cuenta circular elimina rotaciones. Dividir nuevamente entre dos eliminaría imágenes especulares que el enunciado considera distintas.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-12">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Agrupación de expedientes en pares.</strong></p>
+    <p>Hay ocho expedientes distintos: cuatro de riesgo alto y cuatro de riesgo estándar. Se elige uniformemente una partición de los ocho expedientes en cuatro pares. Ni el orden de los pares ni el orden de los expedientes dentro de cada par importa.</p>
+<p>Calcula la probabilidad de que haya exactamente:</p>
+<ol><li>Cero pares formados por dos expedientes de riesgo alto.</li><li>Un par formado por dos expedientes de riesgo alto.</li><li>Dos pares formados por dos expedientes de riesgo alto.</li></ol>
+<p>Comprueba que los tres resultados suman $1$.</p>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Parte de las $8!$ ordenaciones y corrige los órdenes internos y el orden de los cuatro pares. Si hay un par de riesgo alto, también debe haber un par de riesgo estándar.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El total de particiones es</p>
+<div style="overflow-x:auto;">\[\frac{8!}{(2!)^4\,4!}=105.\]</div>
+<p>Cada partición aparece $(2!)^4\,4!$ veces al ordenar los ocho expedientes y agrupar posiciones consecutivas.</p>
+<ol>
+<li><p>Todos los pares deben ser mixtos. Emparejar los cuatro expedientes de riesgo alto con los cuatro estándar equivale a elegir una biyección:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{4!}{105}=\frac8{35}.\]</div></li>
+<li><p>Elegimos el par de riesgo alto y el par estándar. Los dos expedientes restantes de cada tipo se emparejan de $2!$ maneras:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom42\binom42\,2!}{105}=\frac{72}{105}=\frac{24}{35}.\]</div></li>
+<li><p>Cuatro elementos distintos pueden dividirse en dos pares de $4!/((2!)^2\,2!)=3$ formas. Lo hacemos en cada tipo:</p><div style="overflow-x:auto;">\[\mathbb P(C)=\frac{3\cdot3}{105}=\frac3{35}.\]</div></li>
+</ol>
+<p>Las posibilidades son exhaustivas y excluyentes: $8/35+24/35+3/35=1$.</p></div>
+  </div>
+  <h2>IV. Asignaciones y patrones de repetición</h2>
+  <p>Coeficientes multinomiales, restricciones de posiciones y equiprobabilidad.</p>
+  <div class="ejercicio-box" id="conteo-ejercicio-13">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Distribución de siniestros entre oficinas.</strong></p>
+    <p>Ocho siniestros distintos se asignan a cuatro oficinas identificadas. Cada siniestro se asigna independientemente a una de las cuatro oficinas, con probabilidades iguales.</p>
+<ol><li>Calcula la probabilidad de que cada oficina reciba exactamente dos siniestros.</li><li>Calcula la probabilidad de que la primera oficina reciba exactamente tres siniestros.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Hay $4^8$ funciones de asignación. En el primer evento, distribuye los ocho objetos en cuatro grupos de tamaño dos. En el segundo, elige los tres siniestros de la primera oficina y asigna los demás libremente entre las otras tres.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El espacio de asignaciones tiene tamaño $4^8=65536$.</p>
+<ol>
+<li><p>Elegimos sucesivamente dos siniestros para cada oficina:</p><div style="overflow-x:auto;">\[N_A=\binom82\binom62\binom42\binom22=\frac{8!}{(2!)^4}=2520.\]</div>
+<div style="overflow-x:auto;">\[\mathbb P(A)=\frac{8!}{(2!)^4\,4^8}=\frac{315}{8192}.\]</div>
+<p>Las oficinas están identificadas, así que no dividimos entre $4!$.</p></li>
+<li><p>Hay $\binom83$ maneras de elegir los siniestros de la primera oficina. Cada uno de los cinco restantes tiene tres destinos:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom83\,3^5}{4^8}=\frac{1701}{8192}.\]</div></li>
+</ol></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-14">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Historias anuales de reclamaciones.</strong></p>
+    <p>En un modelo simplificado, una póliza se observa durante siete años. Cada historia se representa mediante una cadena de siete ceros y unos: $1$ significa que hubo al menos una reclamación en ese año y $0$ que no la hubo. Suponemos equiprobables las $2^7$ historias.</p>
+<p>Calcula la probabilidad de que:</p>
+<ol><li>Exactamente tres años registren reclamaciones.</li><li>Exactamente tres años registren reclamaciones y ninguno de ellos sea consecutivo a otro.</li><li>Exactamente tres años registren reclamaciones y los tres sean consecutivos.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>En el segundo evento, coloca los tres unos en huecos distintos alrededor de los cuatro ceros. En el tercero, ubica un único bloque $111$.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Hay $128$ historias equiprobables.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom73}{2^7}=\frac{35}{128}.\]</div></li>
+<li><p>Los cuatro ceros dejan cinco huecos. Elegimos tres huecos distintos para colocar los unos:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom53}{128}=\frac5{64}.\]</div></li>
+<li><p>El bloque $111$ puede comenzar en cualquiera de las primeras cinco posiciones. Los otros años deben ser ceros:</p><div style="overflow-x:auto;">\[\mathbb P(C)=\frac5{128}.\]</div></li>
+</ol>
+<p>El supuesto de equiprobabilidad es parte de este modelo de práctica; una cartera real puede requerir otra asignación de probabilidades.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-15">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cumpleaños: una pareja, dos parejas o un grupo de tres.</strong></p>
+    <p>Considera $k$ personas identificadas, con $4\leq k\leq365$. Sus cumpleaños son independientes y uniformes en un calendario de $365$ días. Calcula la probabilidad de cada patrón:</p>
+<ol>
+<li>Una sola fecha está ocupada por exactamente dos personas y todas las demás fechas ocupadas corresponden a una sola persona.</li>
+<li>Exactamente dos fechas están ocupadas por dos personas cada una, y todas las demás personas tienen cumpleaños distintos entre sí y distintos de esas dos fechas.</li>
+<li>Una sola fecha está ocupada por exactamente tres personas y todas las demás fechas ocupadas corresponden a una sola persona.</li>
+</ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Primero elige los grupos de personas que comparten fecha. Luego asigna fechas distintas a todos los grupos, incluidos los grupos de una sola persona. En el segundo evento, cuatro personas pueden dividirse en dos parejas de tres maneras.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El total de asignaciones es $365^k$. Usamos $V(n,r)=n!/(n-r)!$.</p>
+<ol>
+<li><p>Elegimos a la pareja de $\binom k2$ maneras. Esa pareja y las $k-2$ personas restantes constituyen $k-1$ grupos distinguibles, que deben recibir fechas distintas:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom k2\,V(365,k-1)}{365^k}.\]</div></li>
+<li><p>Elegimos a las cuatro personas y las dividimos en dos parejas no ordenadas:</p><div style="overflow-x:auto;">\[\binom k4\cdot\frac{4!}{(2!)^2\,2!}=3\binom k4.\]</div>
+<p>Las dos parejas y las $k-4$ personas restantes forman $k-2$ grupos distinguibles. Podemos identificarlos por sus integrantes, sin imponer un orden adicional a las parejas.</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{3\binom k4\,V(365,k-2)}{365^k}.\]</div></li>
+<li><p>Elegimos a las tres personas del grupo y asignamos fechas distintas a ese grupo y a las $k-3$ personas restantes:</p><div style="overflow-x:auto;">\[\mathbb P(C)=\frac{\binom k3\,V(365,k-2)}{365^k}.\]</div></li>
+</ol>
+<p>Los últimos dos patrones ocupan el mismo número de fechas, pero tienen distintos conteos de agrupación de personas.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-16">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cinco cargas posibles que no son equiprobables.</strong></p>
+    <p>Cuatro expedientes distintos se asignan a dos personas revisoras identificadas. Cada expediente se asigna independientemente, con probabilidad $1/2$ para cada revisora.</p>
+<ol>
+<li>Calcula la probabilidad de que cada revisora reciba dos expedientes.</li>
+<li>Las cargas posibles son $(0,4),(1,3),(2,2),(3,1),(4,0)$. Explica por qué usar $1/5$ como respuesta al primer apartado es incorrecto.</li>
+<li>Considera otro experimento: se elige uniformemente uno de esos cinco vectores de carga y después se asignan los expedientes de manera compatible con él. Calcula la probabilidad de carga $(2,2)$ en este nuevo modelo.</li>
+</ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Cuenta las asignaciones de expedientes individuales que producen cada carga. El espacio de $16$ asignaciones y el conjunto de cinco vectores describen niveles diferentes de información.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><ol>
+<li><p>Hay $2^4=16$ asignaciones equiprobables. Elegimos los dos expedientes de la primera revisora:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom42}{16}=\frac38.\]</div></li>
+<li><p>Las cinco cargas agrupan, respectivamente, $1,4,6,4,1$ asignaciones. Sus probabilidades son</p><div style="overflow-x:auto;">\[\frac1{16},\quad\frac4{16},\quad\frac6{16},\quad\frac4{16},\quad\frac1{16}.\]</div>
+<p>Enumerar cinco resultados resumidos no los vuelve equiprobables.</p></li>
+<li><p>En el nuevo experimento, los vectores sí se eligen uniformemente por definición, por lo que la probabilidad de $(2,2)$ es $1/5$. Cambiar el mecanismo de selección cambia la medida de probabilidad.</p></li>
+</ol></div>
+  </div>
+  <h2>V. Retos de conteo</h2>
+  <p>Inclusión y exclusión, desarreglos, estrellas y barras y reflexión.</p>
+  <div class="ejercicio-box" id="conteo-ejercicio-17">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Que todas las opciones estén representadas.</strong></p>
+    <p>Seis estudiantes eligen, de manera independiente y con probabilidades iguales, una de cuatro actividades identificadas. Cada estudiante elige una sola actividad.</p>
+<ol><li>Calcula la probabilidad de que las cuatro actividades reciban al menos un estudiante.</li><li>Calcula la probabilidad de que exactamente tres actividades reciban estudiantes.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Hay $4^6$ asignaciones equiprobables. Para excluir actividades vacías, utiliza inclusión y exclusión. Si se usan exactamente tres actividades, elige primero cuáles son y luego exige que ninguna de ellas quede vacía.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>El total es $4^6=4096$.</p>
+<ol>
+<li><p>Restamos las asignaciones que dejan vacía una actividad, corregimos las que dejan vacías dos y continuamos:</p><div style="overflow-x:auto;">\[N_A=4^6-\binom41 3^6+\binom42 2^6-\binom43 1^6=1560.\]</div>
+<div style="overflow-x:auto;">\[\mathbb P(A)=\frac{1560}{4096}=\frac{195}{512}.\]</div>
+<p>El término correspondiente a cuatro actividades vacías es $0^6=0$.</p></li>
+<li><p>Elegimos las tres actividades utilizadas y contamos asignaciones que usan las tres:</p><div style="overflow-x:auto;">\[N_B=\binom43\left(3^6-3\cdot2^6+3\cdot1^6\right)=2160.\]</div>
+<div style="overflow-x:auto;">\[\mathbb P(B)=\frac{2160}{4096}=\frac{135}{256}.\]</div>
+<p>Cada asignación favorable determina un único conjunto de tres actividades utilizadas, así que este último producto no cuenta resultados dos veces.</p></li>
+</ol></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-18">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cartas en sobres: puntos fijos y desarreglos.</strong></p>
+    <p>Seis cartas distintas deben ir a seis sobres con destinatarios distintos. Las cartas se distribuyen uniformemente entre los sobres, una por sobre: cada una de las $6!$ asignaciones tiene la misma probabilidad.</p>
+<ol><li>Calcula la probabilidad de que ninguna carta quede en el sobre correcto.</li><li>Calcula la probabilidad de que exactamente dos cartas queden en el sobre correcto.</li><li>Calcula la probabilidad de que exactamente cinco cartas queden en el sobre correcto.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Para el primer evento, aplica inclusión y exclusión a los eventos «la carta $i$ queda en su sobre». Una permutación sin posiciones correctas se llama desarreglo. Para el segundo evento, fija cuáles son las dos cartas correctas y desarregla las otras cuatro.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Sea $D_n$ el número de desarreglos de $n$ objetos. Por inclusión y exclusión,</p>
+<div style="overflow-x:auto;">\[D_n=\sum_{j=0}^{n}(-1)^j\binom nj(n-j)!=n!\sum_{j=0}^{n}\frac{(-1)^j}{j!}.\]</div>
+<p>Para cada conjunto de $j$ cartas que se exige colocar correctamente, las otras se asignan de $(n-j)!$ formas; las intersecciones se corrigen alternando signos. En particular, $D_6=265$ y $D_4=9$.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{D_6}{6!}=\frac{265}{720}=\frac{53}{144}.\]</div></li>
+<li><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom62\,D_4}{6!}=\frac{135}{720}=\frac3{16}.\]</div></li>
+<li><p>Si cinco cartas están en sus sobres, la sexta necesariamente también lo está. El evento es vacío y su probabilidad es $0$.</p></li>
+</ol></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-19">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Distribuciones uniformes de unidades de presupuesto.</strong></p>
+    <p>Se elige uniformemente un vector de enteros no negativos $(x_1,x_2,x_3,x_4)$ que satisface</p>
+<div style="overflow-x:auto;">\[x_1+x_2+x_3+x_4=10.\]</div>
+<p>La coordenada $x_i$ representa las unidades de presupuesto asignadas al fondo $i$. El modelo hace equiprobables los vectores completos de asignación.</p>
+<ol><li>Calcula la probabilidad de que todos los fondos reciban al menos una unidad.</li><li>Calcula la probabilidad de que el primer fondo reciba al menos cuatro unidades.</li><li>Calcula la probabilidad de que ningún fondo reciba más de cuatro unidades.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Usa el método de estrellas y barras. Para imponer una cota inferior, resta esa cantidad a la coordenada correspondiente. Para imponer las cotas superiores, excluye los eventos $x_i\geq5$ y corrige sus intersecciones.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Distribuir $10$ unidades idénticas entre cuatro fondos identificados equivale a intercalar tres separadores entre diez estrellas. El número de vectores es $\binom{13}{3}=286$.</p>
+<ol>
+<li><p>Restamos una unidad a cada coordenada. Quedan seis unidades para cuatro coordenadas no negativas:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom93}{\binom{13}{3}}=\frac{84}{286}=\frac{42}{143}.\]</div></li>
+<li><p>La sustitución $y_1=x_1-4$ deja seis unidades entre cuatro coordenadas no negativas:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom93}{\binom{13}{3}}=\frac{42}{143}.\]</div></li>
+<li><p>Para una coordenada con $x_i\geq5$, restar cinco deja cinco unidades: hay $\binom83$ vectores. Si dos coordenadas son al menos cinco, queda un único vector tras restar cinco a ambas. Tres coordenadas no pueden ser al menos cinco porque su suma excedería diez. Por inclusión y exclusión,</p><div style="overflow-x:auto;">\[N_C=\binom{13}{3}-4\binom83+\binom42=68.\]</div>
+<div style="overflow-x:auto;">\[\mathbb P(C)=\frac{68}{286}=\frac{34}{143}.\]</div></li>
+</ol>
+<p>La uniformidad de los vectores está estipulada aquí. Este modelo es diferente del de asignar objetos distinguibles independientemente a los fondos.</p></div>
+  </div>
+  <div class="ejercicio-box" id="conteo-ejercicio-20">
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Trayectorias de un saldo: un reto de reflexión.</strong></p>
+    <p>Un saldo inicia en cero. Se consideran cuatro ingresos de una unidad y cuatro egresos de una unidad. Se elige uniformemente uno de los órdenes distintos de estos ocho movimientos; los ingresos son indistinguibles entre sí, y lo mismo ocurre con los egresos.</p>
+<ol><li>Calcula la probabilidad de que el saldo sea cero justo después del cuarto movimiento.</li><li>Calcula la probabilidad de que el saldo nunca sea negativo, incluyendo todos los saldos intermedios.</li><li>Generaliza el segundo resultado a $n$ ingresos y $n$ egresos.</li></ol>
+    <button class="respButton" type="button">Pista</button>
+    <div class="resp-box"><p>Hay $\binom84$ órdenes posibles. Para contar las trayectorias que llegan a un saldo negativo, identifica el primer movimiento que produce saldo $-1$ e intercambia ingresos y egresos hasta ese instante. Esta transformación permite contar el complemento.</p></div>
+    <button class="respButton" type="button">Solución</button>
+    <div class="resp-box"><p>Las posiciones de los cuatro ingresos determinan la trayectoria, así que el total es $\binom84=70$.</p>
+<ol>
+<li><p>Entre los cuatro primeros movimientos debe haber dos ingresos; entre los cuatro últimos, también dos:</p><div style="overflow-x:auto;">\[\mathbb P(A)=\frac{\binom42\binom42}{\binom84}=\frac{36}{70}=\frac{18}{35}.\]</div></li>
+<li><p>Considera una trayectoria que alcanza saldo negativo y el primer instante en que llega a $-1$. Al intercambiar ingresos y egresos en ese prefijo, se obtiene una secuencia con cinco ingresos y tres egresos. El procedimiento es reversible: en cualquier secuencia con cinco ingresos y tres egresos, se intercambia el prefijo que termina la primera vez que el saldo alcanza $+1$.</p>
+<p>Por tanto, las trayectorias que alguna vez son negativas están en biyección con las $\binom83=56$ secuencias de cinco ingresos y tres egresos. Las que nunca son negativas son $70-56=14$:</p><div style="overflow-x:auto;">\[\mathbb P(B)=\frac{\binom84-\binom83}{\binom84}=\frac15.\]</div></li>
+<li><p>El mismo argumento cuenta $\binom{2n}{n-1}$ trayectorias que alguna vez tienen saldo negativo. Por consiguiente,</p>
+<div style="overflow-x:auto;">\[\mathbb P(C)=\frac{\binom{2n}{n}-\binom{2n}{n-1}}{\binom{2n}{n}}=\frac1{n+1},\qquad n\geq1.\]</div>
+<p>El número favorable $\frac1{n+1}\binom{2n}{n}$ es el número de Catalan $C_n$.</p></li>
+</ol></div>
+  </div>
+
 
 <div class="ejemplo-box">
 <h1 class="number-title-practica">Ejemplo</h1><p><b>Modelo geométrico: comparar longitudes, áreas o volúmenes.</b></p>
