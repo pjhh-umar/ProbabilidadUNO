@@ -4291,6 +4291,552 @@ Q_n(A)=\frac{|A\cap\{1,\ldots,n\}|}{n}.
       <p>\begin{align*}<br>\mathbb{P}{\left( \bigcup_{i=1}^{n} A_{i} \right)} = \sum_{k=1}^{n}{\left[ (-1)^{k+1} \sum_{\substack{I \subseteq \{1, \ldots, n\} \\ |I| = k}} \mathbb{P}{\left( \bigcap_{j \in I} A_{j} \right)} \right]}.<br>\end{align*}</p>
     </div>
 
+    <h1 class="page-title"> Medida de Probabilidad y Espacio de Probabilidad </h1>
+
+<div class="nota-box">
+  <h1 class="number-title"> Introducción y Motivación</h1>
+  <p>
+    Hasta este punto hemos construido la estructura base para modelar fenómenos aleatorios: identificamos el conjunto de todos los resultados posibles ($\Omega$) y seleccionamos una colección adecuada de eventos medibles ($\mathcal{F}$) con estructura de $\sigma$-álgebra. El siguiente paso natural es cuantificar la incertidumbre; es decir, asignar a cada evento $A \in \mathcal{F}$ un número real que refleje qué tan factible es su ocurrencia.
+  </p>
+  <p>
+    Históricamente, surgieron dos enfoques intuitivos para asignar este valor:
+  </p>
+  <ol>
+    <li>
+      <strong>Enfoque clásico (Laplace):</strong> Si $\Omega$ es finito y todos sus resultados son igualmente posibles, la probabilidad de un evento $A$ se define como $\mathbb{P}(A) = \frac{|A|}{|\Omega|}$. Sin embargo, este enfoque colapsa si los resultados no son equiprobables (como una moneda cargada) o si $\Omega$ es infinito (como el tiempo de espera hasta la próxima reclamación en una cartera de seguros).
+    </li>
+    <li>
+      <strong>Enfoque frecuentista:</strong> Define la probabilidad como el límite de la frecuencia relativa $\frac{n_A}{n}$ al repetir el experimento $n$ veces bajo condiciones idénticas. Aunque es útil empíricamente, no permite calcular probabilidades <em>a priori</em> sin realizar infinitos ensayos ni garantiza matemáticamente la existencia de dicho límite.
+    </li>
+  </ol>
+  <p>
+    Para superar estas limitaciones y unificar tanto los modelos discretos como los continuos, en 1933 Andréi Kolmogórov propuso una formulación axiomática basada en la teoría de la medida: concebir la probabilidad como una <strong>distribución de masa total igual a $1$</strong> repartida sobre el espacio medible $(\Omega, \mathcal{F})$.
+  </p>
+</div>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica"> Definición (Medida de Probabilidad)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F})$ un espacio medible. Una función $\mathbb{P}: \mathcal{F} \to \mathbb{R}$ se denomina <strong>medida de probabilidad</strong> (o simplemente <strong>probabilidad</strong>) sobre $(\Omega, \mathcal{F})$ si satisface los siguientes tres axiomas de Kolmogórov:
+  </p>
+  <ol>
+    <li>
+      <strong>No negatividad:</strong> Para todo evento $A \in \mathcal{F}$, se cumple que
+      $$\mathbb{P}(A) \geq 0.$$
+    </li>
+    <li>
+      <strong>Normalización (Certidumbre):</strong> La probabilidad del espacio muestral completo es igual a la unidad:
+      $$\mathbb{P}(\Omega) = 1.$$
+    </li>
+    <li>
+      <strong>$\sigma$-aditividad (Aditividad numerable):</strong> Para toda sucesión numerable $\{A_n\}_{n=1}^{\infty}$ de eventos en $\mathcal{F}$ que sean disjuntos dos a dos (es decir, $A_i \cap A_j = \emptyset$ siempre que $i \neq j$), se cumple que:
+      $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \sum_{n=1}^{\infty} \mathbb{P}(A_n).$$
+    </li>
+  </ol>
+</div>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica"> Definición (Espacio de Probabilidad)</h1>
+  <p>
+    A la terna ordenada $(\Omega, \mathcal{F}, \mathbb{P})$, compuesta por un espacio muestral $\Omega$, una $\sigma$-álgebra $\mathcal{F}$ de subconjuntos de $\Omega$ y una medida de probabilidad $\mathbb{P}$ definida sobre $\mathcal{F}$, se le denomina <strong>espacio de probabilidad</strong>.
+  </p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion"> Observación</h2>
+  <p>
+    ¿Por qué exigimos <em>$\sigma$-aditividad</em> en lugar de únicamente aditividad finita? En espacios muestrales infinitos (como $\mathbb{N}$ o $\mathbb{R}$), muchos eventos de interés se construyen como uniones numerables de eventos elementales disjuntos. La $\sigma$-aditividad es precisamente el puente analítico que garantiza la compatibilidad entre el álgebra de eventos y los procesos de paso al límite.
+  </p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica"> Ejemplo (Construcción de espacios de probabilidad)</h1>
+  <p>
+    <strong>1. Espacio de probabilidad discreto:</strong> Sea $\Omega = \{\omega_1, \omega_2, \dots\}$ un espacio muestral finito o infinito numerable, y tomemos $\mathcal{F} = \mathcal{P}(\Omega)$. Si asignamos a cada resultado elemental $\omega_i$ un peso $p_i \geq 0$ tal que $\sum_{i} p_i = 1$, entonces la función definida para cada $A \subseteq \Omega$ como:
+    $$\mathbb{P}(A) = \sum_{\omega_i \in A} p_i$$
+    constituye una medida de probabilidad. Cuando $\Omega$ es finito de tamaño $N$ y $p_i = \frac{1}{N}$ para todo $i$, recuperamos el modelo clásico de Laplace.
+  </p>
+  <p>
+    <strong>2. Espacio de probabilidad continuo (Medida de Lebesgue en $[0,1]$):</strong> Sea $\Omega = [0, 1]$ y $\mathcal{F} = \mathcal{B}([0, 1])$ la $\sigma$-álgebra de Borel restringida al intervalo unitario. Si asignamos a cada subintervalo $[a, b] \subseteq [0, 1]$ su longitud $\mathbb{P}([a, b]) = b - a$, por el Teorema de Extensión de Carathéodory existe una única medida de probabilidad $\mathbb{P}$ sobre $\mathcal{B}([0, 1])$ que extiende esta noción de longitud a todos los borelianos (modelando la elección uniforme de un número al azar entre $0$ y $1$).
+  </p>
+</div>
+
+<h1 class="page-subtitle"> Propiedades Elementales de una Medida de Probabilidad </h1>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica"> Proposición (Propiedades básicas)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad. Para cualesquiera eventos $A, B \in \mathcal{F}$, se satisfacen las siguientes propiedades:
+  </p>
+  <ol>
+    <li><strong>Probabilidad del evento imposible:</strong> $\mathbb{P}(\emptyset) = 0$.</li>
+    <li><strong>Aditividad finita:</strong> Si $A_1, A_2, \dots, A_n \in \mathcal{F}$ son eventos disjuntos dos a dos, entonces $\displaystyle{\mathbb{P}\left(\bigcup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} \mathbb{P}(A_i)}$.</li>
+    <li><strong>Probabilidad del complemento:</strong> $\mathbb{P}(A^c) = 1 - \mathbb{P}(A)$.</li>
+    <li><strong>Diferencia de eventos:</strong> $\mathbb{P}(B \setminus A) = \mathbb{P}(B) - \mathbb{P}(A \cap B)$. En particular, si $A \subseteq B$, entonces $\mathbb{P}(B \setminus A) = \mathbb{P}(B) - \mathbb{P}(A)$.</li>
+    <li><strong>Monotonía:</strong> Si $A \subseteq B$, entonces $\mathbb{P}(A) \leq \mathbb{P}(B)$.</li>
+    <li><strong>Acotamiento:</strong> Para todo evento $A \in \mathcal{F}$, se cumple que $0 \leq \mathbb{P}(A) \leq 1$.</li>
+    <li><strong>Regla de la adición (Inclusión-Exclusión para 2 eventos):</strong> $\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$.</li>
+  </ol>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: bold; color: #315b87;">Ver Demostración</summary>
+    <div style="margin-top: 10px;">
+      <p><strong>1.</strong> Considere la sucesión infinita $A_n = \emptyset$ para todo $n \in \mathbb{N}$. Claramente son disjuntos dos a dos y $\bigcup_{n=1}^{\infty} A_n = \emptyset$. Por $\sigma$-aditividad:
+      $$\mathbb{P}(\emptyset) = \mathbb{P}\left(\bigcup_{n=1}^{\infty} \emptyset\right) = \sum_{n=1}^{\infty} \mathbb{P}(\emptyset).$$
+      Dado que $\mathbb{P}(\emptyset) \in \mathbb{R}$ es un número finito (por ser $\mathbb{P}(\Omega) = 1$), la única solución real posible para esta serie es $\mathbb{P}(\emptyset) = 0$.</p>
+
+      <p><strong>2.</strong> Basta tomar la sucesión infinita $A_1, A_2, \dots, A_n, \emptyset, \emptyset, \dots$, aplicar el axioma de $\sigma$-aditividad y utilizar el inciso anterior ($\mathbb{P}(\emptyset) = 0$).</p>
+
+      <p><strong>3.</strong> Sabemos que $\Omega = A \cup A^c$ con $A \cap A^c = \emptyset$. Por normalización y aditividad finita:
+      $$1 = \mathbb{P}(\Omega) = \mathbb{P}(A \cup A^c) = \mathbb{P}(A) + \mathbb{P}(A^c) \implies \mathbb{P}(A^c) = 1 - \mathbb{P}(A).$$</p>
+
+      <p><strong>4.</strong> Podemos descomponer a $B$ como la unión disjunta $B = (A \cap B) \cup (B \setminus A)$. Aplicando aditividad finita obtenemos $\mathbb{P}(B) = \mathbb{P}(A \cap B) + \mathbb{P}(B \setminus A)$. Si $A \subseteq B$, entonces $A \cap B = A$, de donde se sigue el resultado particular.</p>
+
+      <p><strong>5.</strong> Si $A \subseteq B$, por el inciso 4 tenemos $\mathbb{P}(B) - \mathbb{P}(A) = \mathbb{P}(B \setminus A)$. Por el axioma de no negatividad, $\mathbb{P}(B \setminus A) \geq 0$, lo cual implica $\mathbb{P}(A) \leq \mathbb{P}(B)$.</p>
+
+      <p><strong>6.</strong> Como $\emptyset \subseteq A \subseteq \Omega$, aplicando monotonía y los axiomas de probabilidad:
+      $$\mathbb{P}(\emptyset) \leq \mathbb{P}(A) \leq \mathbb{P}(\Omega) \implies 0 \leq \mathbb{P}(A) \leq 1.$$</p>
+
+      <p><strong>7.</strong> Escribimos la unión como $A \cup B = A \cup (B \setminus A)$, donde ambos conjuntos son disjuntos. Aplicando aditividad finita y el inciso 4:
+      $$\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B \setminus A) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B).$$</p>
+    </div>
+  </details>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion"> Observación (Eventos de probabilidad cero y uno)</h2>
+  <p>
+    Es fundamental notar que las implicaciones inversas de $\mathbb{P}(\emptyset) = 0$ y $\mathbb{P}(\Omega) = 1$ <strong>no son válidas en general</strong>. Es decir, puede existir un evento no vacío $A \neq \emptyset$ tal que $\mathbb{P}(A) = 0$ (por ejemplo, elegir un punto exacto $\{0.5\}$ en el intervalo $[0,1]$ bajo la medida uniforme). A estos eventos se les denomina <strong>eventos nulos</strong>. De manera análoga, si $\mathbb{P}(B) = 1$ aunque $B \neq \Omega$, se dice que el evento $B$ ocurre <strong>casi seguramente (c.s.)</strong>.
+  </p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica"> Teorema (Subaditividad de Boole)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad. Para toda sucesión numerable $\{A_n\}_{n=1}^{\infty}$ de eventos en $\mathcal{F}$ (no necesariamente disjuntos), se cumple la <strong>desigualdad de Boole</strong>:
+  </p>
+  <p>
+    $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) \leq \sum_{n=1}^{\infty} \mathbb{P}(A_n).$$
+  </p>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: bold; color: #315b87;">Ver Demostración</summary>
+    <div style="margin-top: 10px;">
+      <p>
+        Construimos una sucesión auxiliar $\{B_n\}_{n=1}^{\infty}$ de eventos disjuntos dos a dos cuya unión coincida con $\bigcup_{n=1}^{\infty} A_n$. Definimos:
+        $$B_1 = A_1, \quad B_2 = A_2 \setminus A_1, \quad \dots, \quad B_n = A_n \setminus \bigcup_{k=1}^{n-1} A_k.$$
+      </p>
+      <p>
+        Se verifica directamente que los conjuntos $B_n$ pertenecen a $\mathcal{F}$, son disjuntos dos a dos, satisfacen $B_n \subseteq A_n$ para todo $n \geq 1$, y cumplen $\bigcup_{n=1}^{\infty} B_n = \bigcup_{n=1}^{\infty} A_n$. Aplicando $\sigma$-aditividad y monotonía:
+        $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} B_n \right) = \sum_{n=1}^{\infty} \mathbb{P}(B_n) \leq \sum_{n=1}^{\infty} \mathbb{P}(A_n).$$
+      </p>
+    </div>
+  </details>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica"> Teorema (Continuidad de la Medida de Probabilidad)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad.
+  </p>
+  <ol>
+    <li>
+      <strong>Continuidad por abajo:</strong> Si $\{A_n\}_{n=1}^{\infty}$ es una sucesión creciente de eventos en $\mathcal{F}$ (es decir, $A_1 \subseteq A_2 \subseteq \dots$), entonces:
+      $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \lim_{n \to \infty} \mathbb{P}(A_n).$$
+    </li>
+    <li>
+      <strong>Continuidad por arriba:</strong> Si $\{B_n\}_{n=1}^{\infty}$ es una sucesión decreciente de eventos en $\mathcal{F}$ (es decir, $B_1 \supseteq B_2 \supseteq \dots$), entonces:
+      $$\mathbb{P}\left( \bigcap_{n=1}^{\infty} B_n \right) = \lim_{n \to \infty} \mathbb{P}(B_n).$$
+    </li>
+  </ol>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: bold; color: #315b87;">Ver Demostración</summary>
+    <div style="margin-top: 10px;">
+      <p>
+        <strong>1.</strong> Definimos $C_1 = A_1$ y $C_n = A_n \setminus A_{n-1}$ para $n \geq 2$. Como la sucesión es creciente, los eventos $C_n$ son disjuntos dos a dos, $\bigcup_{k=1}^{n} C_k = A_n$ y $\bigcup_{n=1}^{\infty} C_n = \bigcup_{n=1}^{\infty} A_n$. Por $\sigma$-aditividad:
+        $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} C_n \right) = \sum_{n=1}^{\infty} \mathbb{P}(C_n) = \lim_{n \to \infty} \sum_{k=1}^{n} \mathbb{P}(C_k) = \lim_{n \to \infty} \mathbb{P}\left( \bigcup_{k=1}^{n} C_k \right) = \lim_{n \to \infty} \mathbb{P}(A_n).$$
+      </p>
+      <p>
+        <strong>2.</strong> Si $\{B_n\}_{n=1}^{\infty}$ es decreciente, entonces la sucesión de sus complementos $\{B_n^c\}_{n=1}^{\infty}$ es creciente ($B_1^c \subseteq B_2^c \subseteq \dots$). Aplicando las leyes de De Morgan y la continuidad por abajo:
+        $$1 - \mathbb{P}\left( \bigcap_{n=1}^{\infty} B_n \right) = \mathbb{P}\left( \left(\bigcap_{n=1}^{\infty} B_n\right)^c \right) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} B_n^c \right) = \lim_{n \to \infty} \mathbb{P}(B_n^c) = \lim_{n \to \infty} \big(1 - \mathbb{P}(B_n)\big) = 1 - \lim_{n \to \infty} \mathbb{P}(B_n).$$
+        Restando $1$ en ambos extremos y multiplicando por $-1$ se obtiene $\mathbb{P}\left( \bigcap_{n=1}^{\infty} B_n \right) = \lim_{n \to \infty} \mathbb{P}(B_n)$.
+      </p>
+    </div>
+  </details>
+</div>
+
+
+<h1 class="page-title">Medida y espacio de probabilidad</h1>
+<div class="nota-box"><h1 class="number-title-practica" style="font-size:1.2em">Introducción</h1>
+<p>Hasta ahora hemos aprendido a describir los posibles resultados de un experimento mediante un conjunto Ω y a seleccionar una familia de eventos mediante una σ-álgebra. Sin embargo, conocer los eventos no nos dice qué tan probable es que ocurran. Falta asignarles números de manera coherente.</p>
+<p>La idea que guiará esta sección es la siguiente: una probabilidad es una forma de medir conjuntos, con la particularidad de que el espacio completo tiene medida uno.</p>
+<p>Al finalizar podrás distinguir un espacio medible de un espacio de probabilidad, verificar los axiomas de una medida de probabilidad, construir modelos discretos y geométricos y demostrar sus propiedades elementales y de continuidad.</p></div>
+
+<h1 class="page-title">Un mismo espacio muestral, distintas probabilidades</h1>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: ¿qué falta para describir un dado?</h1>
+<p>Considera \(\Omega=\{1,2,3,4,5,6\}\) y \(\mathcal F=\mathcal P(\Omega)\). El evento «obtener un número par» es \(A=\{2,4,6\}\).</p>
+<p>Si el dado es equilibrado, asignamos probabilidad \(1/6\) a cada cara y obtenemos \(P(A)=1/2\). Pero también podemos modelar un dado cargado con las probabilidades</p>
+\[p_1=p_2=p_3=p_4=p_5=\frac1{10},\qquad p_6=\frac12.\]
+<p>En este segundo modelo, \(Q(A)=1/10+1/10+1/2=7/10\). El espacio muestral y la familia de eventos son los mismos; la asignación de probabilidades es diferente.</p>
+<p>Pregunta para discutir: ¿la fórmula «casos favorables entre casos posibles» se deduce únicamente de conocer Ω? No: también requiere equiprobabilidad.</p></div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación</h1><p>En todo modelo distinguiremos tres decisiones: qué resultados consideramos posibles, qué conjuntos tratamos como eventos y qué probabilidad asignamos a cada evento. Corresponden a Ω, \(\mathcal F\) y P, respectivamente.</p></div>
+
+<h1 class="page-title">Espacios medibles</h1>
+<div class="definicion-box"><h1 class="number-title-practica" style="font-size:1.2em">Definición: espacio medible</h1>
+<p>Sea Ω un conjunto no vacío y \(\mathcal F\) una σ-álgebra sobre Ω. El par \((\Omega,\mathcal F)\) se llama espacio medible. Los elementos de \(\mathcal F\) se llaman conjuntos medibles; en el contexto probabilístico, eventos.</p></div>
+<div class="notacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Notación</h1>
+<ul><li>\(\omega\in\Omega\): un resultado individual.</li><li>\(A\in\mathcal F\): un evento al que podremos asignar una medida.</li><li>\(\mathcal F\subseteq\mathcal P(\Omega)\): una familia de subconjuntos de Ω.</li><li>\(A^c=\Omega\setminus A\): complemento relativo al espacio muestral.</li></ul>
+<p>La función de probabilidad tendrá como argumentos conjuntos, no resultados individuales: escribimos \(P(\{\omega\})\) cuando el singleton es medible.</p></div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación: precisar el significado de evento</h1><p>En una primera aproximación puede llamarse evento a cualquier subconjunto de Ω. En la formulación general fijamos una σ-álgebra \(\mathcal F\), y solamente sus elementos son eventos del modelo. Cuando \(\mathcal F=\mathcal P(\Omega)\), ambas convenciones coinciden.</p></div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: la información disponible</h1>
+<p>Para el dado, considera</p>
+\[\mathcal F_0=\{\emptyset,\Omega,\{2,4,6\},\{1,3,5\}\}.\]
+<p>Esta σ-álgebra permite distinguir si el resultado es par o impar, pero no distinguir cada cara por separado. En ella podemos asignar una probabilidad a \(\{2,4,6\}\), pero \(\{6\}\notin\mathcal F_0\): la expresión \(P(\{6\})\) no está definida si P solamente tiene dominio \(\mathcal F_0\). No significa que sea cero.</p></div>
+
+<h1 class="page-title">De medir longitudes a medir eventos</h1>
+<div class="nota-box"><h1 class="number-title-practica" style="font-size:1.2em">Motivación</h1>
+<p>Contar elementos, calcular longitudes y calcular áreas son maneras diferentes de medir conjuntos. Comparten una idea: al reunir piezas disjuntas, sus medidas se suman. Para tratar sucesiones de eventos necesitamos exigir esta propiedad también para una cantidad numerable de piezas.</p></div>
+<div class="definicion-box"><h1 class="number-title-practica" style="font-size:1.2em">Definición: medida</h1>
+<p>Sea \((\Omega,\mathcal F)\) un espacio medible. Una medida sobre él es una función</p>
+\[\mu:\mathcal F\longrightarrow[0,\infty]\]
+<p>tal que:</p><ol><li>\(\mu(\emptyset)=0\).</li><li>Si \((A_n)_{n\geq1}\subseteq\mathcal F\) son disjuntos dos a dos, entonces
+\[\mu\!\left(\bigcup_{n=1}^{\infty}A_n\right)=\sum_{n=1}^{\infty}\mu(A_n).\]</li></ol>
+<p>La segunda propiedad se llama aditividad numerable o σ-aditividad. La terna \((\Omega,\mathcal F,\mu)\) se llama espacio de medida. Se admite que algunos conjuntos tengan medida infinita.</p></div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplos: contar y medir longitud</h1>
+<ul><li>En \((\mathbb N,\mathcal P(\mathbb N))\), la medida de conteo asigna a cada conjunto finito su número de elementos y a cada conjunto infinito el valor ∞. No es una probabilidad porque la medida de todo \(\mathbb N\) es infinita.</li><li>La medida de longitud, o medida de Lebesgue, restringida a \(\mathcal B(\mathbb R)\), satisface \(\lambda((a,b])=b-a\) para \(a&lt;b\). No es una probabilidad sobre todo \(\mathbb R\), pues \(\lambda(\mathbb R)=\infty\).</li></ul>
+<p>Estos ejemplos motivan el concepto; aquí no construiremos formalmente la medida de Lebesgue.</p></div>
+
+<h1 class="page-title">Medida y espacio de probabilidad</h1>
+<div class="definicion-box"><h1 class="number-title-practica" style="font-size:1.2em">Definición: medida de probabilidad</h1>
+<p>Sea \((\Omega,\mathcal F)\) un espacio medible. Una medida de probabilidad es una función \(P:\mathcal F\to[0,1]\) tal que:</p>
+<ol><li>\(P(\Omega)=1\).</li><li>Para toda sucesión de eventos disjuntos dos a dos,
+\[P\!\left(\bigcup_{n=1}^{\infty}A_n\right)=\sum_{n=1}^{\infty}P(A_n).\]</li></ol>
+<p>La no negatividad está incorporada en el codominio. Equivalentemente, podemos pedir una función real no negativa, normalizada y numerablemente aditiva: las cotas \(0\leq P(A)\leq1\) se deducen de esas condiciones.</p></div>
+<div class="definicion-box"><h1 class="number-title-practica" style="font-size:1.2em">Definición: espacio de probabilidad</h1>
+<p>La terna \((\Omega,\mathcal F,P)\), formada por un espacio muestral no vacío, una σ-álgebra sobre él y una medida de probabilidad sobre esa σ-álgebra, se llama espacio de probabilidad.</p>
+\[\boxed{\Omega:\ \text{resultados};\quad\mathcal F:\ \text{eventos};\quad P:\ \text{probabilidades}.}\]
+</div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación: axiomas y elección del modelo</h1>
+<p>Los axiomas establecen las reglas de coherencia que debe cumplir P, pero no indican qué modelo representa mejor una situación real. Elegir un dado equilibrado, una densidad o unas probabilidades estimadas mediante datos exige supuestos adicionales.</p></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Proposición: normalización de una medida finita</h1>
+<p>Si μ es una medida y \(0&lt;\mu(\Omega)&lt;\infty\), entonces</p>
+\[P(A)=\frac{\mu(A)}{\mu(\Omega)},\qquad A\in\mathcal F,\]
+<p>define una medida de probabilidad.</p>
+<details><summary>Ver demostración</summary><p>La función es no negativa, \(P(\Omega)=1\) y la aditividad numerable se conserva al dividir por la constante positiva y finita \(\mu(\Omega)\). Además, la monotonía de μ da \(\mu(A)\leq\mu(\Omega)\), por lo que los valores pertenecen a [0,1].</p></details></div>
+
+<h1 class="page-title">Modelos fundamentales</h1>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: modelo discreto</h1>
+<p>Sea Ω finito o numerable y sea \((p_\omega)_{\omega\in\Omega}\) una familia de números no negativos con \(\sum_{\omega\in\Omega}p_\omega=1\). Sobre \(\mathcal F=\mathcal P(\Omega)\) definimos</p>
+\[P(A)=\sum_{\omega\in A}p_\omega.\]
+<p>Para eventos disjuntos, cada resultado aparece en una sola pieza, de modo que la suma sobre la unión es la suma de las probabilidades. La reagrupación es válida porque todos los sumandos son no negativos.</p>
+<p>En particular, si Ω tiene m elementos y \(p_\omega=1/m\), obtenemos la probabilidad clásica:</p>
+\[P(A)=\frac{\#A}{\#\Omega}.\]
+<p>Si \(\Omega=\{1,2,\ldots\}\) y \(p_n=2^{-n}\), entonces \(P(\Omega)=1\) y</p>
+\[P(\{2,4,6,\ldots\})=\sum_{k=1}^{\infty}2^{-2k}=\frac13.\]
+</div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: probabilidad uniforme en [0,1]</h1>
+<p>Tomemos \(\Omega=[0,1]\), \(\mathcal F=\mathcal B([0,1])\) y \(P(A)=\lambda(A)\), donde λ es la medida de longitud restringida a los borelianos de [0,1]. Entonces \(P(\Omega)=1\) y</p>
+\[P([a,b])=b-a,\qquad 0\leq a\leq b\leq1.\]
+<p>Por ejemplo, \(P([1/4,3/4])=1/2\) y \(P(\{1/2\})=0\). Los intervalos sirven para describir la medida, pero P está definida sobre toda la σ-álgebra, no únicamente sobre intervalos.</p>
+</div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación: una unión no numerable</h1>
+<p>Aunque \([0,1]=\bigcup_{x\in[0,1]}\{x\}\), no podemos aplicar la aditividad numerable a esa unión: está indexada por un conjunto no numerable. No hay contradicción entre que cada punto tenga probabilidad cero y que todo el intervalo tenga probabilidad uno.</p></div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: probabilidad geométrica</h1>
+<p>Sea D una región boreliana de \(\mathbb R^2\) con área positiva y finita. Sobre \(\mathcal B(D)\),</p>
+\[P(A)=\frac{\operatorname{Área}(A)}{\operatorname{Área}(D)}\]
+<p>es una probabilidad. El modelo expresa uniformidad respecto del área: regiones con igual área tienen igual probabilidad. No debe usarse esta fórmula sin ese supuesto.</p></div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: una medida concentrada en un resultado</h1>
+<p>Para \(\omega_0\in\Omega\), la medida de Dirac es</p>
+\[\delta_{\omega_0}(A)=\begin{cases}1,&amp;\omega_0\in A,\\0,&amp;\omega_0\notin A.\end{cases}\]
+<p>Está definida sobre cualquier σ-álgebra de Ω y es una probabilidad: en una familia disjunta, a lo sumo un evento contiene a \(\omega_0\).</p></div>
+
+<h1 class="page-title">Primeras consecuencias de los axiomas</h1>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Proposición: evento vacío y aditividad finita</h1>
+<p>En un espacio de probabilidad:</p>
+<ol><li>\(P(\emptyset)=0\).</li><li>Si \(A_1,\ldots,A_m\) son eventos disjuntos dos a dos, entonces \(P(\bigcup_{k=1}^{m}A_k)=\sum_{k=1}^{m}P(A_k)\).</li></ol>
+<details><summary>Ver demostración</summary><p>Aplicamos la aditividad numerable a \(A_1=\Omega\) y \(A_n=\emptyset\) para \(n\geq2\). Así, \(1=1+\sum_{n=2}^{\infty}P(\emptyset)\). La no negatividad obliga a que \(P(\emptyset)=0\). Para obtener la aditividad finita, completamos la familia finita con eventos vacíos y usamos la aditividad numerable.</p></details></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Proposición: complemento, diferencia y monotonía</h1>
+<p>Sean \(A,B\in\mathcal F\). Entonces:</p>
+\[P(A^c)=1-P(A).\]
+<p>Si \(A\subseteq B\), entonces</p>
+\[P(B\setminus A)=P(B)-P(A),\qquad P(A)\leq P(B).\]
+<details><summary>Ver demostración</summary><p>Las descomposiciones \(\Omega=A\mathbin{\dot\cup}A^c\) y \(B=A\mathbin{\dot\cup}(B\setminus A)\) son disjuntas. Aplicando aditividad finita obtenemos ambas identidades. La monotonía se sigue de \(P(B\setminus A)\geq0\).</p></details>
+<p>En particular, \(0\leq P(A)\leq1\).</p></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Proposición: inclusión-exclusión para dos eventos</h1>
+\[P(A\cup B)=P(A)+P(B)-P(A\cap B).\]
+<details><summary>Ver demostración</summary><p>Las uniones \(A\cup B=A\mathbin{\dot\cup}(B\setminus A)\) y \(B=(A\cap B)\mathbin{\dot\cup}(B\setminus A)\) son disjuntas. De la segunda, \(P(B\setminus A)=P(B)-P(A\cap B)\). Sustituimos en la primera.</p></details>
+<p>La intersección se resta porque al sumar \(P(A)+P(B)\) la hemos contado dos veces.</p></div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: dos coberturas de seguro</h1>
+<p>En un modelo para una cartera, sean A el evento «una póliza presenta al menos un siniestro de daños materiales durante el año» y B el evento «presenta al menos un siniestro de responsabilidad civil». Si \(P(A)=0.20\), \(P(B)=0.15\) y \(P(A\cap B)=0.05\), entonces</p>
+\[P(A\cup B)=0.30,\qquad P((A\cup B)^c)=0.70.\]
+<p>La primera probabilidad corresponde a presentar al menos uno de los dos tipos de siniestro; la segunda, a no presentar ninguno de esos dos tipos. No hemos supuesto independencia.</p></div>
+
+<h1 class="page-title">Subaditividad y cotas útiles</h1>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Teorema: desigualdad de la unión o de Boole</h1>
+<p>Para cualquier sucesión \((A_n)_{n\geq1}\) de eventos, sin exigir que sean disjuntos,</p>
+\[P\!\left(\bigcup_{n=1}^{\infty}A_n\right)\leq\sum_{n=1}^{\infty}P(A_n).\]
+<details><summary>Ver demostración</summary><p>Definimos \(B_1=A_1\) y, para \(n\geq2\), \(B_n=A_n\setminus\bigcup_{k=1}^{n-1}A_k\). Los eventos \(B_n\) son disjuntos, \(B_n\subseteq A_n\) y sus uniones coinciden. Por aditividad numerable y monotonía,</p>
+\[P\!\left(\bigcup_n A_n\right)=\sum_n P(B_n)\leq\sum_n P(A_n).\]
+</details></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Proposición: cotas para una intersección</h1>
+\[\max\{0,P(A)+P(B)-1\}\leq P(A\cap B)\leq\min\{P(A),P(B)\}.\]
+<details><summary>Ver demostración</summary><p>La cota superior se sigue de la monotonía. Para la inferior, usamos inclusión-exclusión y \(P(A\cup B)\leq1\). Finalmente, \(P(A\cap B)\geq0\).</p></details>
+<p>Estas cotas permiten obtener información aun cuando desconocemos la dependencia entre los eventos.</p></div>
+
+<h1 class="page-title">¿Por qué necesitamos aditividad numerable?</h1>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: no existe una probabilidad uniforme en los naturales</h1>
+<p>Supongamos que \(\Omega=\mathbb N\), \(\mathcal F=\mathcal P(\mathbb N)\) y que todos los resultados tienen la misma probabilidad c.</p>
+<p>Si \(c&gt;0\), elegimos un entero m con \(mc&gt;1\). La aditividad finita daría \(P(\{1,\ldots,m\})=mc&gt;1\), una contradicción. Si \(c=0\), la aditividad numerable daría</p>
+\[1=P(\mathbb N)=\sum_{n=1}^{\infty}P(\{n\})=0,\]
+<p>otra contradicción. Por tanto, no existe tal probabilidad. Sí existen probabilidades sobre los naturales, como \(P(\{n\})=2^{-n}\), pero no con todos los puntos equiprobables.</p></div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación</h1><p>Las propiedades de las uniones finitas no bastan para controlar los eventos que resultan de procesos infinitos. La σ-aditividad enlaza la estructura de la σ-álgebra con los límites que utilizaremos en variables aleatorias y convergencia.</p></div>
+
+<h1 class="page-title">Continuidad de la probabilidad</h1>
+<div class="definicion-box"><h1 class="number-title-practica" style="font-size:1.2em">Definición: sucesiones monótonas de eventos</h1>
+<p>Escribimos \(A_n\uparrow A\) si \(A_n\subseteq A_{n+1}\) para todo n y \(A=\bigcup_n A_n\). Escribimos \(A_n\downarrow A\) si \(A_{n+1}\subseteq A_n\) para todo n y \(A=\bigcap_n A_n\).</p></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Teorema: continuidad desde abajo</h1>
+<p>Si \(A_n\uparrow A\), entonces</p>
+\[P(A)=\lim_{n\to\infty}P(A_n).\]
+<details><summary>Ver demostración</summary><p>Sean \(B_1=A_1\) y \(B_n=A_n\setminus A_{n-1}\) para \(n\geq2\). Son disjuntos, \(A=\bigcup_{n=1}^{\infty}B_n\) y \(A_m=\bigcup_{n=1}^{m}B_n\). Por consiguiente,</p>
+\[P(A)=\sum_{n=1}^{\infty}P(B_n)=\lim_{m\to\infty}\sum_{n=1}^{m}P(B_n)=\lim_{m\to\infty}P(A_m).\]
+</details></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Teorema: continuidad desde arriba</h1>
+<p>Si \(A_n\downarrow A\), entonces</p>
+\[P(A)=\lim_{n\to\infty}P(A_n).\]
+<details><summary>Ver demostración</summary><p>Por las leyes de De Morgan, \(A_n^c\uparrow A^c\). Aplicamos continuidad desde abajo y la regla del complemento:</p>
+\[1-P(A)=P(A^c)=\lim_n P(A_n^c)=1-\lim_n P(A_n).\]</details>
+<p>Para una medida general, este resultado requiere la hipótesis de finitud de alguna medida \(\mu(A_m)\). En probabilidad es automática porque \(P(\Omega)=1\).</p></div>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejemplo: aproximar eventos mediante intervalos</h1>
+<p>En el modelo uniforme sobre [0,1], \(A_n=[0,1/n]\downarrow\{0\}\), de modo que</p>
+\[P(\{0\})=\lim_n\frac1n=0.\]
+<p>Asimismo, \(B_n=[0,1-1/n]\uparrow[0,1)\), así que</p>
+\[P([0,1))=\lim_n\left(1-\frac1n\right)=1.\]
+<p>Los eventos crecen o decrecen por inclusión; no se trata de convergencia de resultados individuales.</p></div>
+
+<h1 class="page-title">Probabilidad cero y probabilidad uno</h1>
+<div class="definicion-box"><h1 class="number-title-practica" style="font-size:1.2em">Definición: evento nulo y ocurrencia casi segura</h1>
+<p>Un evento N es nulo si \(P(N)=0\). Un evento A ocurre casi seguramente si \(P(A)=1\), equivalentemente, si \(P(A^c)=0\).</p></div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación: no confundir conjuntos con sus probabilidades</h1>
+<ul><li>\(A=\emptyset\) implica \(P(A)=0\), pero el recíproco puede fallar.</li><li>\(A=\Omega\) implica \(P(A)=1\), pero el recíproco puede fallar.</li></ul>
+<p>En el modelo uniforme sobre [0,1], \(\{0\}\ne\emptyset\) tiene probabilidad cero y \((0,1]\ne\Omega\) tiene probabilidad uno. «Nulo» no significa «vacío», y «casi seguro» no significa «igual a todo el espacio».</p></div>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Proposición: uniones numerables de eventos nulos</h1>
+<p>Si \(N_n\in\mathcal F\) y \(P(N_n)=0\) para todo n, entonces \(P(\bigcup_nN_n)=0\).</p>
+<details><summary>Ver demostración</summary><p>Por subaditividad, \(0\leq P(\bigcup_nN_n)\leq\sum_nP(N_n)=0\).</p></details>
+<p>En particular, cualquier subconjunto numerable de [0,1] tiene probabilidad uniforme cero. Por tanto, un número elegido con este modelo es irracional casi seguramente.</p></div>
+
+<h1 class="page-title">Relación con otras formas de entender la probabilidad</h1>
+<div class="nota-box"><h1 class="number-title-practica" style="font-size:1.2em">Síntesis</h1>
+<ul><li>La probabilidad clásica es un modelo finito con masas iguales: medida de conteo normalizada.</li><li>La probabilidad geométrica normaliza longitud, área o volumen de una región de medida positiva y finita, bajo un supuesto de uniformidad.</li><li>Las frecuencias relativas proporcionan estimaciones empíricas. Bajo hipótesis apropiadas, la ley de los grandes números explica su relación con P.</li><li>Una valoración subjetiva puede proponer probabilidades a partir de información y juicio. Para ser una medida de probabilidad en el marco adoptado debe satisfacer los axiomas.</li><li>La formulación axiomática especifica reglas comunes; no obliga a que todos los eventos elementales sean igualmente probables.</li></ul></div>
+<div class="observacion-box"><h1 class="number-title-practica" style="font-size:1.2em">Observación: precisión sobre el enfoque frecuentista</h1>
+<p>Para una muestra fija \(\omega_1,\ldots,\omega_n\in\Omega\), la función</p>
+\[\widehat P_n(A)=\frac1n\sum_{i=1}^{n}\mathbf1_A(\omega_i),\qquad A\in\mathcal F,\]
+<p>sí es una medida de probabilidad: es el promedio de n medidas de Dirac. Aquí \(\mathbf1_A(\omega)\) vale 1 si \(\omega\in A\) y 0 en otro caso.</p>
+<p>En cambio, la existencia de límites de frecuencias, por sí sola, no autoriza intercambiar un límite con una suma infinita ni prueba σ-aditividad. Por ejemplo, en \(\mathbb N\), las medidas \(\delta_n\) cumplen \(\delta_n(\{k\})\to0\) para todo k fijo y \(\delta_n(\mathbb N)=1\). Cualquier supuesto límite que preservara ambos hechos no podría ser una probabilidad sobre \(\mathcal P(\mathbb N)\). Este ejemplo no afirma que exista un límite sobre todos los subconjuntos: muestra el obstáculo de intentar deducir aditividad numerable sólo de convergencias individuales.</p></div>
+
+<h1 class="page-title">Un resultado de enlace con los π-sistemas</h1>
+<div class="teorema-box"><h1 class="number-title-practica" style="font-size:1.2em">Teorema: unicidad en una familia generadora</h1>
+<p>Sean P y Q dos medidas de probabilidad sobre \((\Omega,\mathcal F)\). Si \(\mathcal C\) es un π-sistema que genera \(\mathcal F\) y \(P(C)=Q(C)\) para todo \(C\in\mathcal C\), entonces \(P=Q\) en toda \(\mathcal F\).</p>
+<details><summary>Ver demostración usando el teorema π-λ de Dynkin</summary><p>Sea \(\mathcal D=\{A\in\mathcal F:P(A)=Q(A)\}\). Contiene a Ω. Si \(A\subseteq B\) están en \(\mathcal D\), la fórmula para la diferencia muestra que \(B\setminus A\in\mathcal D\). Si \(A_n\uparrow A\) con \(A_n\in\mathcal D\), la continuidad desde abajo da \(P(A)=\lim_nP(A_n)=\lim_nQ(A_n)=Q(A)\). Por tanto, \(\mathcal D\) es un λ-sistema que contiene a \(\mathcal C\). El teorema π-λ implica \(\mathcal F=\sigma(\mathcal C)\subseteq\mathcal D\).</p></details>
+<p>Este resultado explica por qué una probabilidad boreliana sobre los reales queda determinada por los valores que asigna a los intervalos \((-\infty,t]\). No prueba que cualquier asignación en una familia generadora admita extensión: unicidad y existencia son problemas distintos.</p>
+<p>Nota para el curso: si todavía no se ha demostrado el teorema π-λ, este apartado puede reservarse para después de estudiarlo.</p></div>
+
+<h1 class="page-title">Ejercicios y preguntas de discusión</h1>
+<div class="ejemplo-box"><h1 class="number-title-practica" style="font-size:1.2em">Ejercicios</h1>
+<ol>
+<li>Sea \(\Omega=\{a,b,c\}\) con todas sus partes medibles. Si \(P(\{a\})=0.2\) y \(P(\{b\})=0.5\), determina las probabilidades de los ocho eventos.</li>
+<li>Para el dado cargado de la introducción, calcula las probabilidades de obtener un resultado mayor que 3, un resultado impar y un resultado par o mayor que 3.</li>
+<li>En \(\mathbb N\), verifica que \(p_n=c/2^n\) define masas de probabilidad exactamente cuando c=1. Calcula \(P(\{n:n\geq m\})\) para \(m\geq1\).</li>
+<li>Sobre una σ-álgebra \(\mathcal F\), sean P y Q probabilidades y \(0\leq\alpha\leq1\). Demuestra que \(R(A)=\alpha P(A)+(1-\alpha)Q(A)\) es una probabilidad.</li>
+<li>Si \(P(A)=0.7\) y \(P(B)=0.6\), encuentra las cotas posibles para \(P(A\cap B)\) y \(P(A\cup B)\). ¿Pueden A y B ser disjuntos?</li>
+<li>En el modelo uniforme sobre [0,1], calcula \(P(\mathbb Q\cap[0,1])\), \(P([0,1]\setminus\mathbb Q)\) y \(P((1/4,1/2]\cup\{3/4\})\). Justifica cada respuesta.</li>
+<li>Demuestra que, si \(P(A_n)=1\) para todo n, entonces \(P(\bigcap_nA_n)=1\).</li>
+<li>Si \(P(A\mathbin{\triangle}B)=0\), demuestra que \(P(A)=P(B)\). Aquí \(A\mathbin{\triangle}B=(A\setminus B)\cup(B\setminus A)\).</li>
+<li>Demuestra que una función no negativa y finitamente aditiva, con \(P(\Omega)=1\), es numerablemente aditiva si es continua desde abajo. Pista: considera las uniones parciales de una sucesión disjunta.</li>
+<li>Explica por qué conocer Ω no determina P y por qué una σ-álgebra puede ser menor que \(\mathcal P(\Omega)\).</li>
+</ol></div>
+<div class="nota-box"><h1 class="number-title-practica" style="font-size:1.2em">Respuestas breves para verificación</h1>
+<p>1. En el orden \(\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\Omega\): 0, 0.2, 0.5, 0.3, 0.7, 0.5, 0.8, 1.</p>
+<p>2. 0.7, 0.3 y 0.8, respectivamente. 3. \(P(n\geq m)=2^{1-m}\). 5. La intersección pertenece a [0.3,0.6] y la unión a [0.7,1]; no pueden ser disjuntos. 6. 0, 1 y 1/4, respectivamente.</p></div>
+<div class="nota-box"><h1 class="number-title-practica" style="font-size:1.2em">Cierre y enlace con el siguiente tema</h1>
+<p>La σ-álgebra nos permite realizar operaciones con eventos sin salir del dominio de P; la medida de probabilidad convierte esas operaciones en identidades, desigualdades y resultados de continuidad.</p>
+<p>En el siguiente tema mantendremos esta estructura y estudiaremos cómo cambia la probabilidad cuando sabemos que ocurrió un evento B con \(P(B)&gt;0\). La fórmula \(P(A\mid B)=P(A\cap B)/P(B)\) será otra medida de probabilidad, ahora obtenida restringiendo y normalizando P.</p></div>
+
+
+<h1 class="page-title"> Medida de Probabilidad y Espacio de Probabilidad </h1>
+
+<div class="nota-box">
+  <h1 class="number-title"> Introducción y Motivación</h1>
+  <p>
+    Hasta este punto hemos construido la estructura base para modelar fenómenos aleatorios: identificamos el conjunto de todos los resultados posibles ($\Omega$) y seleccionamos una colección adecuada de eventos medibles ($\mathcal{F}$) con estructura de $\sigma$-álgebra. El siguiente paso natural es cuantificar la incertidumbre; es decir, asignar a cada evento $A \in \mathcal{F}$ un número real que refleje qué tan factible es su ocurrencia.
+  </p>
+  <p>
+    Históricamente, surgieron dos enfoques intuitivos para asignar este valor:
+  </p>
+  <ol>
+    <li>
+      <strong>Enfoque clásico (Laplace):</strong> Si $\Omega$ es finito y todos sus resultados son igualmente posibles, la probabilidad de un evento $A$ se define como $\mathbb{P}(A) = \frac{|A|}{|\Omega|}$. Sin embargo, este enfoque colapsa si los resultados no son equiprobables (como una moneda cargada) o si $\Omega$ es infinito (como el tiempo de espera hasta la próxima reclamación en una cartera de seguros).
+    </li>
+    <li>
+      <strong>Enfoque frecuentista:</strong> Define la probabilidad como el límite de la frecuencia relativa $\frac{n_A}{n}$ al repetir el experimento $n$ veces bajo condiciones idénticas. Aunque es útil empíricamente, no permite calcular probabilidades <em>a priori</em> sin realizar infinitos ensayos ni garantiza matemáticamente la existencia de dicho límite.
+    </li>
+  </ol>
+  <p>
+    Para superar estas limitaciones y unificar tanto los modelos discretos como los continuos, en 1933 Andréi Kolmogórov propuso una formulación axiomática basada en la teoría de la medida: concebir la probabilidad como una <strong>distribución de masa total igual a $1$</strong> repartida sobre el espacio medible $(\Omega, \mathcal{F})$.
+  </p>
+</div>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica"> Definición (Medida de Probabilidad)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F})$ un espacio medible. Una función $\mathbb{P}: \mathcal{F} \to \mathbb{R}$ se denomina <strong>medida de probabilidad</strong> (o simplemente <strong>probabilidad</strong>) sobre $(\Omega, \mathcal{F})$ si satisface los siguientes tres axiomas de Kolmogórov:
+  </p>
+  <ol>
+    <li>
+      <strong>No negatividad:</strong> Para todo evento $A \in \mathcal{F}$, se cumple que
+      $$\mathbb{P}(A) \geq 0.$$
+    </li>
+    <li>
+      <strong>Normalización (Certidumbre):</strong> La probabilidad del espacio muestral completo es igual a la unidad:
+      $$\mathbb{P}(\Omega) = 1.$$
+    </li>
+    <li>
+      <strong>$\sigma$-aditividad (Aditividad numerable):</strong> Para toda sucesión numerable $\{A_n\}_{n=1}^{\infty}$ de eventos en $\mathcal{F}$ que sean disjuntos dos a dos (es decir, $A_i \cap A_j = \emptyset$ siempre que $i \neq j$), se cumple que:
+      $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \sum_{n=1}^{\infty} \mathbb{P}(A_n).$$
+    </li>
+  </ol>
+</div>
+
+<div class="definicion-box">
+  <h1 class="number-title-practica"> Definición (Espacio de Probabilidad)</h1>
+  <p>
+    A la terna ordenada $(\Omega, \mathcal{F}, \mathbb{P})$, compuesta por un espacio muestral $\Omega$, una $\sigma$-álgebra $\mathcal{F}$ de subconjuntos de $\Omega$ y una medida de probabilidad $\mathbb{P}$ definida sobre $\mathcal{F}$, se le denomina <strong>espacio de probabilidad</strong>.
+  </p>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion"> Observación</h2>
+  <p>
+    ¿Por qué exigimos <em>$\sigma$-aditividad</em> en lugar de únicamente aditividad finita? En espacios muestrales infinitos (como $\mathbb{N}$ o $\mathbb{R}$), muchos eventos de interés se construyen como uniones numerables de eventos elementales disjuntos. La $\sigma$-aditividad es precisamente el puente analítico que garantiza la compatibilidad entre el álgebra de eventos y los procesos de paso al límite.
+  </p>
+</div>
+
+<div class="ejemplo-box">
+  <h1 class="number-title-practica"> Ejemplo (Construcción de espacios de probabilidad)</h1>
+  <p>
+    <strong>1. Espacio de probabilidad discreto:</strong> Sea $\Omega = \{\omega_1, \omega_2, \dots\}$ un espacio muestral finito o infinito numerable, y tomemos $\mathcal{F} = \mathcal{P}(\Omega)$. Si asignamos a cada resultado elemental $\omega_i$ un peso $p_i \geq 0$ tal que $\sum_{i} p_i = 1$, entonces la función definida para cada $A \subseteq \Omega$ como:
+    $$\mathbb{P}(A) = \sum_{\omega_i \in A} p_i$$
+    constituye una medida de probabilidad. Cuando $\Omega$ es finito de tamaño $N$ y $p_i = \frac{1}{N}$ para todo $i$, recuperamos el modelo clásico de Laplace.
+  </p>
+  <p>
+    <strong>2. Espacio de probabilidad continuo (Medida de Lebesgue en $[0,1]$):</strong> Sea $\Omega = [0, 1]$ y $\mathcal{F} = \mathcal{B}([0, 1])$ la $\sigma$-álgebra de Borel restringida al intervalo unitario. Si asignamos a cada subintervalo $[a, b] \subseteq [0, 1]$ su longitud $\mathbb{P}([a, b]) = b - a$, por el Teorema de Extensión de Carathéodory existe una única medida de probabilidad $\mathbb{P}$ sobre $\mathcal{B}([0, 1])$ que extiende esta noción de longitud a todos los borelianos (modelando la elección uniforme de un número al azar entre $0$ y $1$).
+  </p>
+</div>
+
+<h1 class="page-subtitle"> Propiedades Elementales de una Medida de Probabilidad </h1>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica"> Proposición (Propiedades básicas)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad. Para cualesquiera eventos $A, B \in \mathcal{F}$, se satisfacen las siguientes propiedades:
+  </p>
+  <ol>
+    <li><strong>Probabilidad del evento imposible:</strong> $\mathbb{P}(\emptyset) = 0$.</li>
+    <li><strong>Aditividad finita:</strong> Si $A_1, A_2, \dots, A_n \in \mathcal{F}$ son eventos disjuntos dos a dos, entonces $\displaystyle{\mathbb{P}\left(\bigcup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} \mathbb{P}(A_i)}$.</li>
+    <li><strong>Probabilidad del complemento:</strong> $\mathbb{P}(A^c) = 1 - \mathbb{P}(A)$.</li>
+    <li><strong>Diferencia de eventos:</strong> $\mathbb{P}(B \setminus A) = \mathbb{P}(B) - \mathbb{P}(A \cap B)$. En particular, si $A \subseteq B$, entonces $\mathbb{P}(B \setminus A) = \mathbb{P}(B) - \mathbb{P}(A)$.</li>
+    <li><strong>Monotonía:</strong> Si $A \subseteq B$, entonces $\mathbb{P}(A) \leq \mathbb{P}(B)$.</li>
+    <li><strong>Acotamiento:</strong> Para todo evento $A \in \mathcal{F}$, se cumple que $0 \leq \mathbb{P}(A) \leq 1$.</li>
+    <li><strong>Regla de la adición (Inclusión-Exclusión para 2 eventos):</strong> $\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$.</li>
+  </ol>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: bold; color: #315b87;">Ver Demostración</summary>
+    <div style="margin-top: 10px;">
+      <p><strong>1.</strong> Considere la sucesión infinita $A_n = \emptyset$ para todo $n \in \mathbb{N}$. Claramente son disjuntos dos a dos y $\bigcup_{n=1}^{\infty} A_n = \emptyset$. Por $\sigma$-aditividad:
+      $$\mathbb{P}(\emptyset) = \mathbb{P}\left(\bigcup_{n=1}^{\infty} \emptyset\right) = \sum_{n=1}^{\infty} \mathbb{P}(\emptyset).$$
+      Dado que $\mathbb{P}(\emptyset) \in \mathbb{R}$ es un número finito (por ser $\mathbb{P}(\Omega) = 1$), la única solución real posible para esta serie es $\mathbb{P}(\emptyset) = 0$.</p>
+
+      <p><strong>2.</strong> Basta tomar la sucesión infinita $A_1, A_2, \dots, A_n, \emptyset, \emptyset, \dots$, aplicar el axioma de $\sigma$-aditividad y utilizar el inciso anterior ($\mathbb{P}(\emptyset) = 0$).</p>
+
+      <p><strong>3.</strong> Sabemos que $\Omega = A \cup A^c$ con $A \cap A^c = \emptyset$. Por normalización y aditividad finita:
+      $$1 = \mathbb{P}(\Omega) = \mathbb{P}(A \cup A^c) = \mathbb{P}(A) + \mathbb{P}(A^c) \implies \mathbb{P}(A^c) = 1 - \mathbb{P}(A).$$</p>
+
+      <p><strong>4.</strong> Podemos descomponer a $B$ como la unión disjunta $B = (A \cap B) \cup (B \setminus A)$. Aplicando aditividad finita obtenemos $\mathbb{P}(B) = \mathbb{P}(A \cap B) + \mathbb{P}(B \setminus A)$. Si $A \subseteq B$, entonces $A \cap B = A$, de donde se sigue el resultado particular.</p>
+
+      <p><strong>5.</strong> Si $A \subseteq B$, por el inciso 4 tenemos $\mathbb{P}(B) - \mathbb{P}(A) = \mathbb{P}(B \setminus A)$. Por el axioma de no negatividad, $\mathbb{P}(B \setminus A) \geq 0$, lo cual implica $\mathbb{P}(A) \leq \mathbb{P}(B)$.</p>
+
+      <p><strong>6.</strong> Como $\emptyset \subseteq A \subseteq \Omega$, aplicando monotonía y los axiomas de probabilidad:
+      $$\mathbb{P}(\emptyset) \leq \mathbb{P}(A) \leq \mathbb{P}(\Omega) \implies 0 \leq \mathbb{P}(A) \leq 1.$$</p>
+
+      <p><strong>7.</strong> Escribimos la unión como $A \cup B = A \cup (B \setminus A)$, donde ambos conjuntos son disjuntos. Aplicando aditividad finita y el inciso 4:
+      $$\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B \setminus A) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B).$$</p>
+    </div>
+  </details>
+</div>
+
+<div class="observacion-box">
+  <h2 class="title-observacion"> Observación (Eventos de probabilidad cero y uno)</h2>
+  <p>
+    Es fundamental notar que las implicaciones inversas de $\mathbb{P}(\emptyset) = 0$ y $\mathbb{P}(\Omega) = 1$ <strong>no son válidas en general</strong>. Es decir, puede existir un evento no vacío $A \neq \emptyset$ tal que $\mathbb{P}(A) = 0$ (por ejemplo, elegir un punto exacto $\{0.5\}$ en el intervalo $[0,1]$ bajo la medida uniforme). A estos eventos se les denomina <strong>eventos nulos</strong>. De manera análoga, si $\mathbb{P}(B) = 1$ aunque $B \neq \Omega$, se dice que el evento $B$ ocurre <strong>casi seguramente (c.s.)</strong>.
+  </p>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica"> Teorema (Subaditividad de Boole)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad. Para toda sucesión numerable $\{A_n\}_{n=1}^{\infty}$ de eventos en $\mathcal{F}$ (no necesariamente disjuntos), se cumple la <strong>desigualdad de Boole</strong>:
+  </p>
+  <p>
+    $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) \leq \sum_{n=1}^{\infty} \mathbb{P}(A_n).$$
+  </p>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: bold; color: #315b87;">Ver Demostración</summary>
+    <div style="margin-top: 10px;">
+      <p>
+        Construimos una sucesión auxiliar $\{B_n\}_{n=1}^{\infty}$ de eventos disjuntos dos a dos cuya unión coincida con $\bigcup_{n=1}^{\infty} A_n$. Definimos:
+        $$B_1 = A_1, \quad B_2 = A_2 \setminus A_1, \quad \dots, \quad B_n = A_n \setminus \bigcup_{k=1}^{n-1} A_k.$$
+      </p>
+      <p>
+        Se verifica directamente que los conjuntos $B_n$ pertenecen a $\mathcal{F}$, son disjuntos dos a dos, satisfacen $B_n \subseteq A_n$ para todo $n \geq 1$, y cumplen $\bigcup_{n=1}^{\infty} B_n = \bigcup_{n=1}^{\infty} A_n$. Aplicando $\sigma$-aditividad y monotonía:
+        $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} B_n \right) = \sum_{n=1}^{\infty} \mathbb{P}(B_n) \leq \sum_{n=1}^{\infty} \mathbb{P}(A_n).$$
+      </p>
+    </div>
+  </details>
+</div>
+
+<div class="teorema-box">
+  <h1 class="number-title-practica"> Teorema (Continuidad de la Medida de Probabilidad)</h1>
+  <p>
+    Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad.
+  </p>
+  <ol>
+    <li>
+      <strong>Continuidad por abajo:</strong> Si $\{A_n\}_{n=1}^{\infty}$ es una sucesión creciente de eventos en $\mathcal{F}$ (es decir, $A_1 \subseteq A_2 \subseteq \dots$), entonces:
+      $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \lim_{n \to \infty} \mathbb{P}(A_n).$$
+    </li>
+    <li>
+      <strong>Continuidad por arriba:</strong> Si $\{B_n\}_{n=1}^{\infty}$ es una sucesión decreciente de eventos en $\mathcal{F}$ (es decir, $B_1 \supseteq B_2 \supseteq \dots$), entonces:
+      $$\mathbb{P}\left( \bigcap_{n=1}^{\infty} B_n \right) = \lim_{n \to \infty} \mathbb{P}(B_n).$$
+    </li>
+  </ol>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: bold; color: #315b87;">Ver Demostración</summary>
+    <div style="margin-top: 10px;">
+      <p>
+        <strong>1.</strong> Definimos $C_1 = A_1$ y $C_n = A_n \setminus A_{n-1}$ para $n \geq 2$. Como la sucesión es creciente, los eventos $C_n$ son disjuntos dos a dos, $\bigcup_{k=1}^{n} C_k = A_n$ y $\bigcup_{n=1}^{\infty} C_n = \bigcup_{n=1}^{\infty} A_n$. Por $\sigma$-aditividad:
+        $$\mathbb{P}\left( \bigcup_{n=1}^{\infty} A_n \right) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} C_n \right) = \sum_{n=1}^{\infty} \mathbb{P}(C_n) = \lim_{n \to \infty} \sum_{k=1}^{n} \mathbb{P}(C_k) = \lim_{n \to \infty} \mathbb{P}\left( \bigcup_{k=1}^{n} C_k \right) = \lim_{n \to \infty} \mathbb{P}(A_n).$$
+      </p>
+      <p>
+        <strong>2.</strong> Si $\{B_n\}_{n=1}^{\infty}$ es decreciente, entonces la sucesión de sus complementos $\{B_n^c\}_{n=1}^{\infty}$ es creciente ($B_1^c \subseteq B_2^c \subseteq \dots$). Aplicando las leyes de De Morgan y la continuidad por abajo:
+        $$1 - \mathbb{P}\left( \bigcap_{n=1}^{\infty} B_n \right) = \mathbb{P}\left( \left(\bigcap_{n=1}^{\infty} B_n\right)^c \right) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} B_n^c \right) = \lim_{n \to \infty} \mathbb{P}(B_n^c) = \lim_{n \to \infty} \big(1 - \mathbb{P}(B_n)\big) = 1 - \lim_{n \to \infty} \mathbb{P}(B_n).$$
+        Restando $1$ en ambos extremos y multiplicando por $-1$ se obtiene $\mathbb{P}\left( \bigcap_{n=1}^{\infty} B_n \right) = \lim_{n \to \infty} \mathbb{P}(B_n)$.
+      </p>
+    </div>
+  </details>
+</div>
 
 
       </body>
