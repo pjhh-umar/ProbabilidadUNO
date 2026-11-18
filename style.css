@@ -17,7 +17,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap'); /* font-family: 'Gelasio', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:wght@400;600;700&display=swap'); /* font-family: 'Gelasio', serif; */
 @import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap');/* font-family: 'Hina Mincho', serif; */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');/* font-family: 'EB Garamond', serif; */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@600&display=swap');/* font-family: 'Josefin Slab', serif; */
@@ -531,38 +531,35 @@ body.card{
     counter-reset: listaCounter 1 sublistaCounter  subsublistaCounter;
           }
 
-h1.page-title{
-  font-size: 140%;
+/* Títulos: configuración común y tamaños adaptables. */
+h1.page-title,
+h1.page-number-title,
+h1.page-subtitle {
   text-align: center;
-  /* font-family: "Muli"; */
-  font-family: 'Gelasio', serif;
-  /* font-family: 'IM Fell English', serif; */
-  /* content:" "; */
-  margin-top: 1%;
-  margin-bottom: 0.25%;
-  padding: 0%;
+  line-height: 1.3;
+  font-style: normal;
+  padding: 0;
   width: 100%;
-  /* color: rgba(255, 0, 0, 0.789); */
-  /* color:  rgb(0,0,128);  */
-  color: rgb(3,66,139); 
-  /* font-weight: 500; */
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
-h1.page-number-title{
-  font-size: 205%;
-  text-align: center;
-  /* font-family: "Muli"; */
+/* Secciones dentro de un bloque de las notas. */
+h1.page-title {
   font-family: 'Gelasio', serif;
-  /* font-family: 'IM Fell English', serif; */
-  /* content:" "; */
-  margin-top: 1%;
-  margin-bottom: 2%;
-  padding: 0%;
-  width: 100%;
-  /* color: rgba(255, 0, 0, 0.789); */
-  /* color:  rgb(0,0,128);  */
-  color: rgb(3,66,139); 
-  /* font-weight: 500; */
+  font-size: clamp(1.35rem, 1.2rem + 0.5vw, 1.65rem);
+  font-weight: 600;
+  color: rgb(3, 66, 139);
+  margin: 1.75rem 0 0.75rem;
+}
+
+/* Título principal de una página o de un tema. */
+h1.page-number-title {
+  font-family: 'Gelasio', serif;
+  font-size: clamp(1.8rem, 1.5rem + 1vw, 2.35rem);
+  font-weight: 700;
+  color: rgb(3, 66, 139);
+  margin: 2.25rem 0 1.25rem;
 }
 h1.page-number-title::before{
   font-size: normal;
@@ -570,24 +567,20 @@ h1.page-number-title::before{
   /* content: "§ Tema " counter(temaCounter)". " ; */
 }
 
-h1.page-subtitle{
-  font-size: 220%;
-  
-  /* font-weight: 600; */
-  text-align: center;
+/* Subtítulo general: se conserva la fuente Hina Mincho. */
+h1.page-subtitle {
   font-family: 'Hina Mincho', serif;
-  /* font-family: 'Caprasimo', cursive; */
-  /* font-family: 'IM Fell English', serif; */
-  /* font-family: "Cinzel"; */
-  margin-top: 1%;
-   margin-bottom: -1.5%;
-   padding: 0%;
-  /* color:  rgb(0, 46, 145); */
-  /* color: rgb(184,134,11);  */
-  width: 100%;
-  /* color: rgb(7, 136, 250);  */
-  color: rgb(3, 89, 165); 
+  font-size: clamp(1.2rem, 1.1rem + 0.35vw, 1.4rem);
+  font-weight: 400;
+  color: rgb(3, 89, 165);
+  margin: 1.25rem 0 0.75rem;
+}
 
+/* En el documento depurado, esta clase encabeza los nueve bloques.
+   El ajuste se limita a ese documento mediante su identificador. */
+#notas-probabilidad > article > h1.page-subtitle {
+  font-size: clamp(1.75rem, 1.5rem + 0.9vw, 2.05rem);
+  margin: 2.5rem 0 1rem;
 }
 
 h1.tema-title{
