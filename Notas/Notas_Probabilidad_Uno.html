@@ -1267,11 +1267,286 @@ d(x,z)\leq d(x,y)+d(y,z)\lt d(x,y)+\varepsilon=r.
 
 </article>
 
-<article id="medida-probabilidad">
+<article id="enfoques-probabilidad">
+<h1 class="page-title">Enfoques para asignar e interpretar probabilidades</h1>
+<div class="nota-box"><h2>Introducción</h2>
+<p>Un espacio muestral describe los resultados posibles. Para estudiar la incertidumbre necesitamos además asignar probabilidades a los eventos. Primero veremos cómo intervienen el conteo, la geometría y los datos; después formularemos las reglas que debe cumplir esa asignación.</p>
+<p>En los ejemplos iniciales utilizaremos la notación $\mathbb P(A)$ para la probabilidad asignada al evento $A$. La definición axiomática se presentará después de los tres enfoques. Mantendremos explícitos los supuestos de equiprobabilidad, uniformidad y selección de las observaciones.</p></div>
 
+<section id="enfoque-clasico">
+
+<h1 class="page-subtitle" id="pcc-fundamentos">Enfoque clásico: contar bajo equiprobabilidad</h1>
+
+<div class="definicion-box" id="pcc-modelo">
+<h1 class="number-title-practica">Definición</h1>
+<p><strong>Probabilidad clásica en un espacio finito.</strong></p>
+<p>Sea $\Omega$ un conjunto finito no vacío. Cuando todos sus resultados elementales tienen la misma probabilidad, para cada evento $A\subseteq\Omega$ se cumple</p><div style="overflow-x:auto;">\[
+\mathbb{P}(A)=\frac{|A|}{|\Omega|}.
+\]</div><p>Aquí $|A|$ es el número de resultados favorables y $|\Omega|$ el número total de resultados. La equiprobabilidad es una hipótesis sobre el mecanismo de selección.</p>
+</div>
+
+<div class="notacion-box"><h2 class="title-notacion">Notación</h2><p>Escribimos $A^c=\Omega\setminus A$ para el complemento. Los eventos son disjuntos cuando no comparten resultados. En los modelos siguientes, las pólizas, personas, expedientes y siniestros están identificados, salvo que se indique expresamente que ciertos símbolos o unidades son indistinguibles.</p></div>
+
+<div class="teorema-box" id="pcc-suma">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Regla de la suma y conteo por casos.</strong></p>
+<p>Si $A_1,\ldots,A_m$ son conjuntos finitos disjuntos dos a dos, entonces</p><div style="overflow-x:auto;">\[
+\left|\bigcup_{i=1}^{m}A_i\right|=\sum_{i=1}^{m}|A_i|.
+\]</div><p>Para contar mediante casos, estos deben ser exhaustivos y no superponerse. En un mismo modelo clásico, la regla implica $\mathbb{P}(\bigcup_i A_i)=\sum_i\mathbb{P}(A_i)$ cuando los eventos son disjuntos.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-001">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-001"><p>Cada resultado de la unión pertenece a exactamente uno de los casos. Por ello aparece una sola vez en la suma. Dividir por $|\Omega|$ da la versión probabilística. Además, si $A\subseteq B$, la descomposición disjunta $B=A\cup(B\setminus A)$ da $|A|\leq|B|$ y, en un mismo modelo clásico, $\mathbb{P}(A)\leq\mathbb{P}(B)$.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-complemento">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Conteo mediante el complemento.</strong></p>
+<div style="overflow-x:auto;">\[
+|A^c|=|\Omega|-|A|,\qquad \mathbb{P}(A)=1-\mathbb{P}(A^c).
+\]</div><p>La segunda identidad corresponde al mismo espacio muestral y a la misma asignación de probabilidades.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-002">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-002"><p>La descomposición $\Omega=A\cup A^c$ es disjunta. Aplicamos la regla de la suma y despejamos.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-producto">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Regla del producto.</strong></p>
+<p>Supón que un resultado se construye en $r$ etapas. Hay $n_1$ opciones en la primera; después de cualquier elección inicial hay exactamente $n_2$ opciones para la segunda; y, en general, hay exactamente $n_i$ opciones en la etapa $i$, cualquiera que sea la historia de elecciones anteriores. Entonces el número de resultados es</p><div style="overflow-x:auto;">\[
+n_1\cdot n_2\cdots n_r.
+\]</div><p>El conjunto de opciones puede cambiar; su número debe cumplir la condición indicada. Si las cantidades dependen de las elecciones anteriores, separa en casos o utiliza otra representación.</p><p>En particular, $r$ elecciones ordenadas entre $n$ opciones, con repetición permitida, producen $n^r$ secuencias. Si se hacen equiprobables esas secuencias, ese es el denominador del modelo clásico.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-003">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-003"><p>Cada prefijo de longitud $i-1$ tiene exactamente $n_i$ extensiones. El número de secuencias se multiplica por $n_i$ en cada etapa.</p></div>
+</div>
+
+<div class="observacion-box" id="clasico-anticipo-axiomas">
+  <h2 class="title-observacion">Observación</h2>
+  <p><strong>Propiedades que anticipan una medida de probabilidad.</strong></p>
+  <p>La regla clásica $\mathbb P(A)=|A|/|\Omega|$, en un espacio finito no vacío con resultados equiprobables, satisface</p>
+  <div style="overflow-x:auto;">
+  \[
+    \mathbb P(A)\geq0,\qquad
+    \mathbb P(\Omega)=1,\qquad
+    \mathbb P(\emptyset)=0.
+  \]
+  </div>
+  <p>Además, si $(A_k)_{k\geq1}$ es una sucesión de eventos disjuntos dos a dos,</p>
+  <div style="overflow-x:auto;">
+  \[
+    \mathbb P\!\left(\bigcup_{k=1}^{\infty}A_k\right)
+    =\sum_{k=1}^{\infty}\mathbb P(A_k).
+  \]
+  </div>
+  <p>Como $\Omega$ es finito, solo una cantidad finita de esos eventos puede ser no vacía; la igualdad se reduce a sumar sus conteos. La no negatividad, la normalización y la aditividad numerable serán los axiomas de la medida de probabilidad que definiremos más adelante. En este modelo, su dominio es $\mathcal P(\Omega)$.</p>
+</div>
+
+<div class="ejemplo-box" id="pcc-ejemplo-dado">
+<h1 class="number-title-practica">Ejemplo</h1>
+<p><strong>Un dado equilibrado.</strong></p>
+<p>Tomemos $\Omega=\{1,2,3,4,5,6\}$ con resultados equiprobables. El evento de obtener un número par es $A=\{2,4,6\}$. Sus tres resultados son distintos y</p><div style="overflow-x:auto;">\[
+\mathbb{P}(A)=\frac36=\frac12.
+\]</div><p>Conocer los seis resultados posibles no basta para concluir que tienen el mismo peso: aquí lo suponemos al modelar el dado como equilibrado.</p>
+</div>
+</section>
+
+<section id="enfoque-geometrico">
+<h1 class="page-subtitle">Enfoque geométrico de la probabilidad</h1>
+
+<div class="nota-box"><p>Cuando el resultado se representa por un punto de un intervalo o una región, podemos asignar probabilidades comparando longitudes, áreas o volúmenes. El modelo debe especificar uniformidad respecto de esa medida geométrica.</p></div>
+
+<div class="definicion-box" id="fg-definicion-geometrica"><h1 class="number-title-practica">Definición</h1><p><strong>Modelo geométrico uniforme.</strong></p><p>Sea $\Omega$ una región y sea $\mu$ la longitud, el área o el volumen utilizados para describir su tamaño, con $0\lt\mu(\Omega)\lt\infty$. El <strong>modelo uniforme respecto de $\mu$</strong> asigna a cada evento medible $A\subseteq\Omega$</p><div style="overflow-x:auto;">\[
+\mathbb{P}(A)=\frac{\mu(A)}{\mu(\Omega)}.
+\]</div><p>Regiones de la misma medida reciben la misma probabilidad. Por ahora utilizamos longitudes, áreas o volúmenes conocidos. Más adelante verificaremos esta fórmula mediante la normalización de una medida finita. La expresión «al azar» debe acompañarse de la especificación del modelo.</p></div>
+
+<div class="teorema-box" id="fg-propiedad-geometrica"><h1 class="number-title-practica">Proposición</h1><p><strong>Cálculo con intervalos y regiones planas.</strong></p><p>En un intervalo uniforme $[a,b]$, con $a\lt b$, si $a\leq c\leq d\leq b$,</p><div style="overflow-x:auto;">\[
+\mathbb{P}([c,d])=\frac{d-c}{b-a}.
+\]</div><p>Incluir o excluir extremos no cambia la longitud. En particular, un punto tiene probabilidad cero. En una región plana uniforme se utiliza el cociente de áreas: un rectángulo de lados $u,v$ tiene área $u\cdot v$ y un triángulo rectángulo de catetos $u,v$ tiene área $u\cdot v/2$. Los segmentos de recta tienen área cero, por lo que las fronteras lineales no cambian estas probabilidades.</p><p>Para calcular por complemento restamos la región excluida: $\mu(A)=\mu(\Omega)-\mu(A^c)$. Al dividir por el tamaño total obtenemos $\mathbb P(A)=1-\mathbb P(A^c)$.</p><button class="respButton" type="button" aria-controls="fg-respuesta-001">Demostración</button>
+<div class="resp-box" id="fg-respuesta-001"><p>La longitud de $[c,d]$ es $d-c$ y la del intervalo completo es $b-a$. Los puntos tienen longitud cero. En el plano aplicamos la misma definición con la medida de área; las fórmulas geométricas dan los numeradores de las regiones consideradas. Un segmento puede cubrirse con rectángulos de área arbitrariamente pequeña, de donde su área es cero.</p></div></div>
+
+<div class="observacion-box" id="geometrico-anticipo-axiomas">
+  <h2 class="title-observacion">Observación</h2>
+  <p><strong>Propiedades que anticipan una medida de probabilidad.</strong></p>
+  <p>En el modelo geométrico uniforme, con $0\lt\mu(\Omega)\lt\infty$, el cociente $\mathbb P(A)=\mu(A)/\mu(\Omega)$ es no negativo, asigna uno a $\Omega$ y cero al conjunto vacío.</p>
+  <p>La aditividad numerable de la longitud, el área o el volumen sobre conjuntos medibles da, para eventos $A_k$ disjuntos dos a dos,</p>
+  <div style="overflow-x:auto;">
+  \[
+    \mathbb P\!\left(\bigcup_{k=1}^{\infty}A_k\right)
+    =\frac{\mu\!\left(\bigcup_{k=1}^{\infty}A_k\right)}{\mu(\Omega)}
+    =\frac{\sum_{k=1}^{\infty}\mu(A_k)}{\mu(\Omega)}
+    =\sum_{k=1}^{\infty}\mathbb P(A_k).
+  \]
+  </div>
+  <p>Así se anticipan los tres axiomas de una medida de probabilidad. La formulación general utilizará una $\sigma$-álgebra de eventos medibles; la aditividad numerable de $\mu$ es la propiedad que justifica esta conclusión. Más adelante retomaremos este argumento como normalización de una medida finita.</p>
+</div>
+
+<div class="ejemplo-box" id="fg-ejemplo-llegada"><h1 class="number-title-practica">Ejemplo</h1><p><strong>Llegada uniforme a una oficina.</strong></p><p>Si la llegada a una oficina se modela uniformemente entre las 9:00 y las 10:00, tomamos los minutos transcurridos desde las 9:00 como resultado en $[0,60]$. Llegar en los primeros quince minutos tiene probabilidad</p><div style="overflow-x:auto;">\[
+\frac{15}{60}=\frac14.
+\]</div></div>
+
+<div class="ejemplo-box">
+<h1 class="number-title-practica">Ejemplo</h1><p><b>Un encuentro y una región del plano.</b></p>
+<p>Dos personas llegan entre las 12:00 y las 13:00 y cada una espera diez minutos. Sean $x,y\in[0,60]$ sus tiempos de llegada, medidos en minutos desde las 12:00. Suponemos que <b>el par $(x,y)$ es uniforme en el cuadrado $[0,60]^2$</b>.</p>
+<p>Se encuentran cuando $|x-y|\leq10$. La región favorable es la franja del dibujo:</p>
+<figure class="imagen-box">
+<svg style="max-width: 360px; height: auto; display: block; margin: auto;" viewBox="0 0 360 325" width="100%" role="img" aria-labelledby="pm-geometria-titulo pm-geometria-desc">
+<title id="pm-geometria-titulo">Tiempos de llegada y encuentro</title><desc id="pm-geometria-desc">Un cuadrado de lado sesenta. La franja entre y igual a x menos diez y y igual a x más diez representa el encuentro.</desc>
+<rect x="60" y="30" width="240" height="240" fill="#fff" stroke="#315b87" stroke-width="2" />
+<polygon points="60,270 100,270 300,70 300,30 260,30 60,230" fill="#b7d9e9" />
+<path d="M60 230L260 30 M100 270L300 70" fill="none" stroke="#315b87" stroke-width="2" />
+<path d="M60 270L300 30" fill="none" stroke="#6a7d91" stroke-dasharray="5 5" />
+<path d="M48 270H315 M60 282V15" fill="none" stroke="#243247" stroke-width="1.5" />
+<g fill="#243247" font-family="Georgia,serif" font-size="16"><text x="43" y="290">0</text><text x="290" y="294">60</text><text x="30" y="37">60</text><text x="321" y="275">x</text><text x="55" y="12">y</text></g>
+<rect x="127" y="138" width="108" height="29" rx="5" fill="white" /><text x="181" y="158" text-anchor="middle" fill="#173e60" font-size="16">|x − y| ≤ 10</text>
+</svg>
+<figcaption>El área favorable se obtiene quitando dos triángulos de catetos 50.</figcaption>
+</figure>
+
+<div style="overflow-x: auto;">
+\[
+\mathbb{P}(\text{encuentro})
+=\frac{60^2-2\cdot\frac{50^2}{2}}{60^2}
+=\frac{1100}{3600}=\frac{11}{36}.
+\]
+</div>
+
+<p>El resultado depende del modelo uniforme para el par de tiempos. La expresión «llegar al azar», por sí sola, no especifica ese modelo.</p>
+</div>
+
+<div class="definicion-box" id="fg-deducible"><h1 class="number-title-practica">Definición</h1><p><strong>Un deducible en un modelo sencillo de pago.</strong></p><p>Si una pérdida no negativa es $x$ y se indemniza únicamente su parte que excede un deducible $d\geq0$, el pago es</p><div style="overflow-x:auto;">\[
+I(x)=\max\{x-d,0\}.
+\]</div><p>Así, el pago es cero cuando $x\leq d$ y es $x-d$ cuando $x\gt d$. Esta regla especifica el modelo de pago que utilizaremos.</p></div>
+
+<div class="ejemplo-box" id="fg-ejemplo-deducible"><h1 class="number-title-practica">Ejemplo</h1><p><strong>Pérdida uniforme y pago con deducible.</strong></p><p>En un modelo didáctico, la pérdida $x$ es uniforme en $[0,20000]$ y el deducible es $5000$. La aseguradora realiza un pago positivo si $x\gt5000$ y paga más de $10000$ si $x\gt15000$. Por tanto,</p><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(I(x)\gt0)&amp;=\frac{20000-5000}{20000}=\frac34,\\\mathbb{P}(I(x)\gt10000)&amp;=\frac{20000-15000}{20000}=\frac14.\end{aligned}
+\]</div><p>Las condiciones sobre el pago se traducen primero a intervalos de pérdidas; después se comparan sus longitudes.</p></div>
+
+<div class="nota-box"><p><strong>Ejercicios breves.</strong> Describe primero el evento mediante desigualdades y después identifica la longitud o el área favorable.</p></div>
+
+<div class="ejercicio-box" id="fg-ejercicio-perdida"><h1 class="number-title-practica">Ejercicio</h1><p><strong>Pérdida uniforme y valor del pago.</strong></p><p>La pérdida $x$ es uniforme en $[0,12000]$ y el deducible es $3000$. Con $I(x)=\max\{x-3000,0\}$, calcula las probabilidades de:</p><ol><li>No realizar ningún pago.</li><li>Realizar un pago mayor que $6000$.</li><li>Realizar un pago exactamente igual a $6000$.</li></ol><button class="respButton" type="button" aria-controls="fg-respuesta-002">Pista</button>
+<div class="resp-box" id="fg-respuesta-002"><p>Resuelve cada condición en términos de $x$. Distingue un intervalo de pérdidas de un punto aislado.</p></div><button class="respButton" type="button" aria-controls="fg-respuesta-003">Solución</button>
+<div class="resp-box" id="fg-respuesta-003"><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(I(x)=0)&amp;=\mathbb{P}(x\leq3000)=\frac{3000}{12000}=\frac14,\\\mathbb{P}(I(x)\gt6000)&amp;=\mathbb{P}(x\gt9000)=\frac{3000}{12000}=\frac14,\\\mathbb{P}(I(x)=6000)&amp;=\mathbb{P}(x=9000)=0.\end{aligned}
+\]</div><p>El pago cero corresponde a todo un intervalo de pérdidas; el pago $6000$ corresponde a un solo punto. Por eso sus probabilidades son diferentes.</p></div></div>
+
+<div class="ejercicio-box" id="fg-ejercicio-dos-perdidas"><h1 class="number-title-practica">Ejercicio</h1><p><strong>Dos pérdidas y una región del plano.</strong></p><p>Dos pérdidas $x,y$, medidas en miles de pesos, se modelan conjuntamente de manera uniforme en el cuadrado $[0,10]^2$. Calcula la probabilidad de que:</p><ol><li>La pérdida total supere $12$.</li><li>Ambas pérdidas superen $6$.</li><li>Ninguna pérdida supere $8$.</li></ol><button class="respButton" type="button" aria-controls="fg-respuesta-004">Pista</button>
+<div class="resp-box" id="fg-respuesta-004"><p>Dibuja la recta $x+y=12$. El primer evento es un triángulo; los otros dos son cuadrados dentro de la región muestral.</p></div><button class="respButton" type="button" aria-controls="fg-respuesta-005">Solución</button>
+<div class="resp-box" id="fg-respuesta-005"><p>El área total es $100$. La recta $x+y=12$ corta el borde del cuadrado en $(2,10)$ y $(10,2)$, por lo que la región $x+y\gt12$ es un triángulo de catetos $8$.</p><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(x+y\gt12)&amp;=\frac{8\cdot8/2}{100}=\frac8{25},\\\mathbb{P}(x\gt6,\ y\gt6)&amp;=\frac{4\cdot4}{100}=\frac4{25},\\\mathbb{P}(x\leq8,\ y\leq8)&amp;=\frac{8\cdot8}{100}=\frac{16}{25}.\end{aligned}
+\]</div><p>Estos cocientes utilizan el supuesto de uniformidad del par $(x,y)$ en todo el cuadrado.</p></div></div>
+
+<div id="prob-ej-encuentro" class="ejercicio-box">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p>En el problema del encuentro, supón que cada persona espera $t$ minutos, con $0\leq t\leq60$, manteniendo el modelo uniforme para el par de llegadas.</p>
+<ol>
+<li>Describe la región favorable en el cuadrado $[0,60]^2$.</li>
+<li>Obtén la probabilidad de encuentro en función de $t$.</li>
+<li>Comprueba los casos $t=0$, $t=10$ y $t=60$. Interpreta los resultados.</li>
+</ol>
+<button aria-controls="respuesta-058" type="button" class="respButton">Pista</button><div id="respuesta-058" class="resp-box"><p>Los triángulos que quedan fuera de la franja tienen catetos $60-t$. En el caso $t=0$, la región favorable es una diagonal de área cero.</p></div>
+<button class="respButton" type="button" aria-controls="fg-respuesta-006">Solución</button>
+<div class="resp-box" id="fg-respuesta-006"><p>La región favorable es $|x-y|\leq t$. Su complemento está formado por dos triángulos de catetos $60-t$. En consecuencia,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{encuentro})=\frac{60^2-(60-t)^2}{60^2}=1-\left(1-\frac{t}{60}\right)^2,\qquad0\leq t\leq60.
+\]</div><p>Para $t=0$, la probabilidad es $0$: solo se encuentran si llegan exactamente al mismo tiempo, una diagonal de área cero. Para $t=10$ se obtiene $11/36$; para $t=60$, la probabilidad es $1$.</p></div></div>
+</section>
+
+<section id="enfoque-frecuentista">
+<h1 class="page-subtitle">Enfoque frecuentista: observaciones y estimación</h1>
+
+<div class="nota-box"><p>El enfoque frecuentista relaciona la probabilidad de un evento con su frecuencia de ocurrencia al repetir un experimento bajo condiciones apropiadas. En una muestra finita calculamos una frecuencia observada y la utilizamos para estimar la probabilidad del modelo.</p></div>
+
+<div class="definicion-box" id="probabilidad-empirica">
+<h1 class="number-title-practica">Definición</h1>
+<p><strong>Frecuencia relativa y probabilidad empírica.</strong></p>
+<p>Sean $\omega_1,\ldots,\omega_n\in\Omega$ las observaciones de una muestra, con $n\geq1$. Si $n_A$ de ellas pertenecen a $A\in\mathcal F$, su <strong>frecuencia relativa</strong> es</p><div style="overflow-x:auto;">\[
+f_n(A)=\frac{n_A}{n}=\widehat{\mathbb{P}}_n(A)
+=\frac1n\sum_{i=1}^n\mathbf1_A(\omega_i).
+\]</div><p>La función $\widehat{\mathbb{P}}_n:\mathcal F\to[0,1]$ se llama <strong>probabilidad empírica</strong>. Aquí $\mathbf1_A(\omega_i)$ vale uno si la observación pertenece a $A$ y cero en otro caso. La frecuencia puede calcularse para una muestra fija y no exige independencia para quedar definida. Más adelante verificaremos que la función empírica satisface los axiomas de probabilidad.</p>
+</div>
+
+<div class="teorema-box" id="reglas-frecuencia">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Reglas de cálculo con frecuencias relativas.</strong></p><p>Para eventos $A,B$ en el mismo registro de $n$ observaciones, se tiene</p><div style="overflow-x:auto;">\[
+\begin{aligned}f_n(A^c)&amp;=1-f_n(A),\\ f_n(A\cup B)&amp;=f_n(A)+f_n(B)-f_n(A\cap B).\end{aligned}
+\]</div><p>Si reunimos dos registros disjuntos de tamaños $n_1,n_2\geq1$, sus frecuencias para el mismo evento se combinan mediante</p><div style="overflow-x:auto;">\[
+f_{n_1+n_2}(A)=\frac{n_1f_{n_1}^{(1)}(A)+n_2f_{n_2}^{(2)}(A)}{n_1+n_2}.
+\]</div><p>Los pesos son los tamaños de los registros.</p>
+<button class="respButton" type="button" aria-controls="orden-respuesta-frecuencias">Demostración</button>
+<div class="resp-box" id="orden-respuesta-frecuencias"><p>Entre las $n$ observaciones, las que no pertenecen a $A$ son $n-n_A$. Además, $n_{A\cup B}=n_A+n_B-n_{A\cap B}$, porque las observaciones de ambos eventos se cuentan dos veces al sumar los dos primeros conteos. Dividir entre $n$ prueba las dos identidades.</p><p>Al reunir dos registros, las ocurrencias se suman y el número total de observaciones es $n_1+n_2$. Sustituir $n_A^{(i)}=n_i f_{n_i}^{(i)}(A)$ da la fórmula de combinación.</p></div></div>
+
+<div class="observacion-box" id="frecuentista-anticipo-axiomas">
+  <h2 class="title-observacion">Observación</h2>
+  <p><strong>La probabilidad empírica anticipa los axiomas.</strong></p>
+  <p>Para una muestra fija de $n\geq1$ observaciones, la función $\widehat{\mathbb P}_n(A)=f_n(A)=n_A/n$, definida para $A\in\mathcal F$, satisface</p>
+  <div style="overflow-x:auto;">
+  \[
+    \widehat{\mathbb P}_n(A)\geq0,\qquad
+    \widehat{\mathbb P}_n(\Omega)=1,\qquad
+    \widehat{\mathbb P}_n(\emptyset)=0.
+  \]
+  </div>
+  <p>Si los eventos $A_k$ son disjuntos dos a dos, cada observación pertenece, a lo sumo, a uno de ellos. Al sumar las ocurrencias y dividir entre $n$, obtenemos</p>
+  <div style="overflow-x:auto;">
+  \[
+    \widehat{\mathbb P}_n\!\left(\bigcup_{k=1}^{\infty}A_k\right)
+    =\sum_{k=1}^{\infty}\widehat{\mathbb P}_n(A_k).
+  \]
+  </div>
+  <p>La probabilidad empírica cumple, por tanto, las propiedades que definirán una medida de probabilidad. Esto vale para cualquier muestra fija y no requiere independencia entre las observaciones.</p>
+  <p>Al estudiar límites de frecuencias, la existencia de límites para ciertos eventos, por sí sola, no garantiza aditividad numerable. El paso al límite y la relación con la probabilidad del modelo requieren su propia justificación.</p>
+</div>
+
+<div class="observacion-box"><h2 class="title-observacion">Interpretación de las frecuencias</h2><p>Las frecuencias relativas pueden utilizarse para estimar $\mathbb{P}(A)$. Bajo hipótesis apropiadas, como observaciones independientes con la misma distribución, la ley de los grandes números justificará su aproximación a la probabilidad del evento al aumentar el tamaño de la muestra.</p><p>Una muestra finita no garantiza igualdad exacta ni mejora en cada observación. La interpretación empírica y la estimación requieren supuestos adicionales; los axiomas de probabilidad establecen la estructura matemática. Tampoco se puede intercambiar automáticamente un límite de frecuencias con una suma infinita: ese paso necesita una justificación adicional.</p></div>
+
+<div class="ejemplo-box" id="fg-ejemplo-frecuencia"><h1 class="number-title-practica">Ejemplo</h1><p><strong>Frecuencia de pólizas con reclamaciones.</strong></p><p>Durante un año se observaron doscientas pólizas y se registró lo siguiente:</p><div style="overflow-x:auto;"><table><thead><tr><th scope="col">Reclamaciones en el año</th><th scope="col">Pólizas</th></tr></thead><tbody><tr><td>Ninguna</td><td>$140$</td></tr><tr><td>Exactamente una</td><td>$45$</td></tr><tr><td>Dos o más</td><td>$15$</td></tr></tbody></table></div><p>El evento $A$ es «la póliza presenta al menos una reclamación». Su frecuencia relativa es</p><div style="overflow-x:auto;">\[
+f_{200}(A)=\frac{45+15}{200}=0.30.
+\]</div><p>La frecuencia de no presentar reclamaciones es $140/200=0.70$. Podemos usar $0.30$ como estimación de la probabilidad de $A$, bajo un modelo y una muestra adecuados. Aquí contamos pólizas con reclamaciones, no el número total de reclamaciones.</p></div>
+
+<div class="ejemplo-box" id="fg-ejemplo-registros"><h1 class="number-title-practica">Ejemplo</h1><p><strong>Combinar registros de distinto tamaño.</strong></p><p>Una sucursal registra doce pólizas con reclamaciones entre ochenta observadas. Otra registra dieciséis entre trescientas veinte. Sus frecuencias son $12/80=0.15$ y $16/320=0.05$.</p><p>Para describir las cuatrocientas pólizas observadas en conjunto, sumamos ocurrencias y totales:</p><div style="overflow-x:auto;">\[
+f_{400}(A)=\frac{12+16}{80+320}=\frac{28}{400}=0.07.
+\]</div><p>El promedio simple $(0.15+0.05)/2=0.10$ da el mismo peso a sucursales con tamaños distintos. La frecuencia conjunta utiliza los pesos $80/400$ y $320/400$. Si se estudia otra cartera, su composición y la selección de los datos deben considerarse al estimar su probabilidad.</p></div>
+
+<div class="nota-box"><p><strong>Ejercicios breves.</strong> Identifica la unidad observada, cuenta las ocurrencias y distingue la frecuencia calculada de la probabilidad que se desea estimar.</p></div>
+
+<div class="ejercicio-box" id="fg-ejercicio-coberturas"><h1 class="number-title-practica">Ejercicio</h1><p><strong>Dos tipos de reclamaciones observadas.</strong></p><p>Se observaron seiscientos asegurados durante un año. Ciento cincuenta presentaron una reclamación de automóviles, noventa una de gastos médicos y treinta presentaron ambos tipos. Sean $A$ y $B$ los eventos correspondientes.</p><p>Calcula las frecuencias relativas de presentar:</p><ol><li>Al menos uno de los dos tipos de reclamaciones.</li><li>Exactamente uno de los dos tipos.</li><li>Ninguno de los dos tipos.</li></ol><button class="respButton" type="button" aria-controls="fg-respuesta-007">Pista</button>
+<div class="resp-box" id="fg-respuesta-007"><p>Al sumar los dos conteos se cuentan dos veces los treinta asegurados que presentaron ambos tipos.</p></div><button class="respButton" type="button" aria-controls="fg-respuesta-008">Solución</button>
+<div class="resp-box" id="fg-respuesta-008"><div style="overflow-x:auto;">\[
+\begin{aligned}f_{600}(A\cup B)&amp;=\frac{150+90-30}{600}=0.35,\\f_{600}(A\triangle B)&amp;=\frac{150+90-2\cdot30}{600}=0.30,\\f_{600}((A\cup B)^c)&amp;=1-0.35=0.65.\end{aligned}
+\]</div><p>Son frecuencias de los seiscientos asegurados observados.</p></div></div>
+
+<div class="ejercicio-box" id="fg-ejercicio-combinar"><h1 class="number-title-practica">Ejercicio</h1><p><strong>Dos grupos de observaciones.</strong></p><p>Un registro contiene doscientas observaciones póliza-año, treinta con alguna reclamación. Otro contiene ochocientas observaciones póliza-año distintas, ochenta con alguna reclamación.</p><ol><li>Calcula las dos frecuencias y la frecuencia conjunta.</li><li>Calcula el promedio simple de las dos frecuencias.</li><li>Explica por qué el promedio simple no coincide con la frecuencia conjunta.</li></ol><button class="respButton" type="button" aria-controls="fg-respuesta-009">Pista</button>
+<div class="resp-box" id="fg-respuesta-009"><p>Una observación póliza-año corresponde a una póliza observada durante un año. En el registro conjunto hay mil observaciones y ciento diez ocurrencias del evento.</p></div><button class="respButton" type="button" aria-controls="fg-respuesta-010">Solución</button>
+<div class="resp-box" id="fg-respuesta-010"><div style="overflow-x:auto;">\[
+f_1=\frac{30}{200}=0.15,\qquad f_2=\frac{80}{800}=0.10,\qquad f_{1000}=\frac{110}{1000}=0.11.
+\]</div><p>El promedio simple es $0.125$. La frecuencia conjunta pondera por $200/1000$ y $800/1000$:</p><div style="overflow-x:auto;">\[
+0.2\cdot0.15+0.8\cdot0.10=0.11.
+\]</div><p>El segundo registro aporta cuatro veces más observaciones.</p></div></div>
+
+<div class="ejercicio-box" id="fg-ejercicio-cero"><h1 class="number-title-practica">Ejercicio</h1><p><strong>Un evento que todavía no se ha observado.</strong></p><p>En cien observaciones no aparece el evento $A$. Después se agregan veinte observaciones y en cinco de ellas ocurre $A$.</p><ol><li>Calcula la frecuencia inicial y la frecuencia después de actualizar el registro.</li><li>¿La frecuencia inicial permite concluir que $\mathbb{P}(A)=0$? Justifica.</li></ol><button class="respButton" type="button" aria-controls="fg-respuesta-011">Pista</button>
+<div class="resp-box" id="fg-respuesta-011"><p>Actualiza tanto el número de ocurrencias como el total de observaciones. Una muestra finita puede omitir resultados que tienen probabilidad positiva.</p></div><button class="respButton" type="button" aria-controls="fg-respuesta-012">Solución</button>
+<div class="resp-box" id="fg-respuesta-012"><div style="overflow-x:auto;">\[
+f_{100}(A)=0,\qquad f_{120}(A)=\frac5{120}=\frac1{24}\approx0.0417.
+\]</div><p>No observar un evento en una muestra finita no demuestra que su probabilidad sea cero. Por ejemplo, en cien lanzamientos independientes de una moneda equilibrada, la secuencia de cien cruces tiene probabilidad $2^{-100}\gt0$. En ese registro no se observa ninguna cara, aunque su probabilidad en cada lanzamiento es $1/2$.</p></div></div>
+</section>
+
+<h1 class="page-subtitle">Información y juicio experto</h1>
+
+<div class="observacion-box">
+<h2 class="title-observacion">Observación</h2><p><b>Juicios expertos y coherencia.</b></p>
+<p>Cuando hay pocos datos, una asignación puede apoyarse en información disponible, hipótesis y experiencia experta. Por ejemplo, al evaluar un riesgo nuevo para una aseguradora. La información utilizada puede cambiar la asignación, pero los números obtenidos deben satisfacer las mismas reglas de coherencia.</p>
+<p>Estas perspectivas responden a preguntas distintas: cómo construir un modelo, cómo estimarlo y qué reglas debe cumplir. Su formalización común es la medida de probabilidad.</p>
+</div>
+
+<div class="nota-box" id="puente-enfoques-axiomas"><h2>De los enfoques a una formulación común</h2>
+<div style="overflow-x:auto;"><table><thead><tr><th scope="col">Enfoque</th><th scope="col">Idea principal</th><th scope="col">Supuesto o alcance</th></tr></thead><tbody>
+<tr><td>Clásico</td><td>Comparar resultados favorables y posibles.</td><td>Espacio finito y resultados equiprobables.</td></tr>
+<tr><td>Geométrico</td><td>Comparar longitudes, áreas o volúmenes.</td><td>Uniformidad respecto de la cantidad geométrica elegida.</td></tr>
+<tr><td>Frecuentista</td><td>Utilizar frecuencias observadas para estimar probabilidades.</td><td>La interpretación de los datos depende del diseño de observación y de los supuestos del modelo.</td></tr>
+</tbody></table></div>
+<p>Los cocientes de conteos y de tamaños geométricos especifican modelos bajo sus respectivos supuestos. Las frecuencias aportan información para estimarlos. La formulación axiomática establece las reglas matemáticas de la probabilidad y permite estudiar estos modelos dentro de un mismo marco.</p>
+<p>Al reunir eventos disjuntos esperamos sumar sus probabilidades; al considerar todo el espacio esperamos obtener uno. Formalizaremos estas ideas sobre una $\sigma$-álgebra de eventos medibles.</p></div>
+</article>
+
+<article id="medida-probabilidad">
 <h1 class="page-title">Medida y espacio de probabilidad</h1>
 
-<div class="nota-box"><h2>Introducción</h2><p>Ya contamos con un espacio muestral $\Omega$ y una $\sigma$-álgebra $\mathcal F$ de eventos medibles. Falta asignar un número a cada evento. Una probabilidad es una manera de medir conjuntos que asigna masa total uno al espacio completo.</p><p>Los axiomas fijan reglas de coherencia. Elegir qué probabilidad representa una situación real requiere además hipótesis, información o datos.</p></div>
+<div class="nota-box"><h2>Introducción</h2>
+<p>Los enfoques anteriores motivaron formas de asignar o estimar probabilidades. Ahora precisaremos qué propiedades debe cumplir una probabilidad y cómo se integra con el espacio muestral y la familia de eventos.</p>
+<p>Retomamos un espacio medible $(\Omega,\mathcal F)$: $\Omega\neq\emptyset$ es el espacio muestral y $\mathcal F$ una $\sigma$-álgebra sobre él. Primero definiremos una medida general; después añadiremos la condición de masa total uno para obtener una medida de probabilidad y un espacio de probabilidad.</p></div>
 
 <h1 class="page-subtitle">De medir conjuntos a asignar probabilidades</h1>
 
@@ -1353,7 +1628,7 @@ d(x,z)\leq d(x,y)+d(y,z)\lt d(x,y)+\varepsilon=r.
 
 <div class="observacion-box"><h2 class="title-observacion">Observación</h2><p>Exigimos aditividad numerable porque muchos eventos se construyen mediante una cantidad numerable de operaciones. Esta condición relaciona la asignación de probabilidades con los procesos de paso al límite; sus consecuencias se demostrarán en la sección de continuidad.</p></div>
 
-<h1 class="page-title" id="pm-motivacion">Un mismo espacio muestral admite distintas probabilidades</h1>
+<h1 class="page-subtitle" id="pm-motivacion">Un mismo espacio muestral admite distintas probabilidades</h1>
 
 <div class="ejemplo-box">
 <h1 class="number-title-practica">Ejemplo</h1><p><b>Un mismo espacio muestral admite distintos modelos.</b></p>
@@ -1400,7 +1675,7 @@ p_1=p_2=p_3=p_4=p_5=\frac1{10},\qquad p_6=\frac12.
 \]</div><p>Las masas son no negativas y suman uno. En este segundo modelo, $\mathbb P_1(A)=1/10+1/10+1/2=7/10$.</p><p>El espacio muestral y la familia de eventos son los mismos, pero sus probabilidades son diferentes. La fórmula de casos favorables entre casos posibles exige equiprobabilidad.</p>
 </div>
 
-<h1 class="page-title" id="pm-propiedades">Primeras consecuencias de los axiomas</h1>
+<h1 class="page-subtitle" id="pm-propiedades">Primeras consecuencias de los axiomas</h1>
 
 <div class="info-box">
 <p>En esta sección trabajamos en un espacio de probabilidad fijo $(\Omega,\mathcal{F},\mathbb{P})$. Todos los eventos mencionados pertenecen a $\mathcal{F}$. Las propiedades se deducen en el orden presentado.</p>
@@ -1667,13 +1942,10 @@ B_n=A_n\setminus\bigcup_{k=1}^{n-1}A_k.
 </div>
 
 <div class="observacion-box"><h2 class="title-observacion">Aplicación a dos coberturas</h2><p>En otro modelo de coberturas, sean $C$ el evento de un siniestro de daños materiales y $D$ el de responsabilidad civil. Si $\mathbb{P}(C)=0.20$, $\mathbb{P}(D)=0.15$ y $\mathbb{P}(C\cap D)=0.05$, la misma regla da $\mathbb{P}(C\cup D)=0.30$ y $\mathbb{P}((C\cup D)^c)=0.70$. Estas cifras corresponden a una intersección distinta de la del ejemplo de autos y gastos médicos; no se ha supuesto independencia.</p></div>
-
 </article>
 
 <article id="modelos-probabilidad">
-
-<h1 class="page-title">Construcción de modelos y formas de asignar probabilidades</h1>
-
+<h1 class="page-title">Construcción de modelos a partir de los axiomas</h1>
 <div class="teorema-box" id="normalizacion-medida">
 <h1 class="number-title-practica">Proposición</h1>
 <p><strong>Normalización de una medida finita.</strong></p>
@@ -1683,7 +1955,7 @@ B_n=A_n\setminus\bigcup_{k=1}^{n-1}A_k.
 <div id="respuesta-027" class="resp-box"><p>La función es no negativa, asigna uno a $\Omega$ y conserva la aditividad numerable al dividir por una constante positiva y finita. Por tanto, satisface los tres axiomas.</p></div>
 </div>
 
-<h1 class="page-title" id="pm-modelos">Modelos discretos y probabilidad clásica</h1>
+<h1 class="page-subtitle" id="pm-modelos">Modelos discretos: espacios finitos o numerables</h1>
 
 <div class="teorema-box">
 <h1 class="number-title-practica">Teorema</h1><p><b>Asignación de masas en un espacio finito o numerable.</b></p>
@@ -1737,28 +2009,340 @@ p_k=(1-q)q^k,\qquad k\geq0.
 <p><strong>Un modelo sobre los enteros positivos.</strong></p>
 <p>En $\Omega=\mathbb N$, las masas $p_n=2^{-n}$ suman uno. La probabilidad de un entero positivo par es</p><div style="overflow-x:auto;">\[
 \mathbb{P}(\{2,4,6,\ldots\})=\sum_{j=1}^{\infty}2^{-2j}=\frac13.
-\]</div><p>Este ejemplo es la versión desplazada del modelo geométrico anterior con $q=1/2$. Es importante distinguir $\mathbb N$ de $\mathbb N_0$: trasladar los índices cambia qué resultados se llaman pares.</p>
+\]</div><p>Este ejemplo es la versión desplazada del modelo de masas anterior con $q=1/2$. Es importante distinguir $\mathbb N$ de $\mathbb N_0$: trasladar los índices cambia qué resultados se llaman pares.</p>
+</div>
+
+<h1 class="page-subtitle">Un modelo continuo: longitud en el intervalo unitario</h1>
+<div class="ejemplo-box" id="uniforme-unitario">
+<h1 class="number-title-practica">Ejemplo</h1>
+<p><strong>Probabilidad uniforme en $[0,1]$.</strong></p>
+<p>En $\Omega=[0,1]$, tomamos $\mathcal F=\mathcal B([0,1])$ y $\mathbb{P}(A)=\lambda(A)$, donde $\lambda$ es la medida de longitud restringida a esos borelianos. Como el intervalo tiene longitud uno, esta es una probabilidad.</p><div style="overflow-x:auto;">\[
+\mathbb{P}([a,b])=\mathbb{P}((a,b])=b-a,\qquad 0\leq a\leq b\leq1.
+\]</div><p>En particular, $\mathbb{P}([1/4,3/4])=1/2$ y $\mathbb{P}(\{1/2\})=0$. Los intervalos describen la medida, pero su dominio es toda la $\sigma$-álgebra, no únicamente los intervalos. La construcción de la medida de longitud puede obtenerse mediante el teorema de extensión de Carathéodory; aquí la utilizamos como una medida ya construida.</p>
+</div>
+
+<h1 class="page-subtitle">Medidas concentradas</h1>
+
+<div class="ejemplo-box" id="medida-dirac">
+<h1 class="number-title-practica">Ejemplo</h1>
+<p><strong>Medida de Dirac.</strong></p>
+<p>En cualquier espacio medible $(\Omega,\mathcal F)$, fijemos $\omega_0\in\Omega$. La <strong>medida de Dirac</strong> en $\omega_0$ se define por</p><div style="overflow-x:auto;">\[
+\delta_{\omega_0}(A)=\begin{cases}1,&amp;\omega_0\in A,\\0,&amp;\omega_0\notin A,\end{cases}\qquad A\in\mathcal F.
+\]</div><p>Es una probabilidad: es no negativa y asigna uno a $\Omega$; en una familia disjunta, a lo sumo un elemento contiene a $\omega_0$, lo que prueba la aditividad numerable.</p><p>Por ejemplo, sobre $([0,1],\mathcal B([0,1]))$ podemos elegir tanto la probabilidad uniforme como $\delta_{x_0}$ para cualquier $x_0\in[0,1]$. Un mismo espacio medible admite medidas muy distintas.</p>
+</div>
+
+<h1 class="page-subtitle">Probabilidad empírica: verificación de los axiomas</h1>
+<div class="teorema-box" id="probabilidad-empirica-medida"><h1 class="number-title-practica">Proposición</h1>
+<p><strong>La probabilidad empírica es una medida de probabilidad.</strong></p>
+<p>Para las observaciones $\omega_1,\ldots,\omega_n$ y la función empírica definidas en el enfoque frecuentista,</p>
+<div style="overflow-x:auto;">\[
+\widehat{\mathbb P}_n=\frac1n\sum_{i=1}^n\delta_{\omega_i}.
+\]</div><p>Por tanto, la función que asigna a cada evento su frecuencia relativa es una medida de probabilidad, para cualquier muestra fija.</p>
+<button aria-controls="respuesta-030" class="respButton" type="button">Demostración</button>
+<div id="respuesta-030" class="resp-box"><p>La identidad se obtiene de $\delta_{\omega_i}(A)=\mathbf1_A(\omega_i)$. La función es no negativa y asigna uno a $\Omega$. Si $(A_k)$ es una familia disjunta, cada observación pertenece a lo sumo a uno de sus elementos, por lo que $n_{\bigcup_k A_k}=\sum_k n_{A_k}$. Al dividir entre $n$ obtenemos la aditividad numerable.</p><p>Esta verificación describe la probabilidad empírica de la muestra. Para usarla como estimación de una probabilidad de la población se requieren los supuestos de observación discutidos antes.</p></div></div>
+</article>
+
+<article id="probabilidad-clasica-conteo">
+<h1 class="page-title">Taller de probabilidad clásica y técnicas de conteo</h1>
+
+<div class="nota-box"><h2>Indicaciones de trabajo</h2><p>Retomamos el enfoque clásico y sus reglas básicas. Ahora desarrollaremos las técnicas de conteo antes de sus aplicaciones y resolveremos problemas de auditoría, seguros, asignaciones y suficiencia de reservas.</p><p>En cada solución identifica el espacio muestral y justifica la equiprobabilidad. Especifica si el orden importa, si se permiten repeticiones y qué objetos son distinguibles. Presenta una probabilidad exacta antes de aproximar. Los apartados de inclusión-exclusión, desarreglos y reflexión son de profundización.</p></div>
+
+<div class="teorema-box" id="pcc-division">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Biyeciones y regla de división.</strong></p>
+<p>Una <strong>biyección</strong> entre dos conjuntos finitos relaciona cada elemento de uno con exactamente un elemento del otro, sin omisiones; entonces ambos tienen la misma cardinalidad.</p><p>Más generalmente, si cada resultado válido se representa exactamente $q$ veces en una lista de $N$ representaciones, con el mismo entero $q\geq1$ para todos, el número de resultados distintos es $N/q$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-004">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-004"><p>Las representaciones se dividen en grupos disjuntos de tamaño $q$, uno por resultado. Por la regla de la suma, si hay $m$ resultados, $N=q\cdot m$.</p></div>
+</div>
+
+<h1 class="page-subtitle" id="pcc-selecciones">Permutaciones, variaciones y combinaciones</h1>
+
+<div class="definicion-box" id="pcc-factorial">
+<h1 class="number-title-practica">Definición</h1>
+<p><strong>Factorial.</strong></p>
+<p>Para $n\geq1$, el factorial es $n!=n\cdot(n-1)\cdots2\cdot1$. Adoptamos $0!=1$, que también cuenta la única ordenación de una colección vacía.</p>
+</div>
+
+<div class="teorema-box" id="pcc-variaciones">
+<h1 class="number-title-practica">Definición y proposición</h1>
+<p><strong>Permutaciones y selecciones ordenadas sin repetición.</strong></p>
+<p>Una <strong>permutación</strong> de $n$ objetos distintos es una ordenación de todos ellos; hay $n!$ permutaciones. Una <strong>variación sin repetición</strong> de longitud $r$ selecciona y ordena $r$ de esos objetos. Para $0\leq r\leq n$,</p><div style="overflow-x:auto;">\[
+V(n,r)=n\cdot(n-1)\cdots(n-r+1)=\frac{n!}{(n-r)!}.
+\]</div><p>En particular, $V(n,0)=1$. Se utiliza cuando las posiciones, los cargos o el orden de extracción distinguen los resultados.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-005">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-005"><p>Para la primera posición hay $n$ opciones; para la siguiente, $n-1$; y así hasta $n-r+1$. Aplicamos la regla del producto. El caso $r=n$ da $n!$.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-combinaciones">
+<h1 class="number-title-practica">Definición y proposición</h1>
+<p><strong>Combinaciones sin repetición.</strong></p>
+<p>Una <strong>combinación de tamaño $r$</strong> es un subconjunto de $r$ objetos de una colección de $n$ objetos distintos. No se registra un orden. Su número es</p><div style="overflow-x:auto;">\[
+\binom nr=\frac{n!}{r!\cdot(n-r)!},\qquad 0\leq r\leq n.
+\]</div><p>Para $n\geq0$ adoptamos $\binom nr=0$ si $r\lt0$ o $r\gt n$. En particular, $\binom n0=\binom nn=1$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-006">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-006"><p>Hay $V(n,r)$ selecciones ordenadas. Cada subconjunto de tamaño $r$ aparece exactamente $r!$ veces al ordenar sus elementos, así que la regla de división da $V(n,r)/r!$.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-binomial">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Posiciones elegidas e identidades binomiales.</strong></p>
+<p>Las cadenas de longitud $n$ con exactamente $r$ unos y $n-r$ ceros se cuentan eligiendo las posiciones de los unos: hay $\binom nr$.</p><div style="overflow-x:auto;">\[
+\binom nr=\binom n{n-r},\qquad \sum_{r=0}^{n}\binom nr=2^n.
+\]</div><p>Para $n\geq1$ y $1\leq r\leq n$, también se cumple la identidad de Pascal:</p><div style="overflow-x:auto;">\[
+\binom nr=\binom{n-1}{r-1}+\binom{n-1}{r}.
+\]</div><p>Estas identidades permiten verificar conteos y clasificar cadenas según sus posiciones.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-007">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-007"><p>Elegir un subconjunto equivale a elegir su complemento, lo que prueba la simetría. Los $2^n$ subconjuntos se dividen por tamaño para obtener la suma. Para Pascal, fijamos un objeto: los subconjuntos de tamaño $r$ que lo contienen se cuentan con el primer término; los que no lo contienen, con el segundo.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-newton">
+<h1 class="number-title-practica">Teorema</h1>
+<p><strong>Binomio de Newton.</strong></p>
+<p>Para $n\geq0$ y números reales $x,y$,</p><div style="overflow-x:auto;">\[
+(x+y)^n=\sum_{r=0}^{n}\binom nr\cdot x^r y^{n-r}.
+\]</div><p>Esta identidad también permite simplificar sumas de coeficientes binomiales, por ejemplo al sustituir $x=1$ y $y=-1$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-008">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-008"><p>Al desarrollar el producto de $n$ factores $(x+y)$, un término $x^r y^{n-r}$ se obtiene eligiendo en cuáles $r$ factores se toma $x$. Hay $\binom nr$ elecciones de ese tipo. Agrupamos por el número de factores en los que se eligió $x$.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-muestreo">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Selección sin reemplazo por categorías.</strong></p>
+<p>En una población de $N$ objetos distintos, $K$ están marcados y $N-K$ no lo están. Si todos los subconjuntos de tamaño $n$ son equiprobables, con $0\leq n\leq N$, la probabilidad de obtener exactamente $r$ marcados es</p><div style="overflow-x:auto;">\[
+\frac{\binom Kr\binom{N-K}{n-r}}{\binom Nn}.
+\]</div><p>Más generalmente, para categorías disjuntas de tamaños $N_1,\ldots,N_s$, elegir $r_i$ objetos de cada una produce $\prod_{i=1}^{s}\binom{N_i}{r_i}$ muestras, siempre que $\sum_i r_i=n$. Si un evento permite varias composiciones, se suman sus conteos por casos disjuntos.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-009">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-009"><p>Elegimos por separado los objetos de cada categoría y aplicamos la regla del producto. El denominador cuenta todas las muestras del mismo tamaño. Las convenciones de los coeficientes binomiales hacen que las composiciones imposibles contribuyan cero.</p></div>
+</div>
+
+<div class="nota-box"><h2>Elegir la técnica</h2><div style="overflow-x:auto;"><table><thead><tr><th scope="col">Registro</th><th scope="col">Repeticiones</th><th scope="col">Conteo</th></tr></thead><tbody><tr><td>Secuencia de longitud $r$</td><td>Permitidas</td><td>$n^r$</td></tr><tr><td>Selección ordenada de $r$ objetos</td><td>No permitidas</td><td>$V(n,r)$</td></tr><tr><td>Subconjunto de tamaño $r$</td><td>No permitidas</td><td>$\binom nr$</td></tr><tr><td>Ordenación de todos los objetos</td><td>Objetos distintos</td><td>$n!$</td></tr></tbody></table></div></div>
+
+<div class="ejemplo-box" id="pcc-ejemplo-auditoria">
+<h1 class="number-title-practica">Ejemplo</h1>
+<p><strong>Una auditoría con un número fijo de pólizas de riesgo alto.</strong></p>
+<p>Una cartera tiene diez pólizas identificadas: cuatro de riesgo alto y seis de riesgo estándar. Se elige uniformemente una muestra de tres pólizas sin reemplazo. Queremos exactamente dos de riesgo alto.</p><p>El resultado es un subconjunto, por lo que el total es $\binom{10}{3}=120$. Las muestras favorables se obtienen eligiendo dos pólizas de las cuatro de riesgo alto y una de las seis restantes:</p><div style="overflow-x:auto;">\[
+\mathbb{P}(A)=\frac{\binom42\binom61}{\binom{10}{3}}=\frac{36}{120}=\frac3{10}.
+\]</div><p>Para detectar al menos una póliza de riesgo alto, el complemento es una muestra de tres de riesgo estándar:</p><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{al menos una de riesgo alto})=1-\frac{\binom63}{\binom{10}{3}}=\frac56.
+\]</div><p>Cada muestra favorable tiene un único par de pólizas de riesgo alto y una única póliza estándar. La construcción cuenta cada muestra una sola vez.</p>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-01" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Dos dados: resultados ordenados y sumas.</strong></p>
+    <p>Se lanzan dos dados distinguibles y equilibrados. Los $36$ pares ordenados de caras son equiprobables. Calcula la probabilidad de que:</p>
+<ol><li>La suma sea $8$.</li><li>Aparezca al menos un $6$.</li><li>La diferencia absoluta entre las caras sea $2$.</li></ol>
+<p>Explica además por qué los resultados resumidos «dos unos» y «un uno y un dos» no tienen la misma probabilidad.</p>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-010">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-010"><p>Representa los resultados mediante pares $(i,j)$. Para el segundo evento, cuenta primero los pares que no contienen ningún $6$.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-011">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-011"><p>Tomamos $\Omega=\{1,\ldots,6\}^2$, con $|\Omega|=36$.</p>
+<ol>
+<li><p>Los pares favorables son $(2,6),(3,5),(4,4),(5,3),(6,2)$. Por tanto, la probabilidad es $5/36$.</p></li>
+<li><p>Hay $5^2$ resultados sin ningún $6$. Así,</p><div style="overflow-x:auto;">\[\mathbb{P}(\text{al menos un }6)=1-\frac{25}{36}=\frac{11}{36}.\]</div></li>
+<li><p>Hay cuatro pares con $j=i+2$ y cuatro con $i=j+2$. La probabilidad es $8/36=2/9$.</p></li>
+</ol>
+<p>El resultado resumido «dos unos» procede únicamente de $(1,1)$ y tiene probabilidad $1/36$. El resultado resumido «un uno y un dos» procede de $(1,2)$ y $(2,1)$ y tiene probabilidad $2/36$. Agrupar resultados puede destruir la equiprobabilidad.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-02" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cinco lanzamientos de una moneda.</strong></p>
+    <p>Se lanza cinco veces una moneda equilibrada, de manera independiente. Calcula la probabilidad de obtener:</p>
+<ol><li>Exactamente tres caras.</li><li>Al menos una cara.</li><li>Exactamente tres caras, con cara tanto en el primer lanzamiento como en el último.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-012">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-012"><p>Las $2^5$ secuencias son equiprobables. Para obtener exactamente tres caras, elige sus posiciones. En el último apartado, dos posiciones ya están fijadas.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-013">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-013"><p>Hay $2^5=32$ secuencias equiprobables.</p>
+<ol>
+<li><p>Las tres posiciones de cara pueden elegirse de $\binom53$ formas:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom53}{2^5}=\frac{5}{16}.\]</div></li>
+<li><p>Solo la secuencia de cinco cruces queda excluida:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=1-\frac1{32}=\frac{31}{32}.\]</div></li>
+<li><p>Entre los tres lanzamientos interiores se elige la posición de la tercera cara:</p><div style="overflow-x:auto;">\[\mathbb{P}(C)=\frac{\binom31}{32}=\frac3{32}.\]</div></li>
+</ol>
+<p>No necesitamos ordenar nuevamente las posiciones elegidas: cada elección determina una secuencia única.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-03" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Claves digitales y números de cuatro cifras.</strong></p>
+    <ol>
+<li>Se elige uniformemente una clave de cuatro dígitos de $\{0,1,\ldots,9\}$. Se permite que empiece con $0$. Calcula la probabilidad de que no repita dígitos.</li>
+<li>Se elige uniformemente un número entero de cuatro cifras, entre $1000$ y $9999$. Calcula la probabilidad de que no repita dígitos.</li>
+<li>Un estudiante propone usar $V(10,4)/9000$ en el segundo apartado. Identifica el error y compara los resultados correctos de los dos modelos.</li>
+</ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-014">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-014"><p>En una clave se admite el cero inicial. Para un número de cuatro cifras, la primera posición tiene nueve opciones; una vez elegida, el cero sí puede aparecer en las posiciones restantes.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-015">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-015"><ol>
+<li><p>Hay $10^4$ claves y $10\cdot9\cdot8\cdot7$ claves sin repeticiones:</p><div style="overflow-x:auto;">\[\frac{V(10,4)}{10^4}=\frac{5040}{10000}=\frac{63}{125}.\]</div></li>
+<li><p>Hay $9000$ números de cuatro cifras. Para contar los que no repiten dígitos, la primera cifra tiene nueve opciones, la segunda nueve, la tercera ocho y la cuarta siete:</p><div style="overflow-x:auto;">\[\frac{9\cdot9\cdot8\cdot7}{9000}=\frac{4536}{9000}=\frac{63}{125}.\]</div></li>
+<li><p>$V(10,4)$ cuenta también cadenas que empiezan con $0$, que no son números de cuatro cifras. En cada cociente, numerador y denominador deben referirse al mismo espacio muestral. En estos dos modelos las probabilidades correctas coinciden, aunque sus conteos sean distintos.</p></li>
+</ol></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-04" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Una urna, dos maneras de contar.</strong></p>
+    <p>Una urna contiene seis bolas rojas y cuatro azules, todas distinguibles. Se elige uniformemente un subconjunto de tres bolas, sin reemplazo.</p>
+<ol><li>Calcula la probabilidad de obtener exactamente dos rojas.</li><li>Calcula la probabilidad de que aparezcan ambos colores.</li><li>Repite el primer cálculo usando un experimento de tres extracciones sucesivas sin reemplazo, en el que todos los órdenes de bolas distintas son equiprobables.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-016">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-016"><p>Para la selección sin orden, usa combinaciones. Para extracciones ordenadas, elige las posiciones de las bolas rojas y ordena las bolas individuales correspondientes.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-017">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-017"><ol>
+<li><p>El espacio de subconjuntos tiene tamaño $\binom{10}{3}=120$. Los favorables son $\binom62\binom41=60$:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom62\binom41}{\binom{10}{3}}=\frac12.\]</div></li>
+<li><p>El complemento consiste en obtener tres bolas del mismo color:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=1-\frac{\binom63+\binom43}{\binom{10}{3}}=1-\frac{24}{120}=\frac45.\]</div></li>
+<li><p>En el modelo ordenado hay $V(10,3)=720$ resultados. Elegimos las dos posiciones rojas, las bolas rojas en orden y la bola azul:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom32\,V(6,2)\cdot4}{V(10,3)}=\frac{360}{720}=\frac12.\]</div></li>
+</ol>
+<p>Cada subconjunto de tres bolas genera exactamente $3!$ órdenes. Por eso ambos enfoques asignan la misma probabilidad al evento; la consistencia entre numerador y denominador es lo esencial.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-05" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Auditoría de una cartera de seguros.</strong></p>
+    <p>Una cartera contiene $20$ pólizas identificadas: ocho de automóviles, siete de vida y cinco de gastos médicos. Se selecciona uniformemente un subconjunto de cinco pólizas para una auditoría.</p>
+<ol><li>Calcula la probabilidad de seleccionar exactamente dos de automóviles, dos de vida y una de gastos médicos.</li><li>Calcula la probabilidad de incluir al menos una póliza de gastos médicos.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-018">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-018"><p>La muestra es un subconjunto sin orden. En el primer evento, elige por separado las pólizas de cada ramo; en el segundo, cuenta las muestras que no contienen gastos médicos.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-019">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-019"><p>El total de muestras es $\binom{20}{5}=15504$.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom82\binom72\binom51}{\binom{20}{5}}=\frac{2940}{15504}.\]</div>
+<p>No multiplicamos por $5!$, porque el evento describe una muestra sin orden.</p></li>
+<li><p>Fuera del ramo de gastos médicos hay $15$ pólizas:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=1-\frac{\binom{15}{5}}{\binom{20}{5}}=1-\frac{3003}{15504}=\frac{12501}{15504}.\]</div></li>
+</ol></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-06" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Integración de un comité.</strong></p>
+    <p>Un grupo está formado por seis mujeres y cuatro hombres. Entre ellos están María y José. Se elige uniformemente un comité de cuatro personas, sin cargos distintos.</p>
+<ol><li>Calcula la probabilidad de que el comité tenga dos mujeres y dos hombres.</li><li>Calcula la probabilidad de que María y José pertenezcan ambos al comité.</li><li>Calcula la probabilidad de que al menos uno de los dos pertenezca al comité.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-020">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-020"><p>Hay $\binom{10}{4}$ comités. Si dos personas ya están incluidas, faltan dos integrantes. Para el último evento, excluye los comités que no contienen a ninguna de las dos personas señaladas.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-021">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-021"><p>El total es $\binom{10}{4}=210$ comités equiprobables.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\frac{\binom62\binom42}{\binom{10}{4}}=\frac{90}{210}=\frac37.\]</div></li>
+<li><p>Fijadas María y José, elegimos a las otras dos personas entre las ocho restantes:</p><div style="overflow-x:auto;">\[\frac{\binom82}{\binom{10}{4}}=\frac{28}{210}=\frac2{15}.\]</div></li>
+<li><p>Hay $\binom84$ comités que excluyen a ambos:</p><div style="overflow-x:auto;">\[1-\frac{\binom84}{\binom{10}{4}}=1-\frac{70}{210}=\frac23.\]</div></li>
+</ol></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-07" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Asignación de tres cargos.</strong></p>
+    <p>De diez estudiantes distintos, entre quienes están Ana, Bruno y Carla, se asignan los cargos de presidencia, secretaría y tesorería. Ninguna persona puede ocupar dos cargos. Todas las asignaciones inyectivas a los tres cargos son equiprobables.</p>
+<ol><li>Calcula la probabilidad de que Ana ocupe algún cargo.</li><li>Calcula la probabilidad de que Ana y Bruno ocupen ambos un cargo.</li><li>Calcula la probabilidad de que exactamente dos personas del grupo formado por Ana, Bruno y Carla ocupen cargos.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-022">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-022"><p>Los cargos son distintos. Puedes elegir primero a sus ocupantes y luego asignarlos a los tres cargos. Si incluyes a Ana y Bruno, identifica cuántas opciones quedan para la tercera persona.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-023">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-023"><p>Hay $V(10,3)=10\cdot9\cdot8=720$ asignaciones.</p>
+<ol>
+<li><p>Ana puede ocupar cualquiera de los tres cargos y los otros dos se asignan en orden entre nueve estudiantes:</p><div style="overflow-x:auto;">\[\frac{3\,V(9,2)}{V(10,3)}=\frac{216}{720}=\frac3{10}.\]</div></li>
+<li><p>Elegimos a la tercera persona entre ocho y asignamos los tres cargos:</p><div style="overflow-x:auto;">\[\frac{8\cdot3!}{720}=\frac1{15}.\]</div></li>
+<li><p>Elegimos dos de las tres personas señaladas, una de las siete restantes y luego asignamos cargos:</p><div style="overflow-x:auto;">\[\frac{\binom32\binom71\,3!}{720}=\frac{126}{720}=\frac7{40}.\]</div></li>
+</ol>
+<p>El factor $3!$ es necesario porque intercambiar cargos produce una asignación distinta.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-08" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Un sorteo de seis números.</strong></p>
+    <p>En un sorteo hipotético se elige uniformemente un subconjunto de seis números de $\{1,\ldots,49\}$. Antes del sorteo, una persona fija un boleto con seis números distintos.</p>
+<ol><li>Calcula la probabilidad de acertar los seis números.</li><li>Calcula la probabilidad de acertar exactamente tres.</li><li>Calcula la probabilidad de acertar al menos uno.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-024">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-024"><p>Los seis números del boleto están fijados. Una selección con exactamente $r$ aciertos contiene $r$ números del boleto y $6-r$ de los $43$ restantes.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-025">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-025"><p>Hay $\binom{49}{6}=13983816$ resultados equiprobables.</p>
+<ol>
+<li><p>Solo un subconjunto coincide con el boleto:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac1{\binom{49}{6}}.\]</div></li>
+<li><p>Elegimos tres de los seis números acertados y tres de los $43$ no incluidos en el boleto:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom63\binom{43}{3}}{\binom{49}{6}}=\frac{246820}{13983816}.\]</div></li>
+<li><p>El complemento consiste en que los seis números provengan de fuera del boleto:</p><div style="overflow-x:auto;">\[\mathbb{P}(C)=1-\frac{\binom{43}{6}}{\binom{49}{6}}.\]</div></li>
+</ol>
+<p>En general, para $r=0,\ldots,6$, la probabilidad de exactamente $r$ aciertos es $\binom6r\binom{43}{6-r}/\binom{49}{6}$.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-nuevo-21">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Detección de errores en expedientes.</strong></p>
+<p>En un lote de treinta expedientes identificados, seis contienen un error de captura y veinticuatro no. Se elige uniformemente una muestra de cinco expedientes sin reemplazo.</p><ol><li>Calcula la probabilidad de detectar al menos un error.</li><li>Calcula la probabilidad de encontrar exactamente dos expedientes con error.</li><li>Se ordenará una revisión completa del lote si aparecen al menos dos expedientes con error. Calcula la probabilidad de activar esa revisión.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-026">Pista</button>
+<div class="resp-box" id="pcc-respuesta-026"><p>La muestra es un subconjunto de tamaño cinco. Para el último inciso, cuenta primero las muestras con cero errores y con exactamente uno; esos casos son disjuntos.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-027">Solución</button>
+<div class="resp-box" id="pcc-respuesta-027"><p>El total de muestras es $\binom{30}{5}=142506$. Por selección por categorías,</p><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(\text{al menos un error})&amp;=1-\frac{\binom{24}{5}}{\binom{30}{5}},\\ \mathbb{P}(\text{exactamente dos})&amp;=\frac{\binom62\binom{24}{3}}{\binom{30}{5}},\\ \mathbb{P}(\text{revisión completa})&amp;=1-\frac{\binom{24}{5}+\binom61\binom{24}{4}}{\binom{30}{5}}.\end{aligned}
+\]</div><p>Los numeradores respectivos son $100002$, $30360$ y $36246$. El criterio de revisión convierte un conteo de errores en un evento del modelo.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-22">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Auditar con reemplazo y sin reemplazo.</strong></p>
+<p>Una cartera contiene doce pólizas identificadas, tres de riesgo alto y nueve de riesgo estándar. Se comparan dos mecanismos: en el primero se extraen dos pólizas sucesivamente sin reemplazo; en el segundo se devuelve la primera antes de extraer la segunda. En cada mecanismo, todos los pares ordenados permitidos son equiprobables.</p><ol><li>Calcula, en cada modelo, la probabilidad de que ambas pólizas sean de riesgo alto.</li><li>Calcula la probabilidad de que aparezca al menos una de riesgo alto.</li><li>Explica cómo cambia el espacio muestral al permitir que una póliza vuelva a salir.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-028">Pista</button>
+<div class="resp-box" id="pcc-respuesta-028"><p>Sin reemplazo hay $V(12,2)$ pares y con reemplazo hay $12^2$. Utiliza el complemento para «al menos una».</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-029">Solución</button>
+<div class="resp-box" id="pcc-respuesta-029"><div style="overflow-x:auto;">\[
+\begin{array}{c|c|c}\text{Evento}&amp;\text{Sin reemplazo}&amp;\text{Con reemplazo}\\\hline\text{Ambas de riesgo alto}&amp;\dfrac{3\cdot2}{12\cdot11}=\dfrac1{22}&amp;\dfrac{3^2}{12^2}=\dfrac1{16}\\\text{Al menos una de riesgo alto}&amp;1-\dfrac{9\cdot8}{12\cdot11}=\dfrac5{11}&amp;1-\dfrac{9^2}{12^2}=\dfrac7{16}\end{array}
+\]</div><p>Los pares $(\omega,\omega)$ forman parte del segundo modelo. Numerador y denominador deben incorporar la misma regla sobre reemplazo.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-23">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Muestreo simple y muestreo por ramos.</strong></p>
+<p>Una cartera tiene dieciocho pólizas identificadas: nueve de automóviles, seis de vida y tres de gastos médicos. Se comparan dos diseños:</p><ul><li><strong>Diseño simple:</strong> todos los subconjuntos de tres pólizas son equiprobables.</li><li><strong>Diseño por ramos:</strong> se elige una póliza de cada ramo y todas las ternas así obtenidas son equiprobables.</li></ul><p>Calcula en cada diseño la probabilidad de:</p><ol><li>Incluir los tres ramos.</li><li>Incluir una póliza específica de gastos médicos, fijada antes de la selección.</li><li>Incluir exactamente dos pólizas de automóviles.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-030">Pista</button>
+<div class="resp-box" id="pcc-respuesta-030"><p>Los denominadores son $\binom{18}{3}$ y $9\cdot6\cdot3$. En el segundo diseño algunos eventos están garantizados y otros son imposibles.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-031">Solución</button>
+<div class="resp-box" id="pcc-respuesta-031"><p>En el diseño simple hay $\binom{18}{3}=816$ muestras; en el diseño por ramos hay $162$.</p><div style="overflow-x:auto;">\[
+\begin{array}{c|c|c}\text{Evento}&amp;\text{Simple}&amp;\text{Por ramos}\\\hline\text{Tres ramos}&amp;\dfrac{9\cdot6\cdot3}{816}=\dfrac{27}{136}&amp;1\\\text{Póliza médica fijada}&amp;\dfrac{\binom{17}{2}}{816}=\dfrac16&amp;\dfrac{9\cdot6}{162}=\dfrac13\\\text{Exactamente dos de autos}&amp;\dfrac{\binom92\cdot9}{816}=\dfrac{27}{68}&amp;0\end{array}
+\]</div><p>Una selección de tamaño tres no determina por sí sola la probabilidad: también importa qué muestras permite y equipondera el diseño.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-24">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Pagos agregados y suficiencia de una reserva.</strong></p>
+<p>Hay ocho reclamaciones identificadas: cuatro implican un pago de una unidad, tres un pago de dos unidades y una un pago de cinco unidades. Se elige uniformemente un subconjunto de tres reclamaciones. Sea $S$ la suma de sus pagos.</p><ol><li>Construye una tabla con los valores posibles de $S$ y el número de muestras que producen cada valor.</li><li>Calcula la probabilidad de que una reserva de siete unidades sea insuficiente, es decir, $S\gt7$.</li><li>Calcula la probabilidad de que una reserva de ocho unidades cubra el pago total, es decir, $S\leq8$.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-032">Pista</button>
+<div class="resp-box" id="pcc-respuesta-032"><p>Separa primero las muestras que contienen la reclamación de cinco unidades. Para las restantes, cuenta cuántas reclamaciones de dos unidades aparecen.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-033">Solución</button>
+<div class="resp-box" id="pcc-respuesta-033"><p>El total es $\binom83=56$. Las composiciones por importe son casos disjuntos:</p><div style="overflow-x:auto;"><table><thead><tr><th scope="col">$S$</th><th scope="col">Composición de pagos</th><th scope="col">Muestras</th></tr></thead><tbody><tr><td>$3$</td><td>$1+1+1$</td><td>$\binom43=4$</td></tr><tr><td>$4$</td><td>$1+1+2$</td><td>$\binom42\binom31=18$</td></tr><tr><td>$5$</td><td>$1+2+2$</td><td>$\binom41\binom32=12$</td></tr><tr><td>$6$</td><td>$2+2+2$</td><td>$\binom33=1$</td></tr><tr><td>$7$</td><td>$5+1+1$</td><td>$\binom42=6$</td></tr><tr><td>$8$</td><td>$5+1+2$</td><td>$4\cdot3=12$</td></tr><tr><td>$9$</td><td>$5+2+2$</td><td>$\binom32=3$</td></tr></tbody></table></div><p>Las cantidades suman $56$. Por tanto,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(S\gt7)=\frac{12+3}{56}=\frac{15}{56},\qquad \mathbb{P}(S\leq8)=1-\frac3{56}=\frac{53}{56}.
+\]</div><p>Las reclamaciones están identificadas aunque algunas tengan el mismo importe. Los distintos valores de $S$ no son equiprobables.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-29">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Un sistema con componentes de respaldo.</strong></p>
+<p>Un almacén contiene doce componentes identificados: ocho funcionan y cuatro presentan una falla. Se eligen uniformemente cuatro componentes sin reemplazo para formar un sistema. Este funciona si al menos tres de los componentes seleccionados funcionan.</p><ol><li>Calcula la probabilidad de que el sistema funcione.</li><li>Calcula la probabilidad de seleccionar exactamente dos componentes con falla.</li><li>Calcula la probabilidad de no seleccionar ningún componente con falla.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-034">Pista</button>
+<div class="resp-box" id="pcc-respuesta-034"><p>Para el primer inciso, los casos «tres funcionan» y «cuatro funcionan» son disjuntos. Todas las cuentas tienen el mismo denominador.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-035">Solución</button>
+<div class="resp-box" id="pcc-respuesta-035"><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(\text{funciona})&amp;=\frac{\binom83\binom41+\binom84}{\binom{12}{4}}=\frac{294}{495}=\frac{98}{165},\\\mathbb{P}(\text{dos fallas})&amp;=\frac{\binom42\binom82}{\binom{12}{4}}=\frac{168}{495}=\frac{56}{165},\\\mathbb{P}(\text{ninguna falla})&amp;=\frac{\binom84}{\binom{12}{4}}=\frac{70}{495}=\frac{14}{99}.\end{aligned}
+\]</div><p>El requisito de funcionamiento se traduce primero a composiciones de la muestra y después a un conteo.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-30">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Composición de una cartera didáctica.</strong></p>
+<p>Se dispone de ocho instrumentos identificados: cuatro bonos, tres acciones y una participación en un fondo inmobiliario. Una cartera didáctica se forma eligiendo uniformemente tres instrumentos distintos.</p><ol><li>Calcula la probabilidad de incluir exactamente dos bonos y una acción.</li><li>Calcula la probabilidad de representar las tres clases de instrumentos.</li><li>Calcula la probabilidad de no incluir acciones.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-036">Pista</button>
+<div class="resp-box" id="pcc-respuesta-036"><p>La cartera es un subconjunto, sin orden. Para representar las tres clases debe elegirse exactamente un instrumento de cada una.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-037">Solución</button>
+<div class="resp-box" id="pcc-respuesta-037"><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(2\text{ bonos y }1\text{ acción})&amp;=\frac{\binom42\binom31}{\binom83}=\frac9{28},\\\mathbb{P}(\text{tres clases})&amp;=\frac{4\cdot3\cdot1}{\binom83}=\frac3{14},\\\mathbb{P}(\text{sin acciones})&amp;=\frac{\binom53}{\binom83}=\frac5{28}.\end{aligned}
+\]</div><p>La equiprobabilidad se refiere a los subconjuntos de instrumentos; las composiciones por clase pueden tener probabilidades diferentes.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-31">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Dos clasificaciones de una misma cartera.</strong></p>
+<p>Una cartera de veinte pólizas identificadas se clasifica por ramo y por la existencia de reclamaciones previas:</p><div style="overflow-x:auto;"><table><thead><tr><th scope="col">Ramo</th><th scope="col">Con reclamaciones previas</th><th scope="col">Sin reclamaciones previas</th></tr></thead><tbody><tr><td>Automóviles</td><td>$5$</td><td>$7$</td></tr><tr><td>Vida</td><td>$2$</td><td>$6$</td></tr></tbody></table></div><p>Se elige uniformemente una muestra de cuatro pólizas sin reemplazo.</p><ol><li>Calcula la probabilidad de incluir exactamente dos pólizas de automóviles y exactamente una póliza con reclamaciones previas.</li><li>Calcula la probabilidad de no incluir ninguna póliza con reclamaciones previas.</li><li>Calcula la probabilidad de incluir exactamente una póliza con reclamaciones previas, sin imponer restricciones sobre los ramos.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-038">Pista</button>
+<div class="resp-box" id="pcc-respuesta-038"><p>En el primer inciso, separa dos casos: la única póliza con reclamaciones previas es de automóviles, o es de vida. Los casos son disjuntos.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-039">Solución</button>
+<div class="resp-box" id="pcc-respuesta-039"><p>Hay $\binom{20}{4}=4845$ muestras.</p><ol><li><p>Si la póliza con reclamaciones previas es de autos, se elige una de las cinco de ese grupo, una de las siete de autos sin reclamaciones y dos de las seis de vida sin reclamaciones. Si es de vida, se eligen dos de autos sin reclamaciones, una de vida con reclamaciones y otra de vida sin ellas. Por suma de casos,</p><div style="overflow-x:auto;">\[
+\frac{5\cdot7\cdot\binom62+\binom72\cdot2\cdot6}{\binom{20}{4}}=\frac{525+252}{4845}=\frac{259}{1615}.
+\]</div></li><li><p>Hay trece pólizas sin reclamaciones previas:</p><div style="overflow-x:auto;">\[
+\frac{\binom{13}{4}}{\binom{20}{4}}=\frac{715}{4845}=\frac{143}{969}.
+\]</div></li><li><p>Hay siete pólizas con reclamaciones previas, así que la respuesta es</p><div style="overflow-x:auto;">\[
+\frac{\binom71\binom{13}{3}}{\binom{20}{4}}=\frac{2002}{4845}.
+\]</div></li></ol></div>
+</div>
+
+<section id="problema-cumpleanos">
+<h1 class="page-subtitle" id="pcc-cumpleanos">Coincidencias y el problema de los cumpleaños</h1>
+
+<div class="teorema-box" id="pcc-casillas">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Principio de las casillas.</strong></p>
+<p>Si se distribuyen $k$ objetos entre $n$ categorías y $k\gt n$, alguna categoría recibe al menos dos objetos.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-040">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-040"><p>Si cada categoría recibiera a lo sumo uno, habría a lo sumo $n$ objetos, en contradicción con $k\gt n$.</p></div>
 </div>
 
 <div class="ejemplo-box">
-<h1 class="number-title-practica">Ejemplo</h1><p><b>Modelo clásico: contar bajo equiprobabilidad.</b></p>
-<p>Sea $\Omega$ finito y no vacío. Si se supone que todos sus resultados elementales son equiprobables, se define, para $A\subseteq\Omega$,</p>
-
-<div style="overflow-x: auto;">
-\[
-\mathbb{P}(A)=\frac{|A|}{|\Omega|}.
-\]
-</div>
-
-<p>Por ejemplo, para un dado equilibrado, $\mathbb{P}(\{2,4,6\})=3/6=1/2$. <b>La equiprobabilidad es una hipótesis del modelo</b>; no se deduce de que el conjunto $\Omega$ sea finito.</p>
-</div>
-
-<div class="nota-box"><h2>Técnicas de conteo</h2><p>Para comprobar los ejemplos clásicos usaremos el principio multiplicativo, las permutaciones, las variaciones $V(n,r)=n!/(n-r)!$ y las combinaciones $\binom nr=n!/(r!\cdot(n-r)!)$, con $0\leq r\leq n$ y $0!=1$. Los ejercicios finales practican cada técnica y exigen mantener el mismo espacio muestral en numerador y denominador.</p></div>
-
-<section id="problema-cumpleanos">
-  <div class="ejemplo-box">
     <h1 class="number-title-practica">Ejemplo</h1>
-    <p><strong>El problema de los cumpleaños.</strong></p>
+    <p><strong>El problema de los cumpleaños.</strong></p><p>El modelo conjunto hace equiprobables las $365^k$ asignaciones de fechas a las personas identificadas. Con esta especificación podemos aplicar la regla clásica y las técnicas anteriores.</p>
     <p>
       En un salón hay $k$ personas. Buscamos la probabilidad de que
       <strong>al menos dos de ellas cumplan años el mismo día</strong>.
@@ -1774,7 +2358,7 @@ p_k=(1-q)q^k,\qquad k\geq0.
     <p>
       La última condición expresa que las fechas de cumpleaños se modelan
       sin que la información sobre unas cambie las probabilidades de las otras.
-      Estos supuestos definen el modelo matemático que utilizaremos: las $365^k$ asignaciones de fechas a las personas identificadas tendrán la misma probabilidad. Esta descripción del modelo conjunto permite efectuar el conteo; la noción formal de independencia se estudiará posteriormente.
+      Estos supuestos definen el modelo matemático que utilizaremos.
     </p>
 
     <h3>1. Espacio muestral y resultados equiprobables</h3>
@@ -1935,197 +2519,197 @@ p_k=(1-q)q^k,\qquad k\geq0.
       \mathbb{P}(E_{57})\approx0.990122.
     \]
     <figure style="margin:1.25em auto;max-width:900px;text-align:center;">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 604.8 374.4" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img" aria-labelledby="cumpleanos-grafica-titulo cumpleanos-grafica-descripcion" style="display:block;width:100%;height:auto;" stroke-linejoin="round" stroke-linecap="butt"><title id="cumpleanos-grafica-titulo">Probabilidad de coincidencia de cumpleaños</title><desc id="cumpleanos-grafica-descripcion">Probabilidad de que al menos dos personas compartan cumpleaños en un grupo de una a cien personas, bajo el modelo uniforme e independiente de 365 días. Con 22 personas es 47.57 por ciento; con 23 es 50.73 por ciento; con 57 es 99.01 por ciento.</desc>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 604.8 374.4" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img" aria-labelledby="pcc-cumpleanos-grafica-titulo pcc-cumpleanos-grafica-descripcion" style="display:block;width:100%;height:auto;" stroke-linejoin="round" stroke-linecap="butt"><title id="pcc-cumpleanos-grafica-titulo">Probabilidad de coincidencia de cumpleaños</title><desc id="pcc-cumpleanos-grafica-descripcion">Probabilidad de que al menos dos personas compartan cumpleaños en un grupo de una a cien personas, bajo el modelo uniforme e independiente de 365 días. Con 22 personas es 47.57 por ciento; con 23 es 50.73 por ciento; con 57 es 99.01 por ciento.</desc>
  <metadata>
-  <rdf:rdf xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <cc:work>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
-     <cc:agent>
+     <cc:Agent>
       <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
-     </cc:agent>
+     </cc:Agent>
     </dc:creator>
-   </cc:work>
-  </rdf:rdf>
+   </cc:Work>
+  </rdf:RDF>
  </metadata>
  <defs>
   
  </defs>
- <g id="cumpleanos-figure_1">
-  <g id="cumpleanos-patch_1">
+ <g id="pcc-cumpleanos-figure_1">
+  <g id="pcc-cumpleanos-patch_1">
    <path d="M 0 374.4 
 L 604.8 374.4 
 L 604.8 0 
 L 0 0 
 z
-" style="fill: #ffffff" />
+" style="fill: #ffffff"/>
   </g>
-  <g id="cumpleanos-axes_1">
-   <g id="cumpleanos-patch_2">
+  <g id="pcc-cumpleanos-axes_1">
+   <g id="pcc-cumpleanos-patch_2">
     <path d="M 55.527115 334.716635 
 L 589.392885 334.716635 
 L 589.392885 3.00024 
 L 55.527115 3.00024 
 z
-" style="fill: #ffffff" />
+" style="fill: #ffffff"/>
    </g>
-   <g id="cumpleanos-matplotlib.axis_1">
-    <g id="cumpleanos-xtick_1">
-     <g id="cumpleanos-line2d_1">
+   <g id="pcc-cumpleanos-matplotlib.axis_1">
+    <g id="pcc-cumpleanos-xtick_1">
+     <g id="pcc-cumpleanos-line2d_1">
       <defs>
-       <path id="cumpleanos-m43d59d315f" d="M 0 0 
+       <path id="pcc-cumpleanos-m43d59d315f" d="M 0 0 
 L 0 3.5 
-" style="stroke: #000000; stroke-width: 0.8" />
+" style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#cumpleanos-m43d59d315f" x="55.527115" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-m43d59d315f" x="55.527115" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_1">
+     <g id="pcc-cumpleanos-text_1">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="55.527115" y="351.594604" transform="rotate(-0 55.527115 351.594604)">0</text>
      </g>
     </g>
-    <g id="cumpleanos-xtick_2">
-     <g id="cumpleanos-line2d_2">
+    <g id="pcc-cumpleanos-xtick_2">
+     <g id="pcc-cumpleanos-line2d_2">
       <g>
-       <use xlink:href="#cumpleanos-m43d59d315f" x="162.300269" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-m43d59d315f" x="162.300269" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_2">
+     <g id="pcc-cumpleanos-text_2">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="162.300269" y="351.594604" transform="rotate(-0 162.300269 351.594604)">20</text>
      </g>
     </g>
-    <g id="cumpleanos-xtick_3">
-     <g id="cumpleanos-line2d_3">
+    <g id="pcc-cumpleanos-xtick_3">
+     <g id="pcc-cumpleanos-line2d_3">
       <g>
-       <use xlink:href="#cumpleanos-m43d59d315f" x="269.073423" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-m43d59d315f" x="269.073423" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_3">
+     <g id="pcc-cumpleanos-text_3">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="269.073423" y="351.594604" transform="rotate(-0 269.073423 351.594604)">40</text>
      </g>
     </g>
-    <g id="cumpleanos-xtick_4">
-     <g id="cumpleanos-line2d_4">
+    <g id="pcc-cumpleanos-xtick_4">
+     <g id="pcc-cumpleanos-line2d_4">
       <g>
-       <use xlink:href="#cumpleanos-m43d59d315f" x="375.846577" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-m43d59d315f" x="375.846577" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_4">
+     <g id="pcc-cumpleanos-text_4">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="375.846577" y="351.594604" transform="rotate(-0 375.846577 351.594604)">60</text>
      </g>
     </g>
-    <g id="cumpleanos-xtick_5">
-     <g id="cumpleanos-line2d_5">
+    <g id="pcc-cumpleanos-xtick_5">
+     <g id="pcc-cumpleanos-line2d_5">
       <g>
-       <use xlink:href="#cumpleanos-m43d59d315f" x="482.619731" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-m43d59d315f" x="482.619731" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_5">
+     <g id="pcc-cumpleanos-text_5">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="482.619731" y="351.594604" transform="rotate(-0 482.619731 351.594604)">80</text>
      </g>
     </g>
-    <g id="cumpleanos-xtick_6">
-     <g id="cumpleanos-line2d_6">
+    <g id="pcc-cumpleanos-xtick_6">
+     <g id="pcc-cumpleanos-line2d_6">
       <g>
-       <use xlink:href="#cumpleanos-m43d59d315f" x="589.392885" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-m43d59d315f" x="589.392885" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_6">
+     <g id="pcc-cumpleanos-text_6">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="589.392885" y="351.594604" transform="rotate(-0 589.392885 351.594604)">100</text>
      </g>
     </g>
-    <g id="cumpleanos-text_7">
+    <g id="pcc-cumpleanos-text_7">
      <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="322.46" y="368.696166" transform="rotate(-0 322.46 368.696166)">Número de personas (k)</text>
     </g>
    </g>
-   <g id="cumpleanos-matplotlib.axis_2">
-    <g id="cumpleanos-ytick_1">
-     <g id="cumpleanos-line2d_7">
+   <g id="pcc-cumpleanos-matplotlib.axis_2">
+    <g id="pcc-cumpleanos-ytick_1">
+     <g id="pcc-cumpleanos-line2d_7">
       <path d="M 55.527115 334.716635 
 L 589.392885 334.716635 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
-     <g id="cumpleanos-line2d_8">
+     <g id="pcc-cumpleanos-line2d_8">
       <defs>
-       <path id="cumpleanos-mf49acd401f" d="M 0 0 
+       <path id="pcc-cumpleanos-mf49acd401f" d="M 0 0 
 L -3.5 0 
-" style="stroke: #000000; stroke-width: 0.8" />
+" style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#cumpleanos-mf49acd401f" x="55.527115" y="334.716635" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-mf49acd401f" x="55.527115" y="334.716635" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_8">
+     <g id="pcc-cumpleanos-text_8">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: end" x="48.527115" y="339.655619" transform="rotate(-0 48.527115 339.655619)">0</text>
      </g>
     </g>
-    <g id="cumpleanos-ytick_2">
-     <g id="cumpleanos-line2d_9">
+    <g id="pcc-cumpleanos-ytick_2">
+     <g id="pcc-cumpleanos-line2d_9">
       <path d="M 55.527115 255.358646 
 L 589.392885 255.358646 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
-     <g id="cumpleanos-line2d_10">
+     <g id="pcc-cumpleanos-line2d_10">
       <g>
-       <use xlink:href="#cumpleanos-mf49acd401f" x="55.527115" y="255.358646" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-mf49acd401f" x="55.527115" y="255.358646" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_9">
+     <g id="pcc-cumpleanos-text_9">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: end" x="48.527115" y="260.29763" transform="rotate(-0 48.527115 260.29763)">0.25</text>
      </g>
     </g>
-    <g id="cumpleanos-ytick_3">
-     <g id="cumpleanos-line2d_11">
+    <g id="pcc-cumpleanos-ytick_3">
+     <g id="pcc-cumpleanos-line2d_11">
       <path d="M 55.527115 176.000657 
 L 589.392885 176.000657 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
-     <g id="cumpleanos-line2d_12">
+     <g id="pcc-cumpleanos-line2d_12">
       <g>
-       <use xlink:href="#cumpleanos-mf49acd401f" x="55.527115" y="176.000657" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-mf49acd401f" x="55.527115" y="176.000657" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_10">
+     <g id="pcc-cumpleanos-text_10">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: end" x="48.527115" y="180.939641" transform="rotate(-0 48.527115 180.939641)">0.50</text>
      </g>
     </g>
-    <g id="cumpleanos-ytick_4">
-     <g id="cumpleanos-line2d_13">
+    <g id="pcc-cumpleanos-ytick_4">
+     <g id="pcc-cumpleanos-line2d_13">
       <path d="M 55.527115 96.642667 
 L 589.392885 96.642667 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
-     <g id="cumpleanos-line2d_14">
+     <g id="pcc-cumpleanos-line2d_14">
       <g>
-       <use xlink:href="#cumpleanos-mf49acd401f" x="55.527115" y="96.642667" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-mf49acd401f" x="55.527115" y="96.642667" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_11">
+     <g id="pcc-cumpleanos-text_11">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: end" x="48.527115" y="101.581652" transform="rotate(-0 48.527115 101.581652)">0.75</text>
      </g>
     </g>
-    <g id="cumpleanos-ytick_5">
-     <g id="cumpleanos-line2d_15">
+    <g id="pcc-cumpleanos-ytick_5">
+     <g id="pcc-cumpleanos-line2d_15">
       <path d="M 55.527115 17.284678 
 L 589.392885 17.284678 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.14; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
-     <g id="cumpleanos-line2d_16">
+     <g id="pcc-cumpleanos-line2d_16">
       <g>
-       <use xlink:href="#cumpleanos-mf49acd401f" x="55.527115" y="17.284678" style="stroke: #000000; stroke-width: 0.8" />
+       <use xlink:href="#pcc-cumpleanos-mf49acd401f" x="55.527115" y="17.284678" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="cumpleanos-text_12">
+     <g id="pcc-cumpleanos-text_12">
       <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: end" x="48.527115" y="22.223662" transform="rotate(-0 48.527115 22.223662)">1</text>
      </g>
     </g>
-    <g id="cumpleanos-text_13">
+    <g id="pcc-cumpleanos-text_13">
      <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle" x="12.878209" y="168.858437" transform="rotate(-90 12.878209 168.858437)">Probabilidad de al menos una coincidencia</text>
     </g>
    </g>
-   <g id="cumpleanos-line2d_17">
+   <g id="pcc-cumpleanos-line2d_17">
     <path d="M 60.865773 334.716635 
 L 66.20443 333.846958 
 L 71.543088 332.112371 
@@ -2226,9 +2810,9 @@ L 573.376912 17.284927
 L 578.71557 17.284861 
 L 584.054227 17.284812 
 L 589.392885 17.284776 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke: #245e7f; stroke-width: 1.45; stroke-linecap: square" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke: #245e7f; stroke-width: 1.45; stroke-linecap: square"/>
     <defs>
-     <path id="cumpleanos-m1033d2dcf4" d="M 0 1.4 
+     <path id="pcc-cumpleanos-m1033d2dcf4" d="M 0 1.4 
 C 0.371284 1.4 0.727412 1.252487 0.989949 0.989949 
 C 1.252487 0.727412 1.4 0.371284 1.4 0 
 C 1.4 -0.371284 1.252487 -0.727412 0.989949 -0.989949 
@@ -2238,168 +2822,168 @@ C -1.252487 -0.727412 -1.4 -0.371284 -1.4 0
 C -1.4 0.371284 -1.252487 0.727412 -0.989949 0.989949 
 C -0.727412 1.252487 -0.371284 1.4 0 1.4 
 z
-" style="stroke: #245e7f" />
+" style="stroke: #245e7f"/>
     </defs>
-    <g clip-path="url(#cumpleanos-p6cd169d816)">
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="60.865773" y="334.716635" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="66.20443" y="333.846958" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="71.543088" y="332.112371" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="76.881746" y="329.524746" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="82.220404" y="326.102937" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="87.559061" y="321.87255" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="92.897719" y="316.865626" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="98.236377" y="311.120238" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="103.575034" y="304.680006" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="108.913692" y="297.593546" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="114.25235" y="289.913851" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="119.591007" y="281.697629" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="124.929665" y="273.004601" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="130.268323" y="263.896768" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="135.606981" y="254.437674" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="140.945638" y="244.691661" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="146.284296" y="234.723135" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="151.622954" y="224.595865" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="156.961611" y="214.372299" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="162.300269" y="204.112944" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="167.638927" y="193.875778" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="172.977584" y="183.715743" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="178.316242" y="173.684281" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="183.6549" y="163.828964" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="188.993558" y="154.193175" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="194.332215" y="144.815881" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="199.670873" y="135.731466" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="205.009531" y="126.969649" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="210.348188" y="118.55546" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="215.686846" y="110.509288" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="221.025504" y="102.846991" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="226.364161" y="95.580055" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="231.702819" y="88.715803" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="237.041477" y="82.257646" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="242.380134" y="76.20537" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="247.718792" y="70.55544" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="253.05745" y="65.301338" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="258.396108" y="60.433896" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="263.734765" y="55.941648" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="269.073423" y="51.811178" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="274.412081" y="48.027452" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="279.750738" y="44.574154" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="285.089396" y="41.433995" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="290.428054" y="38.589007" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="295.766711" y="36.020814" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="301.105369" y="33.710879" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="306.444027" y="31.640728" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="311.782685" y="29.792141" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="317.121342" y="28.147324" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="322.46" y="26.689051" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="327.798658" y="25.40078" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="333.137315" y="24.26675" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="338.475973" y="23.272044" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="343.814631" y="22.402645" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="349.153289" y="21.645467" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="354.491946" y="20.988361" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="359.830604" y="20.420125" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="365.169262" y="19.93048" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="370.507919" y="19.510051" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="375.846577" y="19.150333" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="381.185235" y="18.84365" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="386.523892" y="18.58311" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="391.86255" y="18.362554" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="397.201208" y="18.17651" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="402.539866" y="18.020134" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="407.878523" y="17.889162" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="413.217181" y="17.779858" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="418.555839" y="17.688962" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="423.894496" y="17.613643" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="429.233154" y="17.551456" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="434.571812" y="17.500293" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="439.910469" y="17.458351" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="445.249127" y="17.424092" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="450.587785" y="17.39621" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="455.926443" y="17.373598" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="461.2651" y="17.355327" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="466.603758" y="17.340616" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="471.942416" y="17.328816" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="477.281073" y="17.319383" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="482.619731" y="17.311872" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="487.958389" y="17.305912" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="493.297046" y="17.301199" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="498.635704" y="17.297488" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="503.974362" y="17.294575" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="509.313019" y="17.292297" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="514.651677" y="17.290523" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="519.990335" y="17.289146" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="525.328993" y="17.288081" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="530.66765" y="17.28726" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="536.006308" y="17.286631" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="541.344966" y="17.286149" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="546.683623" y="17.285782" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="552.022281" y="17.285504" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="557.360939" y="17.285294" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="562.699596" y="17.285135" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="568.038254" y="17.285016" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="573.376912" y="17.284927" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="578.71557" y="17.284861" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="584.054227" y="17.284812" style="fill: #245e7f; stroke: #245e7f" />
-     <use xlink:href="#cumpleanos-m1033d2dcf4" x="589.392885" y="17.284776" style="fill: #245e7f; stroke: #245e7f" />
+    <g clip-path="url(#pcc-cumpleanos-p6cd169d816)">
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="60.865773" y="334.716635" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="66.20443" y="333.846958" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="71.543088" y="332.112371" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="76.881746" y="329.524746" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="82.220404" y="326.102937" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="87.559061" y="321.87255" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="92.897719" y="316.865626" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="98.236377" y="311.120238" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="103.575034" y="304.680006" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="108.913692" y="297.593546" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="114.25235" y="289.913851" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="119.591007" y="281.697629" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="124.929665" y="273.004601" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="130.268323" y="263.896768" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="135.606981" y="254.437674" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="140.945638" y="244.691661" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="146.284296" y="234.723135" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="151.622954" y="224.595865" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="156.961611" y="214.372299" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="162.300269" y="204.112944" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="167.638927" y="193.875778" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="172.977584" y="183.715743" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="178.316242" y="173.684281" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="183.6549" y="163.828964" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="188.993558" y="154.193175" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="194.332215" y="144.815881" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="199.670873" y="135.731466" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="205.009531" y="126.969649" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="210.348188" y="118.55546" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="215.686846" y="110.509288" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="221.025504" y="102.846991" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="226.364161" y="95.580055" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="231.702819" y="88.715803" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="237.041477" y="82.257646" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="242.380134" y="76.20537" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="247.718792" y="70.55544" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="253.05745" y="65.301338" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="258.396108" y="60.433896" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="263.734765" y="55.941648" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="269.073423" y="51.811178" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="274.412081" y="48.027452" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="279.750738" y="44.574154" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="285.089396" y="41.433995" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="290.428054" y="38.589007" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="295.766711" y="36.020814" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="301.105369" y="33.710879" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="306.444027" y="31.640728" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="311.782685" y="29.792141" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="317.121342" y="28.147324" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="322.46" y="26.689051" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="327.798658" y="25.40078" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="333.137315" y="24.26675" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="338.475973" y="23.272044" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="343.814631" y="22.402645" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="349.153289" y="21.645467" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="354.491946" y="20.988361" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="359.830604" y="20.420125" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="365.169262" y="19.93048" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="370.507919" y="19.510051" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="375.846577" y="19.150333" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="381.185235" y="18.84365" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="386.523892" y="18.58311" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="391.86255" y="18.362554" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="397.201208" y="18.17651" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="402.539866" y="18.020134" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="407.878523" y="17.889162" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="413.217181" y="17.779858" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="418.555839" y="17.688962" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="423.894496" y="17.613643" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="429.233154" y="17.551456" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="434.571812" y="17.500293" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="439.910469" y="17.458351" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="445.249127" y="17.424092" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="450.587785" y="17.39621" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="455.926443" y="17.373598" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="461.2651" y="17.355327" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="466.603758" y="17.340616" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="471.942416" y="17.328816" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="477.281073" y="17.319383" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="482.619731" y="17.311872" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="487.958389" y="17.305912" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="493.297046" y="17.301199" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="498.635704" y="17.297488" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="503.974362" y="17.294575" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="509.313019" y="17.292297" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="514.651677" y="17.290523" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="519.990335" y="17.289146" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="525.328993" y="17.288081" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="530.66765" y="17.28726" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="536.006308" y="17.286631" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="541.344966" y="17.286149" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="546.683623" y="17.285782" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="552.022281" y="17.285504" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="557.360939" y="17.285294" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="562.699596" y="17.285135" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="568.038254" y="17.285016" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="573.376912" y="17.284927" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="578.71557" y="17.284861" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="584.054227" y="17.284812" style="fill: #245e7f; stroke: #245e7f"/>
+     <use xlink:href="#pcc-cumpleanos-m1033d2dcf4" x="589.392885" y="17.284776" style="fill: #245e7f; stroke: #245e7f"/>
     </g>
    </g>
-   <g id="cumpleanos-line2d_18">
+   <g id="pcc-cumpleanos-line2d_18">
     <path d="M 55.527115 176.000657 
 L 589.392885 176.000657 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 5.75,4.6; stroke-dashoffset: 0; stroke: #98702a; stroke-width: 1.15" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 5.75,4.6; stroke-dashoffset: 0; stroke: #98702a; stroke-width: 1.15"/>
    </g>
-   <g id="cumpleanos-line2d_19">
+   <g id="pcc-cumpleanos-line2d_19">
     <path d="M 55.527115 20.458998 
 L 589.392885 20.458998 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 1.8,3.6; stroke-dashoffset: 0; stroke: #8b9298; stroke-width: 0.9" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 1.8,3.6; stroke-dashoffset: 0; stroke: #8b9298; stroke-width: 0.9"/>
    </g>
-   <g id="cumpleanos-LineCollection_1">
+   <g id="pcc-cumpleanos-LineCollection_1">
     <path d="M 178.316242 334.716635 
 L 178.316242 173.684281 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #b7791f" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #b7791f"/>
     <path d="M 359.830604 334.716635 
 L 359.830604 20.420125 
-" clip-path="url(#cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #b7791f" />
+" clip-path="url(#pcc-cumpleanos-p6cd169d816)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #b7791f"/>
    </g>
-   <g id="cumpleanos-patch_3">
+   <g id="pcc-cumpleanos-patch_3">
     <path d="M 55.527115 334.716635 
 L 55.527115 3.00024 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
-   <g id="cumpleanos-patch_4">
+   <g id="pcc-cumpleanos-patch_4">
     <path d="M 55.527115 334.716635 
 L 589.392885 334.716635 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
-   <g id="cumpleanos-patch_5">
+   <g id="pcc-cumpleanos-patch_5">
     <path d="M 273.095473 224.800972 
 Q 226.586603 199.717634 181.16018 175.218084 
-" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round" />
+" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round"/>
     <path d="M 184.502793 179.974863 
 L 181.16018 175.218084 
 L 186.97117 175.398061 
-" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round" />
+" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round"/>
    </g>
-   <g id="cumpleanos-text_14">
+   <g id="pcc-cumpleanos-text_14">
     <text style="font-size: 13px; font-family: 'DejaVu Sans'; fill: #24425c" transform="translate(263.734765 237.62717)">23 personas</text>
     <text style="font-size: 13px; font-family: 'DejaVu Sans'; fill: #24425c" transform="translate(263.734765 252.184326)">50.73 %</text>
    </g>
-   <g id="cumpleanos-patch_6">
+   <g id="pcc-cumpleanos-patch_6">
     <path d="M 423.059536 75.245416 
 Q 392.200506 48.487803 362.270655 22.535874 
-" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round" />
+" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round"/>
     <path d="M 364.496115 27.906844 
 L 362.270655 22.535874 
 L 367.902708 23.978088 
-" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round" />
+" style="fill: none; stroke: #98702a; stroke-width: 1.1; stroke-linecap: round"/>
    </g>
-   <g id="cumpleanos-text_15">
+   <g id="pcc-cumpleanos-text_15">
     <text style="font-size: 13px; font-family: 'DejaVu Sans'; fill: #24425c" transform="translate(402.539866 88.43415)">57 personas</text>
     <text style="font-size: 13px; font-family: 'DejaVu Sans'; fill: #24425c" transform="translate(402.539866 102.991306)">99.01 %</text>
    </g>
-   <g id="cumpleanos-PathCollection_1">
+   <g id="pcc-cumpleanos-PathCollection_1">
     <defs>
-     <path id="cumpleanos-m45b3e18402" d="M 0 3.605551 
+     <path id="pcc-cumpleanos-m45b3e18402" d="M 0 3.605551 
 C 0.956203 3.605551 1.873372 3.225648 2.54951 2.54951 
 C 3.225648 1.873372 3.605551 0.956203 3.605551 0 
 C 3.605551 -0.956203 3.225648 -1.873372 2.54951 -2.54951 
@@ -2409,19 +2993,19 @@ C -3.225648 -1.873372 -3.605551 -0.956203 -3.605551 0
 C -3.605551 0.956203 -3.225648 1.873372 -2.54951 2.54951 
 C -1.873372 3.225648 -0.956203 3.605551 0 3.605551 
 z
-" style="stroke: #ffffff" />
+" style="stroke: #ffffff"/>
     </defs>
-    <g clip-path="url(#cumpleanos-p6cd169d816)">
-     <use xlink:href="#cumpleanos-m45b3e18402" x="178.316242" y="173.684281" style="fill: #b7791f; stroke: #ffffff" />
-     <use xlink:href="#cumpleanos-m45b3e18402" x="359.830604" y="20.420125" style="fill: #b7791f; stroke: #ffffff" />
+    <g clip-path="url(#pcc-cumpleanos-p6cd169d816)">
+     <use xlink:href="#pcc-cumpleanos-m45b3e18402" x="178.316242" y="173.684281" style="fill: #b7791f; stroke: #ffffff"/>
+     <use xlink:href="#pcc-cumpleanos-m45b3e18402" x="359.830604" y="20.420125" style="fill: #b7791f; stroke: #ffffff"/>
     </g>
    </g>
   </g>
  </g>
  <defs>
-  <clippath id="cumpleanos-p6cd169d816">
-   <rect x="55.527115" y="3.00024" width="533.86577" height="331.716395" />
-  </clippath>
+  <clipPath id="pcc-cumpleanos-p6cd169d816">
+   <rect x="55.527115" y="3.00024" width="533.86577" height="331.716395"/>
+  </clipPath>
  </defs>
 </svg>
 
@@ -2460,8 +3044,8 @@ z
     </p>
   </div>
 
-  <div class="observacion-box">
-    <h2 class="title-observacion">Observación: coincidencia con una persona específica</h2>
+<div class="observacion-box">
+    <h2 class="title-observacion">Observación: coincidencia con una persona específica</h2><p>En el espacio de $365^k$ asignaciones, hay $365\cdot364^{k-1}$ en las que nadie coincide con la persona elegida: se fija su fecha de $365$ maneras y cada otra persona puede usar cualquiera de las $364$ fechas restantes.</p>
     <p>
       Consideremos ahora a una persona previamente elegida dentro del grupo
       y busquemos la probabilidad de que alguna de las otras $k-1$ personas
@@ -2492,7 +3076,7 @@ z
     </p>
   </div>
 
-  <div class="nota-box">
+<div class="nota-box">
     <h2>Generalización a $n$ posibilidades equiprobables</h2>
     <p>
       El mismo razonamiento se aplica cuando realizamos $k$ elecciones
@@ -2513,15 +3097,9 @@ z
     </p>
   </div>
 
-  <div class="observacion-box">
-    <h2 class="title-observacion">Observación: alcance de los supuestos</h2>
-    <p>
-      Las cifras anteriores corresponden al modelo de $365$ fechas equiprobables
-      y cumpleaños independientes. Si cambian esas condiciones, debemos
-      ajustar la asignación de probabilidades antes de realizar el cálculo.
-    </p>
-    <button aria-controls="respuesta-029" class="respButton" type="button">Fechas no equiprobables: el caso de dos personas</button>
-    <div id="respuesta-029" class="resp-box">
+<div class="observacion-box"><h2 class="title-observacion">Alcance del modelo</h2><p>Los cálculos anteriores corresponden al modelo conjunto uniforme indicado. Si las fechas no son equiprobables o cambia su relación entre personas, es necesario especificar otro modelo antes de calcular. </p>
+<button aria-controls="respuesta-029" class="respButton" type="button">Fechas no equiprobables: el caso de dos personas</button>
+<div id="respuesta-029" class="resp-box">
       <p>
         Supongamos que ambas personas tienen la misma distribución de cumpleaños:
         $p_d$ es la probabilidad de la fecha $d$, con $p_d\geq0$ y
@@ -2548,98 +3126,407 @@ z
         probabilidad $1/365$.
       </p>
     </div>
-  </div>
+</div>
 </section>
 
-<h1 class="page-subtitle">Modelos geométricos y medidas concentradas</h1>
+<h1 class="page-subtitle" id="pcc-ordenaciones">Ordenaciones, bloques, huecos y agrupaciones</h1>
 
-<div class="ejemplo-box">
-<h1 class="number-title-practica">Ejemplo</h1><p><b>Modelo geométrico: comparar longitudes, áreas o volúmenes.</b></p>
-<p>Si se supone uniformidad respecto de una medida geométrica $\mu$ sobre una región $\Omega$, con $0&lt;\mu(\Omega)&lt;\infty$, asignamos a cada evento medible $A\subseteq\Omega$</p>
-
-<div style="overflow-x: auto;">
-\[
-\mathbb{P}(A)=\frac{\mu(A)}{\mu(\Omega)}.
-\]
-</div>
-
-<p>En una recta usamos longitud; en el plano, área; en el espacio, volumen. La uniformidad significa que regiones medibles de la misma medida geométrica reciben la misma probabilidad.</p>
-<p>Por ejemplo, si el instante de llegada a una oficina se modela uniformemente entre las 9:00 y las 10:00, la probabilidad de llegar en los primeros 15 minutos es $15/60=1/4$. Esa fórmula exige la hipótesis de uniformidad.</p>
-</div>
-
-<div class="ejemplo-box">
-<h1 class="number-title-practica">Ejemplo</h1><p><b>Un encuentro y una región del plano.</b></p>
-<p>Dos personas llegan entre las 12:00 y las 13:00 y cada una espera diez minutos. Sean $x,y\in[0,60]$ sus tiempos de llegada, medidos en minutos desde las 12:00. Suponemos que <b>el par $(x,y)$ es uniforme en el cuadrado $[0,60]^2$</b>.</p>
-<p>Se encuentran cuando $|x-y|\leq10$. La región favorable es la franja del dibujo:</p>
-<figure class="imagen-box">
-<svg style="max-width: 360px; height: auto; display: block; margin: auto;" viewBox="0 0 360 325" width="100%" role="img" aria-labelledby="pm-geometria-titulo pm-geometria-desc">
-<title id="pm-geometria-titulo">Tiempos de llegada y encuentro</title><desc id="pm-geometria-desc">Un cuadrado de lado sesenta. La franja entre y igual a x menos diez y y igual a x más diez representa el encuentro.</desc>
-<rect x="60" y="30" width="240" height="240" fill="#fff" stroke="#315b87" stroke-width="2" />
-<polygon points="60,270 100,270 300,70 300,30 260,30 60,230" fill="#b7d9e9" />
-<path d="M60 230L260 30 M100 270L300 70" fill="none" stroke="#315b87" stroke-width="2" />
-<path d="M60 270L300 30" fill="none" stroke="#6a7d91" stroke-dasharray="5 5" />
-<path d="M48 270H315 M60 282V15" fill="none" stroke="#243247" stroke-width="1.5" />
-<g fill="#243247" font-family="Georgia,serif" font-size="16"><text x="43" y="290">0</text><text x="290" y="294">60</text><text x="30" y="37">60</text><text x="321" y="275">x</text><text x="55" y="12">y</text></g>
-<rect x="127" y="138" width="108" height="29" rx="5" fill="white" /><text x="181" y="158" text-anchor="middle" fill="#173e60" font-size="16">|x − y| ≤ 10</text>
-</svg>
-<figcaption>El área favorable se obtiene quitando dos triángulos de catetos 50.</figcaption>
-</figure>
-
-<div style="overflow-x: auto;">
-\[
-\mathbb{P}(\text{encuentro})
-=\frac{60^2-2\cdot\frac{50^2}{2}}{60^2}
-=\frac{1100}{3600}=\frac{11}{36}.
-\]
-</div>
-
-<p>El resultado depende del modelo uniforme para el par de tiempos. La expresión «llegar al azar», por sí sola, no especifica ese modelo.</p>
-</div>
-
-<div class="ejemplo-box" id="uniforme-unitario">
-<h1 class="number-title-practica">Ejemplo</h1>
-<p><strong>Probabilidad uniforme en $[0,1]$.</strong></p>
-<p>En $\Omega=[0,1]$, tomamos $\mathcal F=\mathcal B([0,1])$ y $\mathbb{P}(A)=\lambda(A)$, donde $\lambda$ es la medida de longitud restringida a esos borelianos. Como el intervalo tiene longitud uno, esta es una probabilidad.</p><div style="overflow-x:auto;">\[
-\mathbb{P}([a,b])=\mathbb{P}((a,b])=b-a,\qquad 0\leq a\leq b\leq1.
-\]</div><p>En particular, $\mathbb{P}([1/4,3/4])=1/2$ y $\mathbb{P}(\{1/2\})=0$. Los intervalos describen la medida, pero su dominio es toda la $\sigma$-álgebra, no únicamente los intervalos. La construcción de la medida de longitud puede obtenerse mediante el teorema de extensión de Carathéodory; aquí la utilizamos como una medida ya construida.</p>
-</div>
-
-<div class="ejemplo-box" id="medida-dirac">
-<h1 class="number-title-practica">Ejemplo</h1>
-<p><strong>Medida de Dirac.</strong></p>
-<p>En cualquier espacio medible $(\Omega,\mathcal F)$, fijemos $\omega_0\in\Omega$. La <strong>medida de Dirac</strong> en $\omega_0$ se define por</p><div style="overflow-x:auto;">\[
-\delta_{\omega_0}(A)=\begin{cases}1,&amp;\omega_0\in A,\\0,&amp;\omega_0\notin A,\end{cases}\qquad A\in\mathcal F.
-\]</div><p>Es una probabilidad: es no negativa y asigna uno a $\Omega$; en una familia disjunta, a lo sumo un elemento contiene a $\omega_0$, lo que prueba la aditividad numerable.</p><p>Por ejemplo, sobre $([0,1],\mathcal B([0,1]))$ podemos elegir tanto la probabilidad uniforme como $\delta_{x_0}$ para cualquier $x_0\in[0,1]$. Un mismo espacio medible admite medidas muy distintas.</p>
-</div>
-
-<h1 class="page-subtitle">Frecuencias relativas, datos y juicios expertos</h1>
-
-<div class="definicion-box" id="probabilidad-empirica">
-<h1 class="number-title-practica">Definición</h1>
-<p><strong>Frecuencia relativa y probabilidad empírica.</strong></p>
-<p>Sean $\omega_1,\ldots,\omega_n\in\Omega$ las observaciones de una muestra, con $n\geq1$. Si $n_A$ de ellas pertenecen a $A\in\mathcal F$, su <strong>frecuencia relativa</strong> es</p><div style="overflow-x:auto;">\[
-f_n(A)=\frac{n_A}{n}=\widehat{\mathbb{P}}_n(A)
-=\frac1n\sum_{i=1}^n\mathbf1_A(\omega_i).
-\]</div><p>La función $\widehat{\mathbb{P}}_n:\mathcal F\to[0,1]$ se llama <strong>probabilidad empírica</strong>. Puede calcularse para una muestra fija y no exige hipótesis de independencia para quedar definida.</p>
-</div>
-
-<div class="teorema-box">
+<div class="teorema-box" id="pcc-multiconjunto">
 <h1 class="number-title-practica">Proposición</h1>
-<p><strong>La probabilidad empírica es una medida de probabilidad.</strong></p>
-<div style="overflow-x:auto;">\[
-\widehat{\mathbb{P}}_n=\frac1n\sum_{i=1}^n\delta_{\omega_i}.
-\]</div><button aria-controls="respuesta-030" class="respButton" type="button">Demostración</button>
-<div id="respuesta-030" class="resp-box"><p>La identidad se obtiene de $\delta_{\omega_i}(A)=\mathbf1_A(\omega_i)$. El promedio es no negativo y asigna uno a $\Omega$. Si $(A_k)$ es una familia disjunta, cada observación pertenece a lo sumo a uno de sus elementos, por lo que $n_{\bigcup_k A_k}=\sum_k n_{A_k}$. Al dividir entre $n$ obtenemos la aditividad numerable.</p></div>
+<p><strong>Permutaciones con símbolos repetidos.</strong></p>
+<p>Si hay $n$ posiciones y los símbolos de los distintos tipos aparecen $n_1,\ldots,n_s$ veces, con $n_1+\cdots+n_s=n$, el número de cadenas distintas es</p><div style="overflow-x:auto;">\[
+\frac{n!}{n_1!\cdots n_s!}.
+\]</div><p>Los símbolos de un mismo tipo se consideran indistinguibles. Las posiciones de la cadena sí están identificadas.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-041">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-041"><p>Distinguimos provisionalmente los símbolos de cada tipo. Hay $n!$ ordenaciones, y cada cadena original aparece exactamente $n_1!\cdots n_s!$ veces. Aplicamos la regla de división.</p></div>
 </div>
 
-<div class="observacion-box"><h2 class="title-observacion">Interpretación de las frecuencias</h2><p>Las frecuencias relativas pueden utilizarse para estimar $\mathbb{P}(A)$. Bajo hipótesis apropiadas, como observaciones independientes con la misma distribución, la ley de los grandes números justificará su aproximación a la probabilidad del evento al aumentar el tamaño de la muestra.</p><p>Una muestra finita no garantiza igualdad exacta ni mejora en cada observación. La interpretación empírica y la estimación requieren supuestos adicionales; los axiomas de probabilidad establecen la estructura matemática. Tampoco se puede intercambiar automáticamente un límite de frecuencias con una suma infinita, como veremos más adelante.</p></div>
-
-<div class="observacion-box">
-<h2 class="title-observacion">Observación</h2><p><b>Juicios expertos y coherencia.</b></p>
-<p>Cuando hay pocos datos, una asignación puede apoyarse en información disponible, hipótesis y experiencia experta. Por ejemplo, al evaluar un riesgo nuevo para una aseguradora. La información utilizada puede cambiar la asignación, pero los números obtenidos deben satisfacer las mismas reglas de coherencia.</p>
-<p>Estas perspectivas responden a preguntas distintas: cómo construir un modelo, cómo estimarlo y qué reglas debe cumplir. Su formalización común es la medida de probabilidad.</p>
+<div class="teorema-box" id="pcc-bloques-huecos">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Métodos de bloques y de huecos.</strong></p>
+<ol><li><strong>Bloques:</strong> si $s$ objetos distintos deben quedar juntos y hay otros $m$ objetos distintos, tratamos los $s$ como un solo bloque. Las ordenaciones son $(m+1)!\cdot s!$ si se permiten todos los órdenes internos.</li><li><strong>Huecos:</strong> después de ordenar $m$ objetos distintos existen $m+1$ huecos, incluidos los extremos. Para insertar $r$ símbolos idénticos sin que dos queden consecutivos, elegimos huecos distintos. El número de cadenas es $m!\binom{m+1}{r}$. Si los $r$ objetos insertados son distintos, se multiplica además por $r!$.</li></ol><p>Si los $m$ símbolos de base son idénticos, hay una sola ordenación de ellos y se omite el factor $m!$. En particular, las cadenas binarias de longitud $n$ con $r$ unos no consecutivos se cuentan mediante</p><div style="overflow-x:auto;">\[
+\binom{n-r+1}{r}.
+\]</div><p>La convención de los coeficientes binomiales da cero cuando no hay suficientes huecos.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-042">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-042"><p>Para bloques, cada ordenación de los $m+1$ objetos y cada orden interno del bloque determinan una cadena única. Para huecos, la cadena queda determinada por el orden de los objetos de base, los huecos elegidos y, cuando corresponde, el orden de los objetos insertados. Para cadenas binarias hay $n-r$ ceros y, por tanto, $n-r+1$ huecos.</p></div>
 </div>
 
+<div class="teorema-box" id="pcc-orden-relativo">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Un orden relativo impuesto.</strong></p>
+<p>Entre $n$ objetos distintos, fijemos $s$ que deben aparecer en un orden relativo dado, sin exigir que estén juntos. Hay</p><div style="overflow-x:auto;">\[
+\binom ns\cdot(n-s)!=\frac{n!}{s!}
+\]</div><p>ordenaciones que cumplen la condición. Bajo equiprobabilidad de las $n!$ permutaciones, su probabilidad es $1/s!$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-043">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-043"><p>Elegimos las $s$ posiciones de los objetos señalados. El orden impuesto determina cómo se colocan en ellas; los otros $n-s$ objetos se ordenan libremente.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-circular">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Permutaciones circulares.</strong></p>
+<p>Para $n\geq1$ objetos distintos, si las disposiciones que difieren solo por rotación se consideran iguales y las imágenes especulares se consideran distintas, hay $(n-1)!$ disposiciones circulares.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-044">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-044"><p>Fijamos un objeto como referencia y ordenamos los otros $n-1$ alrededor de él. Equivalentemente, cada disposición circular tiene exactamente $n$ representaciones lineales, así que la regla de división da $n!/n$.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-particiones">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Particiones en grupos del mismo tamaño.</strong></p>
+<p>Para $km$ objetos distintos, con $k,m\geq1$:</p><ul><li>Si los $k$ grupos de tamaño $m$ están identificados, hay $(km)!/(m!)^k$ asignaciones.</li><li>Si los grupos no están identificados, hay $(km)!/((m!)^k\cdot k!)$ particiones.</li></ul><p>En particular, las particiones de $2k$ objetos en $k$ pares, sin orden entre los pares ni dentro de ellos, son</p><div style="overflow-x:auto;">\[
+\frac{(2k)!}{(2!)^k\cdot k!}.
+\]</div><p>La división entre $k!$ se aplica aquí porque todos los grupos tienen el mismo tamaño y sus etiquetas no forman parte del resultado.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-045">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-045"><p>Ordenamos los $km$ objetos y cortamos la lista en bloques consecutivos de tamaño $m$. Cada asignación a grupos identificados se representa $(m!)^k$ veces al ordenar sus integrantes. Si además olvidamos las etiquetas de los grupos, cada partición se representa $k!$ veces más.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-09" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Anagramas de ACTUARIA.</strong></p>
+    <p>Se elige uniformemente una de las cadenas distintas que pueden formarse reordenando las letras de la palabra <strong>ACTUARIA</strong>. La letra A aparece tres veces; las otras cinco letras son distintas.</p>
+<ol><li>Calcula la probabilidad de que las tres letras A queden juntas.</li><li>Calcula la probabilidad de que no haya dos letras A consecutivas.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-046">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-046"><p>Para el primer evento, trata AAA como un bloque. Para el segundo, ordena primero las cinco letras distintas y coloca las A en huecos diferentes.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-047">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-047"><p>El número de cadenas distintas es $8!/3!=6720$. El denominador $3!$ corrige las permutaciones de las tres A indistinguibles.</p>
+<ol>
+<li><p>El bloque AAA y las otras cinco letras forman seis objetos distintos:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{6!}{8!/3!}=\frac3{28}.\]</div></li>
+<li><p>Las cinco letras distintas se ordenan de $5!$ formas y dejan seis huecos, incluidos los extremos. Elegimos tres huecos para colocar una A en cada uno:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{5!\binom63}{8!/3!}=\frac5{14}.\]</div></li>
+</ol>
+<p>No se ordenan las A entre los huecos: son indistinguibles y cada elección determina una cadena.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-10" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Una fila y dos tipos de restricción.</strong></p>
+    <p>Siete estudiantes distintos se forman en una fila y todas las $7!$ ordenaciones son equiprobables. Entre ellos están Ana, Bruno y Carla.</p>
+<ol><li>Calcula la probabilidad de que Ana y Bruno queden juntos, en cualquier orden.</li><li>Calcula la probabilidad de que Ana quede antes que Bruno y Bruno antes que Carla, sin exigir que estén juntos.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-048">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-048"><p>La primera condición se resuelve con un bloque de dos personas. En la segunda, elige las tres posiciones reservadas para Ana, Bruno y Carla; su orden dentro de ellas ya está impuesto.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-049">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-049"><ol>
+<li><p>El bloque y las otras cinco personas se ordenan de $6!$ formas. Dentro del bloque hay dos órdenes:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{2\cdot6!}{7!}=\frac27.\]</div></li>
+<li><p>Elegimos tres posiciones de las siete. Ana ocupa la primera de ellas, Bruno la segunda y Carla la tercera; las cuatro personas restantes se ordenan libremente:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom73\,4!}{7!}=\frac16.\]</div></li>
+</ol>
+<p>Exigir un orden relativo permite separaciones arbitrarias. Exigir un bloque impone posiciones consecutivas.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-11" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Parejas en una mesa circular.</strong></p>
+    <p>Ocho personas distintas, que forman cuatro parejas previamente identificadas, se sientan alrededor de una mesa circular. Las disposiciones que difieren solo por una rotación se consideran iguales; las imágenes especulares se consideran distintas. Cada disposición circular tiene la misma probabilidad.</p>
+<ol><li>Calcula la probabilidad de que las dos personas de una pareja específica queden juntas.</li><li>Calcula la probabilidad de que las cuatro parejas queden juntas, cada una en su propio bloque de dos asientos consecutivos.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-050">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-050"><p>Para $m$ objetos distintos en un círculo hay $(m-1)!$ disposiciones. Cada pareja puede ordenarse internamente de dos maneras.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-051">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-051"><p>Hay $(8-1)!=7!$ disposiciones circulares equiprobables.</p>
+<ol>
+<li><p>La pareja señalada forma un bloque. Con las otras seis personas hay siete objetos en círculo:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{2\cdot6!}{7!}=\frac27.\]</div></li>
+<li><p>Hay cuatro bloques distintos, que se ordenan circularmente de $3!$ maneras. Las orientaciones internas dan $2^4$ posibilidades:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{3!\cdot2^4}{7!}=\frac2{105}.\]</div></li>
+</ol>
+<p>La cuenta circular elimina rotaciones. Dividir nuevamente entre dos eliminaría imágenes especulares que el enunciado considera distintas.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-12" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Agrupación de expedientes en pares.</strong></p>
+    <p>Hay ocho expedientes distintos: cuatro de riesgo alto y cuatro de riesgo estándar. Se elige uniformemente una partición de los ocho expedientes en cuatro pares. Ni el orden de los pares ni el orden de los expedientes dentro de cada par importa.</p>
+<p>Calcula la probabilidad de que haya exactamente:</p>
+<ol><li>Cero pares formados por dos expedientes de riesgo alto.</li><li>Un par formado por dos expedientes de riesgo alto.</li><li>Dos pares formados por dos expedientes de riesgo alto.</li></ol>
+<p>Comprueba que los tres resultados suman $1$.</p>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-052">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-052"><p>Parte de las $8!$ ordenaciones y corrige los órdenes internos y el orden de los cuatro pares. Si hay un par de riesgo alto, también debe haber un par de riesgo estándar.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-053">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-053"><p>El total de particiones es</p>
+<div style="overflow-x:auto;">\[\frac{8!}{(2!)^4\,4!}=105.\]</div>
+<p>Cada partición aparece $(2!)^4\,4!$ veces al ordenar los ocho expedientes y agrupar posiciones consecutivas.</p>
+<ol>
+<li><p>Todos los pares deben ser mixtos. Emparejar los cuatro expedientes de riesgo alto con los cuatro estándar equivale a elegir una biyección:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{4!}{105}=\frac8{35}.\]</div></li>
+<li><p>Elegimos el par de riesgo alto y el par estándar. Los dos expedientes restantes de cada tipo se emparejan de $2!$ maneras:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom42\binom42\,2!}{105}=\frac{72}{105}=\frac{24}{35}.\]</div></li>
+<li><p>Cuatro elementos distintos pueden dividirse en dos pares de $4!/((2!)^2\,2!)=3$ formas. Lo hacemos en cada tipo:</p><div style="overflow-x:auto;">\[\mathbb{P}(C)=\frac{3\cdot3}{105}=\frac3{35}.\]</div></li>
+</ol>
+<p>Las posibilidades son exhaustivas y excluyentes: $8/35+24/35+3/35=1$.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-nuevo-26">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Prioridad en una fila de revisión.</strong></p>
+<p>Seis expedientes identificados se revisan en un orden elegido uniformemente entre las $6!$ permutaciones. Dos de ellos tienen una alerta y los otros cuatro no la tienen.</p><ol><li>Calcula la probabilidad de que al menos un expediente con alerta esté entre los dos primeros.</li><li>Calcula la probabilidad de que entre los dos expedientes con alerta haya exactamente otros dos expedientes.</li><li>Calcula la probabilidad de que ambos expedientes con alerta estén entre las tres últimas posiciones.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-054">Pista</button>
+<div class="resp-box" id="pcc-respuesta-054"><p>Las dos posiciones de alerta forman un subconjunto equiprobable de tamaño dos de $\{1,\ldots,6\}$. En el segundo inciso, sus posiciones difieren en tres.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-055">Solución</button>
+<div class="resp-box" id="pcc-respuesta-055"><p>Cada par de posiciones de alerta corresponde a $2!\cdot4!$ permutaciones, por lo que los $\binom62=15$ pares de posiciones son equiprobables.</p><ol><li>El complemento coloca las dos alertas en las cuatro últimas posiciones: $1-\binom42/\binom62=3/5$.</li><li>Los pares favorables son $\{1,4\}$, $\{2,5\}$ y $\{3,6\}$. La probabilidad es $3/15=1/5$.</li><li>Se eligen dos de las tres últimas posiciones: $\binom32/\binom62=1/5$.</li></ol></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-27">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>La posición de la tercera revisión especial.</strong></p>
+<p>Diez expedientes identificados se ordenan uniformemente al azar. Cuatro requieren una revisión especial y seis una revisión ordinaria. Sea $T$ la posición en que aparece el tercer expediente que requiere revisión especial.</p><ol><li>Calcula $\mathbb{P}(T=5)$.</li><li>Calcula $\mathbb{P}(T\leq6)$.</li><li>Obtén una fórmula para $\mathbb{P}(T=t)$ y determina los valores posibles de $t$.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-056">Pista</button>
+<div class="resp-box" id="pcc-respuesta-056"><p>Las cuatro posiciones especiales forman un subconjunto equiprobable de tamaño cuatro de $\{1,\ldots,10\}$. Para que la tercera sea $t$, debe haber exactamente dos posiciones especiales antes de $t$ y una después.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-057">Solución</button>
+<div class="resp-box" id="pcc-respuesta-057"><p>Cada conjunto de cuatro posiciones representa $4!\cdot6!$ permutaciones, de modo que el denominador es $\binom{10}{4}=210$.</p><div style="overflow-x:auto;">\[
+\mathbb{P}(T=5)=\frac{\binom42\binom51}{\binom{10}{4}}=\frac17.
+\]</div><p>Para $T\leq6$ debe haber tres o cuatro posiciones especiales entre las seis primeras. Por suma de casos,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(T\leq6)=\frac{\binom63\binom41+\binom64}{\binom{10}{4}}=\frac{95}{210}=\frac{19}{42}.
+\]</div><p>En general,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(T=t)=\frac{\binom{t-1}{2}\binom{10-t}{1}}{\binom{10}{4}},\qquad t=3,4,\ldots,9.
+\]</div><p>Las posiciones anteriores a $t$ aportan las dos primeras revisiones especiales, $t$ aporta la tercera y después de $t$ se ubica la cuarta. Estos casos, uno por valor de $t$, dividen todas las elecciones de cuatro posiciones, por lo que sus probabilidades suman uno.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-nuevo-28">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Dos equipos con perfiles de riesgo.</strong></p>
+<p>Diez expedientes identificados, cuatro de riesgo alto y seis de riesgo estándar, se reparten entre dos equipos identificados, A y B, con cinco expedientes cada uno. Todas las asignaciones compatibles son equiprobables.</p><ol><li>Calcula la probabilidad de que cada equipo reciba exactamente dos expedientes de riesgo alto.</li><li>Calcula la probabilidad de que ambos equipos reciban al menos uno de riesgo alto.</li><li>Explica si esas probabilidades cambian cuando solo se registra la partición en dos grupos y se olvidan las etiquetas A y B.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-058">Pista</button>
+<div class="resp-box" id="pcc-respuesta-058"><p>Elegir los cinco expedientes de A determina los de B. Para el segundo inciso, cuenta las asignaciones en que los cuatro expedientes de riesgo alto quedan en el mismo equipo.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-059">Solución</button>
+<div class="resp-box" id="pcc-respuesta-059"><p>Hay $\binom{10}{5}=252$ asignaciones.</p><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{dos de riesgo alto por equipo})=\frac{\binom42\binom63}{\binom{10}{5}}=\frac{10}{21}.
+\]</div><p>Los casos «los cuatro de riesgo alto están en A» y «están en B» son disjuntos. Cada caso tiene seis asignaciones, según el expediente estándar que acompaña a los cuatro de riesgo alto. Entonces,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{ambos equipos reciben riesgo alto})=1-\frac{2\cdot6}{252}=\frac{20}{21}.
+\]</div><p>Al olvidar las etiquetas, cada partición aparece exactamente dos veces. Los eventos anteriores son simétricos respecto de los equipos, por lo que se dividen entre dos tanto el conteo total como el favorable y las probabilidades se conservan.</p></div>
+</div>
+
+<h1 class="page-subtitle" id="pcc-asignaciones">Asignaciones y patrones de repetición</h1>
+
+<div class="teorema-box" id="pcc-multinomial">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Coeficientes multinomiales y grupos identificados.</strong></p>
+<p>Si $n$ objetos distintos se asignan a $s$ grupos identificados de tamaños $n_1,\ldots,n_s$, con $n_1+\cdots+n_s=n$, el número de asignaciones es</p><div style="overflow-x:auto;">\[
+\binom{n}{n_1,\ldots,n_s}=\frac{n!}{n_1!\cdots n_s!}.
+\]</div><p>Es la misma expresión que cuenta cadenas con cantidades fijas de cada símbolo. Los grupos están identificados, de modo que intercambiar dos grupos produce otra asignación cuando cambia sus integrantes.</p><p>Si las $s^n$ funciones de asignación son equiprobables, la probabilidad de esas cargas es el coeficiente multinomial dividido entre $s^n$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-060">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-060"><p>Elegimos sucesivamente $n_1$ objetos para el primer grupo, $n_2$ de los restantes para el segundo, y así sucesivamente. Al multiplicar las combinaciones y simplificar los factoriales se obtiene la fórmula.</p></div>
+</div>
+
+<div class="ejemplo-box" id="pcc-ejemplo-oficinas">
+<h1 class="number-title-practica">Ejemplo</h1>
+<p><strong>Dos revisiones por oficina.</strong></p>
+<p>Seis expedientes identificados se asignan a tres oficinas identificadas. El modelo hace equiprobables las $3^6$ asignaciones. Para que cada oficina reciba dos expedientes, el número favorable es $6!/(2!)^3=90$. Así,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{dos por oficina})=\frac{90}{3^6}=\frac{10}{81}.
+\]</div><p>Las oficinas están identificadas. El vector de cargas es un resumen de la asignación y no es equiprobable con todos los demás vectores de carga.</p>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-13" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Distribución de siniestros entre oficinas.</strong></p>
+    <p>Ocho siniestros distintos se asignan a cuatro oficinas identificadas. Cada siniestro se asigna independientemente a una de las cuatro oficinas, con probabilidades iguales.</p>
+<ol><li>Calcula la probabilidad de que cada oficina reciba exactamente dos siniestros.</li><li>Calcula la probabilidad de que la primera oficina reciba exactamente tres siniestros.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-061">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-061"><p>Hay $4^8$ funciones de asignación. En el primer evento, distribuye los ocho objetos en cuatro grupos de tamaño dos. En el segundo, elige los tres siniestros de la primera oficina y asigna los demás libremente entre las otras tres.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-062">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-062"><p>El espacio de asignaciones tiene tamaño $4^8=65536$.</p>
+<ol>
+<li><p>Elegimos sucesivamente dos siniestros para cada oficina:</p><div style="overflow-x:auto;">\[N_A=\binom82\binom62\binom42\binom22=\frac{8!}{(2!)^4}=2520.\]</div>
+<div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{8!}{(2!)^4\,4^8}=\frac{315}{8192}.\]</div>
+<p>Las oficinas están identificadas, así que no dividimos entre $4!$.</p></li>
+<li><p>Hay $\binom83$ maneras de elegir los siniestros de la primera oficina. Cada uno de los cinco restantes tiene tres destinos:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom83\,3^5}{4^8}=\frac{1701}{8192}.\]</div></li>
+</ol></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-14" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Historias anuales de reclamaciones.</strong></p>
+    <p>En un modelo simplificado, una póliza se observa durante siete años. Cada historia se representa mediante una cadena de siete ceros y unos: $1$ significa que hubo al menos una reclamación en ese año y $0$ que no la hubo. Suponemos equiprobables las $2^7$ historias.</p>
+<p>Calcula la probabilidad de que:</p>
+<ol><li>Exactamente tres años registren reclamaciones.</li><li>Exactamente tres años registren reclamaciones y ninguno de ellos sea consecutivo a otro.</li><li>Exactamente tres años registren reclamaciones y los tres sean consecutivos.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-063">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-063"><p>En el segundo evento, coloca los tres unos en huecos distintos alrededor de los cuatro ceros. En el tercero, ubica un único bloque $111$.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-064">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-064"><p>Hay $128$ historias equiprobables.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom73}{2^7}=\frac{35}{128}.\]</div></li>
+<li><p>Los cuatro ceros dejan cinco huecos. Elegimos tres huecos distintos para colocar los unos:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom53}{128}=\frac5{64}.\]</div></li>
+<li><p>El bloque $111$ puede comenzar en cualquiera de las primeras cinco posiciones. Los otros años deben ser ceros:</p><div style="overflow-x:auto;">\[\mathbb{P}(C)=\frac5{128}.\]</div></li>
+</ol>
+<p>El supuesto de equiprobabilidad es parte de este modelo de práctica; una cartera real puede requerir otra asignación de probabilidades.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-15" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cumpleaños: una pareja, dos parejas o un grupo de tres.</strong></p>
+    <p>Considera $k$ personas identificadas, con $4\leq k\leq365$. Sus cumpleaños son independientes y uniformes en un calendario de $365$ días. Calcula la probabilidad de cada patrón:</p>
+<ol>
+<li>Una sola fecha está ocupada por exactamente dos personas y todas las demás fechas ocupadas corresponden a una sola persona.</li>
+<li>Exactamente dos fechas están ocupadas por dos personas cada una, y todas las demás personas tienen cumpleaños distintos entre sí y distintos de esas dos fechas.</li>
+<li>Una sola fecha está ocupada por exactamente tres personas y todas las demás fechas ocupadas corresponden a una sola persona.</li>
+</ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-065">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-065"><p>Primero elige los grupos de personas que comparten fecha. Luego asigna fechas distintas a todos los grupos, incluidos los grupos de una sola persona. En el segundo evento, cuatro personas pueden dividirse en dos parejas de tres maneras.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-066">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-066"><p>El total de asignaciones es $365^k$. Usamos $V(n,r)=n!/(n-r)!$.</p>
+<ol>
+<li><p>Elegimos a la pareja de $\binom k2$ maneras. Esa pareja y las $k-2$ personas restantes constituyen $k-1$ grupos distinguibles, que deben recibir fechas distintas:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom k2\,V(365,k-1)}{365^k}.\]</div></li>
+<li><p>Elegimos a las cuatro personas y las dividimos en dos parejas no ordenadas:</p><div style="overflow-x:auto;">\[\binom k4\cdot\frac{4!}{(2!)^2\,2!}=3\binom k4.\]</div>
+<p>Las dos parejas y las $k-4$ personas restantes forman $k-2$ grupos distinguibles. Podemos identificarlos por sus integrantes, sin imponer un orden adicional a las parejas.</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{3\binom k4\,V(365,k-2)}{365^k}.\]</div></li>
+<li><p>Elegimos a las tres personas del grupo y asignamos fechas distintas a ese grupo y a las $k-3$ personas restantes:</p><div style="overflow-x:auto;">\[\mathbb{P}(C)=\frac{\binom k3\,V(365,k-2)}{365^k}.\]</div></li>
+</ol>
+<p>Los últimos dos patrones ocupan el mismo número de fechas, pero tienen distintos conteos de agrupación de personas.</p></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-original-16" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cinco cargas posibles que no son equiprobables.</strong></p>
+    <p>Cuatro expedientes distintos se asignan a dos personas revisoras identificadas. Cada expediente se asigna independientemente, con probabilidad $1/2$ para cada revisora.</p>
+<ol>
+<li>Calcula la probabilidad de que cada revisora reciba dos expedientes.</li>
+<li>Las cargas posibles son $(0,4),(1,3),(2,2),(3,1),(4,0)$. Explica por qué usar $1/5$ como respuesta al primer apartado es incorrecto.</li>
+<li>Considera otro experimento: se elige uniformemente uno de esos cinco vectores de carga y después se asignan los expedientes de manera compatible con él. Calcula la probabilidad de carga $(2,2)$ en este nuevo modelo.</li>
+</ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-067">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-067"><p>Cuenta las asignaciones de expedientes individuales que producen cada carga. El espacio de $16$ asignaciones y el conjunto de cinco vectores describen niveles diferentes de información.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-068">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-068"><ol>
+<li><p>Hay $2^4=16$ asignaciones equiprobables. Elegimos los dos expedientes de la primera revisora:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom42}{16}=\frac38.\]</div></li>
+<li><p>Las cinco cargas agrupan, respectivamente, $1,4,6,4,1$ asignaciones. Sus probabilidades son</p><div style="overflow-x:auto;">\[\frac1{16},\quad\frac4{16},\quad\frac6{16},\quad\frac4{16},\quad\frac1{16}.\]</div>
+<p>Enumerar cinco resultados resumidos no los vuelve equiprobables.</p></li>
+<li><p>En el nuevo experimento, los vectores sí se eligen uniformemente por definición, por lo que la probabilidad de $(2,2)$ es $1/5$. Cambiar el mecanismo de selección cambia la medida de probabilidad.</p></li>
+</ol></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-nuevo-25">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>Capacidad diaria para atender reportes.</strong></p>
+<p>Cinco siniestros identificados se reportan durante una semana. En este modelo, cada una de las $7^5$ asignaciones de días a los cinco siniestros es equiprobable. La oficina puede atender dos reportes por día.</p><ol><li>Calcula la probabilidad de superar la capacidad en algún día.</li><li>Calcula la probabilidad de que la mayor cantidad de reportes en un día sea exactamente tres.</li><li>Calcula la probabilidad de que los cinco reportes lleguen el mismo día.</li></ol><button class="respButton" type="button" aria-controls="pcc-respuesta-069">Pista</button>
+<div class="resp-box" id="pcc-respuesta-069"><p>Un día supera la capacidad si recibe tres, cuatro o cinco reportes. Como solo hay cinco, no puede haber dos días que reciban al menos tres cada uno.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-070">Solución</button>
+<div class="resp-box" id="pcc-respuesta-070"><p>Fijado un día, hay $\binom53\cdot6^2$ asignaciones con exactamente tres reportes en él, $\binom54\cdot6$ con exactamente cuatro y una con los cinco. Los casos son disjuntos. Además, dos días distintos no pueden superar simultáneamente la capacidad en este experimento. Por ello,</p><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{superar capacidad})=\frac{7\left(\binom53\cdot6^2+\binom54\cdot6+1\right)}{7^5}=\frac{391}{2401}.
+\]</div><div style="overflow-x:auto;">\[
+\mathbb{P}(\text{máximo}=3)=\frac{7\binom53\cdot6^2}{7^5}=\frac{360}{2401},\qquad \mathbb{P}(\text{mismo día})=\frac7{7^5}=\frac1{2401}.
+\]</div><p>La probabilidad de respetar la capacidad toda la semana es $1-391/2401=2010/2401$.</p></div>
+</div>
+
+<h1 class="page-subtitle" id="pcc-inclusion-exclusion">Inclusión-exclusión y desarreglos</h1>
+
+<div class="teorema-box" id="pcc-ie">
+<h1 class="number-title-practica">Teorema</h1>
+<p><strong>Principio de inclusión-exclusión.</strong></p>
+<p>Para dos conjuntos finitos,</p><div style="overflow-x:auto;">\[
+|A\cup B|=|A|+|B|-|A\cap B|.
+\]</div><p>Para conjuntos finitos $A_1,\ldots,A_m$,</p><div style="overflow-x:auto;">\[
+\left|\bigcup_{i=1}^{m}A_i\right|=\sum_{r=1}^{m}(-1)^{r+1}\sum_{1\leq i_1\lt\cdots\lt i_r\leq m}|A_{i_1}\cap\cdots\cap A_{i_r}|.
+\]</div><p>En un mismo modelo clásico, dividir entre $|\Omega|$ produce la fórmula correspondiente para probabilidades. Para contar resultados que evitan todas las restricciones, primero se cuenta la unión de los eventos prohibidos y después se toma su complemento.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-071">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-071"><p>Un resultado contenido en exactamente $s\geq1$ de los conjuntos se cuenta con coeficiente $\binom s1-\binom s2+\cdots+(-1)^{s+1}\binom ss=1$, por la expansión binomial de $(1-1)^s$. Un resultado que no pertenece a ninguno contribuye cero.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-17" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Que todas las opciones estén representadas.</strong></p>
+    <p>Seis estudiantes eligen, de manera independiente y con probabilidades iguales, una de cuatro actividades identificadas. Cada estudiante elige una sola actividad.</p>
+<ol><li>Calcula la probabilidad de que las cuatro actividades reciban al menos un estudiante.</li><li>Calcula la probabilidad de que exactamente tres actividades reciban estudiantes.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-072">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-072"><p>Hay $4^6$ asignaciones equiprobables. Para excluir actividades vacías, utiliza inclusión y exclusión. Si se usan exactamente tres actividades, elige primero cuáles son y luego exige que ninguna de ellas quede vacía.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-073">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-073"><p>El total es $4^6=4096$.</p>
+<ol>
+<li><p>Restamos las asignaciones que dejan vacía una actividad, corregimos las que dejan vacías dos y continuamos:</p><div style="overflow-x:auto;">\[N_A=4^6-\binom41 3^6+\binom42 2^6-\binom43 1^6=1560.\]</div>
+<div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{1560}{4096}=\frac{195}{512}.\]</div>
+<p>El término correspondiente a cuatro actividades vacías es $0^6=0$.</p></li>
+<li><p>Elegimos las tres actividades utilizadas y contamos asignaciones que usan las tres:</p><div style="overflow-x:auto;">\[N_B=\binom43\left(3^6-3\cdot2^6+3\cdot1^6\right)=2160.\]</div>
+<div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{2160}{4096}=\frac{135}{256}.\]</div>
+<p>Cada asignación favorable determina un único conjunto de tres actividades utilizadas, así que este último producto no cuenta resultados dos veces.</p></li>
+</ol></div>
+  </div>
+
+<div class="teorema-box" id="pcc-desarreglos">
+<h1 class="number-title-practica">Definición y proposición</h1>
+<p><strong>Puntos fijos y desarreglos.</strong></p>
+<p>Un <strong>punto fijo</strong> de una permutación es un objeto que queda en su posición original. Un <strong>desarreglo</strong> es una permutación sin puntos fijos. Si $D_n$ es el número de desarreglos de $n$ objetos,</p><div style="overflow-x:auto;">\[
+D_n=\sum_{j=0}^{n}(-1)^j\binom nj\cdot(n-j)!=n!\sum_{j=0}^{n}\frac{(-1)^j}{j!}.
+\]</div><p>Se tiene $D_0=1$ y $D_1=0$. Las permutaciones de $n$ objetos con exactamente $r$ puntos fijos se cuentan mediante $\binom nr\cdot D_{n-r}$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-074">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-074"><p>Sea $A_i$ el conjunto de permutaciones que fijan al objeto $i$. Para un conjunto de $j$ posiciones que deben quedar fijas, las restantes se ordenan de $(n-j)!$ formas. Aplicamos inclusión-exclusión a $\bigcup_i A_i$ y tomamos su complemento. Para exactamente $r$ puntos fijos, elegimos sus posiciones y desarreglamos todos los demás.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-18" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Cartas en sobres: puntos fijos y desarreglos.</strong></p>
+    <p>Seis cartas distintas deben ir a seis sobres con destinatarios distintos. Las cartas se distribuyen uniformemente entre los sobres, una por sobre: cada una de las $6!$ asignaciones tiene la misma probabilidad.</p>
+<ol><li>Calcula la probabilidad de que ninguna carta quede en el sobre correcto.</li><li>Calcula la probabilidad de que exactamente dos cartas queden en el sobre correcto.</li><li>Calcula la probabilidad de que exactamente cinco cartas queden en el sobre correcto.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-075">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-075"><p>Para el primer evento, aplica inclusión y exclusión a los eventos «la carta $i$ queda en su sobre». Una permutación sin posiciones correctas se llama desarreglo. Para el segundo evento, fija cuáles son las dos cartas correctas y desarregla las otras cuatro.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-076">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-076"><p>Sea $D_n$ el número de desarreglos de $n$ objetos. Por inclusión y exclusión,</p>
+<div style="overflow-x:auto;">\[D_n=\sum_{j=0}^{n}(-1)^j\binom nj(n-j)!=n!\sum_{j=0}^{n}\frac{(-1)^j}{j!}.\]</div>
+<p>Para cada conjunto de $j$ cartas que se exige colocar correctamente, las otras se asignan de $(n-j)!$ formas; las intersecciones se corrigen alternando signos. En particular, $D_6=265$ y $D_4=9$.</p>
+<ol>
+<li><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{D_6}{6!}=\frac{265}{720}=\frac{53}{144}.\]</div></li>
+<li><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom62\,D_4}{6!}=\frac{135}{720}=\frac3{16}.\]</div></li>
+<li><p>Si cinco cartas están en sus sobres, la sexta necesariamente también lo está. El evento es vacío y su probabilidad es $0$.</p></li>
+</ol></div>
+  </div>
+
+<h1 class="page-subtitle" id="pcc-estrellas-barras">Distribuir unidades indistinguibles</h1>
+
+<div class="teorema-box" id="pcc-estrellas">
+<h1 class="number-title-practica">Teorema</h1>
+<p><strong>Estrellas y barras: combinaciones con repetición.</strong></p>
+<p>Para enteros $N\geq0$ y $m\geq1$, el número de vectores de enteros no negativos $(x_1,\ldots,x_m)$ que satisfacen $x_1+\cdots+x_m=N$ es</p><div style="overflow-x:auto;">\[
+\binom{N+m-1}{m-1}.
+\]</div><p>Equivale a distribuir $N$ unidades indistinguibles entre $m$ fondos identificados, o a elegir $N$ elementos de $m$ tipos permitiendo repeticiones y sin registrar su orden.</p><p>Si se exige $x_i\geq1$ para todo $i$, el número es $\binom{N-1}{m-1}$ cuando $N\geq m$, y es cero cuando $N\lt m$.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-077">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-077"><p>Representamos las unidades por $N$ estrellas y separamos los $m$ grupos con $m-1$ barras. Elegir las posiciones de las barras entre los $N+m-1$ símbolos determina el vector, incluso cuando dos barras consecutivas producen una coordenada cero.</p><p>Para exigir coordenadas positivas, colocamos una unidad en cada grupo y distribuimos las $N-m$ restantes mediante el primer caso.</p></div>
+</div>
+
+<div class="teorema-box" id="pcc-cotas-unidades">
+<h1 class="number-title-practica">Proposición</h1>
+<p><strong>Cotas inferiores y superiores en distribuciones.</strong></p>
+<p>Si se exige $x_i\geq a_i$ para enteros $a_i\geq0$, hacemos $y_i=x_i-a_i$. Quedan $N-\sum_i a_i$ unidades para distribuir entre las $m$ coordenadas no negativas. Si esa cantidad es negativa, no hay soluciones; en otro caso aplicamos estrellas y barras.</p><p>Para imponer cotas superiores $x_i\leq b_i$, se excluyen los eventos $x_i\geq b_i+1$. En sus intersecciones se restan simultáneamente las cotas inferiores correspondientes y se usa inclusión-exclusión.</p>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-19" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Distribuciones uniformes de unidades de presupuesto.</strong></p>
+    <p>Se elige uniformemente un vector de enteros no negativos $(x_1,x_2,x_3,x_4)$ que satisface</p>
+<div style="overflow-x:auto;">\[x_1+x_2+x_3+x_4=10.\]</div>
+<p>La coordenada $x_i$ representa las unidades de presupuesto asignadas al fondo $i$. El modelo hace equiprobables los vectores completos de asignación.</p>
+<ol><li>Calcula la probabilidad de que todos los fondos reciban al menos una unidad.</li><li>Calcula la probabilidad de que el primer fondo reciba al menos cuatro unidades.</li><li>Calcula la probabilidad de que ningún fondo reciba más de cuatro unidades.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-078">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-078"><p>Usa el método de estrellas y barras. Para imponer una cota inferior, resta esa cantidad a la coordenada correspondiente. Para imponer las cotas superiores, excluye los eventos $x_i\geq5$ y corrige sus intersecciones.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-079">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-079"><p>Distribuir $10$ unidades idénticas entre cuatro fondos identificados equivale a intercalar tres separadores entre diez estrellas. El número de vectores es $\binom{13}{3}=286$.</p>
+<ol>
+<li><p>Restamos una unidad a cada coordenada. Quedan seis unidades para cuatro coordenadas no negativas:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom93}{\binom{13}{3}}=\frac{84}{286}=\frac{42}{143}.\]</div></li>
+<li><p>La sustitución $y_1=x_1-4$ deja seis unidades entre cuatro coordenadas no negativas:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom93}{\binom{13}{3}}=\frac{42}{143}.\]</div></li>
+<li><p>Para una coordenada con $x_i\geq5$, restar cinco deja cinco unidades: hay $\binom83$ vectores. Si dos coordenadas son al menos cinco, queda un único vector tras restar cinco a ambas. Tres coordenadas no pueden ser al menos cinco porque su suma excedería diez. Por inclusión y exclusión,</p><div style="overflow-x:auto;">\[N_C=\binom{13}{3}-4\binom83+\binom42=68.\]</div>
+<div style="overflow-x:auto;">\[\mathbb{P}(C)=\frac{68}{286}=\frac{34}{143}.\]</div></li>
+</ol>
+<p>La uniformidad de los vectores está estipulada aquí. Este modelo es diferente del de asignar objetos distinguibles independientemente a los fondos.</p></div>
+  </div>
+
+<h1 class="page-subtitle" id="pcc-trayectorias">Trayectorias de un saldo y reserva inicial</h1>
+
+<div class="teorema-box" id="pcc-reflexion">
+<h1 class="number-title-practica">Teorema</h1>
+<p><strong>Principio de reflexión y números de Catalan.</strong></p>
+<p>Consideremos las secuencias de $n$ incrementos $+1$ y $n$ incrementos $-1$, con $n\geq1$, elegidas uniformemente entre las $\binom{2n}{n}$ posibilidades. Para una reserva inicial entera $a\geq0$, el número de trayectorias cuyos saldos intermedios nunca son negativos es</p><div style="overflow-x:auto;">\[
+\binom{2n}{n}-\binom{2n}{n-a-1}.
+\]</div><p>El segundo coeficiente es cero cuando su índice inferior es negativo. En particular, con reserva inicial cero el número favorable es el <strong>número de Catalan</strong></p><div style="overflow-x:auto;">\[
+C_n=\binom{2n}{n}-\binom{2n}{n-1}=\frac1{n+1}\binom{2n}{n}.
+\]</div><p>La probabilidad de no tener un saldo negativo se obtiene dividiendo el número favorable entre $\binom{2n}{n}$. Alcanzar saldo cero está permitido.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-080">Demostración</button>
+<div class="resp-box" id="pcc-respuesta-080"><p>Sea $S_t$ la suma de los primeros $t$ movimientos, con $S_0=0$. El saldo es $a+S_t$. Una trayectoria no admisible llega por primera vez a saldo $-1$ cuando $S_t=-a-1$. Intercambiamos $+1$ y $-1$ en el prefijo que termina en ese primer instante.</p><p>Si $a\leq n-1$, esta transformación produce una secuencia con $n+a+1$ incrementos positivos y $n-a-1$ negativos. Es reversible: toda secuencia de ese tipo termina con suma $2(a+1)$, así que alcanza $a+1$; reflejamos el prefijo que termina en su primera llegada a ese nivel. Hay entonces $\binom{2n}{n-a-1}$ trayectorias no admisibles.</p><p>Para $a\geq n$, ningún orden de los $n$ egresos puede producir saldo negativo y el segundo coeficiente se interpreta como cero. Restamos las trayectorias no admisibles del total. Para $a=0$, la identidad $\binom{2n}{n-1}=\frac{n}{n+1}\binom{2n}{n}$ da la expresión de $C_n$.</p></div>
+</div>
+
+<div class="ejercicio-box" id="pcc-original-20" >
+    <h1 class="number-title-practica">Ejercicio</h1>
+    <p><strong>Trayectorias de un saldo: un reto de reflexión.</strong></p>
+    <p>Un saldo inicia en cero. Se consideran cuatro ingresos de una unidad y cuatro egresos de una unidad. Se elige uniformemente uno de los órdenes distintos de estos ocho movimientos; los ingresos son indistinguibles entre sí, y lo mismo ocurre con los egresos.</p>
+<ol><li>Calcula la probabilidad de que el saldo sea cero justo después del cuarto movimiento.</li><li>Calcula la probabilidad de que el saldo nunca sea negativo, incluyendo todos los saldos intermedios.</li><li>Generaliza el segundo resultado a $n$ ingresos y $n$ egresos.</li></ol>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-081">Pista</button>
+    <div class="resp-box" id="pcc-respuesta-081"><p>Hay $\binom84$ órdenes posibles. Para contar las trayectorias que llegan a un saldo negativo, identifica el primer movimiento que produce saldo $-1$ e intercambia ingresos y egresos hasta ese instante. Esta transformación permite contar el complemento.</p></div>
+    <button class="respButton" type="button" aria-controls="pcc-respuesta-082">Solución</button>
+    <div class="resp-box" id="pcc-respuesta-082"><p>Las posiciones de los cuatro ingresos determinan la trayectoria, así que el total es $\binom84=70$.</p>
+<ol>
+<li><p>Entre los cuatro primeros movimientos debe haber dos ingresos; entre los cuatro últimos, también dos:</p><div style="overflow-x:auto;">\[\mathbb{P}(A)=\frac{\binom42\binom42}{\binom84}=\frac{36}{70}=\frac{18}{35}.\]</div></li>
+<li><p>Considera una trayectoria que alcanza saldo negativo y el primer instante en que llega a $-1$. Al intercambiar ingresos y egresos en ese prefijo, se obtiene una secuencia con cinco ingresos y tres egresos. El procedimiento es reversible: en cualquier secuencia con cinco ingresos y tres egresos, se intercambia el prefijo que termina la primera vez que el saldo alcanza $+1$.</p>
+<p>Por tanto, las trayectorias que alguna vez son negativas están en biyección con las $\binom83=56$ secuencias de cinco ingresos y tres egresos. Las que nunca son negativas son $70-56=14$:</p><div style="overflow-x:auto;">\[\mathbb{P}(B)=\frac{\binom84-\binom83}{\binom84}=\frac15.\]</div></li>
+<li><p>El mismo argumento cuenta $\binom{2n}{n-1}$ trayectorias que alguna vez tienen saldo negativo. Por consiguiente,</p>
+<div style="overflow-x:auto;">\[\mathbb{P}(C)=\frac{\binom{2n}{n}-\binom{2n}{n-1}}{\binom{2n}{n}}=\frac1{n+1},\qquad n\geq1.\]</div>
+<p>El número favorable $\frac1{n+1}\binom{2n}{n}$ es el número de Catalan $C_n$.</p></li>
+</ol></div>
+  </div>
+
+<div class="ejercicio-box" id="pcc-nuevo-32">
+<h1 class="number-title-practica">Ejercicio</h1>
+<p><strong>La reserva inicial y los saldos negativos.</strong></p>
+<p>Se consideran cuatro ingresos y cuatro egresos de una unidad, y se elige uniformemente uno de los $\binom84$ órdenes de esos movimientos.</p><ol><li>Si el saldo inicial es una unidad, calcula la probabilidad de que nunca se vuelva negativo.</li><li>Repite el cálculo para un saldo inicial de dos unidades.</li><li>Compara ambos resultados con el caso de saldo inicial cero y explica por qué la probabilidad no puede disminuir al aumentar la reserva inicial.</li></ol><p>En los tres casos, un saldo exactamente igual a cero es admisible.</p><button class="respButton" type="button" aria-controls="pcc-respuesta-083">Pista</button>
+<div class="resp-box" id="pcc-respuesta-083"><p>Aplica el principio de reflexión con $n=4$ y $a=1$ o $a=2$. Puedes verificar el resultado revisando los $70$ órdenes de movimientos.</p></div><button class="respButton" type="button" aria-controls="pcc-respuesta-084">Solución</button>
+<div class="resp-box" id="pcc-respuesta-084"><div style="overflow-x:auto;">\[
+\begin{aligned}\mathbb{P}(\text{no negativo};a=1)&amp;=1-\frac{\binom82}{\binom84}=1-\frac{28}{70}=\frac35,\\\mathbb{P}(\text{no negativo};a=2)&amp;=1-\frac{\binom81}{\binom84}=1-\frac8{70}=\frac{31}{35}.\end{aligned}
+\]</div><p>Con saldo inicial cero, la probabilidad es $1/5$. Para un mismo orden de ingresos y egresos, aumentar la reserva inicial suma la misma cantidad a todos los saldos intermedios. Por ello, todo orden admisible con una reserva también lo es con una mayor. Las probabilidades son crecientes por inclusión de eventos.</p></div>
+</div>
+
+<h1 class="page-subtitle" id="pcc-cierre">Síntesis y preguntas de revisión</h1>
+
+<div class="nota-box"><h2>Para reflexionar</h2><ol><li>¿Qué objeto se elige uniformemente: una secuencia, un subconjunto, una partición o un vector de cantidades?</li><li>¿Qué cambia al registrar el orden o al permitir reemplazo?</li><li>¿Por qué la regla de la suma requiere casos disjuntos?</li><li>¿Cuándo se justifica dividir entre un factorial? ¿Qué asegura que la multiplicidad sea la misma para todos los resultados?</li><li>¿Qué diferencia existe entre asignar objetos identificados y distribuir unidades indistinguibles?</li><li>¿Qué supuestos del modelo de cumpleaños permiten contar mediante $365^k$?</li><li>¿Cómo se traduce una condición de auditoría, capacidad o suficiencia de reserva a un conjunto de resultados?</li></ol></div>
+
+<div class="nota-box"><h2>Lecturas complementarias</h2><ul><li>MIT OpenCourseWare, <a href="https://live.ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/mit6_1200j_s24_lec16.pdf" target="_blank" rel="noopener">Lecture 16: Counting</a>, reglas de suma, producto, división y selección.</li><li>MIT OpenCourseWare, <a href="https://ocw.mit.edu/courses/18-212-algebraic-combinatorics-spring-2019/pages/lecture-notes/" target="_blank" rel="noopener">Algebraic Combinatorics, notas de las clases 1 y 2</a>, números de Catalan y principio de reflexión.</li></ul></div>
 </article>
 
 <article id="continuidad-unicidad">
