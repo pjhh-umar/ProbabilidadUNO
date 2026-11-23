@@ -138,7 +138,7 @@
     <ol>
 <li>Se elige uniformemente una clave de cuatro dígitos de $\{0,1,\ldots,9\}$. Se permite que empiece con $0$. Calcula la probabilidad de que no repita dígitos.</li>
 <li>Se elige uniformemente un número entero de cuatro cifras, entre $1000$ y $9999$. Calcula la probabilidad de que no repita dígitos.</li>
-<li>Un estudiante propone usar $V(10,4)/9000$ en el segundo apartado. Identifica el error y compara los resultados correctos de los dos modelos.</li>
+<li>Un estudiante propone usar $\mathrm{P}(10,4)/9000$ en el segundo apartado. Identifica el error y compara los resultados correctos de los dos modelos.</li>
 </ol>
     
     
@@ -184,21 +184,49 @@
 <div class="ejercicio-box" id="ep2-notas-pcc-nuevo-27">
 <h1 class="number-title-practica">Ejercicio</h1>
 <!-- <p><strong>La posición de la tercera revisión especial.</strong></p> -->
-<p>Diez expedientes identificados se ordenan uniformemente al azar. Cuatro requieren una revisión especial y seis una revisión ordinaria. Sea $T$ la posición en que aparece el tercer expediente que requiere revisión especial.</p><ol><li>Calcula $\mathbb{P}(T=5)$.</li><li>Calcula $\mathbb{P}(T\leq6)$.</li><li>Obtén una fórmula para $\mathbb{P}(T=t)$ y determina los valores posibles de $t$.</li></ol>
+<p>Diez expedientes identificados se ordenan uniformemente al azar. 
+  Cuatro requieren una revisión especial y seis una revisión ordinaria. 
+  Sea $T$ la posición en que aparece el tercer expediente que requiere revisión especial.
+</p>
+<ol>
+  <li>Calcula $\mathbb{P}(T=5)$.</li>
+  <li>Calcula $\mathbb{P}(T\leq6)$.</li>
+  <!-- <li>Obtén una fórmula para $\mathbb{P}(T=t)$ y determina los valores posibles de $t$.</li> -->
+</ol>
 
 
 </div>
 
-<div class="ejercicio-box" id="ep2-notas-pcc-original-11" >
-    <h1 class="number-title-practica">Ejercicio</h1>
-    <!-- <p><strong>Parejas en una mesa circular.</strong></p> -->
-    <p>Ocho personas distintas, que forman cuatro parejas previamente identificadas, se sientan alrededor de una mesa circular. Las disposiciones que difieren solo por una rotación se consideran iguales; las imágenes especulares se consideran distintas. Cada disposición circular tiene la misma probabilidad.</p>
-<ol><li>Calcula la probabilidad de que las dos personas de una pareja específica queden juntas.</li><li>Calcula la probabilidad de que las cuatro parejas queden juntas, cada una en su propio bloque de dos asientos consecutivos.</li></ol>
-    
-    
-    
-    
-  </div>
+<div class="ejercicio-box" id="ep2-notas-pcc-original-11">
+  <h1 class="number-title-practica">Ejercicio</h1>
+
+  <p>
+    Ocho personas distintas, que forman cuatro parejas definidas de antemano,
+    se sientan alrededor de una mesa circular. Todos los acomodos posibles
+    tienen la misma probabilidad.
+  </p>
+
+  <p>
+    Si todas las personas se recorren el mismo número de asientos alrededor
+    de la mesa, sin cambiar el orden en que están sentadas, consideramos que
+    el acomodo es el mismo. En cambio, si se invierte ese orden, de modo que
+    quienes estaban a la derecha quedan a la izquierda, consideramos que
+    es un acomodo diferente.
+  </p>
+
+  <ol>
+    <li>
+      Considera una de las cuatro parejas, elegida de antemano.
+      Calcula la probabilidad de que sus dos integrantes se sienten
+      uno al lado del otro.
+    </li>
+    <li>
+      Calcula la probabilidad de que los integrantes de cada una de las
+      cuatro parejas se sienten uno al lado del otro; es decir, que
+      todas las personas queden junto a su respectiva pareja.
+    </li>
+  </ol>
+</div>
 
 <div class="ejercicio-box" id="ep2-notas-pcc-original-04" >
     <h1 class="number-title-practica">Ejercicio</h1>
@@ -227,13 +255,11 @@
     
   </div>
 
-<div class="ejercicio-box" id="ep2-notas-pcc-nuevo-21">
+<!-- <div class="ejercicio-box" id="ep2-notas-pcc-nuevo-21">
 <h1 class="number-title-practica">Ejercicio</h1>
-<!-- <p><strong>Detección de errores en expedientes.</strong></p> -->
 <p>En un lote de treinta expedientes identificados, seis contienen un error de captura y veinticuatro no. Se elige uniformemente una muestra de cinco expedientes sin reemplazo.</p><ol><li>Calcula la probabilidad de detectar al menos un error.</li><li>Calcula la probabilidad de encontrar exactamente dos expedientes con error.</li><li>Se ordenará una revisión completa del lote si aparecen al menos dos expedientes con error. Calcula la probabilidad de activar esa revisión.</li></ol>
+</div> -->
 
-
-</div>
 <!-- 
 <div class="ejercicio-box" id="ep2-notas-pcc-nuevo-22">
 <h1 class="number-title-practica">Ejercicio</h1>
@@ -885,7 +911,7 @@
     $$\mathbb{P}\!\left(\bigcup_{j=1}^{n} A_j\right)
       = 1 - \prod_{j=1}^{n} \mathbb{P}(A_j^{c}).$$
   </p>
-</div>
+</div> 
 
 <div class="ejercicio-box">
   <h1 class="number-title-practica">Ejercicio</h1>
