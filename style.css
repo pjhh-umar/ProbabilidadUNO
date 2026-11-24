@@ -894,7 +894,10 @@ h2.title-observacion {
   padding: 0;
 }
 
-
+body.fondo-body .ejercicio-box > h1.number-title-practica,
+body.fondo-body .ejercicio-box-new > h1.number-title-practica {
+  font-size: 1.6rem;
+}
 /* ================================================================
    1. CONTENEDORES: UNA REGLA PARA CADA CAJA
    ================================================================ */
@@ -1014,6 +1017,73 @@ h2.title-observacion {
   max-width: 100%;
   font-family: inherit;
 }
+
+
+/* El contador se inicia en la raíz para respetar los counter-reset del body. */
+:root {
+  counter-reset: ejercicioNuevoCounter 0;
+}
+
+.ejercicio-box-new {
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 100%;
+  margin: 40px auto;
+  padding: 25px;
+  border: 1px solid #c6ddd6;
+  border-left: 5px solid #79a99b;
+  border-radius: 20px;
+  background-color: #f2f9f6;
+  color: #243e37;
+  box-shadow: 0 4px 10px rgba(53, 94, 81, 0.08);
+  font-family: inherit;
+  font-size: 90%;
+  line-height: 1.65;
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+
+.ejercicio-box-new > h1.number-title-practica {
+  margin: 0 0 18px;
+  padding: 0;
+  color: #386b5a;
+  font-family: 'Hina Mincho', serif;
+  font-size: 160%;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.ejercicio-box-new li + li {
+  margin-top: 0.55em;
+}
+
+.ejercicio-box-new mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 600px) {
+  .ejercicio-box-new {
+    width: 94%;
+    padding: 18px;
+    text-align: left;
+  }
+}
+
+@media print {
+  .ejercicio-box-new {
+    box-shadow: none;
+  }
+}
+
+/* Esta regla sustituye el contador general únicamente en las cajas nuevas. */
+.ejercicio-box-new > h1.number-title-practica::after {
+  counter-increment: ejercicioNuevoCounter;
+  content: " Nuevo "   counter(temaCounter)"."counter(ejercicioNuevoCounter) ".";
+}
+
 
 /* Nota */
 .nota-box {
