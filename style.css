@@ -1078,7 +1078,7 @@ body.fondo-body .ejercicio-box-new > h1.number-title-practica {
   }
 }
 
-.ejercicio-box-new > h1.number-title-practica::after {
+body.fondo-body .ejercicio-box-new > h1.number-title-practica::after {
   counter-increment: ejercicioNuevoCounter;
   content: " Nuevo " counter(temaCounter) "."
            counter(ejercicioNuevoCounter) ".";
