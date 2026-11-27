@@ -386,12 +386,423 @@
     <!-- <p><strong>Un sorteo de seis números.</strong></p> -->
     <p>En un sorteo hipotético se elige uniformemente un subconjunto de seis números de $\{1,\ldots,49\}$. Antes del sorteo, una persona fija un boleto con seis números distintos.</p>
 <ol><li>Calcula la probabilidad de acertar los seis números.</li><li>Calcula la probabilidad de acertar exactamente tres.</li><li>Calcula la probabilidad de acertar al menos uno.</li></ol>
-    
-    
-    
-    
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-clasico-propiedades">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <!-- Tema: propiedades de la probabilidad bajo el modelo clásico. -->
+
+  <p>
+    Sea $\Omega$ un espacio muestral finito y no vacío, cuyos resultados
+    son equiprobables. Para cada evento $A\subseteq\Omega$, se define
+  </p>
+
+  <div style="overflow-x: auto;">
+    \[
+      \mathbb{P}(A)=\frac{|A|}{|\Omega|}.
+    \]
   </div>
+
+  <p>
+    Utilizando directamente esta definición, propiedades de la cardinalidad
+    y descomposiciones de conjuntos, demuestra las siguientes afirmaciones
+    para cualesquiera eventos $A,B\subseteq\Omega$. Justifica cada paso
+    sin suponer como conocidas las propiedades de probabilidad que
+    se pide comprobar.
+  </p>
+
+  <p>
+    Todos los complementos se toman respecto de $\Omega$ y
+    $A\triangle B=(A\setminus B)\cup(B\setminus A)$.
+  </p>
+
+  <ol>
+    <li>
+      Se cumple que
+      \[
+        \mathbb{P}(\emptyset)=0,
+        \qquad
+        \mathbb{P}(\Omega)=1.
+      \]
+    </li>
+
+    <li>
+      Para todo $A\subseteq\Omega$,
+      \[
+        0\leq\mathbb{P}(A)\leq1.
+      \]
+    </li>
+
+    <li>
+      Bajo este modelo,
+      \[
+        \mathbb{P}(A)=0
+        \quad\Longleftrightarrow\quad
+        A=\emptyset.
+      \]
+    </li>
+    <li>
+      Bajo este modelo,
+      \[
+        \mathbb{P}(A)=1
+        \quad\Longleftrightarrow\quad
+        A=\Omega.
+      \]
+    </li>
+
+    <li>
+      La probabilidad del complemento satisface
+      \[
+        \mathbb{P}(A^c)=1-\mathbb{P}(A).
+      \]
+    </li>
+
+    <li>
+      Si $A\subseteq B$, entonces
+      \[
+        \mathbb{P}(A)\leq\mathbb{P}(B).
+      \]
+    </li>
+
+    <li>
+      Bajo el modelo clásico, la inclusión estricta implica
+      una desigualdad estricta:
+      \[
+        A\subsetneq B
+        \quad\Longrightarrow\quad
+        \mathbb{P}(A)&lt;\mathbb{P}(B).
+      \]
+    </li>
+
+    <li>
+      Para la diferencia de eventos,
+      \[
+        \mathbb{P}(A\setminus B)
+        =\mathbb{P}(A)-\mathbb{P}(A\cap B).
+      \]
+      En particular, si $A\subseteq B$, entonces
+      \[
+        \mathbb{P}(B\setminus A)
+        =\mathbb{P}(B)-\mathbb{P}(A).
+      \]
+    </li>
+
+    <li>Prueba que $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)$ 
+      si y solo si $A$ y $B$ son disjuntos, es decir, $\quad A\cap B=\emptyset$.
+    </li>
+
+    <li>
+      Para la unión de dos eventos,
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}(A\cup B)
+          =\mathbb{P}(A)+\mathbb{P}(B)
+           -\mathbb{P}(A\cap B).
+        \]
+      </div>
+    </li>
+    <li>Demuestra que $|\mathbb{P}(A)-\mathbb{P}(B)|\leq\mathbb{P}(A\triangle B)$.</li>
+
+    <li>
+      Para la diferencia simétrica,
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}(A\triangle B)
+          =\mathbb{P}(A)+\mathbb{P}(B)
+           -2\mathbb{P}(A\cap B).
+        \]
+      </div>
+    </li>
+    <li>Si $A_1,\ldots,A_m \subseteq \Omega$ son disjuntos dos a dos, entonces
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}\!\left(\bigcup_{i=1}^{m}A_i\right)
+          =\sum_{i=1}^{m}\mathbb{P}(A_i).
+        \]
+      </div>
+    </li>
+     <li>Una partición finita de $\Omega$ es una familia de subconjuntos no vacíos,
+       disjuntos dos a dos, cuya unión es $\Omega$. Si $C_1,\ldots,C_m$ 
+       forman una partición de un espacio finito equiprobable. Demuestra que
+        para todo $E\subseteq\Omega$
+        $$\mathbb{P}(E)=\sum_{i=1}^{m}\mathbb{P}(E\cap C_i)$$
+    </li>
+  </ol> 
+
+  <!-- <p>
+    En las demostraciones de los incisos 3, 4 y 7, explica por qué,
+    bajo el modelo clásico, cada resultado individual tiene
+    probabilidad estrictamente positiva.
+  </p> -->
+</div>
+
+
+<!-- <div class="ejercicio-box-new" id="ep2-modelos-clasico-particion">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Una cartera contiene $24$ pólizas identificadas: $10$ de automóviles, $8$ de vida y $6$ de gastos médicos. Cada póliza pertenece a un solo ramo. Se elige uniformemente una póliza. Denota por $C_1,C_2,C_3$ los eventos correspondientes a esos tres ramos.</p>
+  <ol>
+    <li>Calcula $\mathbb{P}(C_1)$, $\mathbb{P}(C_2)$ y $\mathbb{P}(C_3)$ y comprueba que su suma es $1$.</li>
+    <li>Entre las pólizas, $3$ de automóviles, $2$ de vida y $1$ de gastos médicos presentan un error de captura. Si $E$ es el evento de elegir una póliza con error, calcula $\mathbb{P}(E)$ contando todas las pólizas con error y comprueba que
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}(E)=\mathbb{P}(E\cap C_1)+\mathbb{P}(E\cap C_2)+\mathbb{P}(E\cap C_3).
+        \]
+      </div>
+    </li>
+  </ol>
+</div> -->
+
+<div class="ejercicio-box-new" id="ep2-modelos-clasico-tres-eventos">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <!-- Tema: inclusión-exclusión para tres eventos a partir de sus resultados. -->
+  <p>Sean $A,B,C$ eventos de un espacio finito equiprobable. Demuestra que</p>
+  <div style="overflow-x: auto;">
+    \[\mathbb{P}(A\cup B\cup C)={} \mathbb{P}(A)+\mathbb{P}(B)+\mathbb{P}(C) -\mathbb{P}(A\cap B)-\mathbb{P}(A\cap C)-\mathbb{P}(B\cap C) +\mathbb{P}(A\cap B\cap C)\]
+  </div>
+  <!-- <ol>
+    <li>Justifica cuántas veces queda contado un resultado que pertenece exactamente a uno, a dos o a los tres eventos en el lado derecho de la igualdad.</li>
+    <li>En un archivo de $50$ expedientes, sean $A$, $B$ y $C$ los conjuntos de expedientes con un error de captura, documentación incompleta y falta de firma, respectivamente. Se conoce que
+      <div style="overflow-x: auto;">
+        \[
+          \begin{gathered}
+            |A|=23,\qquad |B|=18,\qquad |C|=15,\\
+            |A\cap B|=9,\qquad |A\cap C|=7,\qquad |B\cap C|=5,\\
+            |A\cap B\cap C|=3.
+          \end{gathered}
+        \]
+      </div>
+      Si se elige uniformemente un expediente, calcula la probabilidad de que presente al menos una de estas incidencias y la de que no presente ninguna.
+    </li>
+    <li>Descompón los expedientes con incidencias según las combinaciones de pertenencia a $A$, $B$ y $C$. Utiliza esa descomposición para calcular la probabilidad de que el expediente presente exactamente una de las tres incidencias.</li>
+  </ol> -->
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-clasico-desigualdades">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <!-- Tema: cotas para uniones e intersecciones finitas mediante conteos. -->
+  <p>Sea $\Omega$ finito y no vacío, con resultados equiprobables, y sean $A_1,\ldots,A_m\subseteq\Omega$, con $m\geq1$.
+    Demuestra las siguientes desigualdades para la probabilidad de la unión y de la intersección de los eventos $A_1,\ldots,A_m$.
+  </p>
+
+  <ol>
+    <!-- <li>Demuestra que $\displaystyle{\left|\bigcup_{i=1}^{m}A_i\right|\leq\sum_{i=1}^{m}|A_i|}$. </li> -->
+    <li>$\displaystyle{\mathbb{P}\!\left(\bigcup_{i=1}^{m}A_i\right)\leq\sum_{i=1}^{m}\mathbb{P}(A_i)}$. </li>
+    
+    <li>
+      <div style="overflow-x: auto;">
+        $\displaystyle{
+          \mathbb{P}\!\left(\bigcup_{i=1}^{m}A_i\right)
+          \leq\min\left\{1,\sum_{i=1}^{m}\mathbb{P}(A_i)\right\}}.
+        $
+      </div>
+    </li>
+    <li>
+      <div style="overflow-x: auto;">
+        $\displaystyle{
+          \mathbb{P}\!\left(\bigcap_{i=1}^{m}A_i\right)
+          \leq\min\left\{\mathbb{P}(A_1),\ldots,\mathbb{P}(A_m)\right\}}.
+        $
+      </div>
+    <li>
+      <div style="overflow-x: auto;">
+        $\displaystyle{
+          \mathbb{P}\!\left(\bigcap_{i=1}^{m}A_i\right)
+          \geq\max\left\{0,\sum_{i=1}^{m}\mathbb{P}(A_i)-(m-1)\right\}.}
+        $
+      </div>
+    </li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-clasico-cotas-posibles">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <!-- Tema: cotas, casos extremos y valores posibles en un espacio finito. -->
+  <p>Sea $\Omega$ un espacio finito equiprobable y sean $A,B\subseteq\Omega$. Demuestra que</p>
+  <div style="overflow-x: auto;">
+    \[
+      \max\{0,\mathbb{P}(A)+\mathbb{P}(B)-1\}
+      \leq\mathbb{P}(A\cap B)
+      \leq\min\{\mathbb{P}(A),\mathbb{P}(B)\}.
+    \]
+  </div>
+  <!-- <ol>
+    <li>Justifica cada una de las cotas mediante la relación correspondiente entre los conjuntos.</li>
+    <li>Ahora toma $\Omega=\{1,\ldots,20\}$, $|A|=12$ y $|B|=9$. Determina el menor y el mayor valor posible de $\mathbb{P}(A\cap B)$ y de $\mathbb{P}(A\cup B)$.</li>
+    <li>Construye eventos concretos que alcancen el menor y el mayor valor posible de la probabilidad de la intersección.</li>
+    <li>Determina todos los valores que puede tomar $\mathbb{P}(A\cap B)$ en este modelo. ¿Puede ser igual a $1/8$, aun cuando ese número esté entre las cotas obtenidas? Justifica.</li>
+  </ol> -->
+</div>
 <!-- 
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-longitud">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Se elige uniformemente un punto en $\Omega=[0,L]$, donde $L&gt;0$. Considera eventos que sean uniones finitas de intervalos y puntos de $\Omega$. Para cada uno define</p>
+  <div style="overflow-x: auto;">
+    \[
+      \mathbb{P}(A)=\frac{\ell(A)}{L},
+    \]
+  </div>
+  <p>donde $\ell(A)$ denota su longitud total, contando una sola vez las partes que se superponen.</p>
+  <ol>
+    <li>Comprueba directamente que $\mathbb{P}(\emptyset)=0$, $\mathbb{P}(\Omega)=1$ y $0\leq\mathbb{P}(A)\leq1$.</li>
+    <li>Descompón el intervalo en $A$ y $A^c$ y justifica, mediante longitudes, que $\mathbb{P}(A^c)=1-\mathbb{P}(A)$.</li>
+    <li>Si $A\subseteq B$, compara sus longitudes para demostrar que $\mathbb{P}(A)\leq\mathbb{P}(B)$.</li>
+    <li>Explica por qué es necesario exigir $L&gt;0$ para utilizar esta definición.</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-intervalos">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>El instante de recepción de un expediente se modela uniformemente entre las $9{:}00$ y las $11{:}00$. Representa el resultado mediante los minutos transcurridos desde las $9{:}00$, de modo que $\Omega=[0,120]$ y $\mathbb{P}(E)=\ell(E)/120$. Considera $A=[0,50]$ y $B=[30,120]$.</p>
+  <ol>
+    <li>Representa en una recta $A$, $B$, $A\cap B$, $A\cup B$, $A\setminus B$ y $A\triangle B$. Aquí $A\triangle B=(A\setminus B)\cup(B\setminus A)$.</li>
+    <li>Calcula las seis probabilidades utilizando directamente las longitudes de los conjuntos.</li>
+    <li>Con los resultados anteriores, comprueba que
+      <div style="overflow-x: auto;">
+        \[
+          \begin{aligned}
+            \mathbb{P}(A\cup B)&amp;=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B),\\
+            \mathbb{P}(A\setminus B)&amp;=\mathbb{P}(A)-\mathbb{P}(A\cap B),\\
+            \mathbb{P}(A\triangle B)&amp;=\mathbb{P}(A)+\mathbb{P}(B)-2\mathbb{P}(A\cap B).
+          \end{aligned}
+        \]
+      </div>
+    </li>
+    <li>Justifica las mismas identidades para cualesquiera eventos que sean uniones finitas de intervalos y puntos en un intervalo uniforme de longitud positiva. Utiliza una descomposición en partes que no se superpongan.</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-particion">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Un instante se elige uniformemente en $\Omega=[0,60]$. Divide el intervalo en los eventos $C_1=[0,15]$, $C_2=(15,45]$ y $C_3=(45,60]$.</p>
+  <ol>
+    <li>Comprueba que los tres eventos son disjuntos dos a dos y que su unión es $\Omega$. Calcula sus probabilidades mediante longitudes y verifica que suman $1$.</li>
+    <li>Para $E=[10,50]$, calcula $\mathbb{P}(E)$ directamente y comprueba que
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}(E)=\sum_{i=1}^{3}\mathbb{P}(E\cap C_i).
+        \]
+      </div>
+    </li>
+    <li>Sea $0=t_0&lt;t_1&lt;\cdots&lt;t_m=L$, con $L&gt;0$. Considera $C_1=[0,t_1]$ y $C_i=(t_{i-1},t_i]$ para $i=2,\ldots,m$. Demuestra mediante longitudes que $\sum_{i=1}^{m}\mathbb{P}(C_i)=1$ bajo el modelo uniforme en $[0,L]$.</li>
+    <li>Si $E$ es una unión finita de intervalos y puntos en $[0,L]$, demuestra que $\mathbb{P}(E)=\sum_{i=1}^{m}\mathbb{P}(E\cap C_i)$. Explica por qué el uso de intervalos semiabiertos evita que un extremo interior pertenezca a dos piezas.</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-rectangulo">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Se elige uniformemente un punto $(x,y)$ del rectángulo $\Omega=[0,10]\times[0,6]$. Para una región $E$ de área definida se utiliza $\mathbb{P}(E)=\operatorname{Área}(E)/60$. Sean</p>
+  <div style="overflow-x: auto;">
+    \[
+      A=\{(x,y)\in\Omega:x\leq4\},\qquad
+      B=\{(x,y)\in\Omega:y\leq2\}.
+    \]
+  </div>
+  <ol>
+    <li>Dibuja las regiones y calcula directamente $\mathbb{P}(A)$, $\mathbb{P}(B)$, $\mathbb{P}(A\cap B)$, $\mathbb{P}(A\cup B)$ y $\mathbb{P}((A\cup B)^c)$.</li>
+    <li>Comprueba con las áreas obtenidas que
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B).
+        \]
+      </div>
+    </li>
+    <li>Explica geométricamente qué región se cuenta dos veces al sumar las áreas de $A$ y $B$.</li>
+    <li>Para dos eventos cualesquiera que sean uniones finitas de rectángulos con lados paralelos a los ejes, contenidos en $\Omega$, demuestra la misma identidad mediante una descomposición en regiones disjuntas. Justifica también que $\mathbb{P}(E^c)=1-\mathbb{P}(E)$ para cualquier evento $E$ de ese tipo.</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-cero-uno">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Se elige uniformemente un punto del cuadrado $\Omega=[0,1]^2$, utilizando el cociente de áreas. Considera el segmento</p>
+  <div style="overflow-x: auto;">
+    \[
+      D=\{(1/2,y):0\leq y\leq1\}.
+    \]
+  </div>
+  <ol>
+    <li>Para $0&lt;\varepsilon&lt;1/2$, encierra $D$ en una franja vertical de ancho $2\varepsilon$. Compara las áreas y justifica que $\operatorname{Área}(D)=0$.</li>
+    <li>Calcula $\mathbb{P}(D)$ y $\mathbb{P}(\Omega\setminus D)$. ¿El primer evento es vacío? ¿El segundo coincide con todo $\Omega$?</li>
+    <li>Compara los eventos $E=(0,1)^2$ y $F=[0,1]^2$. Justifica que $E\subsetneq F$ y calcula sus probabilidades. Para justificar el área de la frontera puedes encerrarla en franjas de área total tan pequeña como se desee.</li>
+    <li>Contrasta estos resultados con el modelo uniforme en un espacio finito. ¿Son válidas en ambos modelos las afirmaciones «probabilidad cero implica evento vacío» y «inclusión estricta implica probabilidad estrictamente menor»?</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-cotas-posibles">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Se elige uniformemente un punto del cuadrado $\Omega=[0,1]^2$. Dos regiones $A$ y $B$ tienen áreas $3/5$ y $9/20$, respectivamente. Todas las regiones que construyas en este ejercicio deberán ser rectángulos con lados paralelos a los ejes, o uniones finitas de estos.</p>
+  <ol>
+    <li>Compara las áreas de $A$, $B$, $A\cap B$ y $A\cup B$ para obtener el menor y el mayor valor posible de $\mathbb{P}(A\cap B)$ y de $\mathbb{P}(A\cup B)$.</li>
+    <li>Construye y dibuja dos pares de regiones que alcancen, respectivamente, el menor y el mayor valor posible de la probabilidad de la intersección.</li>
+    <li>Decide si es posible que $\mathbb{P}(A\cap B)=1/8$. Si lo es, proporciona rectángulos concretos y verifica sus áreas.</li>
+    <li>Demuestra que cualquier número real comprendido entre las cotas de la intersección puede obtenerse con una elección apropiada de $A$ y $B$. Puedes fijar $A=[0,3/5]\times[0,1]$ y desplazar horizontalmente un rectángulo de ancho $9/20$ y altura $1$.</li>
+    <li>Compara los valores posibles con los del modelo uniforme sobre $20$ resultados equiprobables cuando $|A|=12$ y $|B|=9$. Explica por qué conocer las mismas cotas no obliga a que ambos modelos admitan exactamente los mismos valores intermedios.</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-geometrico-desigualdades">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Sea $\Omega$ un rectángulo de área positiva y finita, y define $\mathbb{P}(E)=\operatorname{Área}(E)/\operatorname{Área}(\Omega)$. Sean $A_1,\ldots,A_m$ eventos que sean uniones finitas de rectángulos con lados paralelos a los ejes, contenidos en $\Omega$.</p>
+  <ol>
+    <li>Subdivide $\Omega$ en regiones de manera que cada pieza quede dentro o fuera de cada uno de los $A_i$. Utiliza las áreas de esas piezas para demostrar que
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}\!\left(\bigcup_{i=1}^{m}A_i\right)
+          \leq\sum_{i=1}^{m}\mathbb{P}(A_i).
+        \]
+      </div>
+    </li>
+    <li>Utilizando las regiones complementarias y sus áreas, demuestra que
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}\!\left(\bigcap_{i=1}^{m}A_i\right)
+          \geq\max\left\{0,\sum_{i=1}^{m}\mathbb{P}(A_i)-(m-1)\right\}.
+        \]
+      </div>
+    </li>
+    <li>En una región de área $100$, tres zonas tienen áreas $12$, $15$ y $18$. Si se elige uniformemente un punto de la región, obtén una cota superior para la probabilidad de que pertenezca a alguna zona y una cota inferior para que quede fuera de las tres.</li>
+    <li>¿La igualdad entre el área de una unión y la suma de las áreas individuales está garantizada cuando las regiones se superponen? Ilustra tu respuesta con un dibujo y explica qué ocurre si sus intersecciones tienen área cero.</li>
+  </ol>
+</div> 
+
+
+<div class="ejercicio-box-new" id="ep2-modelos-comparacion-aditividad">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <ol>
+    <li>En un espacio finito equiprobable, demuestra mediante conteos que
+      <div style="overflow-x: auto;">
+        \[
+          \mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)
+          \quad\Longleftrightarrow\quad A\cap B=\emptyset.
+        \]
+      </div>
+    </li>
+    <li>En el modelo uniforme sobre $\Omega=[0,2]$, toma $A=[0,1]$ y $B=[1,2]$. Determina $A\cap B$ y calcula directamente $\mathbb{P}(A)$, $\mathbb{P}(B)$ y $\mathbb{P}(A\cup B)$.</li>
+    <li>Decide si en el modelo geométrico la igualdad $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)$ obliga a que $A$ y $B$ sean disjuntos.</li>
+    <li>Para eventos que sean uniones finitas de intervalos y puntos, demuestra que la condición equivalente a esa igualdad es $\ell(A\cap B)=0$. Explica por qué esta condición permite que los eventos compartan algún resultado.</li>
+  </ol>
+</div>
+
+<div class="ejercicio-box-new" id="ep2-modelos-comparacion-diferencia-simetrica">
+  <h1 class="number-title-practica">Ejercicio</h1>
+  <p>Para dos eventos $A$ y $B$, define $A\triangle B=(A\setminus B)\cup(B\setminus A)$.</p>
+  <ol>
+    <li>En un espacio finito equiprobable, compara las cantidades de elementos de $A\setminus B$ y $B\setminus A$ para demostrar que
+      <div style="overflow-x: auto;">
+        \[
+          |\mathbb{P}(A)-\mathbb{P}(B)|\leq\mathbb{P}(A\triangle B).
+        \]
+      </div>
+    </li>
+    <li>Demuestra la misma desigualdad utilizando longitudes en un intervalo uniforme de longitud positiva, para eventos que sean uniones finitas de intervalos y puntos.</li>
+    <li>Deduce en ambos modelos que $\mathbb{P}(A\triangle B)=0$ implica $\mathbb{P}(A)=\mathbb{P}(B)$. ¿La igualdad de probabilidades implica que la diferencia simétrica tenga probabilidad cero? Examina $\Omega=\{1,2,3,4\}$, $A=\{1,2\}$ y $B=\{3,4\}$, con resultados equiprobables.</li>
+    <li>En el modelo uniforme sobre $[0,1]$, toma $A=[0,1/2]$ y $B=[0,1/2)$. Comprueba que $A\neq B$ y que $\mathbb{P}(A\triangle B)=0$. Explica por qué esta situación no puede ocurrir en un espacio finito equiprobable.</li>
+  </ol>
+</div>
+
+
+
+
+
 <div class="ejercicio-box" id="ep2-notas-pcc-nuevo-31">
 <h1 class="number-title-practica">Ejercicio</h1>
 <p>Una cartera de veinte pólizas identificadas se clasifica por ramo y por la existencia de reclamaciones previas:</p><div style="overflow-x:auto;"><table><thead><tr><th scope="col">Ramo</th><th scope="col">Con reclamaciones previas</th><th scope="col">Sin reclamaciones previas</th></tr></thead><tbody><tr><td>Automóviles</td><td>$5$</td><td>$7$</td></tr><tr><td>Vida</td><td>$2$</td><td>$6$</td></tr></tbody></table></div><p>Se elige uniformemente una muestra de cuatro pólizas sin reemplazo.</p><ol><li>Calcula la probabilidad de incluir exactamente dos pólizas de automóviles y exactamente una póliza con reclamaciones previas.</li><li>Calcula la probabilidad de no incluir ninguna póliza con reclamaciones previas.</li><li>Calcula la probabilidad de incluir exactamente una póliza con reclamaciones previas, sin imponer restricciones sobre los ramos.</li></ol>
